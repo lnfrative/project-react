@@ -1,0 +1,12 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["airbnb"],
+    "rules": {
+        "semi": "off",
+        "linebreak-style": ["error", "windows"],
+        "import/no-unresolved": "off",
+        "react/jsx-filename-extension": "off",
+        "import/prefer-default-export": "off",
+        "react/jsx-props-no-spreading": "off"
+    }
+}

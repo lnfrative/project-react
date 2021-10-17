@@ -1,0 +1,6 @@
+@import '../../css/variables.css';
+
+.container {
+    color: var(--color-white-primary);
+    display: block;
+}
