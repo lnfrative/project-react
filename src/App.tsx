@@ -1,18 +1,19 @@
+// region import
 import React from 'react'
 
 // components
-import { Layout } from '@/components'
 import { Switch, Route } from 'react-router-dom'
 
 // views
 import { Home } from '@/views'
+// endregion
 
-const App = () => (
-  <Layout>
+function App() {
+  return (
     <Switch>
       <Route exact path="/" render={Home} />
     </Switch>
-  </Layout>
-)
+  )
+}
 
 export default App
