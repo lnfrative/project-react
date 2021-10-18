@@ -1,8 +1,10 @@
-body {
-  margin: 0;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 @import './fonts/index.css';
 @import './variables.css';
+
+body {
+  font-family: var(--primary-font);
+  background-color: var(--primary-color);
+  margin: 0;
+}

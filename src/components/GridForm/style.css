@@ -1,0 +1,96 @@
+@import url('../../css/variables.css');
+
+.container {
+  min-height: 100vh;
+  color: var(--sextary-color);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.mainRow {
+  display: flex;
+}
+
+.mainChild {
+  max-width: 950px;
+  min-height: 600px;
+
+  flex-grow: 2;
+  flex-shrink: 2;
+
+  width: 100%;
+
+  border: solid 1px;
+  border-left: none;
+  border-color: var(--septary-color);
+
+  display: flex;
+}
+
+.lateralSideChild {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.verticalSideChild {
+  max-width: 950px;
+  
+  flex-grow: 2;
+  flex-shrink: 2;
+  
+  width: 100%;
+  display: flex;
+}
+
+.containerLogo {
+  flex: 1;
+}
+
+.containerForm {
+  flex: 1;
+  border-left: solid 1px var(--septary-color);
+}
+
+.verticalChilds {
+  flex: 1;
+}
+
+.verticalChildTopRight {
+  border-left: solid 1px;
+  border-image: linear-gradient(to top, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+}
+
+.verticalChildBottomRight {
+  border-left: solid 1px;
+  border-image: linear-gradient(to bottom, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+}
+
+.topChildBorder {
+  border-right: solid 1px;
+  border-image: linear-gradient(to top, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+}
+
+.bottomChildBorder {
+  border-right: solid 1px;
+  border-image: linear-gradient(to bottom, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+}
+
+.rightChildBorder {
+  border: solid 1px;
+  border-left: none;
+  border-right: none;
+  border-image: linear-gradient(to right, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+}
+
+.leftChildBorder {
+  border: solid 1px;
+  border-left: none;
+  border-right: none;
+  border-image: linear-gradient(to left, var(--septary-color) 0%, var(--primary-color) 25%) 1;
+}

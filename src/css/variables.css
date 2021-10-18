@@ -1,6 +1,14 @@
 :root {
 
   --primary-font: 'Aileron';
-  --secondary-font: 'Montserrat'
+  --secondary-font: 'Montserrat';
+
+  --primary-color: #18171D;
+  --secondary-color: #FFA068;
+  --tertiary-color: #A8633A;
+  --quaternary-color: #CC8E58;
+  --quinary-color: #CDD6FF;
+  --sextary-color: white;
+  --septary-color: rgba(204,142, 88, 0.11)
 
 }

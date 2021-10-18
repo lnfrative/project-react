@@ -1,12 +1,13 @@
+// region import
 import React from 'react'
+
+// components
+import { GridForm } from '@/components'
 
 // styles
 import styles from './styles.css'
+// endregion
 
-const Home = () => (
-  <div className={styles.container}>
-    Hellow world!
-  </div>
-)
+const Home = () => <GridForm className={styles.container} />
 
 export default Home
