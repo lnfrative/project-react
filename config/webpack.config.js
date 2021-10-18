@@ -81,6 +81,7 @@ module.exports = (env, options) => ({
     alias: {
       '@': paths.source.main,
     },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new HTMLPlugin({

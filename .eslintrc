@@ -5,8 +5,11 @@
         "semi": "off",
         "linebreak-style": ["error", "windows"],
         "import/no-unresolved": "off",
+        "import/extensions": [0, { "js": "never", "tsx": "never", "ts": "never" }],
         "react/jsx-filename-extension": "off",
         "import/prefer-default-export": "off",
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "no-undef": "off",
+        "react/destructuring-assignment": ["off", "never"]
     }
 }
