@@ -92,8 +92,8 @@ module.exports = (env, options) => ({
       inject: true,
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css',
-      chunkFilename: 'css/[name].[id].css',
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].css',
       ignoreOrder: false,
     }),
     new ESLintPlugin(),
