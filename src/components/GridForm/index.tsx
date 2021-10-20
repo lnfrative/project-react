@@ -1,6 +1,9 @@
 // region import
 import React from 'react'
 
+// utilities
+import { externalResources } from '@/utilities'
+
 // nesters
 import { nestStyles } from './module'
 // endregion
@@ -20,7 +23,9 @@ function GridForm(props: { children: JSX.Element }) {
       <div className={styles.row}>
         <div className={styles.horizontalLeftChild} />
         <div className={styles.mainChild}>
-          <div className={styles.containerLogo} />
+          <div className={styles.containerLogo}>
+            <img alt={externalResources.dogeCashLogo.alt} src={externalResources.dogeCashLogo.src} />
+          </div>
           <div className={styles.containerForm}>
             {props.children}
           </div>
