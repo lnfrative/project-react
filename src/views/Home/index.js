@@ -2,7 +2,12 @@
 import React from 'react'
 
 // components
-import { GridForm, FormAuth, InputLabel } from '@/components'
+import {
+  GridForm,
+  FormAuth,
+  InputLabel,
+  Button,
+} from '@/components'
 
 // styles
 import styles from './styles.css'
@@ -14,6 +19,7 @@ const Home = () => (
       <InputLabel title="Email" />
       <InputLabel title="Password" />
       <InputLabel title="Repeat Password" />
+      <Button title="Sign up" />
     </FormAuth>
   </GridForm>
 )

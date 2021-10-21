@@ -10,6 +10,7 @@
         "import/prefer-default-export": "off",
         "react/jsx-props-no-spreading": "off",
         "no-undef": "off",
-        "react/destructuring-assignment": ["off", "never"]
+        "react/destructuring-assignment": ["off", "never"],
+        "react/button-has-type": 0
     }
 }

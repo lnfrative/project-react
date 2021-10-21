@@ -1,0 +1,15 @@
+@import url('../../css/variables.css');
+
+.button {
+  font-family: var(--font-primaty);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: bold;
+  width: 100%;
+
+  min-height: 48px;
+  border-radius: 24px;
+
+  background-color: var(--color-secondary);
+  border: solid 1px var(--color-fortuary);
+}
