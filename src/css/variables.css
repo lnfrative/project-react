@@ -24,6 +24,7 @@
   --color-tenary: rgba(255, 140, 140, 0.05);
   --color-elevenary: #FF8C8C;
   --color-twelnary: #18171D;
+	--color-thirteenth: #FEBD97;
 
   --space-unit: 1rem;
 	--space-default: var(--space-unit);

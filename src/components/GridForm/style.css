@@ -58,6 +58,10 @@
 .containerForm {
   flex: 1;
   border-left: solid 1px var(--color-septary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .verticalChilds {

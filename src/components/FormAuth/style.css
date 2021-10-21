@@ -1,0 +1,15 @@
+@import url('../../css/variables.css');
+
+.container {
+  width: 335px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.title {
+  font-family: var(--font-primaty);
+  font-size: var(--font-size-xxl);
+  color: var(--color-thirteenth);
+}
