@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { GridForm, Input } from '@/components'
+import { GridForm, InputLabel } from '@/components'
 
 // styles
 import styles from './styles.css'
@@ -10,13 +10,7 @@ import styles from './styles.css'
 
 const Home = () => (
   <GridForm className={styles.container}>
-    <Input
-      error={{ data: { message: 'Email already in use' }, sign: '*' }}
-      InputHTMLAttributes={{
-        name: 'test',
-        id: 'test',
-      }}
-    />
+    <InputLabel title="Username" />
   </GridForm>
 )
 

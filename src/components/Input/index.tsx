@@ -1,17 +1,14 @@
 // region import
-import React, { InputHTMLAttributes } from 'react'
+import React from 'react'
 
 // utilities
-import { Error } from '@/utilities/interfaces'
+import { InputProps } from '@/utilities/interfaces'
 
 // module
 import { nestStyles } from './module'
 // endregion
 
-function Input(props: {
-  error: Error,
-  InputHTMLAttributes: InputHTMLAttributes<HTMLInputElement>
-}) {
+function Input(props: InputProps) {
   const style = nestStyles({ error: props.error })
   return (
     <div className={style.container}>
