@@ -1,14 +1,40 @@
 :root {
 
-  --primary-font: 'Aileron';
-  --secondary-font: 'Montserrat';
+  --font-primaty: 'Aileron';
+  --font-secondary: 'Montserrat';
 
-  --primary-color: #18171D;
-  --secondary-color: #FFA068;
-  --tertiary-color: #A8633A;
-  --quaternary-color: #CC8E58;
-  --quinary-color: #CDD6FF;
-  --sextary-color: white;
-  --septary-color: rgba(204,142, 88, 0.11)
+	--font-size-xxl: 35px;
+	--font-size-xl: 30px;
+	--font-size-lg: 25px;
+	--font-size-md: 20px;
+	--font-size-sm: 18px;
+	--font-size-xs: 16px;
+	--font-size-xxs: 14px;
+	--font-size-xxxs: 12px;
 
+  --color-primary: #18171D;
+  --color-secondary: #FFA068;
+  --color-tertiary: #A8633A;
+  --color-quaternary: #CC8E58;
+  --color-quinary: #CDD6FF;
+  --color-sextary: white;
+  --color-septary: rgba(204,142, 88, 0.11);
+  --color-octary: rgba(72, 78, 109, 0.07);
+  --color-novenary: #484E6D;
+  --color-tenary: rgba(255, 140, 140, 0.05);
+  --color-elevenary: #FF8C8C;
+  --color-twelnary: #18171D;
+
+  --space-unit: 1rem;
+	--space-default: var(--space-unit);
+	--space-xxxxs: calc(0.125 * var(--space-unit));
+	--space-xxxs: calc(0.25 * var(--space-unit));
+	--space-xxs: calc(0.375 * var(--space-unit));
+	--space-xs: calc(0.5 * var(--space-unit));
+	--space-sm: calc(0.75 * var(--space-unit));
+	--space-md: calc(1.25 * var(--space-unit));
+	--space-lg: calc(2 * var(--space-unit));
+	--space-xl: calc(3.25 * var(--space-unit));
+	--space-xxl: calc(5.25 * var(--space-unit));
+	--space-xxxl: calc(8.5 * var(--space-unit));
 }

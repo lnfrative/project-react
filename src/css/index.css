@@ -4,7 +4,7 @@
 @import './variables.css';
 
 body {
-  font-family: var(--primary-font);
-  background-color: var(--primary-color);
+  font-family: var(--font-primary);
+  background-color: var(--color-primary);
   margin: 0;
 }

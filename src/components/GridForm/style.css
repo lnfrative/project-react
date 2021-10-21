@@ -2,7 +2,7 @@
 
 .container {
   min-height: 100vh;
-  color: var(--sextary-color);
+  color: var(--color-sextary);
 
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
 
   border: solid 1px;
   border-left: none;
-  border-color: var(--septary-color);
+  border-color: var(--color-septary);
 
   display: flex;
 }
@@ -57,7 +57,7 @@
 
 .containerForm {
   flex: 1;
-  border-left: solid 1px var(--septary-color);
+  border-left: solid 1px var(--color-septary);
 }
 
 .verticalChilds {
@@ -66,34 +66,34 @@
 
 .verticalChildTopRight {
   border-left: solid 1px;
-  border-image: linear-gradient(to top, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+  border-image: linear-gradient(to top, var(--color-septary) 0%, var(--color-primary) 100%) 1;
 }
 
 .verticalChildBottomRight {
   border-left: solid 1px;
-  border-image: linear-gradient(to bottom, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+  border-image: linear-gradient(to bottom, var(--color-septary) 0%, var(--color-primary) 100%) 1;
 }
 
 .topChildBorder {
   border-right: solid 1px;
-  border-image: linear-gradient(to top, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+  border-image: linear-gradient(to top, var(--color-septary) 0%, var(--color-primary) 100%) 1;
 }
 
 .bottomChildBorder {
   border-right: solid 1px;
-  border-image: linear-gradient(to bottom, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+  border-image: linear-gradient(to bottom, var(--color-septary) 0%, var(--color-primary) 100%) 1;
 }
 
 .rightChildBorder {
   border: solid 1px;
   border-left: none;
   border-right: none;
-  border-image: linear-gradient(to right, var(--septary-color) 0%, var(--primary-color) 100%) 1;
+  border-image: linear-gradient(to right, var(--color-septary) 0%, var(--color-primary) 100%) 1;
 }
 
 .leftChildBorder {
   border: solid 1px;
   border-left: none;
   border-right: none;
-  border-image: linear-gradient(to left, var(--septary-color) 0%, var(--primary-color) 25%) 1;
+  border-image: linear-gradient(to left, var(--color-septary) 0%, var(--color-primary) 25%) 1;
 }
