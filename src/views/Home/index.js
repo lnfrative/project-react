@@ -7,6 +7,7 @@ import {
   FormAuth,
   InputLabel,
   Button,
+  CheckboxRhomboid,
 } from '@/components'
 
 // styles
@@ -19,6 +20,10 @@ const Home = () => (
       <InputLabel title="Email" />
       <InputLabel title="Password" />
       <InputLabel title="Repeat Password" />
+      <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+        <CheckboxRhomboid />
+        <div>test test</div>
+      </div>
       <Button title="Sign up" />
     </FormAuth>
   </GridForm>
