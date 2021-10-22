@@ -1,1 +1,2 @@
 export { default as invalidEmail } from './invalidEmail'
+export { default as invalidPassword } from './invalidPassword'

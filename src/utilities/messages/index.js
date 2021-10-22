@@ -39,4 +39,9 @@ export default {
     en: 'The email entered is not valid.',
     es: 'El email ingresado no es válido.',
   },
+  INVALID_PASSWORD: {
+    en: 'Your password must be at least 8 characters long, between lowercase, uppercase, numbers, and special characters.',
+    es: 'Tu contraseña debe contener al menos 8 caractéres, entre minúsculas, mayúsculas, números y caractéres especiales',
+  },
+
 }
