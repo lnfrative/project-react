@@ -1,0 +1,18 @@
+@import url('../../css/variables.css');
+
+.container {
+  display: flex;
+  align-items: flex-start;
+
+  font-family: var(--font-primaty);
+  font-size: var(--font-size-xs);
+}
+
+.title {
+  color: var(--color-tertiary);
+}
+
+b.terms {
+  font-weight: bold;
+  color: var(--color-thirteenth);
+}
