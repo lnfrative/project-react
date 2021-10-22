@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from 'react'
-import { Error } from '@/utilities/interfaces'
+import { Error } from '@/utilities/Interfaces'
 
 interface InputProps {
   error?: Error,

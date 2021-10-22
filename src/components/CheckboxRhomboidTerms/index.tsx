@@ -5,7 +5,7 @@ import React from 'react'
 import { CheckboxRhomboid } from '@/components'
 
 // utilities
-import { CheckboxRhomboidTermsProps } from '@/utilities/interfaces'
+import { CheckboxRhomboidTermsProps } from '@/utilities/Interfaces'
 import { message } from '@/utilities'
 
 // styles

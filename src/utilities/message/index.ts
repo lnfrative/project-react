@@ -1,4 +1,4 @@
-import { MessageArgs } from '@/utilities/interfaces'
+import { MessageArgs } from '@/utilities/Interfaces'
 import { messages } from '@/utilities'
 
 function translate(id, language = 'en') {

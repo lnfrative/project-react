@@ -2,7 +2,8 @@
 import React from 'react'
 
 // utilities
-import { InputProps } from '@/utilities/interfaces'
+import { message } from '@/utilities'
+import { InputProps } from '@/utilities/Interfaces'
 
 // module
 import { nestStyles } from './module'
@@ -15,7 +16,7 @@ function Input(props: InputProps) {
       {!!props.error?.data?.message && (
         <div className={style.errorContainer}>
           <span className={style.errorSign}>{props.error.sign}</span>
-          <span className={style.errorMessage}>{props.error.data.message}</span>
+          <span className={style.errorMessage}>{message({ id: props.error.data.message })}</span>
         </div>
       )}
       <input {...props.InputHTMLAttributes} className={style.input} />

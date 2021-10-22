@@ -1,4 +1,4 @@
-import { InputProps } from '@/utilities/interfaces'
+import { InputProps } from '@/utilities/Interfaces'
 
 interface InputLabelProps {
   inputProps: InputProps,

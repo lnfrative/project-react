@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { InputLabelProps } from '@/utilities/interfaces'
+import { InputLabelProps } from '@/utilities/Interfaces'
 
 // components
 import { Input } from '@/components'

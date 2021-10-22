@@ -1,4 +1,4 @@
-import { Stage } from '@/utilities/interfaces'
+import { Stage } from '@/utilities/Interfaces'
 
 interface InitialState {
   termsAccepted: boolean,

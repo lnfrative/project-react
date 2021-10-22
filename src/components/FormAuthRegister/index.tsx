@@ -13,6 +13,7 @@ import {
   InputLabel,
   Button,
   CheckboxRhomboidTerms,
+  InputLabelEmail
 } from '@/components'
 
 // module
@@ -25,14 +26,7 @@ function FormAuthRegister() {
   return (
     <form>
       <FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
-        <InputLabel
-          inputProps={{
-            InputHTMLAttributes: {
-              type: 'email',
-            },
-          }}
-          title={message({ id: 'EMAIL' })}
-        />
+        <InputLabelEmail />
         <InputLabel
           inputProps={{
             InputHTMLAttributes: {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Stage } from '@/utilities/interfaces'
+import { Stage } from '@/utilities/Interfaces'
 
 function useCommitState<S>(initialState: S): Stage<S> {
   const [state, setState] = useState(initialState)

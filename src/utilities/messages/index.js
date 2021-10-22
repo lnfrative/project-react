@@ -35,4 +35,8 @@ export default {
     en: 'Log In',
     es: 'Iniciar sesión',
   },
+  INVALID_EMAIL: {
+    en: 'The email entered is not valid.',
+    es: 'El email ingresado no es válido.',
+  },
 }
