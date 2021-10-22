@@ -47,7 +47,7 @@ function FormAuthRegister() {
               type: 'password',
             },
           }}
-          title={message({ id: 'REPÉAT_PASSWORD' })}
+          title={message({ id: 'REPEAT_PASSWORD' })}
         />
         <CheckboxRhomboidTerms
           checkboxRhomboidProps={{
