@@ -1,5 +1,5 @@
 interface CheckboxRhomboidProps {
-  onCheck: (value: boolean) => {},
+  onCheck: (value: boolean) => void,
 }
 
 export default CheckboxRhomboidProps

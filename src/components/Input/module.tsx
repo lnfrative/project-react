@@ -7,7 +7,7 @@ import { Error } from '@/utilities/interfaces'
 import styles from './style.css'
 // endregion
 
-function nestStyles(args: { error: Error }) {
+function nestStyles(args: { error?: Error }) {
   const hasError = !!args.error?.data
   return {
     container: styles.container,

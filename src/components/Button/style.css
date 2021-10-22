@@ -1,6 +1,7 @@
 @import url('../../css/variables.css');
 
 .button {
+  cursor: pointer;
   font-family: var(--font-primaty);
   font-size: var(--font-size-sm);
   color: var(--color-primary);

@@ -7,4 +7,32 @@ export default {
     en: 'Terms of Use',
     es: 'Términos de uso',
   },
+  PASSWORD: {
+    en: 'Password',
+    es: 'Contraseña',
+  },
+  EMAIL: {
+    en: 'Email',
+    es: 'Correo electrónico',
+  },
+  REPEAT_PASSWORD: {
+    en: 'Repeat Password',
+    es: 'Repetir contraseña',
+  },
+  CREATE_AN_ACCOUNT: {
+    en: 'Create an account',
+    es: 'Crear una cuenta',
+  },
+  SIGN_UP: {
+    en: 'Sign up',
+    es: 'Registrarse',
+  },
+  ALREADY_HAVE_ACCUONT: {
+    en: 'Already have an account?',
+    es: '¿Ya tienes una cuenta?',
+  },
+  LOG_IN: {
+    en: 'Log In',
+    es: 'Iniciar sesión',
+  },
 }
