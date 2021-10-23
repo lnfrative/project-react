@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error } from '@/utilities/Interfaces'
+import { Stage, Error, InputLabelPRepeatProps } from '@/utilities/Interfaces'
 import { passwordNotMatch } from '@/utilities/Errors'
 
 interface InitialState {
@@ -11,11 +11,13 @@ const initialState: InitialState = {
 }
 
 function onChange(
-  stage: Stage<InitialState>, args: { password: string },
+  stage: Stage<InitialState>, args: InputLabelPRepeatProps,
 ): ChangeEventHandler<HTMLInputElement> {
   return (e) => {
     const repeatedPassword = e.target.value
     const isMatch = repeatedPassword === args.password
+
+    args.registerInput(repeatedPassword, !isMatch)
     if ((isMatch && !!stage.state.error) || !repeatedPassword) {
       stage.commitState({ error: undefined })
       return

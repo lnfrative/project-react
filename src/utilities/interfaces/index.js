@@ -8,3 +8,5 @@ export { default as CheckboxRhomboidTermsProps } from './CheckboxRhomboidTermsPr
 export { default as MessageArgs } from './MessageArgs'
 export { default as Stage } from './Stage'
 export { default as InputLabelPRepeatProps } from './InputLabelPRepeatProps'
+export { default as InputLabelEmailProps } from './InputLabelEmailProps'
+export { default as InputLabelPasswordProps } from './InputLabelPasswordProps'

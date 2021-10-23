@@ -3,6 +3,7 @@ import React from 'react'
 
 // utilities
 import { message } from '@/utilities'
+import { InputLabelPasswordProps } from '@/utilities/Interfaces'
 
 // hooks
 import { useCommitState } from '@/hooks'
@@ -14,7 +15,7 @@ import { InputLabel } from '@/components'
 import { initialState, onChange } from './module'
 // endregion
 
-function InputLabelPassword() {
+function InputLabelPassword(props: InputLabelPasswordProps) {
   const stage = useCommitState(initialState)
   return (
     <InputLabel
@@ -22,7 +23,8 @@ function InputLabelPassword() {
         error: stage.state.error,
         InputHTMLAttributes: {
           type: 'password',
-          onChange: onChange(stage),
+          name: 'password',
+          onChange: onChange(stage, props),
         },
       }}
       title={message({ id: 'PASSWORD' })}

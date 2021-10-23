@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error } from '@/utilities/Interfaces'
+import { Stage, Error, InputLabelEmailProps } from '@/utilities/Interfaces'
 import { regex } from '@/utilities'
 import { invalidEmail } from '@/utilities/Errors'
 
@@ -11,10 +11,14 @@ const initialState: InitialState = {
   error: undefined,
 }
 
-function onChange(stage: Stage<InitialState>): ChangeEventHandler<HTMLInputElement> {
+function onChange(
+  stage: Stage<InitialState>, arg: InputLabelEmailProps,
+): ChangeEventHandler<HTMLInputElement> {
   return (e) => {
     const email = e.target.value
     const isEmail = regex.email.test(email)
+
+    arg.registerInput(email, !isEmail)
     if ((isEmail && !!stage.state.error) || !email) {
       stage.commitState({ error: undefined })
       return

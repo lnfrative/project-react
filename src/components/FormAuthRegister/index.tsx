@@ -2,7 +2,7 @@
 import React from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useCommitState, useForm } from '@/hooks'
 
 // utilities
 import { message } from '@/utilities'
@@ -10,32 +10,31 @@ import { message } from '@/utilities'
 // components
 import {
   FormAuth,
-  InputLabel,
   Button,
   CheckboxRhomboidTerms,
   InputLabelEmail,
   InputLabelPassword,
+  InputLabelPRepeat,
 } from '@/components'
 
 // module
 import { initialState, onCheckTerms } from './module'
 // endregion
 
+function onSubmit() {}
+
 function FormAuthRegister() {
   const stage = useCommitState(initialState)
+  const { register, watch, handleSubmit } = useForm()
 
   return (
-    <form>
+    <form onSubmit={handleSubmit({ onSubmit })}>
       <FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
-        <InputLabelEmail />
-        <InputLabelPassword />
-        <InputLabel
-          inputProps={{
-            InputHTMLAttributes: {
-              type: 'password',
-            },
-          }}
-          title={message({ id: 'REPEAT_PASSWORD' })}
+        <InputLabelEmail registerInput={register({ name: 'email' })} />
+        <InputLabelPassword registerInput={register({ name: 'password' })} />
+        <InputLabelPRepeat
+          registerInput={register({ name: 'repeatedPassword' })}
+          password={watch.password?.value}
         />
         <CheckboxRhomboidTerms
           checkboxRhomboidProps={{

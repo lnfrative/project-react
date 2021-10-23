@@ -23,7 +23,8 @@ function InputLabelPRepeat(props: InputLabelPRepeatProps) {
         error: stage.state.error,
         InputHTMLAttributes: {
           type: 'password',
-          onChange: onChange(stage, { password: props.password }),
+          name: 'repeatedPassword',
+          onChange: onChange(stage, props),
         },
       }}
       title={message({ id: 'REPEAT_PASSWORD' })}
