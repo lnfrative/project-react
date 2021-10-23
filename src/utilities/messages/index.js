@@ -43,5 +43,8 @@ export default {
     en: 'Your password must be at least 8 characters long, between lowercase, uppercase, numbers, and special characters.',
     es: 'Tu contraseña debe contener al menos 8 caractéres, entre minúsculas, mayúsculas, números y caractéres especiales',
   },
-
+  PASSWORD_NOT_MATCH: {
+    en: 'Password does not match.',
+    es: 'La contraseña no coincide.',
+  },
 }
