@@ -15,26 +15,26 @@ import {
   InputLabelEmail,
   InputLabelPassword,
   InputLabelPRepeat,
+  AlreadyHaveAccount,
 } from '@/components'
 
 // module
-import { initialState, onCheckTerms } from './module'
+import { initialState, onCheckTerms, onSubmit } from './module'
 // endregion
-
-function onSubmit() {}
 
 function FormAuthRegister() {
   const stage = useCommitState(initialState)
   const { register, watch, handleSubmit } = useForm()
+  const { password, email, repeatedPassword } = watch
 
   return (
-    <form onSubmit={handleSubmit({ onSubmit })}>
+    <form onSubmit={handleSubmit({ onSubmit: onSubmit(stage) })}>
       <FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
         <InputLabelEmail registerInput={register({ name: 'email' })} />
         <InputLabelPassword registerInput={register({ name: 'password' })} />
         <InputLabelPRepeat
           registerInput={register({ name: 'repeatedPassword' })}
-          password={watch.password?.value}
+          password={password?.value}
         />
         <CheckboxRhomboidTerms
           checkboxRhomboidProps={{
@@ -44,9 +44,16 @@ function FormAuthRegister() {
         <Button
           title={message({ id: 'SIGN_UP' })}
           buttonHTMLAttributes={{
+            disabled: (
+              !stage.state.termsAccepted
+              || password?.hasError
+              || email?.hasError
+              || repeatedPassword?.hasError
+            ),
             type: 'submit',
           }}
         />
+        <AlreadyHaveAccount />
       </FormAuth>
     </form>
   )

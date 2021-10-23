@@ -10,6 +10,16 @@ function onCheckTerms(stage: Stage<InitialState>) {
   }
 }
 
+function onSubmit(stage: Stage<InitialState>) {
+  return (inputs) => {
+    const { password, email, repeatedPassword } = inputs
+    if (!stage.state.termsAccepted) return
+    if (password?.hasError || email?.hasError || repeatedPassword?.hasError) return
+    // TODO: Make the call to the registration endpoint.
+    console.log(inputs)
+  }
+}
+
 const initialState: InitialState = {
   termsAccepted: false,
 }
@@ -17,4 +27,5 @@ const initialState: InitialState = {
 export {
   onCheckTerms,
   initialState,
+  onSubmit,
 }

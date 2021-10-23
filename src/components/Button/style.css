@@ -2,7 +2,7 @@
 
 .button {
   cursor: pointer;
-  font-family: var(--font-primaty);
+  font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   color: var(--color-primary);
   font-weight: bold;
@@ -14,3 +14,7 @@
   background-color: var(--color-secondary);
   border: solid 1px var(--color-fortuary);
 }
+
+/* .button[disabled] {
+  background-color: var(--color-quaternary);
+} */

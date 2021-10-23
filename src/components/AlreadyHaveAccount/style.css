@@ -2,17 +2,21 @@
 
 .container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xxxs);
+  width: 100%;
 
   font-family: var(--font-primary);
   font-size: var(--font-size-xs);
 }
 
-.title {
+.alreadyHaveAccount {
+  font-style: italic;
   color: var(--color-tertiary);
 }
 
-b.terms {
+.login {
   font-weight: bold;
   color: var(--color-thirteenth);
 }
