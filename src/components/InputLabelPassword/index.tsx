@@ -20,7 +20,7 @@ function InputLabelPassword(props: InputLabelPasswordProps) {
   return (
     <InputLabel
       inputProps={{
-        error: stage.state.error,
+        error: props.disableError ? undefined : stage.state.error,
         InputHTMLAttributes: {
           type: 'password',
           name: 'password',

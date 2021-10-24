@@ -1,7 +1,8 @@
 import { RegisterInput } from '@/utilities/Types'
 
 interface InputLabelPasswordProps {
-  registerInput: RegisterInput
+  registerInput: RegisterInput,
+  disableError?: boolean,
 }
 
 export default InputLabelPasswordProps

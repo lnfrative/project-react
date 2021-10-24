@@ -29,8 +29,8 @@ function FormAuthLogin() {
   return (
     <form onSubmit={handleSubmit({ onSubmit })}>
       <FormAuth title={message({ id: 'LOG_IN' })}>
-        <InputLabelEmail registerInput={register({ name: 'email' })} />
-        <InputLabelPassword registerInput={register({ name: 'password' })} />
+        <InputLabelEmail disableError registerInput={register({ name: 'email' })} />
+        <InputLabelPassword disableError registerInput={register({ name: 'password' })} />
         <div className={styles.forgotPassword}>{message({ id: 'FORGOT_PASSWORD' })}</div>
         <Button
           buttonHTMLAttributes={{

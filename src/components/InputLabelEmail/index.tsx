@@ -20,7 +20,7 @@ function InputLabelEmail(props: InputLabelEmailProps) {
   return (
     <InputLabel
       inputProps={{
-        error: stage.state.error,
+        error: props.disableError ? undefined : stage.state.error,
         InputHTMLAttributes: {
           type: 'email',
           name: 'email',

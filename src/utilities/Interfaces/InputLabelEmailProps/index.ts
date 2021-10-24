@@ -1,7 +1,8 @@
 import { RegisterInput } from '@/utilities/Types'
 
 interface InputLabelEmailProps {
-  registerInput: RegisterInput
+  registerInput: RegisterInput,
+  disableError?: boolean,
 }
 
 export default InputLabelEmailProps
