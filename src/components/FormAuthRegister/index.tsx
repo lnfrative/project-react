@@ -5,7 +5,7 @@ import React from 'react'
 import { useCommitState, useForm } from '@/hooks'
 
 // utilities
-import { message } from '@/utilities'
+import { message, resources } from '@/utilities'
 
 // components
 import {
@@ -15,7 +15,7 @@ import {
   InputLabelEmail,
   InputLabelPassword,
   InputLabelPRepeat,
-  AlreadyHaveAccount,
+  LinkForm,
 } from '@/components'
 
 // module
@@ -53,7 +53,11 @@ function FormAuthRegister() {
             type: 'submit',
           }}
         />
-        <AlreadyHaveAccount />
+        <LinkForm
+          path={resources.path.login}
+          message={message({ id: 'ALREADY_HAVE_ACCUONT' })}
+          linkName={message({ id: 'LOG_IN' })}
+        />
       </FormAuth>
     </form>
   )

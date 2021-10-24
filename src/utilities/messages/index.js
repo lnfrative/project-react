@@ -47,4 +47,12 @@ export default {
     en: 'Password does not match.',
     es: 'La contraseña no coincide.',
   },
+  FORGOT_PASSWORD: {
+    en: 'Forgot your password?',
+    es: '¿Olvidaste tu contraseña?',
+  },
+  DONT_HAVE_ACCOUNT: {
+    en: 'Don\'t have an account yet?',
+    es: '¿Todavía no tienes cuenta?',
+  },
 }

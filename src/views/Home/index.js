@@ -4,6 +4,7 @@ import React from 'react'
 // components
 import {
   GridForm,
+  FormAuthLogin,
 } from '@/components'
 
 // styles
@@ -11,7 +12,9 @@ import styles from './styles.css'
 // endregion
 
 const Home = () => (
-  <GridForm className={styles.container} />
+  <GridForm className={styles.container}>
+    <FormAuthLogin />
+  </GridForm>
 )
 
 export default Home

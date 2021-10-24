@@ -1,0 +1,7 @@
+@import url('../../css/variables.css');
+
+.forgotPassword {
+  font-style: italic;
+  font-size: var(--font-size-xs);
+  color: var(--color-fiftenary);
+}

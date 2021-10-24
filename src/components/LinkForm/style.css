@@ -11,12 +11,13 @@
   font-size: var(--font-size-xs);
 }
 
-.alreadyHaveAccount {
+.message {
   font-style: italic;
   color: var(--color-tertiary);
 }
 
-.login {
+.link {
+  text-decoration: none;
   font-weight: bold;
   color: var(--color-thirteenth);
 }
