@@ -101,3 +101,17 @@
   border-right: none;
   border-image: linear-gradient(to left, var(--color-septary) 0%, var(--color-primary) 25%) 1;
 }
+
+@media screen and (max-width: 950px) {
+  .mainChild {
+    flex-direction: column;
+  }
+
+  .leftChildBorder, .rightChildBorder, .bottomChildBorder, .topChildBorder, .verticalChildBottomRight, .verticalChildTopRight, .containerForm, .mainChild {
+    border: none;
+  }
+
+  .containerLogo {
+    min-height: 150px;
+  }
+}
