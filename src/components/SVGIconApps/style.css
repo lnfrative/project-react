@@ -1,0 +1,11 @@
+@import url('../../css/variables.css');
+
+.iconDots {
+  fill: var(--color-quaternary);
+  fill-rule: evenodd;
+}
+
+.icon {
+  width: 32px;
+  height: 33px;
+}
