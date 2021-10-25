@@ -1,5 +1,4 @@
-export { default as Header } from './Header'
-export { default as Layout } from './Layout'
+export { default as HeaderDashboard } from './HeaderDashboard'
 export { default as GridForm } from './GridForm'
 export { default as Input } from './Input'
 export { default as InputLabel } from './InputLabel'

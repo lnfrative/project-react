@@ -3,5 +3,6 @@ export default {
     home: '/',
     login: '/',
     signup: '/sign-up',
+    dashboard: '/dashboard',
   },
 }

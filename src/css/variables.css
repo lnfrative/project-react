@@ -27,6 +27,8 @@
 	--color-thirteenth: #FEBD97;
 	--color-fortuary: #979797;
 	--color-fiftenary: #626A95;
+	--color-sixtenary: rgba(211, 211, 211, 0.01);
+	--color-septenary: #151419;
 
   --space-unit: 1rem;
 	--space-default: var(--space-unit);
