@@ -18,6 +18,8 @@ function GroupBrand() {
       <img
         alt={externalResources.dogeCashLogoIcon.alt}
         src={externalResources.dogeCashLogoIcon.src}
+        width={externalResources.dogeCashLogoIcon.width}
+        height={externalResources.dogeCashLogoIcon.height}
       />
     </div>
   )

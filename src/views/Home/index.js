@@ -3,18 +3,20 @@ import React from 'react'
 
 // components
 import {
-  GridForm,
-  FormAuthLogin,
+  // GridForm,
+  // FormAuthLogin,
+  HeaderDashboard,
 } from '@/components'
 
 // styles
-import styles from './styles.css'
+// import styles from './styles.css'
 // endregion
 
 const Home = () => (
-  <GridForm className={styles.container}>
-    <FormAuthLogin />
-  </GridForm>
+  // <GridForm className={styles.container}>
+  //   <FormAuthLogin />
+  // </GridForm>
+  <HeaderDashboard />
 )
 
 export default Home

@@ -20,10 +20,12 @@
 }
 
 .headerContent {
-    flex: 1;
-
     min-height: inherit;
     max-width: 1715px;
+    
+    display: flex;
+    gap: var(--space-lg);
+    flex: 1;
 }
 
 .page {

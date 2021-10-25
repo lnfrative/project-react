@@ -1,0 +1,38 @@
+@import url('../../css/variables.css');
+
+.container {
+  height: 100%;
+
+  display: flex;
+  gap: var(--space-lg);
+
+  font-size: var(--font-size-lg);
+}
+
+.containerFirst {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: solid 2px transparent;
+  border-image: linear-gradient(to right, var(--color-quaternary) 0%, var(--color-quinary) 100%) 1;
+}
+
+.firstGradient {
+  background: linear-gradient(to right, var(--color-quaternary) 0%, var(--color-quinary) 100%);
+	
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.containerSecond {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.second {
+  color: var(--color-quinary);
+}

@@ -7,9 +7,7 @@ import { HeaderDashboard } from '@/components'
 
 function Dashboard() {
   return (
-    <HeaderDashboard>
-      <div>Page content.</div>
-    </HeaderDashboard>
+    <HeaderDashboard />
   )
 }
 

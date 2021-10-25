@@ -1,5 +1,5 @@
 interface HeaderDashboardProps {
-  children: any,
+  children?: any,
 }
 
 export default HeaderDashboardProps

@@ -55,4 +55,12 @@ export default {
     en: 'Don\'t have an account yet?',
     es: '¿Todavía no tienes cuenta?',
   },
+  DASHBOARD: {
+    en: 'Dashboard',
+    es: 'Tablero',
+  },
+  POOL_DATA: {
+    en: 'Pool data',
+    es: 'Datos agrupados',
+  },
 }

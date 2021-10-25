@@ -6,5 +6,7 @@ export default {
   dogeCashLogoIcon: {
     src: 'https://i.imgur.com/80rvyLS.png',
     alt: 'DogeCash Logo Icon',
+    width: 43,
+    height: 45,
   },
 }
