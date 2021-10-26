@@ -2,7 +2,9 @@
 import React from 'react'
 
 // components
-import { GroupBrand, GroupDashboardPages, MenuOptionsUser } from '@/components'
+import {
+  GroupBrand, GroupDashboardPages, MenuOptionsUser, SVGIconNotifications,
+} from '@/components'
 
 // utilities
 import { HeaderDashboardProps } from '@/utilities/Interfaces'
@@ -21,6 +23,7 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
         </div>
 
         <div className={styles.secondGroup}>
+          <SVGIconNotifications />
           <MenuOptionsUser character="W" />
         </div>
       </div>
