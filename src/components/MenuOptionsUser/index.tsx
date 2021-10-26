@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { Menu } from '@/components'
+import { Menu, SVGIconSettings, SVGIconCheck, SVGIconBook, SVGIconLogout } from '@/components'
 
 // styles
 import styles from './style.css'
@@ -13,10 +13,26 @@ function MenuOptionsUser() {
     <Menu
       content={(
         <div className={styles.menuContent}>
-          <div>Hola</div>
-          <div>Hola</div>
-          <div>Hola</div>
-          <div>Hola</div>
+          <div className={styles.group}>
+            <div className={styles.containerOption}>
+              <SVGIconSettings />
+              <span className={styles.label}>Settings</span>
+            </div>
+          </div>
+          <div className={styles.group}>
+            <div className={styles.containerOption}>
+              <SVGIconCheck />
+              <span className={styles.label}>Movement history</span>
+            </div>
+            <div className={styles.containerOption}>
+              <SVGIconBook />
+              <span className={styles.label}>Address book</span>
+            </div>
+          </div>
+          <div className={styles.containerOption}>
+            <SVGIconLogout />
+            <span className={styles.label}>Sign out</span>
+          </div>
         </div>
       )}
     >
