@@ -3,7 +3,7 @@ import React from 'react'
 
 // components
 import {
-  GroupBrand, GroupDashboardPages, MenuOptionsUser, SVGIconNotifications,
+  GroupBrand, GroupPagesDashboard, MenuOptionsUser, SVGIconNotifications,
 } from '@/components'
 
 // utilities
@@ -19,7 +19,7 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
       <div className={styles.headerContent}>
         <div className={styles.firstGroup}>
           <GroupBrand />
-          <GroupDashboardPages />
+          <GroupPagesDashboard />
         </div>
 
         <div className={styles.secondGroup}>

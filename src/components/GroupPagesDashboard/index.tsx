@@ -8,7 +8,7 @@ import { message } from '@/utilities'
 import styles from './style.css'
 // endregion
 
-function GroupDashboardPages() {
+function GroupPagesDashboard() {
   return (
     <div className={styles.container}>
       <div className={styles.containerFirst}>
@@ -25,4 +25,4 @@ function GroupDashboardPages() {
   )
 }
 
-export default GroupDashboardPages
+export default GroupPagesDashboard

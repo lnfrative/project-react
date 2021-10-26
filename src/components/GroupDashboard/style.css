@@ -1,0 +1,11 @@
+@import url('../../css/variables.css');
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  color: var(--color-quinary)
+}
