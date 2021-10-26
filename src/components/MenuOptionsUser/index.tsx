@@ -12,7 +12,7 @@ function MenuOptionsUser() {
   return (
     <Menu
       content={(
-        <div>
+        <div className={styles.menuContent}>
           <div>Hola</div>
           <div>Hola</div>
           <div>Hola</div>

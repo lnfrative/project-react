@@ -1,5 +1,5 @@
 // region import
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // hooks
 import { useCommitState } from '@/hooks'
@@ -17,13 +17,20 @@ import styles from './style.css'
 function Menu(props: MenuProps) {
   const stage = useCommitState(initialState)
 
+  useEffect(() => {
+    if (!stage.state.isOpen) return () => {}
+    function closeMenu() {
+      stage.commitState({ isOpen: false })
+    }
+    window.addEventListener('click', closeMenu)
+    return () => {
+      window.removeEventListener('click', closeMenu)
+    }
+  }, [stage.state.isOpen])
+
   return (
     <div className={styles.container}>
-      {stage.state.isOpen && (
-        <div className={styles.containerContent}>
-          {props.content}
-        </div>
-      )}
+      {stage.state.isOpen && props.content}
       <div
         role="button"
         tabIndex={0}

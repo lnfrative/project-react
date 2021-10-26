@@ -10,7 +10,7 @@ const initialState: InitialState = {
 
 function onClick(stage: Stage<InitialState>) {
   return () => {
-    stage.commitState({ isOpen: true })
+    stage.commitState({ isOpen: !stage.state.isOpen })
   }
 }
 
