@@ -1,0 +1,31 @@
+@import url('../../css/variables.css');
+
+.container {
+  position: relative;
+}
+
+.children {
+  cursor: pointer;
+}
+
+.children:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.children:active {
+  opacity: var(--opacity-selected);
+}
+
+.containerContent {
+  position: absolute;
+  background-color: var(--color-ninetenary);
+  border: solid 1px var(--color-twentinary);
+  border-radius: 10px;
+
+  box-shadow: 0px 2px 4px 4px rgb(0 0 0 / 27%);
+
+  width: 200px;
+  right: -20px;
+  top: 125%;
+  transform: translateY(-50%);
+}

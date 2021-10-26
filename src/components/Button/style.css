@@ -15,6 +15,10 @@
   border: solid 1px var(--color-fortuary);
 }
 
-/* .button[disabled] {
-  background-color: var(--color-quaternary);
-} */
+.button:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.button:active {
+  opacity: var(--opacity-selected);
+}

@@ -1,0 +1,18 @@
+@import url('../../css/variables.css');
+
+.container {
+  border: solid 1px var(--color-twentinary);
+  border-radius: 10px;
+  padding: var(--space-xs);
+  background-color: var(--color-eightenary);
+
+  font-size: var(--font-size-xl);
+  color: var(--color-quinary);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  min-width: 40px;
+}

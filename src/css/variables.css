@@ -1,5 +1,4 @@
 :root {
-
   --font-primary: 'Aileron';
   --font-secondary: 'Montserrat';
 
@@ -29,6 +28,9 @@
 	--color-fiftenary: #626A95;
 	--color-sixtenary: rgba(211, 211, 211, 0.01);
 	--color-septenary: #151419;
+	--color-eightenary: #1A191F;
+	--color-ninetenary: #1D1C23;
+	--color-twentinary: #2E2C40;
 
   --space-unit: 1rem;
 	--space-default: var(--space-unit);
@@ -42,4 +44,7 @@
 	--space-xl: calc(3.25 * var(--space-unit));
 	--space-xxl: calc(5.25 * var(--space-unit));
 	--space-xxxl: calc(8.5 * var(--space-unit));
+
+	--opacity-selecting: 0.85;
+	--opacity-selected: 1;
 }

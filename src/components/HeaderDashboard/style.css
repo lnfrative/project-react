@@ -24,8 +24,18 @@
     max-width: 1715px;
     
     display: flex;
-    gap: var(--space-lg);
+    justify-content: space-between;
     flex: 1;
+}
+
+.firstGroup {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.secondGroup {
+    display: flex;
+    align-items: center;
 }
 
 .page {

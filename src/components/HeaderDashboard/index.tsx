@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { GroupBrand, GroupDashboardPages } from '@/components'
+import { GroupBrand, GroupDashboardPages, MenuOptionsUser } from '@/components'
 
 // utilities
 import { HeaderDashboardProps } from '@/utilities/Interfaces'
@@ -15,8 +15,14 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
   <div className={styles.container}>
     <div className={styles.header}>
       <div className={styles.headerContent}>
-        <GroupBrand />
-        <GroupDashboardPages />
+        <div className={styles.firstGroup}>
+          <GroupBrand />
+          <GroupDashboardPages />
+        </div>
+
+        <div className={styles.secondGroup}>
+          <MenuOptionsUser />
+        </div>
       </div>
     </div>
     <div className={styles.page}>
