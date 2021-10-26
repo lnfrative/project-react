@@ -1,14 +1,24 @@
 // region import
 import React from 'react'
 
+// utilities
+import { message } from '@/utilities'
+import { MenuOptionsUserProps } from '@/utilities/Interfaces'
+
 // components
-import { Menu, SVGIconSettings, SVGIconCheck, SVGIconBook, SVGIconLogout } from '@/components'
+import {
+  Menu,
+  SVGIconSettings,
+  SVGIconCheck,
+  SVGIconBook,
+  SVGIconLogout,
+} from '@/components'
 
 // styles
 import styles from './style.css'
 // endregion
 
-function MenuOptionsUser() {
+function MenuOptionsUser(props: MenuOptionsUserProps) {
   return (
     <Menu
       content={(
@@ -16,28 +26,36 @@ function MenuOptionsUser() {
           <div className={styles.group}>
             <div className={styles.containerOption}>
               <SVGIconSettings />
-              <span className={styles.label}>Settings</span>
+              <span className={styles.label}>
+                {message({ id: 'SETTINGS' })}
+              </span>
             </div>
           </div>
           <div className={styles.group}>
             <div className={styles.containerOption}>
               <SVGIconCheck />
-              <span className={styles.label}>Movement history</span>
+              <span className={styles.label}>
+                {message({ id: 'MOVEMENT_HISTORY' })}
+              </span>
             </div>
             <div className={styles.containerOption}>
               <SVGIconBook />
-              <span className={styles.label}>Address book</span>
+              <span className={styles.label}>
+                {message({ id: 'ADDRESS_BOOK' })}
+              </span>
             </div>
           </div>
           <div className={styles.containerOption}>
             <SVGIconLogout />
-            <span className={styles.label}>Sign out</span>
+            <span className={styles.label}>
+              {message({ id: 'SIGN_OUT' })}
+            </span>
           </div>
         </div>
       )}
     >
       <div className={styles.container}>
-        S
+        {props.character}
       </div>
     </Menu>
   )

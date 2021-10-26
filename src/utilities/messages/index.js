@@ -63,4 +63,20 @@ export default {
     en: 'Pool data',
     es: 'Datos agrupados',
   },
+  SETTINGS: {
+    en: 'Settings',
+    es: 'Ajustes',
+  },
+  MOVEMENT_HISTORY: {
+    en: 'Movement history',
+    es: 'Movimientos',
+  },
+  ADDRESS_BOOK: {
+    en: 'Address book',
+    es: 'Direcciones',
+  },
+  SIGN_OUT: {
+    en: 'Sign out',
+    es: 'Cerrar sesión',
+  },
 }

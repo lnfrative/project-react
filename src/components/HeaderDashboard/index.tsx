@@ -21,7 +21,7 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
         </div>
 
         <div className={styles.secondGroup}>
-          <MenuOptionsUser />
+          <MenuOptionsUser character="W" />
         </div>
       </div>
     </div>
