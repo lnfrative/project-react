@@ -28,6 +28,8 @@
     display: flex;
     justify-content: space-between;
     flex: 1;
+
+    padding: 0 var(--space-xl);
 }
 
 .firstGroup {
@@ -46,4 +48,7 @@
 
     display: flex;
     max-width: 1715px;
+
+    padding: 0 var(--space-xl);
+    box-sizing: border-box;
 }

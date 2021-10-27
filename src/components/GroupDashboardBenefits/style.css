@@ -3,4 +3,5 @@
 .containerCards {
   display: flex;
   gap: var(--space-md);
+  flex-wrap: wrap;
 }
