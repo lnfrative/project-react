@@ -12,12 +12,12 @@ function GroupPagesDashboard() {
   return (
     <div className={styles.container}>
       <div className={styles.containerFirst}>
-        <div className={styles.firstGradient}>
+        <div className={styles.title}>
           {message({ id: 'DASHBOARD' })}
         </div>
       </div>
       <div className={styles.containerSecond}>
-        <div className={styles.second}>
+        <div className={styles.title}>
           {message({ id: 'POOL_DATA' })}
         </div>
       </div>

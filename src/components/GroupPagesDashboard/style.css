@@ -10,20 +10,21 @@
 }
 
 .containerFirst {
+  cursor: pointer;
   height: 100%;
 
   display: flex;
   align-items: center;
 
-  border-bottom: solid 2px transparent;
-  border-image: linear-gradient(to right, var(--color-quaternary) 0%, var(--color-quinary) 100%) 1;
+  border-bottom: solid 2px var(--color-quinary);
 }
 
-.firstGradient {
-  background: linear-gradient(to right, var(--color-quaternary) 0%, var(--color-quinary) 100%);
-	
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+.containerFirst:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.containerFirst:active {
+  opacity: var(--opacity-selected);
 }
 
 .containerSecond {
@@ -33,6 +34,6 @@
   align-items: center;
 }
 
-.second {
+.title {
   color: var(--color-quinary);
 }
