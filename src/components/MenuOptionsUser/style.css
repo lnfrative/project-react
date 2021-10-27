@@ -1,13 +1,13 @@
 @import url('../../css/variables.css');
 
 .container {
-  border: solid 1px var(--color-twentinary);
+  border: solid 1px var(--color-variety-main-tiny-shadow);
+  background-color: var(--color-passive-pager);
   border-radius: 10px;
   padding: var(--space-xs);
-  background-color: var(--color-eightenary);
 
   font-size: var(--font-size-xl);
-  color: var(--color-quinary);
+  color: var(--color-active-secundary);
   
   display: flex;
   justify-content: center;
@@ -41,13 +41,13 @@
 .label {
   font-family: var(--font-secondary);
   font-size: var(--font-size-md);
-  color: var(--color-quinary);
+  color: var(--color-active-secundary);
 }
 
 .menuContent {
   position: absolute;
-  background-color: var(--color-ninetenary);
-  border: solid 1px var(--color-twentinary);
+  background-color: var(--color-passive-pager);
+  border: solid 1px var(--color-variety-main-tiny-shadow);
   border-radius: 10px;
 
   min-width: 300px;

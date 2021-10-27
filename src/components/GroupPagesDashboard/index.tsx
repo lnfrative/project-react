@@ -12,7 +12,7 @@ function GroupPagesDashboard() {
   return (
     <div className={styles.container}>
       <div className={styles.containerFirst}>
-        <div className={styles.title}>
+        <div className={styles.titleGradient}>
           {message({ id: 'DASHBOARD' })}
         </div>
       </div>

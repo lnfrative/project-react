@@ -28,8 +28,10 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
         </div>
       </div>
     </div>
-    <div className={styles.page}>
-      {props.children}
+    <div className={styles.containerPage}>
+      <div className={styles.page}>
+        {props.children}
+      </div>
     </div>
   </div>
 )

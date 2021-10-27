@@ -16,7 +16,8 @@
   display: flex;
   align-items: center;
 
-  border-bottom: solid 2px var(--color-quinary);
+  border-bottom: solid 2px transparent;
+  border-image: linear-gradient(to right, var(--color-active-main) 0%, var(--color-active-secundary) 100%) 1;
 }
 
 .containerFirst:hover {
@@ -34,6 +35,13 @@
   align-items: center;
 }
 
+.titleGradient {
+  background: linear-gradient(to right, var(--color-active-main) 0%, var(--color-active-secundary) 100%);
+	
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 .title {
-  color: var(--color-quinary);
+  color: var(--color-active-secundary);
 }

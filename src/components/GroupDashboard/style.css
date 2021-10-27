@@ -3,10 +3,19 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-md);
 }
 
-.title {
+.containerTitle {
   font-size: var(--font-size-lg);
-  color: var(--color-quinary)
+  color: var(--color-variety-main);
+
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-xs);
+}
+
+.sign {
+  font-size: var(--font-size-xs);
+  transform: rotate(65deg);
 }

@@ -15,10 +15,10 @@ function CardValue(props: CardValueProps) {
   return (
     <Card>
       <div className={styles.container}>
-        <div>{props.title}</div>
+        <div className={styles.title}>{props.title}</div>
         <div className={styles.containerValue}>
-          <div>{props.sign}</div>
-          <div>{props.value}</div>
+          <div className={styles.sign}>{props.sign}</div>
+          <div className={styles.value}>{props.value}</div>
         </div>
       </div>
     </Card>

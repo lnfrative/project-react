@@ -3,13 +3,12 @@
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     gap: var(--space-xl);
 }
 
 .header {
-    background-color: var(--color-sixtenary);
+    background-color: var(--color-passive-pager);
     border-bottom: solid 2px var(--color-septenary);
     
     min-height: 85px;
@@ -43,12 +42,18 @@
     gap: var(--space-lg);
 }
 
+.containerPage {
+    flex: 1;
+    padding: 0 var(--space-xl);
+
+    display: flex;
+    justify-content: center;
+}
+
 .page {
     width: 100%;
 
     display: flex;
     max-width: 1715px;
-
-    padding: 0 var(--space-xl);
     box-sizing: border-box;
 }

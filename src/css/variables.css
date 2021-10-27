@@ -32,6 +32,17 @@
 	--color-ninetenary: #1D1C23;
 	--color-twentinary: #2E2C40;
 
+	--color-passive-main: #18171D;
+	--color-passive-pager: #27262D;
+	--color-active-main: #FFB677;
+	--color-active-secundary: #B0A9E6;
+	--color-variety-main: #D0CBE6;
+	--color-variety-main-shadow: rgba(208, 203, 230, 0.5);
+	--color-variety-main-tiny-shadow: rgba(208, 203, 230, 0.04);
+	--color-variety-upstream: #C8FCA3;
+	--color-variety-downstream: #FF8C8C;
+
+
   --space-unit: 1rem;
 	--space-default: var(--space-unit);
 	--space-xxxxs: calc(0.125 * var(--space-unit));

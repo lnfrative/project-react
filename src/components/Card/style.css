@@ -4,7 +4,5 @@
   border-radius: 14px;
   padding: var(--space-md);
 
-  border: solid 1px var(--color-twentinary);
-  background-color: var(--color-eightenary);
-  color: var(--color-quinary);
+  background-color: var(--color-passive-pager);
 }

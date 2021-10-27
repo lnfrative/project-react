@@ -9,13 +9,22 @@
 
 .title {
   font-size: var(--font-size-xs);
+  color: var(--color-variety-main-shadow);
 }
 
 .containerValue {
   flex: 1;
   font-size: var(--font-size-xxl);
-
+  
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+}
+
+.value {
+  color: var(--color-variety-main);
+}
+
+.sign {
+  color: var(--color-variety-main-shadow);
 }
