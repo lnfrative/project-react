@@ -19,7 +19,9 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
       <div className={styles.headerContent}>
         <div className={styles.firstGroup}>
           <GroupBrand />
-          <GroupPagesDashboard />
+          <div className={styles.headerPages}>
+            <GroupPagesDashboard />
+          </div>
         </div>
 
         <div className={styles.secondGroup}>
