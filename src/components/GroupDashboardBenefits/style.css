@@ -1,0 +1,6 @@
+@import url('../../css/variables.css');
+
+.containerCards {
+  display: flex;
+  gap: var(--space-sm);
+}

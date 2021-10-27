@@ -6,6 +6,7 @@ import {
   // GridForm,
   // FormAuthLogin,
   HeaderDashboard,
+  GroupDashboardBenefits,
 } from '@/components'
 
 // styles
@@ -16,7 +17,9 @@ const Home = () => (
   // <GridForm className={styles.container}>
   //   <FormAuthLogin />
   // </GridForm>
-  <HeaderDashboard />
+  <HeaderDashboard>
+    <GroupDashboardBenefits />
+  </HeaderDashboard>
 )
 
 export default Home
