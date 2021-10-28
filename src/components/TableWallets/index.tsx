@@ -2,7 +2,12 @@
 import React from 'react'
 
 // components
-import { ValueCoin, ValuePrice, ValueVariation } from '@/components'
+import {
+  ValueCoin,
+  ValuePrice,
+  ValueVariation,
+  ValuePool,
+} from '@/components'
 
 // modules
 import { nestStyles } from './module'
@@ -59,15 +64,11 @@ function Item() {
       <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
       <ValuePrice value={0.02465} />
       <ValueVariation value={4.54} />
-      <Poolshare />
+      <ValuePool valueDecimal={454} valuePercentage={0.113} />
       <Curve />
       <Actions />
     </div>
   )
-}
-
-function Poolshare() {
-  return null
 }
 
 function Curve() {

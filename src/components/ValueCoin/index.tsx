@@ -5,7 +5,7 @@ import React from 'react'
 import { ValueCoinProps } from '@/utilities/Interfaces'
 
 // components
-import { ImgCoin } from '@/components'
+import { ImgCoin, ValueDecimal } from '@/components'
 
 // styles
 import styles from './style.css'
@@ -16,10 +16,7 @@ function ValueCoin(props: ValueCoinProps) {
     <div className={styles.container}>
       <ImgCoin size="medium" src={props.srcImageCoin} />
       <div>
-        <div>
-          <span className={styles.numberLarge}>25.201</span>
-          <span className={styles.numberSmall}>.00000084</span>
-        </div>
+        <ValueDecimal value={props.value} />
         <div className={styles.containerName}>
           <span>{props.name}</span>
           <span>-</span>

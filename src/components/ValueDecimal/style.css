@@ -1,0 +1,11 @@
+@import url('../../css/variables.css');
+
+.valueLarge {
+  font-size: var(--font-size-xs);
+  color: var(--color-variety-main);
+}
+
+.valueSmall {
+  font-size: var(--font-size-xxxs);
+  color: var(--color-variety-main-shadow);
+}

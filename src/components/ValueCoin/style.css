@@ -15,16 +15,6 @@
   color: var(--color-variety-main-shadow);
 }
 
-.numberLarge {
-  font-size: var(--font-size-xs);
-  color: var(--color-variety-main);
-}
-
-.numberSmall {
-  font-size: var(--font-size-xxxs);
-  color: var(--color-variety-main-shadow);
-}
-
 .shortname {
   text-transform: uppercase;
 }
