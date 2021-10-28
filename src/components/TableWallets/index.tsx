@@ -1,6 +1,9 @@
 // region import
 import React from 'react'
 
+// components
+import { ValueCoin } from '@/components'
+
 // modules
 import { nestStyles } from './module'
 // endregion
@@ -53,7 +56,7 @@ function Item() {
   const styles = nestStyles()
   return (
     <div className={styles.row}>
-      <Holding />
+      <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
       <Price />
       <Time />
       <Poolshare />
@@ -61,10 +64,6 @@ function Item() {
       <Actions />
     </div>
   )
-}
-
-function Holding() {
-  return null
 }
 
 function Price() {
