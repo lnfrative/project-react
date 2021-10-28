@@ -1,0 +1,16 @@
+@import url('../../css/variables.css');
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  font-size: var(--font-size-xxs);
+}
+
+.upstream {
+  color: var(--color-variety-upstream);
+}
+
+.downstream {
+  color: var(--color-variety-downstream);
+}
