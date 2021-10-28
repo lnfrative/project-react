@@ -3,22 +3,16 @@ import React from 'react'
 
 // components
 import {
-  // GridForm,
-  // FormAuthLogin,
   HeaderDashboard,
   GroupDashboardBenefits,
+  GroupDashboardWallets,
 } from '@/components'
-
-// styles
-// import styles from './styles.css'
 // endregion
 
 const Home = () => (
-  // <GridForm className={styles.container}>
-  //   <FormAuthLogin />
-  // </GridForm>
   <HeaderDashboard>
     <GroupDashboardBenefits />
+    <GroupDashboardWallets />
   </HeaderDashboard>
 )
 

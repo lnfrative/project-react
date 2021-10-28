@@ -1,0 +1,41 @@
+@import url('../../css/variables.css');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: grid;
+  overflow: auto;
+  grid-template-columns: 350px 90px 90px 165px 165px 750px;
+  gap: var(--space-sm);
+
+  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+  padding: var(--space-md) 0;
+}
+
+.header {
+  font-size: var(--font-size-xs);
+  color: var(--color-variety-main-shadow);
+}
+
+.headerCell {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.headerCell:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.headerCell:active {
+  opacity: var(--opacity-selected);
+}
+
+.arrow {
+  font-size: var(--font-size-xxs);
+}
