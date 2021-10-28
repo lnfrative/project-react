@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { ValueCoin } from '@/components'
+import { ValueCoin, ValuePrice } from '@/components'
 
 // modules
 import { nestStyles } from './module'
@@ -57,7 +57,7 @@ function Item() {
   return (
     <div className={styles.row}>
       <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
-      <Price />
+      <ValuePrice value={0.02465} />
       <Time />
       <Poolshare />
       <Curve />
