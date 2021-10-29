@@ -3,7 +3,7 @@
 .container {
   border: solid 1px var(--color-variety-main-tiny-shadow);
   background-color: var(--color-passive-pager);
-  border-radius: 10px;
+  border-radius: var(--border-radius-standard);
   padding: var(--space-xs);
 
   font-size: var(--font-size-xl);
@@ -48,7 +48,7 @@
   position: absolute;
   background-color: var(--color-passive-pager);
   border: solid 1px var(--color-variety-main-tiny-shadow);
-  border-radius: 10px;
+  border-radius: var(--border-radius-standard);
 
   min-width: 300px;
 

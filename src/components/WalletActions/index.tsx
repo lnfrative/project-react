@@ -5,7 +5,7 @@ import React from 'react'
 import { message } from '@/utilities'
 
 // components
-import { ButtonCombination } from '@/components'
+import { ButtonCombination, ButtonIcon, SVGIconArrowDouble } from '@/components'
 
 // styles
 import styles from './style.css'
@@ -24,6 +24,9 @@ function WalletActions() {
           title={message({ id: 'SELL' })}
         />
       </div>
+      <ButtonIcon>
+        <SVGIconArrowDouble />
+      </ButtonIcon>
     </div>
   )
 }
