@@ -9,7 +9,7 @@
 .row {
   display: grid;
   overflow: auto;
-  grid-template-columns: minmax(225px, 350px) 110px 70px 165px 165px minmax(250px, 750px);
+  grid-template-columns: minmax(225px, 350px) 110px 70px 165px 125px minmax(250px, 750px);
   gap: var(--space-sm);
 
   border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
