@@ -79,4 +79,12 @@ export default {
     en: 'Sign out',
     es: 'Cerrar sesión',
   },
+  BUY: {
+    en: 'Buy',
+    es: 'Comprar',
+  },
+  SELL: {
+    en: 'Sell',
+    es: 'Vender',
+  },
 }

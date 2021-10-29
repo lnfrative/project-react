@@ -1,0 +1,51 @@
+@import url('../../css/variables.css');
+
+.button {
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background-color: var(--color-passive-main);
+  height: 45px;
+  font-size: var(--font-size-xs);
+  outline: none;
+}
+
+.after {
+  color: var(--color-active-main);
+  border-radius: 10px 0 0 10px;
+  padding-left: var(--space-md);
+}
+
+.after::after {
+  content: "";
+  border-style: solid;
+  border-width: 45px var(--space-md) 0 0;
+  border-color: var(--color-passive-main) transparent transparent transparent;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+.before {
+  color: var(--color-variety-main);
+  border-radius: 0 10px 10px 0;
+  padding-right: var(--space-md);
+}
+
+.before::before {
+  content: "";
+  border-style: solid;
+  border-width: 45px var(--space-md) 0 0;
+  border-color: transparent var(--color-passive-main) transparent transparent;
+  position: absolute;
+  top: 0;
+  right: 100%;
+}
+
+.button:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.button:active {
+  opacity: var(--opacity-selected);
+}

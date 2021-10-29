@@ -8,6 +8,7 @@ import {
   ValueVariation,
   ValuePool,
   CanvasValueVariation,
+  WalletActions,
 } from '@/components'
 
 // modules
@@ -94,13 +95,9 @@ function Item() {
       <ValueVariation value={4.54} />
       <ValuePool valueDecimal={454} valuePercentage={0.113} />
       <CanvasValueVariation coordsValueVariation={testValueVariation} />
-      <Actions />
+      <WalletActions />
     </div>
   )
-}
-
-function Actions() {
-  return null
 }
 
 export default TableWallets
