@@ -31,6 +31,7 @@
 }
 
 .containerOption:hover {
+  background-color: var(--color-variety-main-tiny-shadow);
   opacity: var(--opacity-selecting);
 }
 
