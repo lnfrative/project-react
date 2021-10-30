@@ -1,6 +1,2 @@
-/**
-  * The cited files are not in the repository to preserve the performance. 
-  * They will need to be added manually.
-**/
-
-@import './Aileron/index.css'
+@import url('./Aileron/index.css');;
+@import url('./Montserrat/index.css');
