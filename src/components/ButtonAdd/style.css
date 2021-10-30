@@ -1,6 +1,7 @@
 @import url('../../css/variables.css');
 
 .container {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,4 +28,12 @@
   white-space: nowrap;
 
   letter-spacing: 2px;
+}
+
+.container:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.container:active {
+  opacity: var(--opacity-selected);
 }
