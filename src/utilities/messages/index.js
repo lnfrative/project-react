@@ -87,4 +87,8 @@ export default {
     en: 'Sell',
     es: 'Vender',
   },
+  ADD_NEW_WALLET: {
+    en: 'Add a new wallet',
+    es: 'Añadir nuevo monedero',
+  },
 }

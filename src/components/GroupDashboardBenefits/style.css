@@ -5,3 +5,9 @@
   gap: var(--space-md);
   flex-wrap: wrap;
 }
+
+@media screen and (max-width: 768px) {
+  .containerCards {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,30 @@
+@import url('../../css/variables.css');
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-sm);
+}
+
+.containerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  width: 48px;
+  border-radius: 100%;
+
+  background-color: var(--color-variety-main-tiny-shadow);
+}
+
+.title {
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  color: var(--color-variety-main);
+  white-space: nowrap;
+
+  letter-spacing: 2px;
+}

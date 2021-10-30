@@ -14,8 +14,15 @@
   grid-template-columns: minmax(150px, 350px) 85px 70px 125px 125px minmax(200px, 850px);
   gap: var(--space-sm);
 
-  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
   padding: var(--space-md);
+}
+
+.borderBottom {
+  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+}
+
+.item:hover {
+  background-color: var(--color-variety-main-tiny-shadow);
 }
 
 .header {
@@ -40,6 +47,28 @@
 
 .arrow {
   font-size: var(--font-size-xxs);
+}
+
+.addRow {
+  padding: var(--space-md);
+  display: flex;
+
+  gap: var(--space-md);
+}
+
+.containerLine {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.addSegment {
+  width: 100%;
+  flex: 1;
+}
+
+.addSegmentSuperior {
+  border-bottom: solid 2px var(--color-variety-main-tiny-shadow);
 }
 
 @media screen and (max-width: 975px) {

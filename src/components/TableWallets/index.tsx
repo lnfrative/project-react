@@ -1,6 +1,9 @@
 // region import
 import React from 'react'
 
+// utilities
+import { message } from '@/utilities'
+
 // components
 import {
   ValueCoin,
@@ -9,10 +12,11 @@ import {
   ValuePool,
   CanvasValueVariation,
   WalletActions,
+  ButtonAdd,
 } from '@/components'
 
 // modules
-import { nestStyles } from './module'
+import { nestStyles, ItemProps } from './module'
 // endregion
 
 const testValueVariation = [
@@ -42,15 +46,27 @@ const testValueVariation = [
   { value: 10, timestamp: 120 },
 ]
 
+const items = [0, 1, 2, 3]
+
 function TableWallets() {
   const styles = nestStyles()
   return (
     <div className={styles.container}>
       <Header />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {items.map((value) => (
+        <Item final={items.length === value - 1} key={value} />
+      ))}
+      <div className={styles.addRow}>
+        <div className={styles.containerLine}>
+          <div className={styles.addSegmentSuperior} />
+          <div className={styles.addSegment} />
+        </div>
+        <ButtonAdd title={message({ id: 'ADD_NEW_WALLET' })} />
+        <div className={styles.containerLine}>
+          <div className={styles.addSegmentSuperior} />
+          <div className={styles.addSegment} />
+        </div>
+      </div>
     </div>
   )
 }
@@ -86,10 +102,10 @@ function Header() {
   )
 }
 
-function Item() {
-  const styles = nestStyles()
+function Item(props: ItemProps) {
+  const styles = nestStyles(props)
   return (
-    <div className={styles.row}>
+    <div className={styles.item}>
       <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
       <ValuePrice value={0.02465} />
       <ValueVariation value={4.54} />
