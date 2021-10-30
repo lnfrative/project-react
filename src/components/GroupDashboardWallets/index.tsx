@@ -8,9 +8,7 @@ import { GroupDashboard, TableWallets, Card } from '@/components'
 function GroupDashboardWallets() {
   return (
     <GroupDashboard title="Wallets">
-      <Card>
-        <TableWallets />
-      </Card>
+      <TableWallets />
     </GroupDashboard>
   )
 }
