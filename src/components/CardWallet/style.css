@@ -1,0 +1,33 @@
+@import url('../../css/index.css');
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.containerSecondSection {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+}
+
+.groupButtons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.groupCombination {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .groupButtons {
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,13 @@
+.group {
+  display: none;
+}
+
+@media screen and (max-width: 975px) {
+  .table {
+    display: none;
+  }
+
+  .group {
+    display: block;
+  }
+}

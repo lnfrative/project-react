@@ -70,9 +70,3 @@
 .addSegmentSuperior {
   border-bottom: solid 2px var(--color-variety-main-tiny-shadow);
 }
-
-@media screen and (max-width: 975px) {
-  .container {
-    display: none;
-  }
-}
