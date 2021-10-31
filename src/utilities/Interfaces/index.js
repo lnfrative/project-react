@@ -29,3 +29,4 @@ export { default as CanvasValueVariationProps } from './CanvasValueVariationProp
 export { default as ButtonCombinationProps } from './ButtonCombinationProps'
 export { default as ButtonIconProps } from './ButtonIconProps'
 export { default as ButtonAddProps } from './ButtonAddProps'
+export { default as SelectProps } from './SelectProps'

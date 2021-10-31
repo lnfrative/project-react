@@ -6,7 +6,7 @@
   gap: var(--space-md);
 }
 
-@media screen and (max-width: 975px) {
+@media screen and (max-width: 1050px) {
   .container {
     flex-direction: column;
   }

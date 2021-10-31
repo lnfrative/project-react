@@ -5,4 +5,9 @@ body {
   font-family: var(--font-primary);
   background-color: var(--color-primary);
   margin: 0;
+  letter-spacing: 2px;
+}
+
+button {
+  letter-spacing: 2px;
 }

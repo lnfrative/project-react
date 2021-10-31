@@ -1,0 +1,8 @@
+.container {
+  position: relative;
+}
+
+.main {
+  height: 40px;
+  background-color: var(--color-variety-main-tiny-shadow);
+}

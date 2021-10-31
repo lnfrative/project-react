@@ -11,7 +11,7 @@
 .row {
   display: grid;
   overflow: auto;
-  grid-template-columns: minmax(150px, 350px) 85px 70px 125px 125px minmax(200px, 850px);
+  grid-template-columns: minmax(175px, 350px) 95px 70px 145px 125px minmax(200px, 850px);
   gap: var(--space-sm);
 
   padding: var(--space-md);

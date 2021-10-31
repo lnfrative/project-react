@@ -26,8 +26,6 @@
   font-weight: bold;
   color: var(--color-variety-main);
   white-space: nowrap;
-
-  letter-spacing: 2px;
 }
 
 .container:hover {
