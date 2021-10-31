@@ -1,8 +1,61 @@
+@import url('../../css/index.css');
+
 .container {
   position: relative;
 }
 
-.main {
-  height: 40px;
+.selected {
   background-color: var(--color-variety-main-tiny-shadow);
+  border-radius: var(--border-radius-standard);
+
+  display: flex;
+  gap: var(--space-xxs);
+}
+
+.selected:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.selected:active {
+  opacity: var(--opacity-selected);
+}
+
+.commonOption {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  padding: 0 var(--space-sm);
+}
+
+.option {
+  justify-content: flex-end;
+  color: var(--color-variety-main);
+}
+
+.option:hover {
+  opacity: var(--opacity-selecting);
+  background-color: var(--color-variety-main-tiny-shadow);
+}
+
+.option:active {
+  opacity: var(--opacity-selected);
+}
+
+.groupOptions {
+  top: 0;
+  width: 100%;
+  position: absolute;
+  background-color: var(--color-passive-pager);
+  border-radius: var(--border-radius-standard);
+  overflow: hidden;
+}
+
+.title {
+  color: var(--color-active-main-shadow);
+}
+
+.valueSelected {
+  color: var(--color-active-main);
 }

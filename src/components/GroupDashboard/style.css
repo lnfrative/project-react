@@ -15,6 +15,11 @@
   gap: var(--space-xs);
 }
 
+.groupTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
 .sign {
   font-size: var(--font-size-xs);
   transform: rotate(65deg);

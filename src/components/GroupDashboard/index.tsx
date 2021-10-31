@@ -11,9 +11,12 @@ import styles from './style.css'
 function GroupDashboard(props: GroupDashboardProps) {
   return (
     <div className={styles.container}>
-      <div className={styles.containerTitle}>
-        <span className={styles.sign}>✖</span>
-        <span>{props.title}</span>
+      <div className={styles.groupTitle}>
+        <div className={styles.containerTitle}>
+          <span className={styles.sign}>✖</span>
+          <span>{props.title}</span>
+        </div>
+        {props.afterTitle}
       </div>
       {props.children}
     </div>

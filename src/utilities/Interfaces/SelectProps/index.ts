@@ -1,5 +1,8 @@
+import { SelectOption } from '@/utilities/Interfaces'
+
 interface SelectProps {
-  title: string,
+  options: Array<SelectOption>,
+  title?: string,
 }
 
 export default SelectProps

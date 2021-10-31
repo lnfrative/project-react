@@ -1,0 +1,6 @@
+@import url('../../css/index.css');
+
+.design {
+  fill-rule: evenodd;
+  fill: var(--color-active-main-shadow);
+}
