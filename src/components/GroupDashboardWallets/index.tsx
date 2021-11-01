@@ -5,7 +5,9 @@ import React from 'react'
 import { SelectOption } from '@/utilities/Interfaces'
 
 // components
-import { GroupDashboard, TableWallets, GroupWallets, Select } from '@/components'
+import {
+  GroupDashboard, TableWallets, GroupWallets, Select,
+} from '@/components'
 
 // styles
 import styles from './style.css'

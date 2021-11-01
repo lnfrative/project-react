@@ -53,8 +53,8 @@ function TableWallets() {
   return (
     <div className={styles.container}>
       <Header />
-      {items.map((value) => (
-        <Item final={items.length === value - 1} key={value} />
+      {items.map((value, index) => (
+        <Item final={items.length === index + 1} key={value} />
       ))}
       <div className={styles.addRow}>
         <div className={styles.containerLine}>
