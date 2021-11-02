@@ -24,7 +24,7 @@ module.exports = (env, options) => ({
     main: [paths.entry.main],
   },
   output: {
-    filename: './js/[name].bundle.js',
+    filename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, options.mode === 'production' ? '../dist' : '../build'),
   },
   module: {
@@ -89,10 +89,10 @@ module.exports = (env, options) => ({
       template: paths.template,
       filename: 'index.html',
       inject: true,
+      publicPath: '/',
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-      chunkFilename: 'css/[name].css',
       ignoreOrder: false,
     }),
     new ESLintPlugin(),

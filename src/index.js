@@ -15,6 +15,7 @@ import '@/css/index.css'
 const Home = lazy(() => import('@/views/Home'))
 const Signup = lazy(() => import('@/views/Signup'))
 const Dashboard = lazy(() => import('@/views/Dashboard'))
+const Coin = lazy(() => import('@/views/Coin'))
 // endregion
 
 const App = (
@@ -24,6 +25,7 @@ const App = (
         <Route exact path={resources.path.home} component={Home} />
         <Route exact path={resources.path.signup} component={Signup} />
         <Route exact path={resources.path.dashboard} component={Dashboard} />
+        <Route exact path={resources.path.coin} component={Coin} />
       </Switch>
     </Suspense>
   </Router>
