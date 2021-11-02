@@ -21,9 +21,9 @@ const App = (
   <Router>
     <Suspense fallback={null}>
       <Switch>
-        <Route exact path={resources.path.home} render={Home} />
-        <Route exact path={resources.path.signup} render={Signup} />
-        <Route exact path={resources.path.dashboard} render={Dashboard} />
+        <Route exact path={resources.path.home} component={Home} />
+        <Route exact path={resources.path.signup} component={Signup} />
+        <Route exact path={resources.path.dashboard} component={Dashboard} />
       </Switch>
     </Suspense>
   </Router>
