@@ -1,19 +1,35 @@
-import React from 'react'
+// region import
+import React, { lazy, Suspense } from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-// root component
-import App from './App.tsx'
+// utilities
+import { resources } from '@/utilities'
 
-// global css
+// // styles
+import '@/css/fonts/Aileron/index.css'
+import '@/css/fonts/Montserrat/index.css'
 import '@/css/index.css'
 
-const component = (
+// views
+const Home = lazy(() => import('@/views/Home'))
+const Signup = lazy(() => import('@/views/Signup'))
+const Dashboard = lazy(() => import('@/views/Dashboard'))
+// endregion
+
+const App = (
   <Router>
-    <App />
+    <Suspense fallback={null}>
+      <Switch>
+        <Route exact path={resources.path.home} render={Home} />
+        <Route exact path={resources.path.signup} render={Signup} />
+        <Route exact path={resources.path.dashboard} render={Dashboard} />
+      </Switch>
+    </Suspense>
   </Router>
 )
+
 // eslint-disable-next-line no-undef
 const element = document.getElementById('app')
 
-render(component, element)
+render(App, element)
