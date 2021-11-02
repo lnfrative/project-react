@@ -25,7 +25,6 @@ module.exports = (env, options) => ({
   },
   output: {
     filename: './js/[name].bundle.js',
-    chunkFilename: './js/chunkFilename.[name].bundle.js',
     path: path.resolve(__dirname, options.mode === 'production' ? '../dist' : '../build'),
   },
   module: {
