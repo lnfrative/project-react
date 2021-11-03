@@ -40,7 +40,6 @@
 }
 
 .label {
-  font-family: var(--font-secondary);
   font-size: var(--font-size-md);
   color: var(--color-active-secundary);
 }

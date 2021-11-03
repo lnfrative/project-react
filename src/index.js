@@ -8,7 +8,6 @@ import { resources } from '@/utilities'
 
 // // styles
 import '@/css/fonts/Aileron/index.css'
-import '@/css/fonts/Montserrat/index.css'
 import '@/css/index.css'
 
 // views
