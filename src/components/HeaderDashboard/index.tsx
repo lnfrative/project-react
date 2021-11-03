@@ -3,7 +3,11 @@ import React from 'react'
 
 // components
 import {
-  GroupBrand, GroupPagesDashboard, MenuOptionsUser, SVGIconNotifications,
+  GroupBrand,
+  GroupPagesDashboard,
+  MenuOptionsUser,
+  SVGIconNotifications,
+  Header,
 } from '@/components'
 
 // utilities
@@ -14,9 +18,9 @@ import styles from './style.css'
 // endregion
 
 const HeaderDashboard = (props: HeaderDashboardProps) => (
-  <div className={styles.container}>
-    <div className={styles.header}>
-      <div className={styles.headerContent}>
+  <Header
+    contentHeader={(
+      <>
         <div className={styles.firstGroup}>
           <GroupBrand />
           <div className={styles.headerPages}>
@@ -28,14 +32,11 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
           <SVGIconNotifications />
           <MenuOptionsUser character="W" />
         </div>
-      </div>
-    </div>
-    <div className={styles.containerPage}>
-      <div className={styles.page}>
-        {props.children}
-      </div>
-    </div>
-  </div>
+      </>
+    )}
+  >
+    {props.children}
+  </Header>
 )
 
 export default HeaderDashboard
