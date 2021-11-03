@@ -1,17 +1,21 @@
 // region import
 import React from 'react'
-import { useRouteMatch } from 'react-router-dom'
+// import { useRouteMatch } from 'react-router-dom'
+
+// components
+import { HeaderCoin } from '@/components'
 
 // utilities
-import { RouteParamsCoin } from '@/utilities/Interfaces'
+// import { RouteParamsCoin } from '@/utilities/Interfaces'
 // endregion
 
 function Coin() {
-  const match = useRouteMatch<RouteParamsCoin>()
+  // const match = useRouteMatch<RouteParamsCoin>()
   return (
-    <div>
-      {match.params.nameCoin}
-    </div>
+    <HeaderCoin>
+      <div>Coin logo</div>
+      <div>Coin info</div>
+    </HeaderCoin>
   )
 }
 

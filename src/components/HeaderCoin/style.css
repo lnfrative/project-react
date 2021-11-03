@@ -1,0 +1,13 @@
+@import url('../../css/index.css');
+
+.grid {
+  display: grid;
+  grid-template-columns: 230px auto;
+  gap: var(--space-lg);
+}
+
+.groupNav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
