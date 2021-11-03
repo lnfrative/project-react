@@ -21,8 +21,18 @@
   border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
+.item {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .item:hover {
   background-color: var(--color-variety-main-tiny-shadow);
+  opacity: var(--opacity-selecting);
+}
+
+.item:active {
+  opacity: var(--opacity-selected);
 }
 
 .header {

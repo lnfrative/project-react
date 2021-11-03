@@ -1,5 +1,6 @@
 // region import
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // utilities
 import { message } from '@/utilities'
@@ -105,14 +106,14 @@ function Header() {
 function Item(props: ItemProps) {
   const styles = nestStyles(props)
   return (
-    <div className={styles.item}>
+    <Link to="/coin/dogecash" className={styles.item}>
       <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
       <ValuePrice value={0.02465} />
       <ValueVariation value={4.54} />
       <ValuePool valueDecimal={454} valuePercentage={0.113} />
       <CanvasValueVariation coordsValueVariation={testValueVariation} />
       <WalletActions />
-    </div>
+    </Link>
   )
 }
 
