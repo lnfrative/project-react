@@ -15,13 +15,13 @@ import {
 
 // utilities
 import { message } from '@/utilities'
-import { HeaderCoinProps } from '@/utilities/Interfaces'
+import { HeaderSegmentationProps } from '@/utilities/Interfaces'
 
 // modules
 import { nestStyles } from './module'
 // endregion
 
-function HeaderCoin(props: HeaderCoinProps) {
+function HeaderSegmentation(props: HeaderSegmentationProps) {
   const contextStage = useContext(Coin)
   const styles = nestStyles()
   return (
@@ -50,4 +50,4 @@ function HeaderCoin(props: HeaderCoinProps) {
   )
 }
 
-export default HeaderCoin
+export default HeaderSegmentation

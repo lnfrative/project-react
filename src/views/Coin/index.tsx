@@ -6,7 +6,7 @@ import { useRouteMatch } from 'react-router-dom'
 import { Coin as ContextCoin } from '@/contexts'
 
 // components
-import { HeaderCoin } from '@/components'
+import { HeaderSegmentation } from '@/components'
 
 // utilities
 import { RouteParamsCoin } from '@/utilities/Interfaces'
@@ -22,10 +22,10 @@ function Coin() {
   }, [match.params.nameCoin])
 
   return (
-    <HeaderCoin>
+    <HeaderSegmentation>
       <div>Coin logo</div>
       <div>Coin info</div>
-    </HeaderCoin>
+    </HeaderSegmentation>
   )
 }
 
