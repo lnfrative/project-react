@@ -1,5 +1,8 @@
 // region import
-import React from 'react'
+import React, { useContext } from 'react'
+
+// contexts
+import { Coin } from '@/contexts'
 
 // components
 import {
@@ -17,6 +20,7 @@ import { nestStyles } from './module'
 // endregion
 
 function HeaderCoin(props: HeaderCoinProps) {
+  const contextStage = useContext(Coin)
   const styles = nestStyles()
   return (
     <Header
@@ -28,7 +32,7 @@ function HeaderCoin(props: HeaderCoinProps) {
             <SVGIconGroups />
           </div>
           <div>
-            Coin name.
+            {contextStage.state.nameCoin}
           </div>
         </div>
       )}
