@@ -14,7 +14,6 @@ function nestStyles() {
     groupTitleView: styles.groupTitleView,
     seeing: styles.seeing,
     title: styles.title,
-    secondaryContent: styles.secondaryContent,
   }
 }
 

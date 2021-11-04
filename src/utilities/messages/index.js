@@ -95,4 +95,8 @@ export default {
     en: 'Seeing',
     es: 'Viendo',
   },
+  BACK_TO: {
+    en: 'Back to',
+    es: 'Volver al',
+  },
 }

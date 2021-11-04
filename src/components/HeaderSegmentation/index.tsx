@@ -11,6 +11,7 @@ import {
   SVGIconDashboard,
   SVGIconGroups,
   GroupUserMenu,
+  ButtonBackDashboard,
 } from '@/components'
 
 // utilities
@@ -43,13 +44,10 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
         </div>
       )}
     >
+      <ButtonBackDashboard />
       <div className={styles.containerPage}>
-        <div>
-          {props.primaryContent}
-        </div>
-        <div className={styles.secondaryContent}>
-          {props.secondaryContent}
-        </div>
+        {props.primaryContent}
+        {props.secondaryContent}
       </div>
     </Header>
   )
