@@ -24,6 +24,10 @@
   flex-direction: column;
 }
 
+.secondaryContent {
+  margin-top: var(--space-xl);
+}
+
 .seeing {
   font-size: var(--font-size-xxs);
   color: var(--color-variety-main-shadow);

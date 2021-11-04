@@ -22,10 +22,14 @@ function Coin() {
   }, [match.params.nameCoin])
 
   return (
-    <HeaderSegmentation>
-      <div>Coin logo</div>
-      <div>Coin info</div>
-    </HeaderSegmentation>
+    <HeaderSegmentation
+      primaryContent={(
+        <div>Coin logo</div>
+      )}
+      secondaryContent={(
+        <div>Coin info</div>
+      )}
+    />
   )
 }
 

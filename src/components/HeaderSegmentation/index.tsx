@@ -44,7 +44,12 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
       )}
     >
       <div className={styles.containerPage}>
-        {props.children}
+        <div>
+          {props.primaryContent}
+        </div>
+        <div className={styles.secondaryContent}>
+          {props.secondaryContent}
+        </div>
       </div>
     </Header>
   )
