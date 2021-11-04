@@ -12,7 +12,7 @@ const path = {
   home: '/',
   login: '/',
   signup: '/sign-up',
-  dashboard: '/dashboard',
+  dashboard: '/',
   coin: `/coin/:${routeParamsCoin.nameCoin}`,
 }
 
