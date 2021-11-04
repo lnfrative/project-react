@@ -91,4 +91,8 @@ export default {
     en: 'Add a new wallet',
     es: 'Añadir nuevo monedero',
   },
+  SEEING: {
+    en: 'Seeing',
+    es: 'Viendo',
+  },
 }

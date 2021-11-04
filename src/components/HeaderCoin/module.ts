@@ -10,6 +10,10 @@ function nestStyles() {
     containerHeader: classNames(styles.grid),
     groupNav: styles.groupNav,
     containerPage: classNames(styles.grid),
+    groupNavDetails: styles.groupNavDetails,
+    groupTitleView: styles.groupTitleView,
+    seeing: styles.seeing,
+    title: styles.title,
   }
 }
 

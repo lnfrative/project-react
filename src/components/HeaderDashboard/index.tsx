@@ -5,9 +5,8 @@ import React from 'react'
 import {
   GroupBrand,
   GroupPagesDashboard,
-  MenuOptionsUser,
-  SVGIconNotifications,
   Header,
+  GroupUserMenu,
 } from '@/components'
 
 // utilities
@@ -28,10 +27,7 @@ const HeaderDashboard = (props: HeaderDashboardProps) => (
           </div>
         </div>
 
-        <div className={styles.secondGroup}>
-          <SVGIconNotifications />
-          <MenuOptionsUser character="W" />
-        </div>
+        <GroupUserMenu />
       </>
     )}
   >

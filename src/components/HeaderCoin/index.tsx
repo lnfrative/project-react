@@ -10,9 +10,11 @@ import {
   GroupBrand,
   SVGIconDashboard,
   SVGIconGroups,
+  GroupUserMenu,
 } from '@/components'
 
 // utilities
+import { message } from '@/utilities'
 import { HeaderCoinProps } from '@/utilities/Interfaces'
 
 // modules
@@ -31,8 +33,12 @@ function HeaderCoin(props: HeaderCoinProps) {
             <SVGIconDashboard />
             <SVGIconGroups />
           </div>
-          <div>
-            {contextStage.state.nameCoin}
+          <div className={styles.groupNavDetails}>
+            <div className={styles.groupTitleView}>
+              <div className={styles.seeing}>{message({ id: 'SEEING' })}</div>
+              <div className={styles.title}>{contextStage.state.nameCoin}</div>
+            </div>
+            <GroupUserMenu />
           </div>
         </div>
       )}
