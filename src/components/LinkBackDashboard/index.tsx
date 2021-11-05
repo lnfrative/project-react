@@ -12,7 +12,7 @@ import { message, resources } from '@/utilities'
 import styles from './style.css'
 // endregion
 
-function ButtonBackDashboard() {
+function LinkBackDashboard() {
   return (
     <Link to={resources.path.dashboard} className={styles.link}>
       <SVGIconBack />
@@ -24,4 +24,4 @@ function ButtonBackDashboard() {
   )
 }
 
-export default ButtonBackDashboard
+export default LinkBackDashboard

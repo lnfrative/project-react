@@ -7,13 +7,12 @@ import styles from './style.css'
 
 function nestStyles() {
   return {
-    containerHeader: classNames(styles.grid),
     groupNav: styles.groupNav,
-    containerPage: classNames(styles.grid),
     groupNavDetails: styles.groupNavDetails,
     groupTitleView: styles.groupTitleView,
     seeing: styles.seeing,
     title: styles.title,
+    grid: styles.grid,
   }
 }
 

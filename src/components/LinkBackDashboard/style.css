@@ -2,7 +2,6 @@
 
 .link {
   text-decoration: none;
-  width: min-content;
   outline: none;
   border: none;
   height: 45px;
@@ -11,16 +10,15 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xxs);
-
-  padding: 0 var(--space-sm);
 
   cursor: pointer;
 }
 
 .title {
   white-space: nowrap;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xxs);
 
   background: linear-gradient(to right, var(--color-active-main) 0%, var(--color-active-secundary) 100%);
 	

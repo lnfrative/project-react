@@ -11,7 +11,7 @@ import {
   SVGIconDashboard,
   SVGIconGroups,
   GroupUserMenu,
-  ButtonBackDashboard,
+  LinkBackDashboard,
 } from '@/components'
 
 // utilities
@@ -28,7 +28,7 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
   return (
     <Header
       contentHeader={(
-        <div className={styles.containerHeader}>
+        <div className={styles.grid}>
           <div className={styles.groupNav}>
             <GroupBrand />
             <SVGIconDashboard />
@@ -44,8 +44,10 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
         </div>
       )}
     >
-      <ButtonBackDashboard />
-      <div className={styles.containerPage}>
+      <div className={styles.grid}>
+        <LinkBackDashboard />
+      </div>
+      <div className={styles.grid}>
         {props.primaryContent}
         {props.secondaryContent}
       </div>
