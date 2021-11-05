@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Stage, SelectOption } from '@/utilities/Interfaces'
+import { Stage, SelectOption, SelectProps } from '@/utilities/Interfaces'
 import styles from './style.css'
 
 interface InitialState {
@@ -18,13 +18,13 @@ function onSelect(stage: Stage<InitialState>, optionSelected: SelectOption) {
   }
 }
 
-function nestStyles() {
+function nestStyles(arg: SelectProps) {
   return {
-    optionSelected: classNames(styles.commonOption, styles.selected),
+    optionSelected: classNames(styles.commonOption, styles[`${arg.design}Selected`]),
     option: classNames(styles.commonOption, styles.option),
     container: styles.container,
     groupOptions: styles.groupOptions,
-    title: styles.title,
+    title: styles[`${arg.design}Title`],
     valueSelected: styles.valueSelected,
   }
 }

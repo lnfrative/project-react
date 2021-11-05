@@ -30,8 +30,8 @@ function GroupDashboardWallets() {
       title="Wallets"
       afterTitle={(
         <div className={styles.groupSelects}>
-          <Select title="Price in" options={testPriceOptions} />
-          <Select title="Last" options={testTimeOptions} />
+          <Select design="filled" title="Price in" options={testPriceOptions} />
+          <Select design="filled" title="Last" options={testTimeOptions} />
         </div>
       )}
     >

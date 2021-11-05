@@ -22,7 +22,7 @@ import {
 function Select(props: SelectProps) {
   const [closeId, setCloseId] = useState<number>(0)
   const stage = useCommitState(initialState)
-  const styles = nestStyles()
+  const styles = nestStyles(props)
 
   useEffect(() => {
     stage.commitState({

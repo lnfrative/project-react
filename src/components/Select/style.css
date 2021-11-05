@@ -4,19 +4,26 @@
   position: relative;
 }
 
-.selected {
+.simpleSelected {
+  display: flex;
+  gap: var(--space-xxs);
+  border-radius: var(--border-radius-standard);
+}
+
+.filledSelected {
   background-color: var(--color-variety-main-tiny-shadow);
   border-radius: var(--border-radius-standard);
 
   display: flex;
   gap: var(--space-xxs);
+  padding: 0 var(--space-sm);
 }
 
-.selected:hover {
+.commonOption:hover {
   opacity: var(--opacity-selecting);
 }
 
-.selected:active {
+.commonOption:active {
   opacity: var(--opacity-selected);
 }
 
@@ -26,12 +33,12 @@
   align-items: center;
 
   height: 40px;
-  padding: 0 var(--space-sm);
 }
 
 .option {
   justify-content: flex-end;
   color: var(--color-variety-main);
+  padding: 0 var(--space-sm);
 }
 
 .option:hover {
@@ -52,8 +59,12 @@
   overflow: hidden;
 }
 
-.title {
+.filledTitle {
   color: var(--color-active-main-shadow);
+}
+
+.simpleTitle {
+  color: var(--color-variety-main-shadow);
 }
 
 .valueSelected {

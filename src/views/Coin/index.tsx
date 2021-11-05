@@ -6,10 +6,13 @@ import { useRouteMatch } from 'react-router-dom'
 import { Coin as ContextCoin } from '@/contexts'
 
 // components
-import { HeaderSegmentation, GroupCoinPreview, GroupValueDecimal } from '@/components'
+import {
+  HeaderSegmentation,
+  GroupCoinPreview,
+  GroupCoinValues,
+} from '@/components'
 
 // utilities
-import { message } from '@/utilities'
 import { RouteParamsCoin } from '@/utilities/Interfaces'
 import { parseNameCoin } from '@/utilities/Parsers'
 
@@ -47,11 +50,10 @@ function Coin() {
         )}
         secondaryContent={(
           <div>
-            <GroupValueDecimal title={message({ id: 'HOLDING' })} value={238.0000012} />
+            <GroupCoinValues />
           </div>
         )}
       />
-      <div>Shadows</div>
     </>
   )
 }
