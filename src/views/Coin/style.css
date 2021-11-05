@@ -1,0 +1,15 @@
+@import url('../../css/variables.css');
+
+.primaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.primaryContentCard {
+  background-color: var(--color-passive-pager);
+  width: 100%;
+  flex: 1;
+  min-height: 300px;
+  border-radius: var(--border-radius-standard);
+}

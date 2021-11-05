@@ -1,4 +1,4 @@
-import { RouteParamsCoin } from '@/utilities/Interfaces'
+import { RouteParamsCoin, ResourceCoin, ResourceCoinData } from '@/utilities/Interfaces'
 
 const routeParamsCoin: RouteParamsCoin = {
   nameCoin: 'nameCoin',
@@ -6,6 +6,14 @@ const routeParamsCoin: RouteParamsCoin = {
 
 const routeParams = {
   ...routeParamsCoin,
+}
+
+const coin: ResourceCoin<ResourceCoinData> = {
+  dogecash: {
+    name: 'DogeCash',
+    id: 'DOGEC',
+    logo: 'https://i.imgur.com/RjMuSiN.png',
+  },
 }
 
 const path = {
@@ -25,4 +33,5 @@ export default {
   path,
   routeParams,
   colors,
+  coin,
 }

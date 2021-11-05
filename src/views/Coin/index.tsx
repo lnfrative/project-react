@@ -6,10 +6,14 @@ import { useRouteMatch } from 'react-router-dom'
 import { Coin as ContextCoin } from '@/contexts'
 
 // components
-import { HeaderSegmentation } from '@/components'
+import { HeaderSegmentation, GroupCoinPreview } from '@/components'
 
 // utilities
 import { RouteParamsCoin } from '@/utilities/Interfaces'
+import { parseNameCoin } from '@/utilities/Parsers'
+
+// styles
+import styles from './style.css'
 // endregion
 
 function Coin() {
@@ -17,19 +21,35 @@ function Coin() {
   const match = useRouteMatch<RouteParamsCoin>()
 
   useEffect(() => {
-    const { nameCoin } = match.params
-    contextStage.commitState({ nameCoin })
+    // const { nameCoin } = match.params
+    // TOOD: handle nameCoin fetching
+    contextStage.commitState(parseNameCoin('dogecash'))
   }, [match.params.nameCoin])
 
   return (
-    <HeaderSegmentation
-      primaryContent={(
-        <div>Coin logo</div>
-      )}
-      secondaryContent={(
-        <div>Coin info</div>
-      )}
-    />
+    <>
+      <HeaderSegmentation
+        primaryContent={(
+          !!contextStage.state.id
+          && !!contextStage.state.logo
+          && !!contextStage.state.name
+          && (
+            <div className={styles.primaryContent}>
+              <GroupCoinPreview
+                nameCoin={contextStage.state.name}
+                idCoin={contextStage.state.id}
+                srcImgCoin={contextStage.state.logo}
+              />
+              <div className={styles.primaryContentCard} />
+            </div>
+          )
+        )}
+        secondaryContent={(
+          <div>Coin info</div>
+        )}
+      />
+      <div>Shadows</div>
+    </>
   )
 }
 

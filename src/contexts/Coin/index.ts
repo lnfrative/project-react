@@ -6,7 +6,9 @@ import { Stage, ContextCoinState } from '@/utilities/Interfaces'
 // endregion
 
 const state: ContextCoinState = {
-  nameCoin: undefined,
+  name: undefined,
+  id: undefined,
+  logo: undefined,
 }
 
 const Coin = createContext<Stage<ContextCoinState>>({

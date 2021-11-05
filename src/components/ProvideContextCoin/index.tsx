@@ -12,7 +12,9 @@ import { Coin } from '@/contexts'
 // endregion
 
 const initialState: ContextCoinState = {
-  nameCoin: undefined,
+  name: undefined,
+  id: undefined,
+  logo: undefined,
 }
 
 function ContextCoin(props: ContextCoinProps) {

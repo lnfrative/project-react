@@ -37,7 +37,7 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
           <div className={styles.groupNavDetails}>
             <div className={styles.groupTitleView}>
               <div className={styles.seeing}>{message({ id: 'SEEING' })}</div>
-              <div className={styles.title}>{contextStage.state.nameCoin}</div>
+              <div className={styles.title}>{contextStage.state.name}</div>
             </div>
             <GroupUserMenu />
           </div>
