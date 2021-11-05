@@ -99,4 +99,8 @@ export default {
     en: 'Back to',
     es: 'Volver al',
   },
+  HOLDING: {
+    en: 'Holding',
+    es: 'Monto',
+  },
 }

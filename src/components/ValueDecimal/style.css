@@ -22,7 +22,7 @@
 }
 
 .mediumDecimal {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-sm);
 }
 
 .largeInteger {
@@ -30,5 +30,5 @@
 }
 
 .largeDecimal {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-md);
 }
