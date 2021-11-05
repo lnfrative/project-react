@@ -107,10 +107,10 @@ function Item(props: ItemProps) {
   const styles = nestStyles(props)
   return (
     <Link to="/coin/DogeCash" className={styles.item}>
-      <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
+      <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={254.00000084} name="DogeCash" shortname="DOGE" />
       <ValuePrice value={0.02465} />
       <ValueVariation value={4.54} />
-      <ValuePool valueDecimal={454} valuePercentage={0.113} />
+      <ValuePool valueDecimal={454.00000084} valuePercentage={0.113} />
       <CanvasValueVariation coordsValueVariation={testValueVariation} />
       <WalletActions />
     </Link>

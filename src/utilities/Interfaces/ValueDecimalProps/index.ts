@@ -1,5 +1,6 @@
 interface ValueDecimalProps {
-  value: number
+  value: number,
+  sise: 'small' | 'medium' | 'large',
 }
 
 export default ValueDecimalProps

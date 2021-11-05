@@ -14,7 +14,7 @@ import styles from './style.css'
 function ValuePool(props: ValuePoolProps) {
   return (
     <div className={styles.container}>
-      <ValueDecimal value={props.valueDecimal} />
+      <ValueDecimal sise="small" value={props.valueDecimal} />
       <ValuePercentage value={props.valuePercentage} />
     </div>
   )

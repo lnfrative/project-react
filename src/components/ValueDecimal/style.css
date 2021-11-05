@@ -1,11 +1,34 @@
 @import url('../../css/variables.css');
 
-.valueLarge {
-  font-size: var(--font-size-xs);
+.integer {
   color: var(--color-variety-main);
 }
 
-.valueSmall {
-  font-size: var(--font-size-xxxs);
+.decimal {
   color: var(--color-variety-main-shadow);
+}
+
+.smallInteger {
+  font-size: var(--font-size-xs);
+  
+}
+
+.smallDecimal {
+  font-size: var(--font-size-xxxs);
+}
+
+.mediumInteger {
+  font-size: var(--font-size-xl);
+}
+
+.mediumDecimal {
+  font-size: var(--font-size-lg);
+}
+
+.largeInteger {
+  font-size: var(--font-size-xxl);
+}
+
+.largeDecimal {
+  font-size: var(--font-size-xl);
 }
