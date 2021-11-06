@@ -2,7 +2,7 @@
 
 .containerBar {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-lg);
   
   height: 40px;
   width: 100%;
