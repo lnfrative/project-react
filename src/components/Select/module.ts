@@ -12,9 +12,12 @@ const initialState: InitialState = {
   optionSelected: undefined,
 }
 
-function onSelect(stage: Stage<InitialState>, optionSelected: SelectOption) {
+function onSelect(stage: Stage<InitialState>, optionSelected: SelectOption, props: SelectProps) {
   return () => {
     stage.commitState({ optionSelected })
+
+    if (!props.onSelect) return
+    props.onSelect({ option: optionSelected })
   }
 }
 

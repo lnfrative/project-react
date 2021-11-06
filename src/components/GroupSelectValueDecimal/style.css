@@ -4,3 +4,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.containerValues {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.optionValue {
+  font-size: var(--font-size-xl);
+  color: var(--color-variety-main-shadow);
+}

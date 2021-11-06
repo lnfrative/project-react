@@ -25,9 +25,13 @@ function Select(props: SelectProps) {
   const styles = nestStyles(props)
 
   useEffect(() => {
+    const optionSelected = props.options.filter((option) => option.main)[0]
     stage.commitState({
-      optionSelected: props.options.filter((option) => option.main)[0],
+      optionSelected,
     })
+    if (props.onSelect) {
+      props.onSelect({ option: optionSelected })
+    }
   }, [])
 
   useEffect(() => {
@@ -58,7 +62,7 @@ function Select(props: SelectProps) {
             <div
               role="button"
               tabIndex={0}
-              onClick={onSelect(stage, option)}
+              onClick={onSelect(stage, option, props)}
               key={option.id}
               className={styles.option}
             >
