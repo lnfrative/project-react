@@ -1,7 +1,8 @@
 interface ResourceCoinData {
-  name: string | undefined,
-  id: string | undefined,
-  logo: string | undefined,
+  name?: string,
+  id?: string,
+  logo?: string,
+  key?: string,
 }
 
 export default ResourceCoinData

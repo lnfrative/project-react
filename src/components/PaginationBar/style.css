@@ -1,0 +1,27 @@
+@import url('../../css/variables.css');
+
+.containerBar {
+  display: flex;
+  gap: var(--space-md);
+  
+  height: 40px;
+  width: 100%;
+
+  border-bottom: solid 2px var(--color-passive-pager);
+}
+
+.tab {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-variety-main-shadow);
+  height: 100%;
+}
+
+.tab:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.tab:active {
+  opacity: var(--opacity-selected);
+}

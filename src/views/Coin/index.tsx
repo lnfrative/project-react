@@ -10,15 +10,23 @@ import {
   HeaderSegmentation,
   GroupCoinPreview,
   GroupCoinValues,
+  PaginationBar,
 } from '@/components'
 
 // utilities
-import { RouteParamsCoin } from '@/utilities/Interfaces'
+import { RouteParamsCoin, PaginationObject } from '@/utilities/Interfaces'
 import { parseNameCoin } from '@/utilities/Parsers'
 
 // styles
 import styles from './style.css'
 // endregion
+
+const paginationObjects: Array<PaginationObject> = [
+  { id: 'overview', title: 'Overview', main: true, content: <div>Hellow word!</div> },
+  { id: 'giftcard_and_utilities', title: 'Giftcard & utilities', content: <div>Hellow word!</div> },
+  { id: 'movement_history', title: 'Movement history', content: <div>Hellow word!</div> },
+  { id: 'about', title: 'About', content: <div>Hellow word!</div> },
+]
 
 function Coin() {
   const contextStage = useContext(ContextCoin)
@@ -49,8 +57,14 @@ function Coin() {
           )
         )}
         secondaryContent={(
-          <div>
+          <div className={styles.secondaryContent}>
             <GroupCoinValues />
+            {!!contextStage.state.key && (
+              <PaginationBar
+                pathParamId={contextStage.state.key}
+                paginationObjects={paginationObjects}
+              />
+            )}
           </div>
         )}
       />

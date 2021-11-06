@@ -13,6 +13,7 @@ const coin: ResourceCoin<ResourceCoinData> = {
     name: 'DogeCash',
     id: 'DOGEC',
     logo: 'https://i.imgur.com/RjMuSiN.png',
+    key: 'dogecash',
   },
 }
 
