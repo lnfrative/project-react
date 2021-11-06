@@ -7,7 +7,7 @@
 
 .containerValues {
   display: flex;
-  gap: var(--space-xs);
+  gap: var(--space-xxs);
 }
 
 .optionValue {
