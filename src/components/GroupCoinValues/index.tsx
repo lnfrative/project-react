@@ -5,7 +5,7 @@ import React from 'react'
 import { message } from '@/utilities'
 
 // components
-import { GroupSelectValueDecimal, GroupValueDecimal } from '@/components'
+import { GroupSelectValueDecimal, GroupValueDecimal, GroupSelectValueVariation } from '@/components'
 
 // styles
 import styles from './style.css'
@@ -16,6 +16,12 @@ const testOptions = [
   { id: 'USD', value: 'USD' },
 ]
 
+const testTimeOptions = [
+  { id: 86400, value: '24 hours', main: true },
+  { id: 604800, value: '7 days' },
+  { id: 2419200, value: '28 days' },
+]
+
 function GroupCoinValues() {
   return (
     <div className={styles.container}>
@@ -23,6 +29,7 @@ function GroupCoinValues() {
       <div className={styles.containerSelectValues}>
         <GroupSelectValueDecimal valueDecimal={0.4568036} titleSelect="Worth in" optionsSelect={testOptions} />
         <GroupSelectValueDecimal valueDecimal={0.4568036} titleSelect="Price in" optionsSelect={testOptions} />
+        <GroupSelectValueVariation valueVariation={12.5} titleSelect="Last" optionsSelect={testTimeOptions} />
       </div>
     </div>
   )
