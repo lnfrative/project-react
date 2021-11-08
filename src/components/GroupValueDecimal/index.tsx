@@ -14,8 +14,13 @@ import styles from './style.css'
 function GroupValueDecimal(props: GroupValueDecimalProps) {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{props.title}</div>
+      {props.design === 'top' && (
+        <div className={styles.title}>{props.title}</div>
+      )}
       <ValueDecimal sise="large" value={props.value} />
+      {props.design === 'bottom' && (
+        <div className={styles.title}>{props.title}</div>
+      )}
     </div>
   )
 }

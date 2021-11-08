@@ -11,21 +11,25 @@ import {
   GroupCoinPreview,
   GroupCoinValues,
   PaginationBar,
+  CardCoinOverview,
 } from '@/components'
 
 // utilities
 import { RouteParamsCoin, PaginationObject } from '@/utilities/Interfaces'
 import { parseNameCoin } from '@/utilities/Parsers'
+import { resources } from '@/utilities'
 
 // styles
 import styles from './style.css'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [
-  { id: 'overview', title: 'Overview', main: true, content: <div>Hellow word!</div> },
-  { id: 'giftcard_and_utilities', title: 'Giftcard & utilities', content: <div>Hellow word!</div> },
-  { id: 'movement_history', title: 'Movement history', content: <div>Hellow word!</div> },
-  { id: 'about', title: 'About', content: <div>Hellow word!</div> },
+  {
+    id: 'overview', title: 'Overview', main: true, content: <CardCoinOverview />,
+  },
+  { id: 'giftcard_and_utilities', title: 'Giftcard & utilities', content: <div>Giftcard</div> },
+  { id: 'movement_history', title: 'Movement history', content: <div>Movement</div> },
+  { id: 'about', title: 'About', content: <div>About</div> },
 ]
 
 function Coin() {
@@ -61,6 +65,7 @@ function Coin() {
             <GroupCoinValues />
             {!!contextStage.state.key && (
               <PaginationBar
+                pathnameBase={`${resources.path.coin}/${contextStage.state.key}`}
                 pathParamId={contextStage.state.key}
                 paginationObjects={paginationObjects}
               />

@@ -28,7 +28,7 @@ const App = (
           <Route exact path={resources.path.home} component={Home} />
           <Route exact path={resources.path.signup} component={Signup} />
           <Route exact path={resources.path.dashboard} component={Dashboard} />
-          <Route exact path={resources.path.coin} component={Coin} />
+          <Route exact path={resources.path.coinSpecific} component={Coin} />
         </Switch>
       </Suspense>
     </Router>

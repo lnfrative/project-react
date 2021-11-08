@@ -25,7 +25,7 @@ const testTimeOptions = [
 function GroupCoinValues() {
   return (
     <div className={styles.container}>
-      <GroupValueDecimal title={message({ id: 'HOLDING' })} value={238.0000012} />
+      <GroupValueDecimal design="top" title={message({ id: 'HOLDING' })} value={238.0000012} />
       <div className={styles.containerSelectValues}>
         <GroupSelectValueDecimal valueDecimal={0.4568036} titleSelect="Worth in" optionsSelect={testOptions} />
         <GroupSelectValueDecimal valueDecimal={0.4568036} titleSelect="Price in" optionsSelect={testOptions} />

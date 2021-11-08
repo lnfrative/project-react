@@ -2,6 +2,7 @@ import { RouteParamsCoin, ResourceCoin, ResourceCoinData } from '@/utilities/Int
 
 const routeParamsCoin: RouteParamsCoin = {
   nameCoin: 'nameCoin',
+  nameCoinDetail: 'nameCoinDetail',
 }
 
 const routeParams = {
@@ -22,7 +23,8 @@ const path = {
   login: '/',
   signup: '/sign-up',
   dashboard: '/',
-  coin: `/coin/:${routeParamsCoin.nameCoin}`,
+  coin: '/coin',
+  coinSpecific: `/coin/:${routeParamsCoin.nameCoin}/:${routeParamsCoin.nameCoinDetail}?`,
 }
 
 const colors = {

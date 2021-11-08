@@ -106,7 +106,7 @@ function Header() {
 function Item(props: ItemProps) {
   const styles = nestStyles(props)
   return (
-    <Link to="/coin/DogeCash" className={styles.item}>
+    <Link to="/coin/dogecash" className={styles.item}>
       <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={254.00000084} name="DogeCash" shortname="DOGE" />
       <ValuePrice value={0.02465} />
       <ValueVariation design="small" value={4.54} />
