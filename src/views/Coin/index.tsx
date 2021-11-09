@@ -11,7 +11,7 @@ import {
   GroupCoinPreview,
   GroupCoinValues,
   PaginationBar,
-  CardCoinOverview,
+  CoinPaginationOverview,
 } from '@/components'
 
 // utilities
@@ -25,7 +25,7 @@ import styles from './style.css'
 
 const paginationObjects: Array<PaginationObject> = [
   {
-    id: 'overview', title: 'Overview', main: true, content: <CardCoinOverview />,
+    id: 'overview', title: 'Overview', main: true, content: <CoinPaginationOverview />,
   },
   { id: 'giftcard_and_utilities', title: 'Giftcard & utilities', content: <div>Giftcard</div> },
   { id: 'movement_history', title: 'Movement history', content: <div>Movement</div> },

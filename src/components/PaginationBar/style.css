@@ -13,7 +13,7 @@
   height: 40px;
   width: 100%;
 
-  border-bottom: solid 2px var(--color-passive-pager);
+  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .tab {
