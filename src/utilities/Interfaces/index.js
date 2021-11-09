@@ -44,3 +44,4 @@ export { default as GroupSelectValueDecimalProps } from './GroupSelectValueDecim
 export { default as GroupSelectValueVariationProps } from './GroupSelectValueVariationProps'
 export { default as PaginationBarProps } from './PaginationBarProps'
 export { default as PaginationObject } from './PaginationObject'
+export { default as PaginationTabProps } from './PaginationTabProps'

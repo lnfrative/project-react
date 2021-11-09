@@ -1,12 +1,15 @@
 // region import
-import React, { MouseEventHandler, useEffect } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 // hooks
 import { useCommitState } from '@/hooks'
 
+// components
+import { PaginationTab } from '@/components'
+
 // utilities
-import { PaginationBarProps, PaginationObject } from '@/utilities/Interfaces'
+import { PaginationBarProps } from '@/utilities/Interfaces'
 
 // modules
 import { initialState } from './module'
@@ -34,7 +37,7 @@ function PaginationBar(props: PaginationBarProps) {
     <div className={styles.container}>
       <div className={styles.containerBar}>
         {props.paginationObjects.map((paginationObject) => (
-          <Tab
+          <PaginationTab
             key={paginationObject.id}
             paginationObject={paginationObject}
             pathnameBase={props.pathnameBase}
@@ -44,28 +47,6 @@ function PaginationBar(props: PaginationBarProps) {
       </div>
       {stage.state.paginationObjectMatch?.content}
     </div>
-  )
-}
-
-function Tab(
-  props: {
-    paginationObject: PaginationObject, pathnameBase: string, pathname: string,
-  },
-) {
-  const { id, title, main } = props.paginationObject
-  const to = main ? props.pathnameBase : `${props.pathnameBase}/${id}`
-  const isCurrent = props.pathname === to
-
-  const preventClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    if (isCurrent) {
-      e.preventDefault()
-    }
-  }
-
-  return (
-    <Link onClick={preventClick} to={to} className={styles.tab}>
-      {title}
-    </Link>
   )
 }
 

@@ -15,19 +15,3 @@
 
   border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
-
-.tab {
-  text-decoration: none;
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  color: var(--color-variety-main-shadow);
-  height: 100%;
-}
-
-.tab:hover {
-  opacity: var(--opacity-selecting);
-}
-
-.tab:active {
-  opacity: var(--opacity-selected);
-}
