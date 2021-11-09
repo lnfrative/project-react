@@ -1,12 +1,22 @@
-import { RouteParamsCoin, ResourceCoin, ResourceCoinData } from '@/utilities/Interfaces'
+import {
+  RouteParamsCoin,
+  ResourceCoin,
+  ResourceCoinData,
+  RouteParamsSetting,
+} from '@/utilities/Interfaces'
 
 const routeParamsCoin: RouteParamsCoin = {
   nameCoin: 'nameCoin',
   nameCoinDetail: 'nameCoinDetail',
 }
 
+const routeParamsSetting: RouteParamsSetting = {
+  section: 'section',
+}
+
 const routeParams = {
   ...routeParamsCoin,
+  ...routeParamsSetting,
 }
 
 const coin: ResourceCoin<ResourceCoinData> = {
@@ -25,6 +35,8 @@ const path = {
   dashboard: '/',
   coin: '/coin',
   coinSpecific: `/coin/:${routeParamsCoin.nameCoin}/:${routeParamsCoin.nameCoinDetail}?`,
+  setting: '/setting',
+  settingSpecific: `/setting/:${routeParamsSetting.section}?`,
 }
 
 const colors = {

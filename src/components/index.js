@@ -62,3 +62,4 @@ export { default as GroupSelectValueVariation } from './GroupSelectValueVariatio
 export { default as PaginationBar } from './PaginationBar'
 export { default as CoinPaginationOverview } from './CoinPaginationOverview'
 export { default as PaginationTab } from './PaginationTab'
+export { default as ProvideContextView } from './ProvideContextView'

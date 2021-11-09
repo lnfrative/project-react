@@ -1,11 +1,11 @@
 // region import
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 // hooks
 import { useCommitState } from '@/hooks'
 
 // utilities
-import { ContextCoinProps, ContextCoinState } from '@/utilities/Interfaces'
+import { ContextCoinState } from '@/utilities/Interfaces'
 
 // contexts
 import { Coin } from '@/contexts'
@@ -17,7 +17,7 @@ const initialState: ContextCoinState = {
   logo: undefined,
 }
 
-function ContextCoin(props: ContextCoinProps) {
+function ProvideContextCoin(props: PropsWithChildren<{}>) {
   const stage = useCommitState<ContextCoinState>(initialState)
 
   return (
@@ -27,4 +27,4 @@ function ContextCoin(props: ContextCoinProps) {
   )
 }
 
-export default ContextCoin
+export default ProvideContextCoin

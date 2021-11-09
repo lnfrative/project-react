@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // contexts
-import { Coin } from '@/contexts'
+import { View } from '@/contexts'
 
 // components
 import {
@@ -23,7 +23,7 @@ import { nestStyles } from './module'
 // endregion
 
 function HeaderSegmentation(props: HeaderSegmentationProps) {
-  const contextStage = useContext(Coin)
+  const contextStage = useContext(View)
   const styles = nestStyles()
   return (
     <Header

@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { useRouteMatch } from 'react-router-dom'
 
 // contexts
-import { Coin as ContextCoin } from '@/contexts'
+import { View as ContextView, Coin as ContextCoin } from '@/contexts'
 
 // components
 import {
@@ -33,28 +33,33 @@ const paginationObjects: Array<PaginationObject> = [
 ]
 
 function Coin() {
-  const contextStage = useContext(ContextCoin)
+  const coinContextStage = useContext(ContextCoin)
+  const viewContextStage = useContext(ContextView)
   const match = useRouteMatch<RouteParamsCoin>()
 
   useEffect(() => {
     // const { nameCoin } = match.params
     // TOOD: handle nameCoin fetching
-    contextStage.commitState(parseNameCoin('dogecash'))
+    const resourceCoinData = parseNameCoin('dogecash')
+    coinContextStage.commitState(resourceCoinData)
+    viewContextStage.commitState({
+      name: resourceCoinData.name,
+    })
   }, [match.params.nameCoin])
 
   return (
     <>
       <HeaderSegmentation
         primaryContent={(
-          !!contextStage.state.id
-          && !!contextStage.state.logo
-          && !!contextStage.state.name
+          !!coinContextStage.state.id
+          && !!coinContextStage.state.logo
+          && !!coinContextStage.state.name
           && (
             <div className={styles.primaryContent}>
               <GroupCoinPreview
-                nameCoin={contextStage.state.name}
-                idCoin={contextStage.state.id}
-                srcImgCoin={contextStage.state.logo}
+                nameCoin={coinContextStage.state.name}
+                idCoin={coinContextStage.state.id}
+                srcImgCoin={coinContextStage.state.logo}
               />
             </div>
           )
@@ -62,10 +67,10 @@ function Coin() {
         secondaryContent={(
           <div className={styles.secondaryContent}>
             <GroupCoinValues />
-            {!!contextStage.state.key && (
+            {!!coinContextStage.state.key && (
               <PaginationBar
-                pathnameBase={`${resources.path.coin}/${contextStage.state.key}`}
-                pathParamId={contextStage.state.key}
+                pathnameBase={`${resources.path.coin}/${coinContextStage.state.key}`}
+                pathParamId={coinContextStage.state.key}
                 paginationObjects={paginationObjects}
               />
             )}
