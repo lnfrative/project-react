@@ -1,8 +1,9 @@
 // region import
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // utilities
-import { message } from '@/utilities'
+import { message, resources } from '@/utilities'
 import { MenuOptionsUserProps } from '@/utilities/Interfaces'
 
 // components
@@ -24,12 +25,12 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
       content={(
         <div className={styles.menuContent}>
           <div className={styles.group}>
-            <div className={styles.containerOption}>
+            <Link to={resources.path.setting} className={styles.containerOption}>
               <SVGIconSettings />
               <span className={styles.label}>
                 {message({ id: 'SETTINGS' })}
               </span>
-            </div>
+            </Link>
           </div>
           <div className={styles.group}>
             <div className={styles.containerOption}>

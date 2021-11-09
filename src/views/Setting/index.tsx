@@ -5,7 +5,7 @@ import React, { useEffect, useContext } from 'react'
 import { View as ContextView } from '@/contexts'
 
 // components
-import { HeaderSegmentation } from '@/components'
+import { HeaderSegmentation, PaginationMenu } from '@/components'
 // endregion
 
 function Account() {
@@ -18,7 +18,7 @@ function Account() {
   return (
     <HeaderSegmentation
       primaryContent={(
-        <div />
+        <PaginationMenu title="Account Settings" />
       )}
       secondaryContent={(
         <div />

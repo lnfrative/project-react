@@ -1,0 +1,14 @@
+@import url('../../css/variables.css');
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--font-size-md);
+  color: var(--color-variety-main-shadow);
+
+  border-bottom: var(--color-passive-pager) solid 1px;
+  padding-bottom: var(--space-xs);
+}
