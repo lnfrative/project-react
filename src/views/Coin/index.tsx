@@ -56,7 +56,6 @@ function Coin() {
                 idCoin={contextStage.state.id}
                 srcImgCoin={contextStage.state.logo}
               />
-              <div className={styles.primaryContentCard} />
             </div>
           )
         )}
