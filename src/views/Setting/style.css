@@ -1,0 +1,6 @@
+@import url('../../css/variables.css');
+
+.secondaryContent {
+  border-radius: var(--border-radius-standard);
+  background-color: var(--color-variety-main-tiny-shadow);
+}

@@ -16,6 +16,9 @@ import { HeaderSegmentation, PaginationMenu } from '@/components'
 
 // modules
 import { onChangePagination, initialState } from './module'
+
+// styles
+import styles from './style.css'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [
@@ -47,7 +50,7 @@ function Account() {
         />
       )}
       secondaryContent={(
-        <div>
+        <div className={styles.secondaryContent}>
           {stage.state.paginationObjectSelected?.content}
         </div>
       )}
