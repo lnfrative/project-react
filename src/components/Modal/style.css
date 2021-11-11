@@ -1,0 +1,13 @@
+@import url('../../css/variables.css');
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-variety-main-tiny-shadow);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
