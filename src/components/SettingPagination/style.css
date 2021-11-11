@@ -8,10 +8,10 @@
 .title {
   font-size: var(--font-size-lg);
   color: var(--color-variety-main);
-  padding: var(--space-md);
-  border-bottom: solid 1px var(--color-passive-pager);
+  padding: var(--space-lg);
+  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .content {
-  padding: var(--space-md);
+  padding: var(--space-lg);
 }

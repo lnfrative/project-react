@@ -12,22 +12,26 @@ import { PaginationObject } from '@/utilities/Interfaces'
 import { View as ContextView } from '@/contexts'
 
 // components
-import { HeaderSegmentation, PaginationMenu } from '@/components'
+import {
+  HeaderSegmentation,
+  PaginationMenu,
+  SettingPaginationAccount,
+  SettingPaginationMisc,
+  SettingPaginationProfile,
+  SettingPaginationSecurity,
+} from '@/components'
 
 // modules
 import { onChangePagination, initialState } from './module'
-
-// styles
-import styles from './style.css'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [
   {
-    id: 'account', title: 'Account', main: true, content: <div>Account</div>,
+    id: 'account', title: 'Account', main: true, content: <SettingPaginationAccount />,
   },
-  { id: 'public_profile', title: 'Public profile', content: <div>Public profile</div> },
-  { id: 'security', title: 'Security', content: <div>Security</div> },
-  { id: 'misc', title: 'Misc', content: <div>Misc</div> },
+  { id: 'public_profile', title: 'Public profile', content: <SettingPaginationProfile /> },
+  { id: 'security', title: 'Security', content: <SettingPaginationSecurity /> },
+  { id: 'misc', title: 'Misc', content: <SettingPaginationMisc /> },
 ]
 
 function Account() {
@@ -49,11 +53,7 @@ function Account() {
           title="Account Settings"
         />
       )}
-      secondaryContent={(
-        <div className={styles.secondaryContent}>
-          {stage.state.paginationObjectSelected?.content}
-        </div>
-      )}
+      secondaryContent={stage.state.paginationObjectSelected?.content}
     />
   )
 }
