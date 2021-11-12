@@ -13,7 +13,7 @@ import {
   ValuePool,
   CanvasValueVariation,
   WalletActions,
-  ButtonAdd,
+  ButtonAddWallet,
 } from '@/components'
 
 // modules
@@ -62,7 +62,7 @@ function TableWallets() {
           <div className={styles.addSegmentSuperior} />
           <div className={styles.addSegment} />
         </div>
-        <ButtonAdd title={message({ id: 'ADD_NEW_WALLET' })} />
+        <ButtonAddWallet />
         <div className={styles.containerLine}>
           <div className={styles.addSegmentSuperior} />
           <div className={styles.addSegment} />

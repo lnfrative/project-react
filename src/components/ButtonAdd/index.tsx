@@ -13,7 +13,7 @@ import styles from './style.css'
 
 function ButtonAdd(props: ButtonAddProps) {
   return (
-    <div className={styles.container}>
+    <div role="button" tabIndex={0} onClick={props.onClick} className={styles.container}>
       <div className={styles.containerIcon}>
         <SVGIconCross />
       </div>

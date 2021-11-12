@@ -6,7 +6,6 @@ import {
   HeaderDashboard,
   GroupDashboardBenefits,
   GroupDashboardWallets,
-  Modal,
 } from '@/components'
 // endregion
 
@@ -14,9 +13,6 @@ const Home = () => (
   <HeaderDashboard>
     <GroupDashboardBenefits />
     <GroupDashboardWallets />
-    <Modal>
-      Modal test.
-    </Modal>
   </HeaderDashboard>
 )
 

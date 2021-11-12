@@ -10,9 +10,9 @@ function Modal(props: PropsWithChildren<{}>) {
   const element = document.getElementById('modal')
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
     }
   }, [])
 

@@ -1,0 +1,7 @@
+@import url('../../css/variables.css');
+
+.container {
+  background-color: var(--color-passive-main);
+  min-width: 355px;
+  min-height: 375px;
+}
