@@ -4,7 +4,11 @@ import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // components
-import { ProvideContextCoin, ProvideContextView } from '@/components'
+import {
+  ProvideContextCoin,
+  ProvideContextView,
+  ProvideContextModal,
+} from '@/components'
 
 // utilities
 import { resources } from '@/utilities'
@@ -22,21 +26,23 @@ const Setting = lazy(() => import('@/views/Setting'))
 // endregion
 
 const App = (
-  <ProvideContextView>
-    <ProvideContextCoin>
-      <Router>
-        <Suspense fallback={null}>
-          <Switch>
-            <Route exact path={resources.path.home} component={Home} />
-            <Route exact path={resources.path.signup} component={Signup} />
-            <Route exact path={resources.path.dashboard} component={Dashboard} />
-            <Route exact path={resources.path.coinSpecific} component={Coin} />
-            <Route exact path={resources.path.settingSpecific} component={Setting} />
-          </Switch>
-        </Suspense>
-      </Router>
-    </ProvideContextCoin>
-  </ProvideContextView>
+  <ProvideContextModal>
+    <ProvideContextView>
+      <ProvideContextCoin>
+        <Router>
+          <Suspense fallback={null}>
+            <Switch>
+              <Route exact path={resources.path.home} component={Home} />
+              <Route exact path={resources.path.signup} component={Signup} />
+              <Route exact path={resources.path.dashboard} component={Dashboard} />
+              <Route exact path={resources.path.coinSpecific} component={Coin} />
+              <Route exact path={resources.path.settingSpecific} component={Setting} />
+            </Switch>
+          </Suspense>
+        </Router>
+      </ProvideContextCoin>
+    </ProvideContextView>
+  </ProvideContextModal>
 )
 
 // eslint-disable-next-line no-undef
