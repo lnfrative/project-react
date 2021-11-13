@@ -7,6 +7,7 @@ import { Stage, ContextModalState } from '@/utilities/Interfaces'
 
 const state: ContextModalState = {
   status: 'close',
+  id: undefined,
 }
 
 const Modal = createContext<Stage<ContextModalState>>({

@@ -13,6 +13,7 @@ import { Modal } from '@/contexts'
 
 const initialState: ContextModalState = {
   status: 'close',
+  id: undefined,
 }
 
 function ProvideContextModal(props: PropsWithChildren<{}>) {

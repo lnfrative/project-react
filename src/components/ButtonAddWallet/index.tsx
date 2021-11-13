@@ -1,6 +1,9 @@
 // region import
 import React, { useContext } from 'react'
 
+// hooks
+import { useCommitState } from '@/hooks'
+
 // contexts
 import { Modal as ContextModal } from '@/contexts'
 
@@ -11,15 +14,18 @@ import { message } from '@/utilities'
 import { ButtonAdd, ModalCreateWallet } from '@/components'
 
 // modules
-import { onClick } from './module'
+import { onClick, State } from './module'
 // endregion
 
 function ButtonAddWallet() {
+  const stage = useCommitState<State>({ id: Math.random() })
   const contextStage = useContext(ContextModal)
   return (
     <>
-      <ButtonAdd onClick={onClick(contextStage)} title={message({ id: 'ADD_NEW_WALLET' })} />
-      {contextStage.state.status === 'open' && (
+      <ButtonAdd onClick={onClick(stage, contextStage)} title={message({ id: 'ADD_NEW_WALLET' })} />
+      {contextStage.state.status === 'open'
+      && contextStage.state.id === stage.state.id
+      && (
         <ModalCreateWallet />
       )}
     </>

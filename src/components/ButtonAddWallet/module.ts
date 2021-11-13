@@ -5,9 +5,16 @@ import { MouseEventHandler } from 'react'
 import { Stage, ContextModalState } from '@/utilities/Interfaces'
 // endregion
 
-function onClick(stage: Stage<ContextModalState>): MouseEventHandler<HTMLDivElement> {
+export interface State {
+  id: number,
+}
+
+function onClick(
+  stage: Stage<State>,
+  modalContextStage: Stage<ContextModalState>,
+): MouseEventHandler<HTMLDivElement> {
   return () => {
-    stage.commitState({ status: 'open' })
+    modalContextStage.commitState({ status: 'open', id: stage.state.id })
   }
 }
 

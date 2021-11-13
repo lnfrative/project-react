@@ -1,5 +1,6 @@
 interface ContextModalState {
-  status: 'open' | 'close'
+  status: 'open' | 'close',
+  id: number | undefined,
 }
 
 export default ContextModalState
