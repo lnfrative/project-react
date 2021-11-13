@@ -72,5 +72,6 @@ export { default as SettingPaginationSecurity } from './SettingPaginationSecurit
 export { default as SettingPaginationMisc } from './SettingPaginationMisc'
 export { default as Modal } from './Modal'
 export { default as ProvideContextModal } from './ProvideContextModal'
-export { default as ModalCreateWallet } from './ModalCreateWallet'
 export { default as ButtonAddWallet } from './ButtonAddWallet'
+export { default as SVGIconEquis } from './SVGIconEquis'
+export { default as ModalCreateWallet } from './ModalCreateWallet'

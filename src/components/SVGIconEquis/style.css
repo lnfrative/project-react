@@ -1,0 +1,7 @@
+@import url('../../css/variables.css');
+
+.design {
+  fill: none;
+  stroke: var(--color-active-secundary);
+  stroke-width: 2px;
+}

@@ -1,11 +1,17 @@
 // region import
 import React, { useContext } from 'react'
 
+// utilities
+import { message } from '@/utilities'
+
 // components
-import { Modal } from '@/components'
+import { Modal, ButtonIcon, SVGIconEquis } from '@/components'
 
 // contexts
 import { Modal as ContextModal } from '@/contexts'
+
+// modules
+import { closeModal } from './module'
 
 // styles
 import styles from './style.css'
@@ -16,7 +22,12 @@ function ModalCreateWallet() {
   return (
     <Modal>
       <div className={styles.container}>
-        Modal content here.
+        <div className={styles.header}>
+          <span className={styles.title}>{message({ id: 'AVAILABLE_COINS' })}</span>
+          <ButtonIcon onClick={closeModal(contextStage)}>
+            <SVGIconEquis />
+          </ButtonIcon>
+        </div>
       </div>
     </Modal>
   )

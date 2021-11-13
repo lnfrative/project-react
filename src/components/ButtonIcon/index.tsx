@@ -1,5 +1,5 @@
 // region import
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 // utilities
 import { ButtonIconProps } from '@/utilities/Interfaces'
@@ -8,9 +8,9 @@ import { ButtonIconProps } from '@/utilities/Interfaces'
 import styles from './style.css'
 // endregion
 
-function ButtonIcon(props: ButtonIconProps) {
+function ButtonIcon(props: PropsWithChildren<ButtonIconProps>) {
   return (
-    <button className={styles.button}>
+    <button type="button" onClick={props.onClick} className={styles.button}>
       {props.children}
     </button>
   )

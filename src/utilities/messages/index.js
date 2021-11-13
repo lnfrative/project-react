@@ -103,4 +103,8 @@ export default {
     en: 'Holding',
     es: 'Monto',
   },
+  AVAILABLE_COINS: {
+    en: 'Available coins',
+    es: 'Monedas disponibles',
+  },
 }

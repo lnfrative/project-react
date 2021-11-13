@@ -4,4 +4,22 @@
   background-color: var(--color-passive-main);
   min-width: 355px;
   min-height: 375px;
+
+  border-radius: var(--border-radius-standard);
+  border: solid 1px var(--color-passive-pager);
+}
+
+.header {
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: solid 1px var(--color-passive-pager);
+
+  padding: 0 var(--space-xxs) 0 var(--space-md);
+}
+
+.title {
+  color: var(--color-active-secundary);
+  font-size: var(--font-size-xs);
 }
