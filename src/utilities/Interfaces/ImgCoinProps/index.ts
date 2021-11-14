@@ -1,5 +1,5 @@
 interface ImgCoinProps {
-  size: 'medium' | 'large',
+  size: 'medium' | 'large' | 'small',
   src: string,
 }
 

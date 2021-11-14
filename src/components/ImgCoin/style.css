@@ -3,6 +3,11 @@
   width: 40px;
 }
 
+.small {
+  width: 24px;
+  height: 24px;
+}
+
 .large {
   height: 125px;
   width: 125px;

@@ -19,7 +19,7 @@ const routeParams = {
   ...routeParamsSetting,
 }
 
-const coin: ResourceCoin<ResourceCoinData> = {
+const coin = {
   dogecash: {
     name: 'DogeCash',
     id: 'DOGEC',

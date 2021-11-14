@@ -1,0 +1,38 @@
+@import url('../../css/variables.css');
+
+.container {
+  cursor: pointer;
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.id {
+  color: var(--color-variety-main);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+}
+
+.name {
+  color: var(--color-variety-main);
+  font-size: var(--font-size-xs);
+}
+
+.separator {
+  color: var(--color-variety-main);
+  font-size: var(--font-size-xs);
+}
+
+.details {
+  display: flex;
+  gap: var(--space-xxs);
+}
+
+.container:hover {
+  opacity: var(--opacity-selecting);
+}
+
+.container:active {
+  opacity: var(--opacity-selected);
+}

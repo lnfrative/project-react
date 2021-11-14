@@ -2,10 +2,15 @@
 import React, { useContext } from 'react'
 
 // utilities
-import { message } from '@/utilities'
+import { message, resources } from '@/utilities'
 
 // components
-import { Modal, ButtonIcon, SVGIconEquis } from '@/components'
+import {
+  Modal,
+  ButtonIcon,
+  SVGIconEquis,
+  CoinAvailable,
+} from '@/components'
 
 // contexts
 import { Modal as ContextModal } from '@/contexts'
@@ -27,6 +32,23 @@ function ModalCreateWallet() {
           <ButtonIcon onClick={closeModal(contextStage)}>
             <SVGIconEquis />
           </ButtonIcon>
+        </div>
+        <div>
+          <CoinAvailable
+            id="DOGEC"
+            name="DogeCash"
+            srcImageCoin={resources.coin.dogecash.logo}
+          />
+          <CoinAvailable
+            id="DOGEC"
+            name="DogeCash"
+            srcImageCoin={resources.coin.dogecash.logo}
+          />
+          <CoinAvailable
+            id="DOGEC"
+            name="DogeCash"
+            srcImageCoin={resources.coin.dogecash.logo}
+          />
         </div>
       </div>
     </Modal>
