@@ -2,7 +2,7 @@
 import React from 'react'
 
 // hooks
-import { useCommitState, useForm } from '@/hooks'
+import { useStage, useForm } from '@/hooks'
 
 // utilities
 import { message, resources } from '@/utilities'
@@ -23,7 +23,7 @@ import { initialState, onCheckTerms, onSubmit } from './module'
 // endregion
 
 function FormAuthRegister() {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   const { register, watch, handleSubmit } = useForm()
   const { password, email, repeatedPassword } = watch
 

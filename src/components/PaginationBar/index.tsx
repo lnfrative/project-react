@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // components
 import { PaginationTab } from '@/components'
@@ -19,7 +19,7 @@ import styles from './style.css'
 // endregion
 
 function PaginationBar(props: PaginationBarProps) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   const { pathname } = useLocation()
 
   useEffect(() => {

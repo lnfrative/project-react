@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { SVGIconTriangleDown } from '@/components'
 
 // hooks
-import { useCommitState, useStrictEffect } from '@/hooks'
+import { useStage, useStrictEffect } from '@/hooks'
 
 // utilities
 import { SelectProps } from '@/utilities/Interfaces'
@@ -21,7 +21,7 @@ import {
 
 function Select(props: SelectProps) {
   const [closeId, setCloseId] = useState<number>(0)
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   const styles = nestStyles(props)
 
   useEffect(() => {

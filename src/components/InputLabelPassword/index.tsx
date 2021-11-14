@@ -6,7 +6,7 @@ import { message } from '@/utilities'
 import { InputLabelPasswordProps } from '@/utilities/Interfaces'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // components
 import { InputLabel } from '@/components'
@@ -16,7 +16,7 @@ import { initialState, onChange } from './module'
 // endregion
 
 function InputLabelPassword(props: InputLabelPasswordProps) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   return (
     <InputLabel
       inputProps={{

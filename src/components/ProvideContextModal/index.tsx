@@ -2,7 +2,7 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { ContextModalState } from '@/utilities/Interfaces'
@@ -17,7 +17,7 @@ const initialState: ContextModalState = {
 }
 
 function ProvideContextModal(props: PropsWithChildren<{}>) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   return (
     <Modal.Provider value={stage}>
       {props.children}

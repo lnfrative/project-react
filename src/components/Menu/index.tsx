@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { MenuProps } from '@/utilities/Interfaces'
@@ -15,7 +15,7 @@ import styles from './style.css'
 // endregion
 
 function Menu(props: MenuProps) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
 
   useEffect(() => {
     if (!stage.state.isOpen) return () => {}

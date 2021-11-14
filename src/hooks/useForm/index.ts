@@ -1,5 +1,5 @@
 import { FormEventHandler } from 'react'
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 import { Stage } from '@/utilities/Interfaces'
 
 function changeState(stage: Stage<{}>) {
@@ -22,7 +22,7 @@ function handleSubmit(stage: Stage<{}>) {
 }
 
 function useForm() {
-  const stage = useCommitState({})
+  const stage = useStage({})
   return {
     register: changeState(stage),
     watch: parseState(stage),

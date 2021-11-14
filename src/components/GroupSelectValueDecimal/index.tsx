@@ -2,7 +2,7 @@
 import React from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { GroupSelectValueDecimalProps } from '@/utilities/Interfaces'
@@ -18,7 +18,7 @@ import { initialState, genOnSelect } from './module'
 // endregion
 
 function GroupSelectValueDecimal(props: GroupSelectValueDecimalProps) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   return (
     <div className={styles.container}>
       <Select onSelect={genOnSelect(stage)} design="simple" title={props.titleSelect} options={props.optionsSelect} />

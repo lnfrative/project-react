@@ -9,14 +9,14 @@ import { InputLabelPRepeatProps } from '@/utilities/Interfaces'
 import { InputLabel } from '@/components'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // modules
 import { initialState, onChange } from './module'
 // endregion
 
 function InputLabelPRepeat(props: InputLabelPRepeatProps) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   return (
     <InputLabel
       inputProps={{

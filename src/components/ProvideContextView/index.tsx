@@ -2,7 +2,7 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { ContextViewState } from '@/utilities/Interfaces'
@@ -16,7 +16,7 @@ const initialState: ContextViewState = {
 }
 
 function ProvideContextView(props: PropsWithChildren<{}>) {
-  const stage = useCommitState<ContextViewState>(initialState)
+  const stage = useStage<ContextViewState>(initialState)
 
   return (
     <View.Provider value={stage}>

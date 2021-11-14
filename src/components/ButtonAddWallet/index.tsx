@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // contexts
 import { Modal as ContextModal } from '@/contexts'
@@ -18,7 +18,7 @@ import { onClick, State } from './module'
 // endregion
 
 function ButtonAddWallet() {
-  const stage = useCommitState<State>({ id: Math.random() })
+  const stage = useStage<State>({ id: Math.random() })
   const contextStage = useContext(ContextModal)
   return (
     <>

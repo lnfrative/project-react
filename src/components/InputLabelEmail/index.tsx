@@ -5,7 +5,7 @@ import React from 'react'
 import { InputLabel } from '@/components'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { message } from '@/utilities'
@@ -16,7 +16,7 @@ import { onChange, initialState } from './module'
 // endregion
 
 function InputLabelEmail(props: InputLabelEmailProps) {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   return (
     <InputLabel
       inputProps={{

@@ -2,7 +2,7 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { ContextCoinState } from '@/utilities/Interfaces'
@@ -18,7 +18,7 @@ const initialState: ContextCoinState = {
 }
 
 function ProvideContextCoin(props: PropsWithChildren<{}>) {
-  const stage = useCommitState<ContextCoinState>(initialState)
+  const stage = useStage<ContextCoinState>(initialState)
 
   return (
     <Coin.Provider value={stage}>

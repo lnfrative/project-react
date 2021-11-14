@@ -2,7 +2,7 @@
 import React, { useEffect, useContext } from 'react'
 
 // hooks
-import { useCommitState } from '@/hooks'
+import { useStage } from '@/hooks'
 
 // utilities
 import { resources } from '@/utilities'
@@ -35,7 +35,7 @@ const paginationObjects: Array<PaginationObject> = [
 ]
 
 function Account() {
-  const stage = useCommitState(initialState)
+  const stage = useStage(initialState)
   const contextStage = useContext(ContextView)
 
   useEffect(() => {
