@@ -1,8 +1,9 @@
 // region import
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // utilities
-import { message } from '@/utilities'
+import { message, resources } from '@/utilities'
 
 // styles
 import styles from './style.css'
@@ -11,16 +12,16 @@ import styles from './style.css'
 function GroupPagesDashboard() {
   return (
     <div className={styles.container}>
-      <div className={styles.containerFirst}>
+      <Link to={resources.path.dashboard} className={styles.containerFirst}>
         <div className={styles.titleGradient}>
           {message({ id: 'DASHBOARD' })}
         </div>
-      </div>
-      <div className={styles.containerSecond}>
+      </Link>
+      {/* <div className={styles.containerSecond}>
         <div className={styles.title}>
           {message({ id: 'POOL_DATA' })}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
