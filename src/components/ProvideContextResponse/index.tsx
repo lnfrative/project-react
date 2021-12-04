@@ -1,5 +1,5 @@
 // region import
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 
 // hooks
 import { useStage } from '@/hooks'
@@ -16,9 +16,14 @@ import { genRequest, initialState } from './module'
 
 function ProvideContextResponse(props: PropsWithChildren<{}>) {
   const stage = useStage<ContextResponseState>(initialState)
+  const request = genRequest(stage)
+
+  useEffect(() => {
+    request.get({ endpoint: '/api/user/csrf', updateCache: true })
+  }, [])
 
   return (
-    <Response.Provider value={{ stage, request: genRequest(stage) }}>
+    <Response.Provider value={{ stage, request }}>
       {props.children}
     </Response.Provider>
   )

@@ -1,7 +1,5 @@
 import {
   RouteParamsCoin,
-  ResourceCoin,
-  ResourceCoinData,
   RouteParamsSetting,
 } from '@/utilities/Interfaces'
 
@@ -29,6 +27,7 @@ const coin = {
 }
 
 const path = {
+  base: 'http://localhost',
   home: '/',
   login: '/',
   signup: '/sign-up',
