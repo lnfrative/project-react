@@ -10,6 +10,7 @@
 }
 
 .containerFirst {
+  text-decoration: none;
   cursor: pointer;
   height: 100%;
 
