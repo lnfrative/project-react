@@ -19,6 +19,7 @@ function requester(stage: Stage<ContextResponseState>, method: 'GET'|'POST'|'PUT
   }) => {
     const { endpoint, params, updateCache } = args
     const requestInit: RequestInit = {}
+    requestInit.credentials = 'include'
     requestInit.method = method
     requestInit.headers = {
       Authorization: `Bearer ${extractCookie('access_token')}`,

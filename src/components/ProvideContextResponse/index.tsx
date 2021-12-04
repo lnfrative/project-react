@@ -19,7 +19,7 @@ function ProvideContextResponse(props: PropsWithChildren<{}>) {
   const request = genRequest(stage)
 
   useEffect(() => {
-    request.get({ endpoint: '/api/user/csrf', updateCache: true })
+    request.get({ endpoint: '/api/user/csrf' })
   }, [])
 
   return (
