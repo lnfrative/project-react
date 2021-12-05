@@ -7,7 +7,7 @@ const initialState: ContextResponseState = {
   store: {},
 }
 
-function extractCookie(cookieName: string): String {
+function extractCookie(cookieName: string): string {
   const { cookie } = document
   if (cookie.indexOf(cookieName) === -1) return ''
   return cookie.split(`${cookieName}=`)[1].split(';')[0]
@@ -24,7 +24,7 @@ function requester(stage: Stage<ContextResponseState>, method: 'GET'|'POST'|'PUT
     requestInit.headers = {
       Authorization: `Bearer ${extractCookie('access_token')}`,
       Accept: 'application/json',
-      'X-CSRF-TOKEN': stage.state.store?.['GET:/api/user/csrf']?.data,
+      'X-CSRF-TOKEN': extractCookie('XSRF-TOKEN'),
     }
 
     if (method !== 'GET') {

@@ -18,10 +18,6 @@ function ProvideContextResponse(props: PropsWithChildren<{}>) {
   const stage = useStage<ContextResponseState>(initialState)
   const request = genRequest(stage)
 
-  useEffect(() => {
-    request.get({ endpoint: '/api/user/csrf' })
-  }, [])
-
   return (
     <Response.Provider value={{ stage, request }}>
       {props.children}
