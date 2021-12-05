@@ -1,3 +1,4 @@
+import __vars__ from '@/__vars__'
 import {
   RouteParamsCoin,
   RouteParamsSetting,
@@ -27,7 +28,7 @@ const coin = {
 }
 
 const path = {
-  base: 'http://localhost',
+  backendUrlBase: __vars__.BACKEND_URL_BASE,
   home: '/',
   login: '/',
   signup: '/sign-up',

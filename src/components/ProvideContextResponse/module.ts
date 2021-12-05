@@ -40,7 +40,7 @@ function requester(stage: Stage<ContextResponseState>, method: 'GET'|'POST'|'PUT
     if (!state.store) return null
     if (!updateCache && state.store[key]) return state.store[key]
 
-    const requested = await fetch(`${resources.path.base}${method === 'GET' ? urlParams : endpoint}`, requestInit)
+    const requested = await fetch(`${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`, requestInit)
     const response = await requested.json()
     state.store[key] = response
     stage.commitState({ store: state.store })
