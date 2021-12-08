@@ -1,9 +1,13 @@
 // utilities
 import { resources } from '@/utilities'
-import { ContextResponseState, Stage } from '@/utilities/Interfaces'
+import { Stage } from '@/utilities/Interfaces'
 // endregion
 
-const initialState: ContextResponseState = {
+interface State {
+  store?: Object,
+}
+
+const initialState: State = {
   store: {},
 }
 
@@ -13,7 +17,7 @@ function extractCookie(cookieName: string): string {
   return cookie.split(`${cookieName}=`)[1].split(';')[0]
 }
 
-function requester(stage: Stage<ContextResponseState>, method: 'GET'|'POST'|'PUT'|'DELETE') {
+function requester(stage: Stage<State>, method: 'GET'|'POST'|'PUT'|'DELETE') {
   return async (args: {
     endpoint: string, params?: Record<string, string>, updateCache?: boolean
   }) => {
@@ -48,7 +52,22 @@ function requester(stage: Stage<ContextResponseState>, method: 'GET'|'POST'|'PUT
   }
 }
 
-function genRequest(stage: Stage<ContextResponseState>) {
+function responser(stage: Stage<State>, method: 'GET'|'POST'|'PUT'|'DELETE') {
+  return (args: {
+    endpoint: string, params?: Record<string, string>,
+  }) => {
+    const { endpoint, params } = args
+    const { state } = stage
+
+    if (!state.store) return null
+    const searchParams = new URLSearchParams(params)
+    const urlParams = `${endpoint}${searchParams.toString()}`
+    const key = `${method}:${urlParams}`
+    return state.store[key]
+  }
+}
+
+function genRequest(stage: Stage<State>) {
   return {
     get: requester(stage, 'GET'),
     post: requester(stage, 'POST'),
@@ -57,7 +76,17 @@ function genRequest(stage: Stage<ContextResponseState>) {
   }
 }
 
+function genResponse(stage: Stage<State>) {
+  return {
+    get: responser(stage, 'GET'),
+    post: responser(stage, 'POST'),
+    put: responser(stage, 'PUT'),
+    delete: responser(stage, 'DELETE'),
+  }
+}
+
 export {
   genRequest,
+  genResponse,
   initialState,
 }

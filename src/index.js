@@ -8,7 +8,7 @@ import {
   ProvideContextCoin,
   ProvideContextView,
   ProvideContextModal,
-  ProvideContextResponse,
+  ProvideContextBackend,
 } from '@/components'
 
 // utilities
@@ -27,7 +27,7 @@ const Setting = lazy(() => import('@/views/Setting'))
 // endregion
 
 const App = (
-  <ProvideContextResponse>
+  <ProvideContextBackend>
     <ProvideContextModal>
       <ProvideContextView>
         <ProvideContextCoin>
@@ -45,7 +45,7 @@ const App = (
         </ProvideContextCoin>
       </ProvideContextView>
     </ProvideContextModal>
-  </ProvideContextResponse>
+  </ProvideContextBackend>
 )
 
 // eslint-disable-next-line no-undef
