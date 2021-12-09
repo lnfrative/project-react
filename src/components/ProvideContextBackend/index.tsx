@@ -15,7 +15,6 @@ function ProvideContextBackend(props: PropsWithChildren<{}>) {
   const stage = useStage(initialState)
   const request = genRequest(stage)
   const response = genResponse(stage)
-
   return (
     <Backend.Provider value={{ request, response }}>
       {props.children}

@@ -14,7 +14,7 @@ import styles from './style.css'
 
 function LinkBackDashboard() {
   return (
-    <Link to={resources.path.dashboard} className={styles.link}>
+    <Link to={resources.path.home} className={styles.link}>
       <SVGIconBack />
       <div className={styles.title}>
         <span>{message({ id: 'BACK_TO' })}</span>

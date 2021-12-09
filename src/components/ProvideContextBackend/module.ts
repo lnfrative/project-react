@@ -1,14 +1,15 @@
 // utilities
 import { resources } from '@/utilities'
-import { Stage } from '@/utilities/Interfaces'
+import { Stage, BackendResponse } from '@/utilities/Interfaces'
+import { Responser, BackendRequestMethodsAllowed, Requester } from '@/utilities/Types'
 // endregion
 
 interface State {
-  store?: Object,
+  store?: Map<string, BackendResponse>,
 }
 
 const initialState: State = {
-  store: {},
+  store: undefined,
 }
 
 function extractCookie(cookieName: string): string {
@@ -17,7 +18,7 @@ function extractCookie(cookieName: string): string {
   return cookie.split(`${cookieName}=`)[1].split(';')[0]
 }
 
-function requester(stage: Stage<State>, method: 'GET'|'POST'|'PUT'|'DELETE') {
+function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): Requester {
   return async (args: {
     endpoint: string, params?: Record<string, string>, updateCache?: boolean
   }) => {
@@ -52,14 +53,14 @@ function requester(stage: Stage<State>, method: 'GET'|'POST'|'PUT'|'DELETE') {
   }
 }
 
-function responser(stage: Stage<State>, method: 'GET'|'POST'|'PUT'|'DELETE') {
+function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): Responser {
   return (args: {
     endpoint: string, params?: Record<string, string>,
   }) => {
     const { endpoint, params } = args
     const { state } = stage
 
-    if (!state.store) return null
+    if (!state.store) return undefined
     const searchParams = new URLSearchParams(params)
     const urlParams = `${endpoint}${searchParams.toString()}`
     const key = `${method}:${urlParams}`
@@ -68,21 +69,19 @@ function responser(stage: Stage<State>, method: 'GET'|'POST'|'PUT'|'DELETE') {
 }
 
 function genRequest(stage: Stage<State>) {
-  return {
-    get: requester(stage, 'GET'),
-    post: requester(stage, 'POST'),
-    put: requester(stage, 'PUT'),
-    delete: requester(stage, 'DELETE'),
-  }
+  return (new Map<BackendRequestMethodsAllowed, Requester>())
+    .set('GET', requester(stage, 'GET'))
+    .set('POST', requester(stage, 'POST'))
+    .set('PUT', requester(stage, 'PUT'))
+    .set('DELETE', requester(stage, 'DELETE'))
 }
 
 function genResponse(stage: Stage<State>) {
-  return {
-    get: responser(stage, 'GET'),
-    post: responser(stage, 'POST'),
-    put: responser(stage, 'PUT'),
-    delete: responser(stage, 'DELETE'),
-  }
+  return (new Map<BackendRequestMethodsAllowed, Responser>())
+    .set('GET', responser(stage, 'GET'))
+    .set('POST', responser(stage, 'POST'))
+    .set('PUT', responser(stage, 'PUT'))
+    .set('DELETE', responser(stage, 'DELETE'))
 }
 
 export {

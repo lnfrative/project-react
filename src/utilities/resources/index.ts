@@ -27,12 +27,17 @@ const coin = {
   },
 }
 
+const endpoints = {
+  get: {
+    user: '/api/user',
+  },
+}
+
 const path = {
   backendUrlBase: __vars__.BACKEND_URL_BASE,
   home: '/',
   login: '/',
   signup: '/sign-up',
-  dashboard: '/',
   coin: '/coin',
   coinSpecific: `/coin/:${routeParamsCoin.nameCoin}/:${routeParamsCoin.nameCoinDetail}?`,
   setting: '/setting',
@@ -45,6 +50,7 @@ const colors = {
 }
 
 export default {
+  endpoints,
   path,
   routeParams,
   colors,

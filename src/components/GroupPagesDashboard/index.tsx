@@ -12,7 +12,7 @@ import styles from './style.css'
 function GroupPagesDashboard() {
   return (
     <div className={styles.container}>
-      <Link to={resources.path.dashboard} className={styles.containerFirst}>
+      <Link to={resources.path.home} className={styles.containerFirst}>
         <div className={styles.titleGradient}>
           {message({ id: 'DASHBOARD' })}
         </div>
