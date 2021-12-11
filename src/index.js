@@ -9,6 +9,7 @@ import {
   ProvideContextView,
   ProvideContextModal,
   ProvideContextBackend,
+  ApplicationStart,
 } from '@/components'
 
 // utilities
@@ -30,16 +31,18 @@ const App = (
     <ProvideContextModal>
       <ProvideContextView>
         <ProvideContextCoin>
-          <Router>
-            <Suspense fallback={null}>
-              <Switch>
-                <Route exact path={resources.path.home} component={Home} />
-                <Route exact path={resources.path.signup} component={Signup} />
-                <Route exact path={resources.path.coinSpecific} component={Coin} />
-                <Route exact path={resources.path.settingSpecific} component={Setting} />
-              </Switch>
-            </Suspense>
-          </Router>
+          <ApplicationStart>
+            <Router>
+              <Suspense fallback={null}>
+                <Switch>
+                  <Route exact path={resources.path.home} component={Home} />
+                  <Route exact path={resources.path.signup} component={Signup} />
+                  <Route exact path={resources.path.coinSpecific} component={Coin} />
+                  <Route exact path={resources.path.settingSpecific} component={Setting} />
+                </Switch>
+              </Suspense>
+            </Router>
+          </ApplicationStart>
         </ProvideContextCoin>
       </ProvideContextView>
     </ProvideContextModal>

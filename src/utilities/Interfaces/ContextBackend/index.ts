@@ -1,8 +1,9 @@
-import { BackendRequestMethodsAllowed, Responser, Requester } from '@/utilities/Types'
+import { BackendCallbacks } from '@/utilities/Interfaces'
+import { Responser, Requester } from '@/utilities/Types'
 
 interface ContextBackend {
-  response: Map<BackendRequestMethodsAllowed, Responser>,
-  request: Map<BackendRequestMethodsAllowed, Requester>
+  response: BackendCallbacks<Responser>,
+  request: BackendCallbacks<Requester>
 }
 
 export default ContextBackend

@@ -32,11 +32,8 @@ const Login = () => (
 
 function Home() {
   const { response } = useContext(Backend)
-  const responseGET = response.get('GET')
-  if (!responseGET) return <Login />
-  const responseGETUser = responseGET({ endpoint: resources.endpoints.get.user })
-  if (!responseGETUser) return <Login />
-  if (!responseGETUser.success) return <Login />
+  const user = response.get({ endpoint: resources.endpoints.get.user })
+  if (!user?.success) return <Login />
   return <Dashboard />
 }
 

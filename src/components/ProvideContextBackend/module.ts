@@ -4,12 +4,34 @@ import { Stage, BackendResponse } from '@/utilities/Interfaces'
 import { Responser, BackendRequestMethodsAllowed, Requester } from '@/utilities/Types'
 // endregion
 
+interface BackendMethods<T> {
+  get: T,
+  post: T,
+  put: T,
+  delete: T,
+}
+
+interface BackendResponser extends BackendMethods<Responser> {}
+interface BackendRequester extends BackendMethods<Requester> {}
+
+interface QueueCallback {
+  callback: () => Promise<Response>,
+  method: BackendRequestMethodsAllowed,
+  endpoint: string,
+}
+
 interface State {
   store?: Map<string, BackendResponse>,
+  queueCallbacks?: QueueCallback[],
+  status?: 'LOADING' | 'EMPTY',
+  loading?: QueueCallback,
 }
 
 const initialState: State = {
   store: undefined,
+  queueCallbacks: [],
+  status: 'EMPTY',
+  loading: undefined,
 }
 
 function extractCookie(cookieName: string): string {
@@ -19,7 +41,7 @@ function extractCookie(cookieName: string): string {
 }
 
 function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): Requester {
-  return async (args: {
+  return (args: {
     endpoint: string, params?: Record<string, string>, updateCache?: boolean
   }) => {
     const { endpoint, params, updateCache } = args
@@ -39,17 +61,39 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     const searchParams = new URLSearchParams(params)
     const urlParams = `${endpoint}${searchParams.toString()}`
 
-    const { state } = stage
+    const { state, commitState } = stage
     const key = `${method}:${urlParams}`
 
-    if (!state.store) return null
-    if (!updateCache && state.store[key]) return state.store[key]
+    if (
+      (updateCache || !state.store?.get(key))
+      && state.queueCallbacks
+    ) {
+      const queueCallback: QueueCallback = {
+        callback() {
+          return fetch(`${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`, requestInit)
+        },
+        method,
+        endpoint: resources.endpoints.get.user,
+      }
+      commitState({
+        queueCallbacks: [...state.queueCallbacks, queueCallback],
+      })
+    }
+  }
+}
 
-    const requested = await fetch(`${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`, requestInit)
-    const response = await requested.json()
-    state.store[key] = response
-    stage.commitState({ store: state.store })
-    return state.store[key]
+async function loader(stage: Stage<State>) {
+  if (stage.state.loading) {
+    const { callback, method, endpoint } = stage.state.loading
+    const requested = await callback()
+    const response: BackendResponse = await requested.json()
+    const key = `${method}:${endpoint}`
+    const store = stage.state.store || new Map<string, BackendResponse>()
+    stage.commitState({
+      queueCallbacks: stage.state.queueCallbacks?.slice(1),
+      loading: undefined,
+      store: store.set(key, response),
+    })
   }
 }
 
@@ -64,27 +108,30 @@ function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     const searchParams = new URLSearchParams(params)
     const urlParams = `${endpoint}${searchParams.toString()}`
     const key = `${method}:${urlParams}`
-    return state.store[key]
+    return state.store.get(key)
   }
 }
 
-function genRequest(stage: Stage<State>) {
-  return (new Map<BackendRequestMethodsAllowed, Requester>())
-    .set('GET', requester(stage, 'GET'))
-    .set('POST', requester(stage, 'POST'))
-    .set('PUT', requester(stage, 'PUT'))
-    .set('DELETE', requester(stage, 'DELETE'))
+function genRequest(stage: Stage<State>): BackendRequester {
+  return {
+    get: requester(stage, 'GET'),
+    post: requester(stage, 'POST'),
+    put: requester(stage, 'PUT'),
+    delete: requester(stage, 'DELETE'),
+  }
 }
 
-function genResponse(stage: Stage<State>) {
-  return (new Map<BackendRequestMethodsAllowed, Responser>())
-    .set('GET', responser(stage, 'GET'))
-    .set('POST', responser(stage, 'POST'))
-    .set('PUT', responser(stage, 'PUT'))
-    .set('DELETE', responser(stage, 'DELETE'))
+function genResponse(stage: Stage<State>): BackendResponser {
+  return {
+    get: responser(stage, 'GET'),
+    post: responser(stage, 'POST'),
+    put: responser(stage, 'PUT'),
+    delete: responser(stage, 'DELETE'),
+  }
 }
 
 export {
+  loader,
   genRequest,
   genResponse,
   initialState,

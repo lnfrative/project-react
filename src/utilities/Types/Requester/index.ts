@@ -1,9 +1,7 @@
-import { BackendResponse } from '@/utilities/Interfaces'
-
 interface RequesterArgs {
   endpoint: string, params?: Record<string, string>, updateCache?: boolean
 }
 
-type Requester = (args: RequesterArgs) => Promise<BackendResponse>
+type Requester = (args: RequesterArgs) => void
 
 export default Requester
