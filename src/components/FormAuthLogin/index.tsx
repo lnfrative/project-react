@@ -1,8 +1,11 @@
 // region import
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
 // hooks
 import { useForm } from '@/hooks'
+
+// contexts
+import { Backend } from '@/contexts'
 
 // components
 import {
@@ -24,10 +27,20 @@ import styles from './style.css'
 // endregion
 
 function FormAuthLogin() {
-  const { register, handleSubmit } = useForm()
+  const backend = useContext(Backend)
+  const { register, handleSubmit, watch } = useForm()
+  const response = backend.response.post({
+    endpoint: resources.endpoints.post.userCreateAccessToken, params: watch,
+  })
+
+  useEffect(() => {
+    if (response?.success) {
+      window.location.reload()
+    }
+  }, [response])
 
   return (
-    <form onSubmit={handleSubmit({ onSubmit })}>
+    <form onSubmit={handleSubmit({ onSubmit: onSubmit(backend) })}>
       <FormAuth title={message({ id: 'LOG_IN' })}>
         <InputLabelEmail disableError registerInput={register({ name: 'email' })} />
         <InputLabelPassword disableError registerInput={register({ name: 'password' })} />

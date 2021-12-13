@@ -3,7 +3,11 @@ import { Stage } from '@/utilities/Interfaces'
 
 function useStage<S>(initialState: S): Stage<S> {
   const [state, setState] = useState(initialState)
-  const commitState = (commit) => setState({ ...state, ...commit })
+  const commitState = (commit) => {
+    setTimeout(() => {
+      setState({ ...state, ...commit })
+    }, 0)
+  }
   return { state, commitState }
 }
 

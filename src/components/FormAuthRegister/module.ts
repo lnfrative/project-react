@@ -16,7 +16,7 @@ function onSubmit(stage: Stage<InitialState>) {
     if (!stage.state.termsAccepted) return
     if (password?.hasError || email?.hasError || repeatedPassword?.hasError) return
     // TODO: Make the call to the registration endpoint.
-    console.log(inputs)
+    // console.log(inputs)
   }
 }
 

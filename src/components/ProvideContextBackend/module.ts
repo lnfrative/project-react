@@ -51,7 +51,8 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     requestInit.headers = {
       Authorization: `Bearer ${extractCookie('access_token')}`,
       Accept: 'application/json',
-      'X-CSRF-TOKEN': extractCookie('XSRF-TOKEN'),
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': `${stage.state.store?.get(`GET:${resources.endpoints.get.userCsrf}`)?.data}`,
     }
 
     if (method !== 'GET') {
@@ -61,38 +62,29 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     const searchParams = new URLSearchParams(params)
     const urlParams = `${endpoint}${searchParams.toString()}`
 
-    const { state, commitState } = stage
+    const { state } = stage
     const key = `${method}:${urlParams}`
 
-    if (
-      (updateCache || !state.store?.get(key))
-      && state.queueCallbacks
-    ) {
-      const queueCallback: QueueCallback = {
-        callback() {
-          return fetch(`${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`, requestInit)
-        },
-        method,
-        endpoint: resources.endpoints.get.user,
-      }
-      commitState({
-        queueCallbacks: [...state.queueCallbacks, queueCallback],
-      })
+    if ((updateCache || !state.store?.get(key)) && state.queueCallbacks) {
+      const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
+      const callback = () => fetch(path, requestInit)
+      stage.state.queueCallbacks?.push({ callback, method, endpoint })
+      stage.commitState({})
     }
   }
 }
 
 async function loader(stage: Stage<State>) {
-  if (stage.state.loading) {
-    const { callback, method, endpoint } = stage.state.loading
+  const { loading, store } = stage.state
+  if (loading) {
+    const { callback, method, endpoint } = loading
     const requested = await callback()
     const response: BackendResponse = await requested.json()
     const key = `${method}:${endpoint}`
-    const store = stage.state.store || new Map<string, BackendResponse>()
     stage.commitState({
       queueCallbacks: stage.state.queueCallbacks?.slice(1),
       loading: undefined,
-      store: store.set(key, response),
+      store: (store ? store : new Map<string, BackendResponse>()).set(key, response),
     })
   }
 }

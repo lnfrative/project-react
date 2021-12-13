@@ -29,7 +29,11 @@ const coin = {
 
 const endpoints = {
   get: {
+    userCsrf: '/api/user/csrf',
     user: '/api/user',
+  },
+  post: {
+    userCreateAccessToken: '/api/user/create/access-token',
   },
 }
 

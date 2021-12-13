@@ -24,6 +24,7 @@ function InputLabelEmail(props: InputLabelEmailProps) {
         InputHTMLAttributes: {
           type: 'email',
           name: 'email',
+          autoComplete: 'email',
           onChange: onChange(stage, { registerInput: props.registerInput }),
         },
       }}

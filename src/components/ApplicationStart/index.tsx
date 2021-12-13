@@ -13,6 +13,7 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
   const user = response.get({ endpoint: resources.endpoints.get.user })
 
   useEffect(() => {
+    request.get({ endpoint: resources.endpoints.get.userCsrf })
     request.get({ endpoint: resources.endpoints.get.user })
   }, [])
 

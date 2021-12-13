@@ -33,7 +33,7 @@ function ProvideContextBackend(props: PropsWithChildren<{}>) {
         loading: queueCallback,
       })
     }
-  }, [stage.state.queueCallbacks, stage.state.loading])
+  }, [stage.state, stage.state.loading])
 
   return (
     <Backend.Provider value={{ request, response }}>
