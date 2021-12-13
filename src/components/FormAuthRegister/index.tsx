@@ -1,5 +1,8 @@
 // region import
-import React from 'react'
+import React, { useContext } from 'react'
+
+// contexts
+import { Backend } from '@/contexts'
 
 // hooks
 import { useStage, useForm } from '@/hooks'
@@ -24,11 +27,12 @@ import { initialState, onCheckTerms, onSubmit } from './module'
 
 function FormAuthRegister() {
   const stage = useStage(initialState)
+  const contextBackend = useContext(Backend)
   const { register, watch, handleSubmit } = useForm()
   const { password, email, repeatedPassword } = watch
 
   return (
-    <form onSubmit={handleSubmit({ onSubmit: onSubmit(stage) })}>
+    <form onSubmit={handleSubmit({ onSubmit: onSubmit(contextBackend, stage) })}>
       <FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
         <InputLabelEmail registerInput={register({ name: 'email' })} />
         <InputLabelPassword registerInput={register({ name: 'password' })} />

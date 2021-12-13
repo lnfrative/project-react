@@ -34,6 +34,7 @@ const endpoints = {
   },
   post: {
     userCreateAccessToken: '/api/user/create/access-token',
+    user: '/api/user',
   },
 }
 

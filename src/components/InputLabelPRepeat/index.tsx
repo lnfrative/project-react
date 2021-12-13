@@ -24,6 +24,7 @@ function InputLabelPRepeat(props: InputLabelPRepeatProps) {
         InputHTMLAttributes: {
           type: 'password',
           name: 'repeatedPassword',
+          autoComplete: 'new-password',
           onChange: onChange(stage, props),
         },
       }}
