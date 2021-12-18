@@ -29,11 +29,12 @@ import styles from './style.css'
 function FormAuthLogin() {
   const backend = useContext(Backend)
   const { register, handleSubmit, watch } = useForm()
+  const { email, password } = watch
   const response = backend.response.post({
     endpoint: resources.endpoints.post.userCreateAccessToken,
     params: {
-      email: watch.email?.value,
-      password: watch.password?.value,
+      email: email?.value,
+      password: password?.value,
     },
   })
 
