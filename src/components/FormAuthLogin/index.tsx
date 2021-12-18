@@ -13,7 +13,7 @@ import {
   InputLabelEmail,
   InputLabelPassword,
   Button,
-  LinkForm
+  LinkForm,
 } from '@/components'
 
 // utilties
@@ -30,7 +30,11 @@ function FormAuthLogin() {
   const backend = useContext(Backend)
   const { register, handleSubmit, watch } = useForm()
   const response = backend.response.post({
-    endpoint: resources.endpoints.post.userCreateAccessToken, params: watch,
+    endpoint: resources.endpoints.post.userCreateAccessToken,
+    params: {
+      email: watch.email?.value,
+      password: watch.password?.value,
+    },
   })
 
   useEffect(() => {

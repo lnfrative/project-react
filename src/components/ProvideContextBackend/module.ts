@@ -18,6 +18,7 @@ interface QueueCallback {
   callback: () => Promise<Response>,
   method: BackendRequestMethodsAllowed,
   endpoint: string,
+  params?: Record<string, string>,
 }
 
 interface State {
@@ -59,8 +60,8 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
       requestInit.body = JSON.stringify(params)
     }
 
-    const searchParams = new URLSearchParams(params)
-    const urlParams = `${endpoint}${searchParams.toString()}`
+    const searchParams = (new URLSearchParams(params)).toString()
+    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
 
     const { state } = stage
     const key = `${method}:${urlParams}`
@@ -68,7 +69,7 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     if ((updateCache || !state.store?.get(key)) && state.queueCallbacks) {
       const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
       const callback = () => fetch(path, requestInit)
-      stage.state.queueCallbacks?.push({ callback, method, endpoint })
+      stage.state.queueCallbacks?.push({ callback, method, endpoint, params })
       stage.commitState({})
     }
   }
@@ -77,10 +78,13 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
 async function loader(stage: Stage<State>) {
   const { loading, store } = stage.state
   if (loading) {
-    const { callback, method, endpoint } = loading
+    const { callback, method, endpoint, params } = loading
     const requested = await callback()
     const response: BackendResponse = await requested.json()
-    const key = `${method}:${endpoint}`
+
+    const searchParams = (new URLSearchParams(params)).toString()
+    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
+    const key = `${method}:${urlParams}`
     stage.commitState({
       queueCallbacks: stage.state.queueCallbacks?.slice(1),
       loading: undefined,
@@ -97,8 +101,8 @@ function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     const { state } = stage
 
     if (!state.store) return undefined
-    const searchParams = new URLSearchParams(params)
-    const urlParams = `${endpoint}${searchParams.toString()}`
+    const searchParams = (new URLSearchParams(params)).toString()
+    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
     const key = `${method}:${urlParams}`
     return state.store.get(key)
   }
