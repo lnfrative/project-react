@@ -15,6 +15,7 @@ interface BackendResponser extends BackendMethods<Responser> {}
 interface BackendRequester extends BackendMethods<Requester> {}
 
 interface QueueCallback {
+  id: string,
   callback: () => Promise<Response>,
   method: BackendRequestMethodsAllowed,
   endpoint: string,
@@ -64,12 +65,14 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
 
     const { state } = stage
-    const key = `${method}:${urlParams}`
+    const id = `${method}:${urlParams}`
 
-    if ((updateCache || !state.store?.get(key)) && state.queueCallbacks) {
+    const [inQueue] = state.queueCallbacks?.filter(queueCallback => queueCallback.id === id) ?? []
+
+    if ((updateCache || !state.store?.get(id)) && state.queueCallbacks && !inQueue) {
       const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
       const callback = () => fetch(path, requestInit)
-      stage.state.queueCallbacks?.push({ callback, method, endpoint, params })
+      stage.state.queueCallbacks?.push({ callback, method, endpoint, params, id })
       stage.commitState({})
     }
   }
@@ -78,17 +81,14 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
 async function loader(stage: Stage<State>) {
   const { loading, store } = stage.state
   if (loading) {
-    const { callback, method, endpoint, params } = loading
+    const { callback, id } = loading
     const requested = await callback()
     const response: BackendResponse = await requested.json()
 
-    const searchParams = (new URLSearchParams(params)).toString()
-    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
-    const key = `${method}:${urlParams}`
     stage.commitState({
       queueCallbacks: stage.state.queueCallbacks?.slice(1),
       loading: undefined,
-      store: (store ? store : new Map<string, BackendResponse>()).set(key, response),
+      store: (store ? store : new Map<string, BackendResponse>()).set(id, response),
     })
   }
 }
@@ -103,8 +103,8 @@ function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     if (!state.store) return undefined
     const searchParams = (new URLSearchParams(params)).toString()
     const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
-    const key = `${method}:${urlParams}`
-    return state.store.get(key)
+    const id = `${method}:${urlParams}`
+    return state.store.get(id)
   }
 }
 
