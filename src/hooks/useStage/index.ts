@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useReducer } from 'react'
 import { Stage } from '@/utilities/Interfaces'
 
+function reducer(state, commit) {
+  return { ...state, ...commit }
+}
+
 function useStage<S>(initialState: S): Stage<S> {
-  const [state, setState] = useState(initialState)
-  const commitState = (commit) => {
-    setTimeout(() => {
-      setState({ ...state, ...commit })
-    }, 0)
-  }
+  const [state, commitState] = useReducer(reducer, initialState)
   return { state, commitState }
 }
 
