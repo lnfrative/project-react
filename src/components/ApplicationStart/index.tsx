@@ -11,13 +11,16 @@ import { Backend } from '@/contexts'
 function ApplicationStart(props: PropsWithChildren<{}>) {
   const { request, response } = useContext(Backend)
   const user = response.get({ endpoint: resources.endpoints.get.user })
+  const csrf = response.get({ endpoint: resources.endpoints.get.userCsrf })
 
   useEffect(() => {
     request.get({ endpoint: resources.endpoints.get.userCsrf })
     request.get({ endpoint: resources.endpoints.get.user })
   }, [])
 
-  if (!user) return null
+  // TODO: Replace null with a preload.
+  if (!user?.success) return null
+  if (!csrf?.success) return null
   return props.children
 }
 

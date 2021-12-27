@@ -46,35 +46,35 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
   return (args: {
     endpoint: string, params?: Record<string, string>, updateCache?: boolean
   }) => {
+    const { state } = stage
     const { endpoint, params, updateCache } = args
-    const requestInit: RequestInit = {}
-    requestInit.credentials = 'include'
-    requestInit.method = method
-    requestInit.headers = {
-      Authorization: `Bearer ${extractCookie('access_token')}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': `${stage.state.store?.get(`GET:${resources.endpoints.get.userCsrf}`)?.data}`,
-    }
-
-    if (method !== 'GET') {
-      requestInit.body = JSON.stringify(params)
-    }
 
     const searchParams = (new URLSearchParams(params)).toString()
     const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
-
-    const { state } = stage
     const id = `${method}:${urlParams}`
-
     const [inQueue] = state.queueCallbacks?.filter(queueCallback => queueCallback.id === id) ?? []
 
     if ((updateCache || !state.store?.get(id)) && state.queueCallbacks && !inQueue) {
+      const requestInit: RequestInit = {}
+      requestInit.credentials = 'include'
+      requestInit.method = method
+      requestInit.headers = {
+        Authorization: `Bearer ${extractCookie('access_token')}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': `${stage.state.store?.get(`GET:${resources.endpoints.get.userCsrf}`)?.data}`,
+      }
+  
+      if (method !== 'GET') {
+        requestInit.body = JSON.stringify(params)
+      }
+  
       const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
       const callback = () => fetch(path, requestInit)
       stage.state.queueCallbacks?.push({ callback, method, endpoint, params, id })
       stage.commitState({})
     }
+
   }
 }
 

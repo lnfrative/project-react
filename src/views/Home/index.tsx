@@ -1,5 +1,5 @@
 // region import
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 // contexts
 import { Backend } from '@/contexts'
@@ -17,12 +17,25 @@ import {
 } from '@/components'
 // endregion
 
-const Dashboard = () => (
-  <HeaderDashboard>
-    <GroupDashboardBenefits />
-    <GroupDashboardWallets />
-  </HeaderDashboard>
-)
+function Dashboard() {
+  const { request, response } = useContext(Backend)
+  const user = response.get({ endpoint: resources.endpoints.get.user })
+  const endpointWallets = resources.endpoints.get.wallets(user?.data?.id)
+  const wallets = response.get({ endpoint: endpointWallets })
+
+  useEffect(() => {
+    request.get({ endpoint: endpointWallets })
+  }, [])
+
+  // TODO: Replace null with a preload.
+  if (!wallets?.success) return null
+  return (
+    <HeaderDashboard>
+      <GroupDashboardBenefits />
+      <GroupDashboardWallets />
+    </HeaderDashboard>
+  )
+}
 
 const Login = () => (
   <GridForm>
