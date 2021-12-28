@@ -19,12 +19,10 @@ import {
 
 function Dashboard() {
   const { request, response } = useContext(Backend)
-  const user = response.get({ endpoint: resources.endpoints.get.user })
-  const endpointWallets = resources.endpoints.get.wallets(user?.data?.id)
-  const wallets = response.get({ endpoint: endpointWallets })
+  const wallets = response.get({ endpoint: resources.endpoints.get.wallets })
 
   useEffect(() => {
-    request.get({ endpoint: endpointWallets })
+    request.get({ endpoint: resources.endpoints.get.wallets })
   }, [])
 
   // TODO: Replace null with a preload.

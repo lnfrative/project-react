@@ -8,6 +8,16 @@
   border-radius: var(--border-radius-standard);
 }
 
+.emptyMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-variety-main-shadow);
+
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
 .row {
   display: grid;
   overflow: auto;

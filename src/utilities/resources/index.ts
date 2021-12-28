@@ -31,7 +31,7 @@ const endpoints = {
   get: {
     userCsrf: '/api/user/csrf',
     user: '/api/user',
-    wallets: (userId) => `accounts/${userId}/wallets`,
+    wallets: '/api/user/wallets',
   },
   post: {
     userCreateAccessToken: '/api/user/create/access-token',

@@ -107,4 +107,8 @@ export default {
     en: 'Available coins',
     es: 'Monedas disponibles',
   },
+  NO_WALLETS_CREATED: {
+    en: 'There is no wallet created yet.',
+    es: 'Aún no has creado alguna billetera.',
+  },
 }

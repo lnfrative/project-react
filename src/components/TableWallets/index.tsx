@@ -1,9 +1,13 @@
 // region import
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
+// contexts
+import { Backend } from '@/contexts'
+
 // utilities
-import { message } from '@/utilities'
+import { BackendWallet } from '@/utilities/Interfaces'
+import { resources, message } from '@/utilities'
 
 // components
 import {
@@ -47,15 +51,23 @@ const testValueVariation = [
   { value: 10, timestamp: 120 },
 ]
 
-const items = [0, 1, 2, 3]
+const endpointWallets = resources.endpoints.get.wallets
 
 function TableWallets() {
+  const { response } = useContext(Backend)
   const styles = nestStyles()
+  const wallets: Array<BackendWallet> = response.get({ endpoint: endpointWallets })?.data
+
   return (
     <div className={styles.container}>
       <Header />
-      {items.map((value, index) => (
-        <Item final={items.length === index + 1} key={value} />
+      {!wallets.length && (
+        <div className={styles.messageEmpty}>
+          {message({ id: 'NO_WALLETS_CREATED' })}
+        </div>
+      )}
+      {wallets.map((wallet, index) => (
+        <Item final={wallets.length === index + 1} key={wallet.coin_id} />
       ))}
       <div className={styles.addRow}>
         <div className={styles.containerLine}>

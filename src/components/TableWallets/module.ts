@@ -18,6 +18,7 @@ function nestStyles(props?: ItemProps | undefined) {
     containerLine: styles.containerLine,
     addSegment: styles.addSegment,
     addSegmentSuperior: classNames(styles.addSegmentSuperior, styles.addSegment),
+    messageEmpty: styles.emptyMessage,
   }
 }
 
