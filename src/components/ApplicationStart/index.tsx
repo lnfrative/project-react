@@ -19,7 +19,7 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
   }, [])
 
   // TODO: Replace null with a preload.
-  if (!user?.success) return null
+  if (!user) return null
   if (!csrf?.success) return null
   return props.children
 }
