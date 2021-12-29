@@ -34,10 +34,14 @@ const endpoints = {
     user: '/api/user',
     wallets: '/api/user/wallets',
     coins: '/api/coins',
+    newaddress: '/api/user/wallets/{ticker}/newaddress',
   },
   post: {
     userCreateAccessToken: '/api/user/create/access-token',
     user: '/api/user',
+  },
+  aliases: {
+    ticker: '{ticker}',
   },
 }
 

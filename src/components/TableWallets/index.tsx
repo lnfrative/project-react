@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import { Backend } from '@/contexts'
 
 // utilities
-import { BackendWallet } from '@/utilities/Interfaces'
+import { BackendCoin } from '@/utilities/Interfaces'
+import { BackendWallets } from '@/utilities/Types'
 import { resources, message } from '@/utilities'
 
 // components
@@ -51,12 +52,14 @@ const testValueVariation = [
   { value: 10, timestamp: 120 },
 ]
 
-const endpointWallets = resources.endpoints.get.wallets
+const endwallets = resources.endpoints.get.wallets
+const endpointCoins = resources.endpoints.get.coins
 
 function TableWallets() {
   const { response } = useContext(Backend)
   const styles = nestStyles()
-  const wallets: Array<BackendWallet> = response.get({ endpoint: endpointWallets })?.data
+  const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data
+  const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
 
   return (
     <div className={styles.container}>
@@ -69,17 +72,21 @@ function TableWallets() {
       {wallets.map((wallet, index) => (
         <Item final={wallets.length === index + 1} key={wallet.coin_id} />
       ))}
-      <div className={styles.addRow}>
-        <div className={styles.containerLine}>
-          <div className={styles.addSegmentSuperior} />
-          <div className={styles.addSegment} />
+      {!!coins.filter((coin) => (
+        wallets.filter((wallet) => wallet.ticker === coin.asset).length === 0
+      )).length && (
+        <div className={styles.addRow}>
+          <div className={styles.containerLine}>
+            <div className={styles.addSegmentSuperior} />
+            <div className={styles.addSegment} />
+          </div>
+          <ButtonAddWallet />
+          <div className={styles.containerLine}>
+            <div className={styles.addSegmentSuperior} />
+            <div className={styles.addSegment} />
+          </div>
         </div>
-        <ButtonAddWallet />
-        <div className={styles.containerLine}>
-          <div className={styles.addSegmentSuperior} />
-          <div className={styles.addSegment} />
-        </div>
-      </div>
+      )}
     </div>
   )
 }
