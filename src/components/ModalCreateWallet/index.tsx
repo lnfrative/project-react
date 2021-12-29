@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 
 // utilities
 import { BackendCoin } from '@/utilities/Interfaces'
+import { BackendWallets } from '@/utilities/Types'
 import { message, resources } from '@/utilities'
 
 // components
@@ -23,10 +24,14 @@ import { closeModal } from './module'
 import styles from './style.css'
 // endregion
 
+const endpointCoins = resources.endpoints.get.coins
+const endpointWallets = resources.endpoints.get.wallets
+
 function ModalCreateWallet() {
   const { response } = useContext(Backend)
   const contextStage = useContext(ContextModal)
-  const coins: Array<BackendCoin> = response.get({ endpoint: resources.endpoints.get.coins })?.data
+  const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
+  const wallets: BackendWallets = response.get({ endpoint: endpointWallets })?.data
 
   return (
     <Modal>
@@ -38,14 +43,18 @@ function ModalCreateWallet() {
           </ButtonIcon>
         </div>
         <div>
-          {coins.map((coin) => (
-            <CoinAvailable
-              key={coin.asset}
-              id={coin.asset}
-              name={coin.name}
-              srcImageCoin={resources.coin[coin.asset].logo}
-            />
-          ))}
+          {coins.map((coin) => {
+            const [hasWallet] = wallets.filter((wallet) => wallet.ticker === coin.asset)
+            if (hasWallet) return null
+            return (
+              <CoinAvailable
+                key={coin.asset}
+                id={coin.asset}
+                name={coin.name}
+                srcImageCoin={resources.coin[coin.asset].logo}
+              />
+            )
+          })}
         </div>
       </div>
     </Modal>
