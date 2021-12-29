@@ -2,6 +2,7 @@
 import React, { useContext } from 'react'
 
 // utilities
+import { BackendCoin } from '@/utilities/Interfaces'
 import { message, resources } from '@/utilities'
 
 // components
@@ -13,7 +14,7 @@ import {
 } from '@/components'
 
 // contexts
-import { Modal as ContextModal } from '@/contexts'
+import { Modal as ContextModal, Backend } from '@/contexts'
 
 // modules
 import { closeModal } from './module'
@@ -23,7 +24,10 @@ import styles from './style.css'
 // endregion
 
 function ModalCreateWallet() {
+  const { response } = useContext(Backend)
   const contextStage = useContext(ContextModal)
+  const coins: Array<BackendCoin> = response.get({ endpoint: resources.endpoints.get.coins })?.data
+
   return (
     <Modal>
       <div className={styles.container}>
@@ -34,21 +38,14 @@ function ModalCreateWallet() {
           </ButtonIcon>
         </div>
         <div>
-          <CoinAvailable
-            id="DOGEC"
-            name="DogeCash"
-            srcImageCoin={resources.coin.dogecash.logo}
-          />
-          <CoinAvailable
-            id="DOGEC"
-            name="DogeCash"
-            srcImageCoin={resources.coin.dogecash.logo}
-          />
-          <CoinAvailable
-            id="DOGEC"
-            name="DogeCash"
-            srcImageCoin={resources.coin.dogecash.logo}
-          />
+          {coins.map((coin) => (
+            <CoinAvailable
+              key={coin.asset}
+              id={coin.asset}
+              name={coin.name}
+              srcImageCoin={resources.coin[coin.asset].logo}
+            />
+          ))}
         </div>
       </div>
     </Modal>

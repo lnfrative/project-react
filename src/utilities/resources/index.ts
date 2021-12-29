@@ -4,6 +4,10 @@ import {
   RouteParamsSetting,
 } from '@/utilities/Interfaces'
 
+interface ResourceCoin {
+  logo: string,
+}
+
 const routeParamsCoin: RouteParamsCoin = {
   nameCoin: 'nameCoin',
   nameCoinDetail: 'nameCoinDetail',
@@ -18,12 +22,9 @@ const routeParams = {
   ...routeParamsSetting,
 }
 
-const coin = {
-  dogecash: {
-    name: 'DogeCash',
-    id: 'DOGEC',
+const coin: Record<string, ResourceCoin> = {
+  DOGEC: {
     logo: 'https://i.imgur.com/RjMuSiN.png',
-    key: 'dogecash',
   },
 }
 
@@ -32,6 +33,7 @@ const endpoints = {
     userCsrf: '/api/user/csrf',
     user: '/api/user',
     wallets: '/api/user/wallets',
+    coins: '/api/coins',
   },
   post: {
     userCreateAccessToken: '/api/user/create/access-token',
