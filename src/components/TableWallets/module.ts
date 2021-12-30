@@ -1,11 +1,13 @@
 import classNames from 'classnames'
+import { BackendWallet } from '@/utilities/Interfaces'
 import styles from './style.css'
 
-interface ItemProps {
+interface WalletProps {
   final: boolean,
+  wallet: BackendWallet,
 }
 
-function nestStyles(props?: ItemProps | undefined) {
+function nestStyles(props?: WalletProps | undefined) {
   return {
     container: styles.container,
     header: classNames(styles.row, styles.header, styles.borderBottom),
@@ -26,4 +28,4 @@ export {
   nestStyles,
 }
 
-export type { ItemProps }
+export type { WalletProps }

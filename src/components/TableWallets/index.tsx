@@ -22,7 +22,7 @@ import {
 } from '@/components'
 
 // modules
-import { nestStyles, ItemProps } from './module'
+import { nestStyles, WalletProps } from './module'
 // endregion
 
 const testValueVariation = [
@@ -70,7 +70,7 @@ function TableWallets() {
         </div>
       )}
       {wallets.map((wallet, index) => (
-        <Item final={wallets.length === index + 1} key={wallet.coin_id} />
+        <Wallet wallet={wallet} final={wallets.length === index + 1} key={wallet.coin_id} />
       ))}
       {!!coins.filter((coin) => (
         wallets.filter((wallet) => wallet.ticker === coin.asset).length === 0
@@ -122,12 +122,12 @@ function Header() {
   )
 }
 
-function Item(props: ItemProps) {
+function Wallet(props: WalletProps) {
   const styles = nestStyles(props)
   return (
     <Link to="/coin/dogecash" className={styles.item}>
-      <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={254.00000084} name="DogeCash" shortname="DOGE" />
-      <ValuePrice value={0.02465} />
+      <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={props.wallet.balance} name="DogeCash" shortname="DOGE" />
+      <ValuePrice value={0.024} />
       <ValueVariation design="small" value={4.54} />
       <ValuePool valueDecimal={454.00000084} valuePercentage={0.113} />
       <CanvasValueVariation coordsValueVariation={testValueVariation} />
