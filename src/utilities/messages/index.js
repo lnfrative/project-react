@@ -116,11 +116,15 @@ export default {
     es: 'Cargando protección CSRF',
   },
   LOADING_SESSION: {
-    en: 'Loading session',
-    es: 'Cargando sesión',
+    en: 'Loading session.',
+    es: 'Cargando sesión.',
   },
   LOADING_COINS: {
     en: 'Loading available currencies.',
     es: 'Cargando monedas disponibles',
+  },
+  LOADING_WALLLETS: {
+    en: 'Loading wallets.',
+    es: 'Cargando billeteras.',
   },
 }

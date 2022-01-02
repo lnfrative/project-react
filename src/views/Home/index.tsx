@@ -23,7 +23,7 @@ function Dashboard() {
   const wallets = response.get({ endpoint: resources.endpoints.get.wallets })
 
   useEffect(() => {
-    request.get({ endpoint: resources.endpoints.get.wallets })
+    request.get({ endpoint: resources.endpoints.get.wallets, label: 'LOADING_WALLLETS' })
   }, [])
 
   if (!wallets?.success) return <PreloadPage />
