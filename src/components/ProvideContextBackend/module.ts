@@ -28,36 +28,8 @@ const initialState: State = {
   loading: undefined,
 }
 
-function extractCookie(cookieName: string): string {
-  const { cookie } = document
-  if (cookie.indexOf(cookieName) === -1) return ''
-  return cookie.split(`${cookieName}=`)[1].split(';')[0]
-}
-
-function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): Requester {
-  return (args: {
-    endpoint: string, params?: Record<string, string>, updateCache?: boolean, label?: string,
-  }) => {
-    const { state } = stage
-    const { endpoint, params, updateCache, label } = args
-  
-    const searchParams = (new URLSearchParams(params)).toString()
-    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
-    const id = `${method}:${urlParams}`
-    const [inQueue] = state.queueCallbacks?.filter(queueCallback => queueCallback.id === id) ?? []
-
-    if ((updateCache || !state.store?.get(id)) && state.queueCallbacks && !inQueue) {
-      const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
-      const callback = requestCallback(path, stage, method, params)
-      stage.state.queueCallbacks?.push({ callback, method, endpoint, params, id, label })
-      stage.commitState({})
-    }
-  }
-}
-
 function requestCallback(
   path: string,
-  stage: Stage<State>,
   method: BackendRequestMethodsAllowed,
   params?: Record<string, string>,
 ) {
@@ -69,13 +41,41 @@ function requestCallback(
     options.credentials = 'include'
     options.method = method
     options.headers = {
-      Authorization: `Bearer ${extractCookie('access_token')}`,
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': `${stage.state.store?.get(`GET:${resources.endpoints.get.userCsrf}`)?.data}`,
-      'nonce': `${~~(new Date().getTime() / 1000)}`
+      nonce: Math.trunc(new Date().getTime() / 1000).toString(),
     }
     return fetch(path, options)
+  }
+}
+
+function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): Requester {
+  return (args: {
+    endpoint: string, params?: Record<string, string>, updateCache?: boolean, label?: string,
+  }) => {
+    const { state } = stage
+    const {
+      endpoint, params, updateCache, label,
+    } = args
+
+    const searchParams = (new URLSearchParams(params)).toString()
+    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
+    const id = `${method}:${urlParams}`
+    const [inQueue] = state.queueCallbacks?.filter((queueCallback) => queueCallback.id === id) ?? []
+
+    if (
+      (updateCache || !state.store?.get(id))
+      && state.queueCallbacks
+      && !inQueue
+      && stage.state.queueCallbacks
+    ) {
+      const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
+      const callback = requestCallback(path, method, params)
+      stage.state.queueCallbacks.push({
+        callback, method, endpoint, params, id, label,
+      })
+      stage.commitState({})
+    }
   }
 }
 
@@ -89,7 +89,7 @@ async function loader(stage: Stage<State>) {
     stage.commitState({
       queueCallbacks: stage.state.queueCallbacks?.slice(1),
       loading: undefined,
-      store: (store ? store : new Map<string, BackendResponse>()).set(id, response),
+      store: (store || new Map<string, BackendResponse>()).set(id, response),
     })
   }
 }
