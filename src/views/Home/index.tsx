@@ -14,6 +14,7 @@ import {
   GroupDashboardWallets,
   GridForm,
   FormAuthLogin,
+  PreloadPage,
 } from '@/components'
 // endregion
 
@@ -25,8 +26,7 @@ function Dashboard() {
     request.get({ endpoint: resources.endpoints.get.wallets })
   }, [])
 
-  // TODO: Replace null with a preload.
-  if (!wallets?.success) return null
+  if (!wallets?.success) return <PreloadPage />
   return (
     <HeaderDashboard>
       <GroupDashboardBenefits />

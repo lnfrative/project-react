@@ -11,7 +11,7 @@ import { Backend } from '@/contexts'
 import styles from './style.css'
 // endregion
 
-function PreloadApp() {
+function PreloadPage() {
   const { loading } = useContext(Backend)
 
   return (
@@ -29,4 +29,4 @@ function PreloadApp() {
   )
 }
 
-export default PreloadApp
+export default PreloadPage

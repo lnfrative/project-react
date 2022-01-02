@@ -5,7 +5,7 @@ import React, { PropsWithChildren, useContext, useEffect } from 'react'
 import { resources } from '@/utilities'
 
 // components
-import { PreloadApp } from '@/components'
+import { PreloadPage } from '@/components'
 
 // contexts
 import { Backend } from '@/contexts'
@@ -23,7 +23,7 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
     request.get({ endpoint: resources.endpoints.get.coins, label: 'LOADING_COINS' })
   }, [])
 
-  if (!user || !csrf?.success || !coins?.success) return <PreloadApp />
+  if (!user || !csrf?.success || !coins?.success) return <PreloadPage />
   return props.children
 }
 
