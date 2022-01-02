@@ -1,5 +1,5 @@
 // utilities
-import { resources } from '@/utilities'
+import { resources, readCookie } from '@/utilities'
 import { Stage, BackendResponse, QueueCallback } from '@/utilities/Interfaces'
 import { Responser, BackendRequestMethodsAllowed, Requester } from '@/utilities/Types'
 // endregion
@@ -44,6 +44,7 @@ function requestCallback(
       Accept: 'application/json',
       'Content-Type': 'application/json',
       nonce: Math.trunc(new Date().getTime() / 1000).toString(),
+      'X-CSRF-TOKEN': readCookie('XSRF-TOKEN'),
     }
     return fetch(path, options)
   }
