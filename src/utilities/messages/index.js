@@ -111,4 +111,16 @@ export default {
     en: 'There is no wallet created yet.',
     es: 'Aún no has creado alguna billetera.',
   },
+  LOADING_CSRF: {
+    en: 'Loading CSRF protection.',
+    es: 'Cargando protección CSRF',
+  },
+  LOADING_SESSION: {
+    en: 'Loading session',
+    es: 'Cargando sesión',
+  },
+  LOADING_COINS: {
+    en: 'Loading available currencies.',
+    es: 'Cargando monedas disponibles',
+  },
 }

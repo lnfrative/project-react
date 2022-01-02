@@ -1,6 +1,6 @@
 // utilities
 import { resources } from '@/utilities'
-import { Stage, BackendResponse } from '@/utilities/Interfaces'
+import { Stage, BackendResponse, QueueCallback } from '@/utilities/Interfaces'
 import { Responser, BackendRequestMethodsAllowed, Requester } from '@/utilities/Types'
 // endregion
 
@@ -13,14 +13,6 @@ interface BackendMethods<T> {
 
 interface BackendResponser extends BackendMethods<Responser> {}
 interface BackendRequester extends BackendMethods<Requester> {}
-
-interface QueueCallback {
-  id: string,
-  callback: () => Promise<Response>,
-  method: BackendRequestMethodsAllowed,
-  endpoint: string,
-  params?: Record<string, string>,
-}
 
 interface State {
   store?: Map<string, BackendResponse>,
@@ -44,10 +36,10 @@ function extractCookie(cookieName: string): string {
 
 function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): Requester {
   return (args: {
-    endpoint: string, params?: Record<string, string>, updateCache?: boolean
+    endpoint: string, params?: Record<string, string>, updateCache?: boolean, label?: string,
   }) => {
     const { state } = stage
-    const { endpoint, params, updateCache } = args
+    const { endpoint, params, updateCache, label } = args
   
     const searchParams = (new URLSearchParams(params)).toString()
     const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
@@ -57,7 +49,7 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     if ((updateCache || !state.store?.get(id)) && state.queueCallbacks && !inQueue) {
       const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
       const callback = requestCallback(path, stage, method, params)
-      stage.state.queueCallbacks?.push({ callback, method, endpoint, params, id })
+      stage.state.queueCallbacks?.push({ callback, method, endpoint, params, id, label })
       stage.commitState({})
     }
   }

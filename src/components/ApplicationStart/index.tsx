@@ -1,8 +1,11 @@
 // region import
-import { PropsWithChildren, useContext, useEffect } from 'react'
+import React, { PropsWithChildren, useContext, useEffect } from 'react'
 
 // utilities
 import { resources } from '@/utilities'
+
+// components
+import { PreloadApp } from '@/components'
 
 // contexts
 import { Backend } from '@/contexts'
@@ -15,15 +18,12 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
   const coins = response.get({ endpoint: resources.endpoints.get.coins })
 
   useEffect(() => {
-    request.get({ endpoint: resources.endpoints.get.userCsrf })
-    request.get({ endpoint: resources.endpoints.get.user })
-    request.get({ endpoint: resources.endpoints.get.coins })
+    request.get({ endpoint: resources.endpoints.get.userCsrf, label: 'LOADING_CSRF' })
+    request.get({ endpoint: resources.endpoints.get.user, label: 'LOADING_SESSION' })
+    request.get({ endpoint: resources.endpoints.get.coins, label: 'LOADING_COINS' })
   }, [])
 
-  // TODO: Replace null with a preload.
-  if (!user) return null
-  if (!csrf?.success) return null
-  if (!coins?.success) return null
+  if (!user || !csrf?.success || !coins?.success) return <PreloadApp />
   return props.children
 }
 

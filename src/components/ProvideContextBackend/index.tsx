@@ -36,7 +36,7 @@ function ProvideContextBackend(props: PropsWithChildren<{}>) {
   }, [stage.state, stage.state.loading])
 
   return (
-    <Backend.Provider value={{ request, response }}>
+    <Backend.Provider value={{ request, response, loading: stage.state.loading }}>
       {props.children}
     </Backend.Provider>
   )
