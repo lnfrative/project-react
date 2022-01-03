@@ -1,5 +1,6 @@
 // region import
 import React, { useContext } from 'react'
+import { CircularProgress } from '@mui/material'
 
 // utilities
 import { externalResources, message } from '@/utilities'
@@ -23,7 +24,14 @@ function PreloadPage() {
         height={externalResources.dogeCashLogoIcon.height}
       />
       <div className={styles.info}>
-        {!!loading?.label && message({ id: loading.label })}
+        {!!loading?.label && (
+          <>
+            <CircularProgress color="inherit" size="1rem" />
+            <span className={styles.message}>
+              {message({ id: loading.label })}
+            </span>
+          </>
+        )}
       </div>
     </div>
   )

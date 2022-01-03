@@ -15,5 +15,12 @@
 .info {
   height: 1rem;
   margin-top: var(--space-sm);
-  color: var(--color-variety-main)
+  color: var(--color-variety-main);
+
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  margin-left: var(--space-xs);
 }
