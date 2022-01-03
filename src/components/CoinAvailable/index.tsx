@@ -1,7 +1,9 @@
 // region import
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 // utilities
+import { requestId, resources } from '@/utilities'
 import { CoinAvailableProps } from '@/utilities/Interfaces'
 
 // contexts
@@ -17,18 +19,35 @@ import { onClick } from './module'
 import styles from './style.css'
 // endregion
 
+const { aliases } = resources.endpoints
+
 function CoinAvailable(props: CoinAvailableProps) {
-  const { request } = useContext(Backend)
+  const backend = useContext(Backend)
   const contextModal = useContext(Modal)
+  const endnewaddress = resources.endpoints.get.newaddress.replace(aliases.ticker, props.id)
+  const newaddress = backend.response.get({ endpoint: endnewaddress })
+  const loading = backend.loading?.id === requestId('GET', endnewaddress)
+
+  useEffect(() => {
+    if (newaddress) {
+      contextModal.commitState({ id: undefined, status: 'close' })
+    }
+  }, [newaddress])
+
   return (
-    <div onClick={onClick(props, contextModal, request.get)} role="button" tabIndex={0} className={styles.container}>
-      <ImgCoin size="small" src={props.srcImageCoin} />
-      <div className={styles.details}>
-        <div className={styles.id}>{props.id}</div>
-        <div className={styles.separator}>-</div>
-        <div className={styles.name}>{props.name}</div>
+    <>
+      <div onClick={onClick(props, backend.request.get)} role="button" tabIndex={0} className={styles.container}>
+        <ImgCoin size="small" src={props.srcImageCoin} />
+        <div className={styles.details}>
+          <div className={styles.id}>{props.id}</div>
+          <div className={styles.separator}>-</div>
+          <div className={styles.name}>{props.name}</div>
+        </div>
       </div>
-    </div>
+      <Backdrop open={loading} sx={{ zIndex: 10 }}>
+        <CircularProgress />
+      </Backdrop>
+    </>
   )
 }
 

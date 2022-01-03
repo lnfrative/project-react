@@ -1,6 +1,7 @@
 // region import
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
 import { Backend } from '@/contexts'
@@ -8,7 +9,7 @@ import { Backend } from '@/contexts'
 // utilities
 import { BackendCoin } from '@/utilities/Interfaces'
 import { BackendWallets } from '@/utilities/Types'
-import { resources, message } from '@/utilities'
+import { resources, message, requestId } from '@/utilities'
 
 // components
 import {
@@ -56,7 +57,7 @@ const endwallets = resources.endpoints.get.wallets
 const endpointCoins = resources.endpoints.get.coins
 
 function TableWallets() {
-  const { response } = useContext(Backend)
+  const { response, loading } = useContext(Backend)
   const styles = nestStyles()
   const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data
   const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
@@ -70,7 +71,11 @@ function TableWallets() {
         </div>
       )}
       {wallets.map((wallet, index) => (
-        <Wallet wallet={wallet} final={wallets.length === index + 1} key={wallet.coin_id} />
+        <Wallet
+          key={`${wallet.coin_id}_${wallet.ticker}`}
+          wallet={wallet}
+          final={wallets.length === index + 1}
+        />
       ))}
       {!!coins.filter((coin) => (
         wallets.filter((wallet) => wallet.ticker === coin.asset).length === 0
@@ -87,6 +92,9 @@ function TableWallets() {
           </div>
         </div>
       )}
+      <Backdrop open={loading?.id === requestId('GET', endwallets)} sx={{ zIndex: 10 }}>
+        <CircularProgress />
+      </Backdrop>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { ContextModalState, Stage, CoinAvailableProps } from '@/utilities/Interfaces'
+import { CoinAvailableProps } from '@/utilities/Interfaces'
 import { Requester } from '@/utilities/Types'
 import { resources } from '@/utilities'
 
@@ -7,12 +7,11 @@ const endwallets = resources.endpoints.get.wallets
 const endaliases = resources.endpoints.aliases
 
 function onClick(
-  props: CoinAvailableProps, contextModal: Stage<ContextModalState>, request: Requester,
+  props: CoinAvailableProps, request: Requester,
 ) {
   return () => {
     request({ endpoint: endnewaddress.replace(endaliases.ticker, props.id) })
     request({ endpoint: endwallets, updateCache: true })
-    contextModal.commitState({ status: 'close', id: undefined })
   }
 }
 
