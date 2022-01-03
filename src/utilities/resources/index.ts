@@ -66,8 +66,10 @@ const path = {
 }
 
 const colors = {
-  color_variety_upstream: '#C8FCA3',
-  color_variety_dowsntream: '#FF8C8C',
+  variety_upstream: '#C8FCA3',
+  variety_dowsntream: '#FF8C8C',
+  variety_main: '#D0CBE6',
+  passive_pager: '#27262D',
 }
 
 export default {

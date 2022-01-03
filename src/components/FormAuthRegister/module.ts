@@ -24,6 +24,7 @@ function onSubmit(backend: ContextBackend, stage: Stage<InitialState>) {
         email: email.value,
         password: password.value,
       },
+      updateCache: true,
     })
   }
 }

@@ -97,12 +97,14 @@ async function loader(stage: Stage<State>) {
 
 function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): Responser {
   return (args: {
-    endpoint: string, params?: Record<string, string>,
+    endpoint?: string, params?: Record<string, string>, id?: string,
   }) => {
     const { endpoint, params } = args
     const { state } = stage
 
     if (!state.store) return undefined
+    if (args.id) return state.store.get(args.id)
+    if (!endpoint) return undefined
     const id = requestId(method, endpoint, params)
     return state.store.get(id)
   }

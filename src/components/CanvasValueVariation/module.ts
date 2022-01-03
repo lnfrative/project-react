@@ -20,7 +20,7 @@ function drawCanvasCurve(ref: RefObject<HTMLCanvasElement>, coords: Array<CoordV
     context.lineTo(coord.timestamp, coord.value)
   })
 
-  context.strokeStyle = resources.colors.color_variety_upstream
+  context.strokeStyle = resources.colors.variety_upstream
   context.stroke()
 }
 

@@ -8,6 +8,7 @@ function onSubmit(backend: ContextBackend) {
     backend.request.post({
       endpoint: resources.endpoints.post.userCreateAccessToken,
       params: { email, password },
+      updateCache: true,
     })
   }
 }

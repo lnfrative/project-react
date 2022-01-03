@@ -1,6 +1,6 @@
 interface BackendResponse {
   success?: boolean,
-  error?: object | string,
+  error?: string,
   data?: any,
 }
 
