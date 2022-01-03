@@ -1,5 +1,6 @@
 // region import
 import React, { useContext, useEffect } from 'react'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 // hooks
 import { useForm } from '@/hooks'
@@ -17,7 +18,7 @@ import {
 } from '@/components'
 
 // utilties
-import { message, resources } from '@/utilities'
+import { message, resources, requestId } from '@/utilities'
 
 // modules
 import { onSubmit } from './module'
@@ -26,17 +27,21 @@ import { onSubmit } from './module'
 import styles from './style.css'
 // endregion
 
+const endlogin = resources.endpoints.post.userCreateAccessToken
+
 function FormAuthLogin() {
   const backend = useContext(Backend)
   const { register, handleSubmit, watch } = useForm()
   const { email, password } = watch
+  const params = {
+    email: email?.value,
+    password: password?.value,
+  }
   const response = backend.response.post({
-    endpoint: resources.endpoints.post.userCreateAccessToken,
-    params: {
-      email: email?.value,
-      password: password?.value,
-    },
+    endpoint: endlogin,
+    params,
   })
+  const loading = backend.loading?.id === requestId('POST', endlogin, params)
 
   useEffect(() => {
     if (response?.success) {
@@ -62,6 +67,9 @@ function FormAuthLogin() {
           linkName={message({ id: 'SIGN_UP' })}
         />
       </FormAuth>
+      <Backdrop open={loading} sx={{ zIndex: 10 }}>
+        <CircularProgress />
+      </Backdrop>
     </form>
   )
 }

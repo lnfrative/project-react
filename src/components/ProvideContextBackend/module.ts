@@ -1,5 +1,5 @@
 // utilities
-import { resources, readCookie } from '@/utilities'
+import { resources, readCookie, requestId } from '@/utilities'
 import { Stage, BackendResponse, QueueCallback } from '@/utilities/Interfaces'
 import { Responser, BackendRequestMethodsAllowed, Requester } from '@/utilities/Types'
 // endregion
@@ -61,7 +61,7 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
 
     const searchParams = (new URLSearchParams(params)).toString()
     const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
-    const id = `${method}:${urlParams}`
+    const id = requestId(method, endpoint, params)
     const [inQueue] = state.queueCallbacks?.filter((queueCallback) => queueCallback.id === id) ?? []
 
     if (
@@ -103,9 +103,7 @@ function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
     const { state } = stage
 
     if (!state.store) return undefined
-    const searchParams = (new URLSearchParams(params)).toString()
-    const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
-    const id = `${method}:${urlParams}`
+    const id = requestId(method, endpoint, params)
     return state.store.get(id)
   }
 }
