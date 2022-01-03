@@ -1,5 +1,6 @@
 // region import
 import React, { useContext, useEffect } from 'react'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
 import { Backend } from '@/contexts'
@@ -8,7 +9,7 @@ import { Backend } from '@/contexts'
 import { useStage, useForm } from '@/hooks'
 
 // utilities
-import { message, resources } from '@/utilities'
+import { message, resources, requestId } from '@/utilities'
 
 // components
 import {
@@ -23,21 +24,29 @@ import {
 
 // module
 import { initialState, onCheckTerms, onSubmit } from './module'
+
+// styles
+import styles from './style.css'
 // endregion
+
+const enduser = resources.endpoints.get.user
+const endregister = resources.endpoints.post.user
 
 function FormAuthRegister() {
   const stage = useStage(initialState)
   const backend = useContext(Backend)
   const { register, watch, handleSubmit } = useForm()
   const { password, email, repeatedPassword } = watch
-  const userResponse = backend.response.get({ endpoint: resources.endpoints.get.user })
+  const params = {
+    email: email?.value,
+    password: password?.value,
+  }
+  const userResponse = backend.response.get({ endpoint: enduser })
   const createUserResponse = backend.response.post({
-    endpoint: resources.endpoints.post.user,
-    params: {
-      email: email?.value,
-      password: password?.value,
-    },
+    endpoint: endregister,
+    params,
   })
+  const loading = backend.loading?.id === requestId('POST', endregister, params)
 
   useEffect(() => {
     if (userResponse?.success || createUserResponse?.success) {
@@ -77,6 +86,12 @@ function FormAuthRegister() {
           linkName={message({ id: 'LOG_IN' })}
         />
       </FormAuth>
+      <Backdrop open={loading} sx={{ zIndex: 10 }}>
+        <div className={styles.loader}>
+          <CircularProgress />
+          <div className={styles.loaderMessage}>{message({ id: 'LONG_TIME_ACTION' })}</div>
+        </div>
+      </Backdrop>
     </form>
   )
 }

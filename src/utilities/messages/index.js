@@ -127,4 +127,8 @@ export default {
     en: 'Loading wallets.',
     es: 'Cargando billeteras.',
   },
+  LONG_TIME_ACTION: {
+    en: 'This action may take a few seconds, do not reload the page.',
+    es: 'Esta acción puede tomar unos segundos, no recargues la página.',
+  },
 }
