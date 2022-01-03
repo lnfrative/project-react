@@ -26,6 +26,15 @@ const coin: Record<string, ResourceCoin> = {
   DOGEC: {
     logo: 'https://i.imgur.com/RjMuSiN.png',
   },
+  BTC: {
+    logo: 'https://i.imgur.com/RjMuSiN.png',
+  },
+  SCC: {
+    logo: 'https://i.imgur.com/RjMuSiN.png',
+  },
+  LTC: {
+    logo: 'https://i.imgur.com/RjMuSiN.png',
+  },
 }
 
 const endpoints = {
