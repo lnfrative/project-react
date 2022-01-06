@@ -24,7 +24,7 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
 
   useEffect(() => {
     if (loading) {
-      stage.commitState({ requestId: loading.id, method: loading.method, snackbar: 'close' })
+      stage.commitState({ requestId: loading.id, method: loading.method })
     } else {
       const { state, commitState } = stage
       if (state.method && state.requestId) {
@@ -41,7 +41,7 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
     <>
       <Snackbar
         open={stage.state.snackbar === 'open'}
-        autoHideDuration={3000}
+        autoHideDuration={4000}
         onClose={closeSnackbar(stage)}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         TransitionComponent={Grow}

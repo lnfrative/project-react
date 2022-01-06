@@ -72,13 +72,13 @@ function TableWallets() {
       )}
       {wallets.map((wallet, index) => (
         <Wallet
-          key={`${wallet.coin_id}_${wallet.ticker}`}
+          key={wallet.coin_id}
           wallet={wallet}
           final={wallets.length === index + 1}
         />
       ))}
       {!!coins.filter((coin) => (
-        wallets.filter((wallet) => wallet.ticker === coin.asset).length === 0
+        wallets.filter((wallet) => wallet.coin_id === coin.id).length === 0
       )).length && (
         <div className={styles.addRow}>
           <div className={styles.containerLine}>
@@ -131,10 +131,19 @@ function Header() {
 }
 
 function Wallet(props: WalletProps) {
+  const { response } = useContext(Backend)
+  const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
+  const [coin] = coins.filter((value) => value.id === props.wallet.coin_id)
   const styles = nestStyles(props)
+  const to = `/coin/${resources.utils.normaliceCoinName(coin.name)}`
   return (
-    <Link to="/coin/dogecash" className={styles.item}>
-      <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={props.wallet.balance} name="DogeCash" shortname="DOGE" />
+    <Link to={to} className={styles.item}>
+      <ValueCoin
+        srcImageCoin={resources.coin[resources.utils.normaliceCoinName(coin.name)].logo}
+        value={props.wallet.balance}
+        name={coin.name}
+        shortname={coin.asset}
+      />
       <ValuePrice value={0.024} />
       <ValueVariation design="small" value={4.54} />
       <ValuePool valueDecimal={454.00000084} valuePercentage={0.113} />

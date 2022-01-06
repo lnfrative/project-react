@@ -1,7 +1,8 @@
 interface CoinAvailableProps {
   srcImageCoin: string,
   name: string,
-  id: string,
+  id: number,
+  asset: string,
 }
 
 export default CoinAvailableProps

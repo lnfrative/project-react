@@ -10,7 +10,7 @@ function onClick(
   props: CoinAvailableProps, request: Requester,
 ) {
   return () => {
-    request({ endpoint: endnewaddress.replace(endaliases.ticker, props.id) })
+    request({ endpoint: endnewaddress.replace(endaliases.coinId, props.id.toString()) })
     request({ endpoint: endwallets, updateCache: true })
   }
 }

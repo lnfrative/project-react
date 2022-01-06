@@ -44,14 +44,15 @@ function ModalCreateWallet() {
         </div>
         <div>
           {coins.map((coin) => {
-            const [hasWallet] = wallets.filter((wallet) => wallet.ticker === coin.asset)
+            const [hasWallet] = wallets.filter((wallet) => wallet.coin_id === coin.id)
             if (hasWallet) return null
             return (
               <CoinAvailable
-                key={coin.asset}
-                id={coin.asset}
+                key={coin.id}
+                id={coin.id}
                 name={coin.name}
-                srcImageCoin={resources.coin[coin.asset].logo}
+                asset={coin.asset}
+                srcImageCoin={resources.coin[resources.utils.normaliceCoinName(coin.name)].logo}
               />
             )
           })}

@@ -23,16 +23,16 @@ const routeParams = {
 }
 
 const coin: Record<string, ResourceCoin> = {
-  DOGEC: {
+  dogecash: {
     logo: 'https://dev-account.dogecash.org/assets/coins/DogeCash/logo.svg',
   },
-  BTC: {
+  bitcoin: {
     logo: 'https://dev-account.dogecash.org/assets/coins/Bitcoin/logo.svg',
   },
-  SCC: {
+  stakecube: {
     logo: 'https://dev-account.dogecash.org/assets/coins/Stakecube/logo.png',
   },
-  LTC: {
+  litecoin: {
     logo: 'https://dev-account.dogecash.org/assets/coins/Litecoin/logo.svg',
   },
 }
@@ -43,14 +43,14 @@ const endpoints = {
     user: '/api/user',
     wallets: '/api/user/wallets',
     coins: '/api/coins',
-    newaddress: '/api/user/wallets/{ticker}/newaddress',
+    newaddress: '/api/user/wallets/{coinId}/newaddress',
   },
   post: {
     userCreateAccessToken: '/api/user/create/access-token',
     user: '/api/user',
   },
   aliases: {
-    ticker: '{ticker}',
+    coinId: '{coinId}',
   },
 }
 
@@ -72,10 +72,19 @@ const colors = {
   passive_pager: '#27262D',
 }
 
+function normaliceCoinName(name: string) {
+  return name.toLowerCase().replace(/ +/g, '_')
+}
+
+const utils = {
+  normaliceCoinName,
+}
+
 export default {
   endpoints,
   path,
   routeParams,
   colors,
   coin,
+  utils,
 }

@@ -5,6 +5,7 @@ interface BackendCoin {
   staking: number,
   masternodes: number,
   poolbalance?: number,
+  id: number,
 }
 
 export default BackendCoin
