@@ -33,6 +33,9 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
         if (backendResponse?.error) {
           commitState({ error: backendResponse.error, snackbar: 'open' })
         }
+        if (backendResponse?.code === 401) {
+          window.location.reload()
+        }
       }
     }
   }, [loading])
