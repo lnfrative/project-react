@@ -151,7 +151,7 @@ function Wallet(props: WalletProps) {
           value={coin.market_data.prices[currency.state.id]}
         />
       )}
-      <ValueVariation design="small" value={4.54} />
+      <ValueVariation design="small" value={coin.market_data.price_change_24h} />
       <ValuePool valueDecimal={454.00000084} valuePercentage={0.113} />
       <CanvasValueVariation coordsValueVariation={testValueVariation} />
       <WalletActions />
