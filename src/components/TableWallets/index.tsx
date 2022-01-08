@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend, Currency } from '@/contexts'
 
 // utilities
 import { BackendCoin } from '@/utilities/Interfaces'
@@ -131,6 +131,7 @@ function Header() {
 }
 
 function Wallet(props: WalletProps) {
+  const currency = useContext(Currency)
   const { response } = useContext(Backend)
   const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
   const [coin] = coins.filter((value) => value.id === props.wallet.coin_id)
@@ -144,7 +145,12 @@ function Wallet(props: WalletProps) {
         name={coin.name}
         shortname={coin.asset}
       />
-      <ValuePrice value={0.024} />
+      {/* TODO: Show a loading if currency has not be define. */}
+      {!!currency.state.id && (
+        <ValuePrice
+          value={Math.floor(coin.market_data.prices[currency.state.id] * 1000) / 1000}
+        />
+      )}
       <ValueVariation design="small" value={4.54} />
       <ValuePool valueDecimal={454.00000084} valuePercentage={0.113} />
       <CanvasValueVariation coordsValueVariation={testValueVariation} />

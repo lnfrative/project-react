@@ -9,6 +9,7 @@ import {
   ProvideContextView,
   ProvideContextModal,
   ProvideContextBackend,
+  ProvideContextCurrency,
   ApplicationStart,
   HandleBackendErrors,
 } from '@/components'
@@ -32,20 +33,22 @@ const App = (
     <ProvideContextModal>
       <ProvideContextView>
         <ProvideContextCoin>
-          <ApplicationStart>
-            <HandleBackendErrors>
-              <Router>
-                <Suspense fallback={null}>
-                  <Switch>
-                    <Route exact path={resources.path.home} component={Home} />
-                    <Route exact path={resources.path.signup} component={Signup} />
-                    <Route exact path={resources.path.coinSpecific} component={Coin} />
-                    <Route exact path={resources.path.settingSpecific} component={Setting} />
-                  </Switch>
-                </Suspense>
-              </Router>
-            </HandleBackendErrors>
-          </ApplicationStart>
+          <ProvideContextCurrency>
+            <ApplicationStart>
+              <HandleBackendErrors>
+                <Router>
+                  <Suspense fallback={null}>
+                    <Switch>
+                      <Route exact path={resources.path.home} component={Home} />
+                      <Route exact path={resources.path.signup} component={Signup} />
+                      <Route exact path={resources.path.coinSpecific} component={Coin} />
+                      <Route exact path={resources.path.settingSpecific} component={Setting} />
+                    </Switch>
+                  </Suspense>
+                </Router>
+              </HandleBackendErrors>
+            </ApplicationStart>
+          </ProvideContextCurrency>
         </ProvideContextCoin>
       </ProvideContextView>
     </ProvideContextModal>
