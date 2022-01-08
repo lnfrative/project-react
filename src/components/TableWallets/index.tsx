@@ -148,7 +148,7 @@ function Wallet(props: WalletProps) {
       {/* TODO: Show a loading if currency has not be define. */}
       {!!currency.state.id && (
         <ValuePrice
-          value={Math.floor(coin.market_data.prices[currency.state.id] * 1000) / 1000}
+          value={coin.market_data.prices[currency.state.id]}
         />
       )}
       <ValueVariation design="small" value={4.54} />
