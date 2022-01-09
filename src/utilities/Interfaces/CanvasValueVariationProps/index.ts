@@ -1,7 +1,6 @@
-import { CoordValueVariation } from '@/utilities/Interfaces'
-
 interface CanvasValueVariationProps {
-  coordsValueVariation: Array<CoordValueVariation>
+  coordsValueVariation: Array<[number, number]>,
+  variation: number,
 }
 
 export default CanvasValueVariationProps
