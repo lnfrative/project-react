@@ -2,7 +2,7 @@
 import { MouseEventHandler } from 'react'
 
 // utilities
-import { ContextModalState, Stage } from 'utilities/Interfaces'
+import { ContextModalState, Stage } from 'interfaces'
 // endregion
 
 function closeModal(stage: Stage<ContextModalState>): MouseEventHandler<HTMLButtonElement> {

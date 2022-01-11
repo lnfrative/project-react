@@ -9,7 +9,7 @@ import { useStage } from 'hooks'
 import { PaginationTab } from 'components'
 
 // utilities
-import { PaginationBarProps } from 'utilities/Interfaces'
+import { PaginationBarProps } from 'interfaces'
 
 // modules
 import { initialState } from './module'

@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { useStage } from 'hooks'
 
 // utilities
-import { MenuProps } from 'utilities/Interfaces'
+import { MenuProps } from 'interfaces'
 
 // modules
 import { initialState, onClick } from './module'

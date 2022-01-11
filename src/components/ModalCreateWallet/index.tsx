@@ -2,8 +2,8 @@
 import React, { useContext } from 'react'
 
 // utilities
-import { BackendCoin } from 'utilities/Interfaces'
-import { BackendWallets } from 'utilities/Types'
+import { BackendCoin } from 'interfaces'
+import { BackendWallets } from 'types'
 import { message, resources } from 'utilities'
 
 // components

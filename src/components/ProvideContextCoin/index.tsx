@@ -5,7 +5,7 @@ import React, { PropsWithChildren } from 'react'
 import { useStage } from 'hooks'
 
 // utilities
-import { ContextCoinState } from 'utilities/Interfaces'
+import { ContextCoinState } from 'interfaces'
 
 // contexts
 import { Coin } from 'contexts'

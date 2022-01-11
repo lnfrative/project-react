@@ -2,7 +2,7 @@
 import classNames from 'classnames'
 
 // utilities
-import { ValueDecimalProps } from 'utilities/Interfaces'
+import { ValueDecimalProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

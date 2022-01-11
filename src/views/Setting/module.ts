@@ -1,5 +1,5 @@
-import { Stage, PaginationObject } from 'utilities/Interfaces'
-import { PaginationOnChange } from 'utilities/Types'
+import { Stage, PaginationObject } from 'interfaces'
+import { PaginationOnChange } from 'types'
 
 interface State {
   paginationObjectSelected?: PaginationObject,

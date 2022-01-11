@@ -2,7 +2,7 @@
 import classNames from 'classnames'
 
 // utilities
-import { ButtonCombinationProps } from 'utilities/Interfaces'
+import { ButtonCombinationProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

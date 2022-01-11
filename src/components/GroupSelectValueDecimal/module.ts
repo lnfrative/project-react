@@ -1,5 +1,5 @@
-import { Stage, SelectOption } from 'utilities/Interfaces'
-import { OnSelect } from 'utilities/Types'
+import { Stage, SelectOption } from 'interfaces'
+import { OnSelect } from 'types'
 
 interface State {
   optionSelected?: SelectOption

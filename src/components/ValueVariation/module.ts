@@ -2,7 +2,7 @@
 import classNames from 'classnames'
 
 // utilities
-import { ValueVariationProps } from 'utilities/Interfaces'
+import { ValueVariationProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

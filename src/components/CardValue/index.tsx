@@ -5,7 +5,7 @@ import React from 'react'
 import { Card } from 'components'
 
 // utilities
-import { CardValueProps } from 'utilities/Interfaces'
+import { CardValueProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

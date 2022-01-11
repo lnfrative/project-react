@@ -1,4 +1,4 @@
-import { Error } from 'utilities/Interfaces'
+import { Error } from 'interfaces'
 
 const invalidEmail: Error = {
   sign: '!',

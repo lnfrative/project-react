@@ -7,7 +7,7 @@ import { useStage } from 'hooks'
 
 // utilities
 import { resources } from 'utilities'
-import { Responser } from 'utilities/Types'
+import { Responser } from 'types'
 
 // contexts
 import { Backend } from 'contexts'

@@ -1,7 +1,7 @@
 // utilities
 import { resources, readCookie, requestId } from 'utilities'
-import { Stage, BackendResponse, QueueCallback } from 'utilities/Interfaces'
-import { Responser, BackendRequestMethodsAllowed, Requester } from 'utilities/Types'
+import { Stage, BackendResponse, QueueCallback } from 'interfaces'
+import { Responser, BackendRequestMethodsAllowed, Requester } from 'types'
 // endregion
 
 interface BackendMethods<T> {

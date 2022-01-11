@@ -5,7 +5,7 @@ import React from 'react'
 import { useStage } from 'hooks'
 
 // utilities
-import { GroupSelectValueDecimalProps } from 'utilities/Interfaces'
+import { GroupSelectValueDecimalProps } from 'interfaces'
 
 // components
 import { Select, ValueDecimal } from 'components'

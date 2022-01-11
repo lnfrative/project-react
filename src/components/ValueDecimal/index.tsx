@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ValueDecimalProps } from 'utilities/Interfaces'
+import { ValueDecimalProps } from 'interfaces'
 
 // modules
 import { nestStyles } from './module'

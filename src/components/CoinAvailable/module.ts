@@ -1,5 +1,5 @@
-import { CoinAvailableProps } from 'utilities/Interfaces'
-import { Requester } from 'utilities/Types'
+import { CoinAvailableProps } from 'interfaces'
+import { Requester } from 'types'
 import { resources } from 'utilities'
 
 const endnewaddress = resources.endpoints.get.newaddress

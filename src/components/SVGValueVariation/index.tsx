@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 
 // utilities
-import { CanvasValueVariationProps } from 'utilities/Interfaces'
+import { CanvasValueVariationProps } from 'interfaces'
 
 // modules
 import { drawPolyline } from './module'

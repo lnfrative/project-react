@@ -6,7 +6,7 @@ import { useStage } from 'hooks'
 
 // utilities
 import { resources } from 'utilities'
-import { PaginationObject } from 'utilities/Interfaces'
+import { PaginationObject } from 'interfaces'
 
 // contexts
 import { View as ContextView } from 'contexts'

@@ -1,4 +1,4 @@
-import { PaginationObject } from 'utilities/Interfaces'
+import { PaginationObject } from 'interfaces'
 
 interface State {
   paginationObjectMatch?: PaginationObject

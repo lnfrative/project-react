@@ -7,8 +7,8 @@ import { Backdrop, CircularProgress } from '@mui/material'
 import { Backend, Currency } from 'contexts'
 
 // utilities
-import { BackendCoin } from 'utilities/Interfaces'
-import { BackendWallets } from 'utilities/Types'
+import { BackendCoin } from 'interfaces'
+import { BackendWallets } from 'types'
 import { resources, message, requestId } from 'utilities'
 
 // components

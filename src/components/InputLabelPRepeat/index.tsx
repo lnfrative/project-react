@@ -3,7 +3,7 @@ import React from 'react'
 
 // utilities
 import { message } from 'utilities'
-import { InputLabelPRepeatProps } from 'utilities/Interfaces'
+import { InputLabelPRepeatProps } from 'interfaces'
 
 // components
 import { InputLabel } from 'components'

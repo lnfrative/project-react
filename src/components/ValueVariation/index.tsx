@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ValueVariationProps } from 'utilities/Interfaces'
+import { ValueVariationProps } from 'interfaces'
 
 // modules
 import { nestStyles } from './module'

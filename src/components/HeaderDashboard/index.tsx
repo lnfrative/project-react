@@ -10,7 +10,7 @@ import {
 } from 'components'
 
 // utilities
-import { HeaderDashboardProps } from 'utilities/Interfaces'
+import { HeaderDashboardProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

@@ -5,7 +5,7 @@ import React, { PropsWithChildren } from 'react'
 import { useStage } from 'hooks'
 
 // utilities
-import { ContextViewState } from 'utilities/Interfaces'
+import { ContextViewState } from 'interfaces'
 
 // contexts
 import { View } from 'contexts'

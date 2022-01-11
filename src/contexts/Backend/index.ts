@@ -5,7 +5,7 @@ import { createContext } from 'react'
 import { genRequest, genResponse } from 'components/ProvideContextBackend/module'
 
 // utilities
-import { ContextBackend } from 'utilities/Interfaces'
+import { ContextBackend } from 'interfaces'
 // endregion
 
 const state = {}

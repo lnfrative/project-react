@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error, InputLabelEmailProps } from 'utilities/Interfaces'
+import { Stage, Error, InputLabelEmailProps } from 'interfaces'
 import { regex } from 'utilities'
 import { invalidEmail } from 'utilities/Errors'
 

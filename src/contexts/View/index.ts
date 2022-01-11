@@ -2,7 +2,7 @@
 import { createContext } from 'react'
 
 // utilities
-import { ContextViewState, Stage } from 'utilities/Interfaces'
+import { ContextViewState, Stage } from 'interfaces'
 // endregion
 
 const state: ContextViewState = {

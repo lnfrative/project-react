@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // utilities
-import { PaginationTabProps } from 'utilities/Interfaces'
+import { PaginationTabProps } from 'interfaces'
 
 // modules
 import { getPath, nestStyles, onClick } from './module'

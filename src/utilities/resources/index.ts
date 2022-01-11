@@ -2,7 +2,7 @@ import __vars__ from '__vars__'
 import {
   RouteParamsCoin,
   RouteParamsSetting,
-} from 'utilities/Interfaces'
+} from 'interfaces'
 
 interface ResourceCoin {
   logo: string,

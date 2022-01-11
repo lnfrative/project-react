@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { GroupDashboardProps } from 'utilities/Interfaces'
+import { GroupDashboardProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

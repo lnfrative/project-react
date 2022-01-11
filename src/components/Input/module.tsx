@@ -2,7 +2,7 @@
 import classNames from 'classnames'
 
 // interfaces
-import { Error } from 'utilities/Interfaces'
+import { Error } from 'interfaces'
 
 import styles from './index.module.css'
 // endregion

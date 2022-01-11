@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { HeaderProps } from 'utilities/Interfaces'
+import { HeaderProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 // utilities
 import { message, resources } from 'utilities'
-import { MenuOptionsUserProps } from 'utilities/Interfaces'
+import { MenuOptionsUserProps } from 'interfaces'
 
 // components
 import {

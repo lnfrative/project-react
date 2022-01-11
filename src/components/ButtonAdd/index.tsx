@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ButtonAddProps } from 'utilities/Interfaces'
+import { ButtonAddProps } from 'interfaces'
 
 // components
 import { SVGIconCross } from 'components'

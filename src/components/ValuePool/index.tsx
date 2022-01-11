@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ValuePoolProps } from 'utilities/Interfaces'
+import { ValuePoolProps } from 'interfaces'
 
 // components
 import { ValueDecimal, ValuePercentage } from 'components'

@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error, InputLabelPRepeatProps } from 'utilities/Interfaces'
+import { Stage, Error, InputLabelPRepeatProps } from 'interfaces'
 import { passwordNotMatch } from 'utilities/Errors'
 
 interface InitialState {

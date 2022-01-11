@@ -3,7 +3,7 @@ import React from 'react'
 
 // utilities
 import { message } from 'utilities'
-import { InputProps } from 'utilities/Interfaces'
+import { InputProps } from 'interfaces'
 
 // module
 import { nestStyles } from './module'

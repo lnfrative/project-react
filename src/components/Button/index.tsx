@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ButtonProps } from 'utilities/Interfaces'
+import { ButtonProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

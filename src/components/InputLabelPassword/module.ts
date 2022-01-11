@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error, InputLabelPasswordProps } from 'utilities/Interfaces'
+import { Stage, Error, InputLabelPasswordProps } from 'interfaces'
 import { invalidPassword } from 'utilities/Errors'
 import { regex } from 'utilities'
 

@@ -1,5 +1,5 @@
-import { NameCoin } from 'utilities/Types'
-import { ResourceCoinData } from 'utilities/Interfaces'
+import { NameCoin } from 'types'
+import { ResourceCoinData } from 'interfaces'
 import { resources } from 'utilities'
 
 function parseNameCoin(nameCoin: NameCoin): ResourceCoinData {

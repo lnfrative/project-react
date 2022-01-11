@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ValuePercentageProps } from 'utilities/Interfaces'
+import { ValuePercentageProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

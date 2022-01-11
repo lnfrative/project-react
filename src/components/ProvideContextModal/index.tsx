@@ -5,7 +5,7 @@ import React, { PropsWithChildren } from 'react'
 import { useStage } from 'hooks'
 
 // utilities
-import { ContextModalState } from 'utilities/Interfaces'
+import { ContextModalState } from 'interfaces'
 
 // contexts
 import { Modal } from 'contexts'

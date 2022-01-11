@@ -1,4 +1,4 @@
-import { ContextBackend } from 'utilities/Interfaces'
+import { ContextBackend } from 'interfaces'
 import { resources } from 'utilities'
 
 function onSubmit(backend: ContextBackend) {

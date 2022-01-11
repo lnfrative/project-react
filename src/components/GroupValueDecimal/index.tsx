@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { GroupValueDecimalProps } from 'utilities/Interfaces'
+import { GroupValueDecimalProps } from 'interfaces'
 
 // components
 import { ValueDecimal } from 'components'

@@ -1,5 +1,5 @@
-import { Stage } from 'utilities/Interfaces'
-import { BackendRequestMethodsAllowed } from 'utilities/Types'
+import { Stage } from 'interfaces'
+import { BackendRequestMethodsAllowed } from 'types'
 
 interface State {
   requestId?: string,

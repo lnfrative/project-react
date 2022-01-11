@@ -1,4 +1,4 @@
-import { Stage, ContextBackend } from 'utilities/Interfaces'
+import { Stage, ContextBackend } from 'interfaces'
 import { resources } from 'utilities'
 
 interface InitialState {

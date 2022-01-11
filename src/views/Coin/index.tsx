@@ -15,7 +15,7 @@ import {
 } from 'components'
 
 // utilities
-import { RouteParamsCoin, PaginationObject } from 'utilities/Interfaces'
+import { RouteParamsCoin, PaginationObject } from 'interfaces'
 import { parseNameCoin } from 'utilities/Parsers'
 import { resources } from 'utilities'
 

@@ -8,7 +8,7 @@ import { SVGIconTriangleDown } from 'components'
 import { useStage, useStrictEffect } from 'hooks'
 
 // utilities
-import { SelectProps } from 'utilities/Interfaces'
+import { SelectProps } from 'interfaces'
 
 // modules
 import {

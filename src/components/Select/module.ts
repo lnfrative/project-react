@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Stage, SelectOption, SelectProps } from 'utilities/Interfaces'
+import { Stage, SelectOption, SelectProps } from 'interfaces'
 import styles from './index.module.css'
 
 interface InitialState {

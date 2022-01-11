@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ButtonCombinationProps } from 'utilities/Interfaces'
+import { ButtonCombinationProps } from 'interfaces'
 
 // modules
 import { nestStyles } from './module'

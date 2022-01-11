@@ -9,7 +9,7 @@ import { useStage } from 'hooks'
 
 // utilities
 import { message } from 'utilities'
-import { InputLabelEmailProps } from 'utilities/Interfaces'
+import { InputLabelEmailProps } from 'interfaces'
 
 // modules
 import { onChange, initialState } from './module'

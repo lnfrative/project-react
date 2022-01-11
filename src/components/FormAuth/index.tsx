@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { FormAuthProps } from 'utilities/Interfaces'
+import { FormAuthProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

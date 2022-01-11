@@ -3,7 +3,7 @@ import React from 'react'
 
 // utilities
 import { message } from 'utilities'
-import { InputLabelPasswordProps } from 'utilities/Interfaces'
+import { InputLabelPasswordProps } from 'interfaces'
 
 // hooks
 import { useStage } from 'hooks'

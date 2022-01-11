@@ -2,7 +2,7 @@
 import React, { PropsWithChildren } from 'react'
 
 // utilities
-import { SettingPaginationProps } from 'utilities/Interfaces'
+import { SettingPaginationProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'

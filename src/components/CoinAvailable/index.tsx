@@ -4,7 +4,7 @@ import { Backdrop, CircularProgress } from '@mui/material'
 
 // utilities
 import { requestId, resources } from 'utilities'
-import { CoinAvailableProps } from 'utilities/Interfaces'
+import { CoinAvailableProps } from 'interfaces'
 
 // contexts
 import { Modal, Backend } from 'contexts'

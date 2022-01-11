@@ -1,6 +1,6 @@
 import { FormEventHandler } from 'react'
 import { useStage } from 'hooks'
-import { Stage } from 'utilities/Interfaces'
+import { Stage } from 'interfaces'
 
 function changeState(stage: Stage<{}>) {
   return (arg: { name: string }) => (value: string, hasError: boolean) => {

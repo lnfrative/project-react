@@ -16,7 +16,7 @@ import {
 
 // utilities
 import { message } from 'utilities'
-import { HeaderSegmentationProps } from 'utilities/Interfaces'
+import { HeaderSegmentationProps } from 'interfaces'
 
 // modules
 import { nestStyles } from './module'

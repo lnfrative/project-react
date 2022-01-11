@@ -3,7 +3,7 @@ import { RefObject } from 'react';
 
 // utiltiies
 import { resources } from 'utilities'
-import { CanvasValueVariationProps } from 'utilities/Interfaces'
+import { CanvasValueVariationProps } from 'interfaces'
 
 // styles
 import styles from './index.module.css'
