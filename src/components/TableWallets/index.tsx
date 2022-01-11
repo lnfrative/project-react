@@ -65,7 +65,7 @@ function TableWallets() {
           </div>
         </div>
       )}
-      <Backdrop open={loading?.id === requestId('GET', endwallets)} sx={{ zIndex: 10 }}>
+      <Backdrop open={loading?.id === requestId('get', endwallets)} sx={{ zIndex: 10 }}>
         <CircularProgress />
       </Backdrop>
     </div>

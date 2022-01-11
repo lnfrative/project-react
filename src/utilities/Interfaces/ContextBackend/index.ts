@@ -1,8 +1,8 @@
 import { BackendCallbacks, QueueCallback } from 'utilities/Interfaces'
-import { Responser, Requester } from 'utilities/Types'
+import { Responser, Requester, BackendRequestMethodsAllowed } from 'utilities/Types'
 
 interface ContextBackend {
-  response: BackendCallbacks<Responser>,
+  response: Record<BackendRequestMethodsAllowed, Responser>,
   request: BackendCallbacks<Requester>,
   loading?: QueueCallback,
 }

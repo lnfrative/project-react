@@ -28,7 +28,7 @@ function CoinAvailable(props: CoinAvailableProps) {
     aliases.coinId, props.id.toString(),
   )
   const newaddress = backend.response.get({ endpoint: endnewaddress })
-  const loading = backend.loading?.id === requestId('GET', endnewaddress)
+  const loading = backend.loading?.id === requestId('get', endnewaddress)
 
   useEffect(() => {
     if (newaddress) {

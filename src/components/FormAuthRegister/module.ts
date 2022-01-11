@@ -6,13 +6,13 @@ interface InitialState {
 }
 
 function onCheckTerms(stage: Stage<InitialState>) {
-  return (value) => {
+  return (value: boolean) => {
     stage.commitState({ termsAccepted: value })
   }
 }
 
 function onSubmit(backend: ContextBackend, stage: Stage<InitialState>) {
-  return (inputs) => {
+  return (inputs: any) => {
     const { password, email, repeatedPassword } = inputs
     if (!stage.state.termsAccepted) return
     if (password?.hasError || email?.hasError || repeatedPassword?.hasError) return

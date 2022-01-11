@@ -1,4 +1,4 @@
-export default {
+const messages: Record<string, Record<string, string>> = {
   AGREE_WITH_THE: {
     en: 'I agree with the',
     es: 'Estoy de acuerdo con los',
@@ -132,3 +132,5 @@ export default {
     es: 'Esta acción puede tomar unos segundos, no recargues la página.',
   },
 }
+
+export default messages

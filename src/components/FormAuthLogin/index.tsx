@@ -41,7 +41,7 @@ function FormAuthLogin() {
     endpoint: endlogin,
     params,
   })
-  const loading = backend.loading?.id === requestId('POST', endlogin, params)
+  const loading = backend.loading?.id === requestId('post', endlogin, params)
 
   useEffect(() => {
     if (response?.success) {

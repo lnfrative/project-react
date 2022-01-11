@@ -1,7 +1,7 @@
-import { useReducer } from 'react'
+import { SetStateAction, useReducer } from 'react'
 import { Stage } from 'utilities/Interfaces'
 
-function reducer(state, commit) {
+function reducer(state: any, commit: any) {
   return { ...state, ...commit }
 }
 

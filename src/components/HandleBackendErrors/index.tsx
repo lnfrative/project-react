@@ -28,7 +28,7 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
     } else {
       const { state, commitState } = stage
       if (state.method && state.requestId) {
-        const responser: Responser = response[state.method.toLowerCase()]
+        const responser: Responser = response[state.method]
         const backendResponse = responser({ id: state.requestId })
         if (backendResponse?.error) {
           commitState({ error: backendResponse.error, snackbar: 'open' })

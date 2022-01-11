@@ -1,8 +1,9 @@
 import { Stage } from 'utilities/Interfaces'
+import { BackendRequestMethodsAllowed } from 'utilities/Types'
 
 interface State {
   requestId?: string,
-  method?: string,
+  method?: BackendRequestMethodsAllowed,
   snackbar?: 'open' | 'close',
   error?: string,
 }

@@ -1,3 +1,3 @@
-type BackendRequestMethodsAllowed = 'GET'|'POST'|'PUT'|'DELETE'
+type BackendRequestMethodsAllowed = 'get'|'post'|'put'|'delete'
 
 export default BackendRequestMethodsAllowed

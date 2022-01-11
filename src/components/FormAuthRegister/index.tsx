@@ -46,7 +46,7 @@ function FormAuthRegister() {
     endpoint: endregister,
     params,
   })
-  const loading = backend.loading?.id === requestId('POST', endregister, params)
+  const loading = backend.loading?.id === requestId('post', endregister, params)
 
   useEffect(() => {
     if (userResponse?.success || createUserResponse?.success) {

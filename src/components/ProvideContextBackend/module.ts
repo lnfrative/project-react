@@ -11,7 +11,7 @@ interface BackendMethods<T> {
   delete: T,
 }
 
-interface BackendResponser extends BackendMethods<Responser> {}
+interface BackendResponser extends Record<string, Responser> {}
 interface BackendRequester extends BackendMethods<Requester> {}
 
 interface State {
@@ -35,7 +35,7 @@ function requestCallback(
 ) {
   return () => {
     const options: RequestInit = {}
-    if (method !== 'GET') {
+    if (method !== 'get') {
       options.body = JSON.stringify(params)
     }
     options.credentials = 'include'
@@ -70,7 +70,7 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
       && !inQueue
       && stage.state.queueCallbacks
     ) {
-      const path = `${resources.path.backendUrlBase}${method === 'GET' ? urlParams : endpoint}`
+      const path = `${resources.path.backendUrlBase}${method === 'get' ? urlParams : endpoint}`
       const callback = requestCallback(path, method, params)
       stage.state.queueCallbacks.push({
         callback, method, endpoint, params, id, label,
@@ -112,19 +112,19 @@ function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
 
 function genRequest(stage: Stage<State>): BackendRequester {
   return {
-    get: requester(stage, 'GET'),
-    post: requester(stage, 'POST'),
-    put: requester(stage, 'PUT'),
-    delete: requester(stage, 'DELETE'),
+    get: requester(stage, 'get'),
+    post: requester(stage, 'post'),
+    put: requester(stage, 'put'),
+    delete: requester(stage, 'put'),
   }
 }
 
 function genResponse(stage: Stage<State>): BackendResponser {
   return {
-    get: responser(stage, 'GET'),
-    post: responser(stage, 'POST'),
-    put: responser(stage, 'PUT'),
-    delete: responser(stage, 'DELETE'),
+    get: responser(stage, 'get'),
+    post: responser(stage, 'post'),
+    put: responser(stage, 'put'),
+    delete: responser(stage, 'delete'),
   }
 }
 
