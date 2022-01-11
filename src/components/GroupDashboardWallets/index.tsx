@@ -2,12 +2,12 @@
 import React from 'react'
 
 // utilities
-import { SelectOption } from '@/utilities/Interfaces'
+import { SelectOption } from 'utilities/Interfaces'
 
 // components
 import {
   GroupDashboard, TableWallets, GroupWallets, Select,
-} from '@/components'
+} from 'components'
 
 // styles
 import styles from './style.css'

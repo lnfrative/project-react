@@ -1,4 +1,4 @@
-import { CheckboxRhomboidProps } from '@/utilities/Interfaces'
+import { CheckboxRhomboidProps } from 'utilities/Interfaces'
 
 interface CheckboxRhomboidTermsProps {
   checkboxRhomboidProps: CheckboxRhomboidProps

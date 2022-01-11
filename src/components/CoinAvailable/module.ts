@@ -1,6 +1,6 @@
-import { CoinAvailableProps } from '@/utilities/Interfaces'
-import { Requester } from '@/utilities/Types'
-import { resources } from '@/utilities'
+import { CoinAvailableProps } from 'utilities/Interfaces'
+import { Requester } from 'utilities/Types'
+import { resources } from 'utilities'
 
 const endnewaddress = resources.endpoints.get.newaddress
 const endwallets = resources.endpoints.get.wallets

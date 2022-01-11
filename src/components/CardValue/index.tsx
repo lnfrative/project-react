@@ -2,10 +2,10 @@
 import React from 'react'
 
 // components
-import { Card } from '@/components'
+import { Card } from 'components'
 
 // utilities
-import { CardValueProps } from '@/utilities/Interfaces'
+import { CardValueProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

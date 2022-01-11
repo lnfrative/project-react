@@ -1,4 +1,4 @@
-import { PaginationObject } from '@/utilities/Interfaces'
+import { PaginationObject } from 'utilities/Interfaces'
 
 interface PaginationBarProps {
   pathParamId: string,

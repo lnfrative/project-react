@@ -1,4 +1,4 @@
-import { Error } from '@/utilities/Interfaces'
+import { Error } from 'utilities/Interfaces'
 
 const invalidEmail: Error = {
   sign: '*',

@@ -3,10 +3,10 @@ import React, { useContext } from 'react'
 import { CircularProgress } from '@mui/material'
 
 // utilities
-import { externalResources, message } from '@/utilities'
+import { externalResources, message } from 'utilities'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend } from 'contexts'
 
 // styles
 import styles from './style.css'

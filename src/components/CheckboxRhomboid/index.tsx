@@ -2,7 +2,7 @@
 import React, { useRef } from 'react'
 
 // utilities
-import { CheckboxRhomboidProps } from '@/utilities/Interfaces'
+import { CheckboxRhomboidProps } from 'utilities/Interfaces'
 
 // modules
 import { onInputClick } from './module'

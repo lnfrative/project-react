@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error, InputLabelEmailProps } from '@/utilities/Interfaces'
-import { regex } from '@/utilities'
-import { invalidEmail } from '@/utilities/Errors'
+import { Stage, Error, InputLabelEmailProps } from 'utilities/Interfaces'
+import { regex } from 'utilities'
+import { invalidEmail } from 'utilities/Errors'
 
 interface InitialState {
   error: Error | undefined,

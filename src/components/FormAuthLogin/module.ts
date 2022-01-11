@@ -1,5 +1,5 @@
-import { ContextBackend } from '@/utilities/Interfaces'
-import { resources } from '@/utilities'
+import { ContextBackend } from 'utilities/Interfaces'
+import { resources } from 'utilities'
 
 function onSubmit(backend: ContextBackend) {
   return (args: { email: any, password: any }) => {

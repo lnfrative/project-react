@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // contexts
-import { View } from '@/contexts'
+import { View } from 'contexts'
 
 // components
 import {
@@ -12,11 +12,11 @@ import {
   SVGIconGroups,
   GroupUserMenu,
   LinkBackDashboard,
-} from '@/components'
+} from 'components'
 
 // utilities
-import { message } from '@/utilities'
-import { HeaderSegmentationProps } from '@/utilities/Interfaces'
+import { message } from 'utilities'
+import { HeaderSegmentationProps } from 'utilities/Interfaces'
 
 // modules
 import { nestStyles } from './module'

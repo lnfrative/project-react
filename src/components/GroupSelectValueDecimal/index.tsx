@@ -2,13 +2,13 @@
 import React from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { GroupSelectValueDecimalProps } from '@/utilities/Interfaces'
+import { GroupSelectValueDecimalProps } from 'utilities/Interfaces'
 
 // components
-import { Select, ValueDecimal } from '@/components'
+import { Select, ValueDecimal } from 'components'
 
 // styles
 import styles from './style.css'

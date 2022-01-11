@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { ButtonAddProps } from '@/utilities/Interfaces'
+import { ButtonAddProps } from 'utilities/Interfaces'
 
 // components
-import { SVGIconCross } from '@/components'
+import { SVGIconCross } from 'components'
 
 // styles
 import styles from './style.css'

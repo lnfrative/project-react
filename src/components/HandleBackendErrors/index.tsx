@@ -3,14 +3,14 @@ import React, { PropsWithChildren, useContext, useEffect } from 'react'
 import { Snackbar, Alert, Grow } from '@mui/material'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { resources } from '@/utilities'
-import { Responser } from '@/utilities/Types'
+import { resources } from 'utilities'
+import { Responser } from 'utilities/Types'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend } from 'contexts'
 
 // modules
 import { initialState, closeSnackbar } from './module'

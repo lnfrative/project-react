@@ -2,11 +2,11 @@
 import React from 'react'
 
 // components
-import { CheckboxRhomboid } from '@/components'
+import { CheckboxRhomboid } from 'components'
 
 // utilities
-import { CheckboxRhomboidTermsProps } from '@/utilities/Interfaces'
-import { message } from '@/utilities'
+import { CheckboxRhomboidTermsProps } from 'utilities/Interfaces'
+import { message } from 'utilities'
 
 // styles
 import styles from './style.css'

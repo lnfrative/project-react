@@ -1,4 +1,4 @@
-import { ContextCurrencyState } from '@/utilities/Interfaces'
+import { ContextCurrencyState } from 'utilities/Interfaces'
 
 const initialState: ContextCurrencyState = {
   id: undefined,

@@ -2,14 +2,14 @@
 import React from 'react'
 
 // utilities
-import { message } from '@/utilities'
-import { InputLabelPasswordProps } from '@/utilities/Interfaces'
+import { message } from 'utilities'
+import { InputLabelPasswordProps } from 'utilities/Interfaces'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // components
-import { InputLabel } from '@/components'
+import { InputLabel } from 'components'
 
 // modules
 import { initialState, onChange } from './module'

@@ -2,10 +2,10 @@
 import { createContext } from 'react'
 
 // modules
-import { genRequest, genResponse } from '@/components/ProvideContextBackend/module'
+import { genRequest, genResponse } from 'components/ProvideContextBackend/module'
 
 // utilities
-import { ContextBackend } from '@/utilities/Interfaces'
+import { ContextBackend } from 'utilities/Interfaces'
 // endregion
 
 const state = {}

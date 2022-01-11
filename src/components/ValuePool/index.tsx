@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { ValuePoolProps } from '@/utilities/Interfaces'
+import { ValuePoolProps } from 'utilities/Interfaces'
 
 // components
-import { ValueDecimal, ValuePercentage } from '@/components'
+import { ValueDecimal, ValuePercentage } from 'components'
 
 // styles
 import styles from './style.css'

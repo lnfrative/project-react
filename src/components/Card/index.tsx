@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { CardProps } from '@/utilities/Interfaces'
+import { CardProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

@@ -3,13 +3,13 @@ import React, { useContext, useEffect } from 'react'
 import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend } from 'contexts'
 
 // hooks
-import { useStage, useForm } from '@/hooks'
+import { useStage, useForm } from 'hooks'
 
 // utilities
-import { message, resources, requestId } from '@/utilities'
+import { message, resources, requestId } from 'utilities'
 
 // components
 import {
@@ -20,7 +20,7 @@ import {
   InputLabelPassword,
   InputLabelPRepeat,
   LinkForm,
-} from '@/components'
+} from 'components'
 
 // module
 import { initialState, onCheckTerms, onSubmit } from './module'

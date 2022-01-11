@@ -2,13 +2,13 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { ContextViewState } from '@/utilities/Interfaces'
+import { ContextViewState } from 'utilities/Interfaces'
 
 // contexts
-import { View } from '@/contexts'
+import { View } from 'contexts'
 // endregion
 
 const initialState: ContextViewState = {

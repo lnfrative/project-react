@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { ValueCoinProps } from '@/utilities/Interfaces'
+import { ValueCoinProps } from 'utilities/Interfaces'
 
 // components
-import { ImgCoin, ValueDecimal } from '@/components'
+import { ImgCoin, ValueDecimal } from 'components'
 
 // styles
 import styles from './style.css'

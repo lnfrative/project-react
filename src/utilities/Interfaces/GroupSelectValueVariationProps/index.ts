@@ -1,4 +1,4 @@
-import { SelectOption } from '@/utilities/Interfaces'
+import { SelectOption } from 'utilities/Interfaces'
 
 interface GroupSelectValueVariationProps {
   titleSelect: string,

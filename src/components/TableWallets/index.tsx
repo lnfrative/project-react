@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
-import { Backend, Currency } from '@/contexts'
+import { Backend, Currency } from 'contexts'
 
 // utilities
-import { BackendCoin } from '@/utilities/Interfaces'
-import { BackendWallets } from '@/utilities/Types'
-import { resources, message, requestId } from '@/utilities'
+import { BackendCoin } from 'utilities/Interfaces'
+import { BackendWallets } from 'utilities/Types'
+import { resources, message, requestId } from 'utilities'
 
 // components
 import {
@@ -20,7 +20,7 @@ import {
   SVGValueVariation,
   WalletActions,
   ButtonAddWallet,
-} from '@/components'
+} from 'components'
 
 // modules
 import { nestStyles, WalletProps } from './module'

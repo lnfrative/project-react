@@ -2,14 +2,14 @@
 import React, { useEffect, useContext } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { resources } from '@/utilities'
-import { PaginationObject } from '@/utilities/Interfaces'
+import { resources } from 'utilities'
+import { PaginationObject } from 'utilities/Interfaces'
 
 // contexts
-import { View as ContextView } from '@/contexts'
+import { View as ContextView } from 'contexts'
 
 // components
 import {
@@ -19,7 +19,7 @@ import {
   SettingPaginationMisc,
   SettingPaginationProfile,
   SettingPaginationSecurity,
-} from '@/components'
+} from 'components'
 
 // modules
 import { onChangePagination, initialState } from './module'

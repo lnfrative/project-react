@@ -1,4 +1,4 @@
-import { BackendResponse } from '@/utilities/Interfaces'
+import { BackendResponse } from 'utilities/Interfaces'
 
 interface ResponserArgs {
   endpoint?: string, params?: Record<string, string>, id?: string,

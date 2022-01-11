@@ -3,10 +3,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // components
-import { SVGIconBack } from '@/components'
+import { SVGIconBack } from 'components'
 
 // utilities
-import { message, resources } from '@/utilities'
+import { message, resources } from 'utilities'
 
 // styles
 import styles from './style.css'

@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { CardWallet } from '@/components'
+import { CardWallet } from 'components'
 
 // styles
 import styles from './style.css'

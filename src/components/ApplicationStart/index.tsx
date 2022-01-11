@@ -2,13 +2,13 @@
 import React, { PropsWithChildren, useContext, useEffect } from 'react'
 
 // utilities
-import { resources } from '@/utilities'
+import { resources } from 'utilities'
 
 // components
-import { PreloadPage } from '@/components'
+import { PreloadPage } from 'components'
 
 // contexts
-import { Backend, Currency } from '@/contexts'
+import { Backend, Currency } from 'contexts'
 // endregion
 
 function ApplicationStart(props: PropsWithChildren<{}>) {

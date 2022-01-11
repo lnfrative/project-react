@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { GroupSelectValueVariationProps } from '@/utilities/Interfaces'
+import { GroupSelectValueVariationProps } from 'utilities/Interfaces'
 
 // components
-import { ValueVariation, Select } from '@/components'
+import { ValueVariation, Select } from 'components'
 
 // styles
 import styles from './style.css'

@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { externalResources } from '@/utilities'
+import { externalResources } from 'utilities'
 
 // nesters
 import { nestStyles } from './module'

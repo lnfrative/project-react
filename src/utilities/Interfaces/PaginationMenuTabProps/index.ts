@@ -1,4 +1,4 @@
-import { PaginationTabProps } from '@/utilities/Interfaces'
+import { PaginationTabProps } from 'utilities/Interfaces'
 
 interface PaginationMenuTabProps extends PaginationTabProps {
 }

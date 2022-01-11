@@ -1,4 +1,4 @@
-import { BackendWallet } from '@/utilities/Interfaces'
+import { BackendWallet } from 'utilities/Interfaces'
 
 type BackendWallets = Array<BackendWallet>
 

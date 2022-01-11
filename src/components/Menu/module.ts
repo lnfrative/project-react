@@ -1,4 +1,4 @@
-import { Stage } from '@/utilities/Interfaces'
+import { Stage } from 'utilities/Interfaces'
 
 interface InitialState {
   isOpen: boolean,

@@ -1,4 +1,4 @@
-import { BackendMarketData } from '@/utilities/Interfaces'
+import { BackendMarketData } from 'utilities/Interfaces'
 
 interface BackendCoin {
   asset: string,

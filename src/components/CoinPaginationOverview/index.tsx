@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { GroupValueDecimal } from '@/components'
+import { GroupValueDecimal } from 'components'
 
 // styles
 import styles from './style.css'

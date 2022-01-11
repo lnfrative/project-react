@@ -3,14 +3,14 @@ import React, { useContext, useEffect } from 'react'
 import { Backdrop, CircularProgress } from '@mui/material'
 
 // utilities
-import { requestId, resources } from '@/utilities'
-import { CoinAvailableProps } from '@/utilities/Interfaces'
+import { requestId, resources } from 'utilities'
+import { CoinAvailableProps } from 'utilities/Interfaces'
 
 // contexts
-import { Modal, Backend } from '@/contexts'
+import { Modal, Backend } from 'contexts'
 
 // components
-import { ImgCoin } from '@/components'
+import { ImgCoin } from 'components'
 
 // modules
 import { onClick } from './module'

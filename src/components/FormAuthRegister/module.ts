@@ -1,5 +1,5 @@
-import { Stage, ContextBackend } from '@/utilities/Interfaces'
-import { resources } from '@/utilities'
+import { Stage, ContextBackend } from 'utilities/Interfaces'
+import { resources } from 'utilities'
 
 interface InitialState {
   termsAccepted: boolean,

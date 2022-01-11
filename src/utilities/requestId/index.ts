@@ -1,4 +1,4 @@
-import { BackendRequestMethodsAllowed } from '@/utilities/Types'
+import { BackendRequestMethodsAllowed } from 'utilities/Types'
 
 function requestId(
   method: BackendRequestMethodsAllowed, endpoint: string, params?: Record<string, string>,

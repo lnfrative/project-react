@@ -12,20 +12,20 @@ import {
   ProvideContextCurrency,
   ApplicationStart,
   HandleBackendErrors,
-} from '@/components'
+} from 'components'
 
 // utilities
-import { resources } from '@/utilities'
+import { resources } from 'utilities'
 
 // // styles
-import '@/css/fonts/Aileron/index.css'
-import '@/css/index.css'
+import 'css/fonts/Aileron/index.css'
+import 'css/index.css'
 
 // views
-const Home = lazy(() => import('@/views/Home'))
-const Signup = lazy(() => import('@/views/Signup'))
-const Coin = lazy(() => import('@/views/Coin'))
-const Setting = lazy(() => import('@/views/Setting'))
+const Home = lazy(() => import('views/Home'))
+const Signup = lazy(() => import('views/Signup'))
+const Coin = lazy(() => import('views/Coin'))
+const Setting = lazy(() => import('views/Setting'))
 // endregion
 
 const App = (

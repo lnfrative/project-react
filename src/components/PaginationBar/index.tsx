@@ -3,13 +3,13 @@ import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // components
-import { PaginationTab } from '@/components'
+import { PaginationTab } from 'components'
 
 // utilities
-import { PaginationBarProps } from '@/utilities/Interfaces'
+import { PaginationBarProps } from 'utilities/Interfaces'
 
 // modules
 import { initialState } from './module'

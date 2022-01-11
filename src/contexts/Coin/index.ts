@@ -2,7 +2,7 @@
 import { createContext } from 'react'
 
 // utilities
-import { Stage, ContextCoinState } from '@/utilities/Interfaces'
+import { Stage, ContextCoinState } from 'utilities/Interfaces'
 // endregion
 
 const state: ContextCoinState = {

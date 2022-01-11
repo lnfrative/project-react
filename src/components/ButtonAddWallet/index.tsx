@@ -2,16 +2,16 @@
 import React, { useContext } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // contexts
-import { Modal as ContextModal } from '@/contexts'
+import { Modal as ContextModal } from 'contexts'
 
 // utilities
-import { message } from '@/utilities'
+import { message } from 'utilities'
 
 // components
-import { ButtonAdd, ModalCreateWallet } from '@/components'
+import { ButtonAdd, ModalCreateWallet } from 'components'
 
 // modules
 import { onClick, State } from './module'

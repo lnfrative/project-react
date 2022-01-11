@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { SettingPagination } from '@/components'
+import { SettingPagination } from 'components'
 // endregion
 
 function SettingPaginationSecurity() {

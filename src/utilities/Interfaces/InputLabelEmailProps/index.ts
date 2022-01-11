@@ -1,4 +1,4 @@
-import { RegisterInput } from '@/utilities/Types'
+import { RegisterInput } from 'utilities/Types'
 
 interface InputLabelEmailProps {
   registerInput: RegisterInput,

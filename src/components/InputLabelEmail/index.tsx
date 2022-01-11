@@ -2,14 +2,14 @@
 import React from 'react'
 
 // components
-import { InputLabel } from '@/components'
+import { InputLabel } from 'components'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { message } from '@/utilities'
-import { InputLabelEmailProps } from '@/utilities/Interfaces'
+import { message } from 'utilities'
+import { InputLabelEmailProps } from 'utilities/Interfaces'
 
 // modules
 import { onChange, initialState } from './module'

@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { SVGIconNotifications, MenuOptionsUser } from '@/components'
+import { SVGIconNotifications, MenuOptionsUser } from 'components'
 
 // styles
 import styles from './style.css'

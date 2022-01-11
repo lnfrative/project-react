@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { message } from '@/utilities'
+import { message } from 'utilities'
 
 // components
-import { ButtonCombination, ButtonIcon, SVGIconArrowDouble } from '@/components'
+import { ButtonCombination, ButtonIcon, SVGIconArrowDouble } from 'components'
 
 // styles
 import styles from './style.css'

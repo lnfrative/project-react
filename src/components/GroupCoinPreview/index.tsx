@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { GroupCoinPreviewProps } from '@/utilities/Interfaces'
+import { GroupCoinPreviewProps } from 'utilities/Interfaces'
 
 // components
-import { ImgCoin } from '@/components'
+import { ImgCoin } from 'components'
 
 // styles
 import styles from './style.css'

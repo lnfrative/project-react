@@ -2,10 +2,10 @@
 import React from 'react'
 
 // utilities
-import { message } from '@/utilities'
+import { message } from 'utilities'
 
 // components
-import { GroupSelectValueDecimal, GroupValueDecimal, GroupSelectValueVariation } from '@/components'
+import { GroupSelectValueDecimal, GroupValueDecimal, GroupSelectValueVariation } from 'components'
 
 // styles
 import styles from './style.css'

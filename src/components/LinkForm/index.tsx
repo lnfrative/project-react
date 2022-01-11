@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // utilities
-import { LinkFormProps } from '@/utilities/Interfaces'
+import { LinkFormProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

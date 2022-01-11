@@ -2,10 +2,10 @@
 import React, { useContext, useEffect } from 'react'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend } from 'contexts'
 
 // utilities
-import { resources } from '@/utilities'
+import { resources } from 'utilities'
 
 // components
 import {
@@ -15,7 +15,7 @@ import {
   GridForm,
   FormAuthLogin,
   PreloadPage,
-} from '@/components'
+} from 'components'
 // endregion
 
 function Dashboard() {

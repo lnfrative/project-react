@@ -2,10 +2,10 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // contexts
-import { Currency } from '@/contexts'
+import { Currency } from 'contexts'
 
 // modules
 import { initialState } from './module'

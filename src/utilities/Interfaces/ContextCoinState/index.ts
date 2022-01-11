@@ -1,4 +1,4 @@
-import { ResourceCoinData } from '@/utilities/Interfaces'
+import { ResourceCoinData } from 'utilities/Interfaces'
 
 interface ContextCoinState extends ResourceCoinData {
 }

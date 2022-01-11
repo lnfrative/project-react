@@ -2,7 +2,7 @@
 import { MouseEventHandler } from 'react'
 
 // utilities
-import { Stage, ContextModalState } from '@/utilities/Interfaces'
+import { Stage, ContextModalState } from 'utilities/Interfaces'
 // endregion
 
 export interface State {

@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react'
 
 // components
-import { SVGIconTriangleDown } from '@/components'
+import { SVGIconTriangleDown } from 'components'
 
 // hooks
-import { useStage, useStrictEffect } from '@/hooks'
+import { useStage, useStrictEffect } from 'hooks'
 
 // utilities
-import { SelectProps } from '@/utilities/Interfaces'
+import { SelectProps } from 'utilities/Interfaces'
 
 // modules
 import {

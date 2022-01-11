@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ValuePriceProps } from '@/utilities/Interfaces'
+import { ValuePriceProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

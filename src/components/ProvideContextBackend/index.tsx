@@ -2,10 +2,10 @@
 import React, { PropsWithChildren, useEffect } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend } from 'contexts'
 
 // modules
 import {

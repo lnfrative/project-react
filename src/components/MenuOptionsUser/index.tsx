@@ -3,8 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // utilities
-import { message, resources } from '@/utilities'
-import { MenuOptionsUserProps } from '@/utilities/Interfaces'
+import { message, resources } from 'utilities'
+import { MenuOptionsUserProps } from 'utilities/Interfaces'
 
 // components
 import {
@@ -13,7 +13,7 @@ import {
   SVGIconCheck,
   SVGIconBook,
   SVGIconLogout,
-} from '@/components'
+} from 'components'
 
 // styles
 import styles from './style.css'

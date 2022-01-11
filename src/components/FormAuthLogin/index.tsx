@@ -3,10 +3,10 @@ import React, { useContext, useEffect } from 'react'
 import { Backdrop, CircularProgress } from '@mui/material'
 
 // hooks
-import { useForm } from '@/hooks'
+import { useForm } from 'hooks'
 
 // contexts
-import { Backend } from '@/contexts'
+import { Backend } from 'contexts'
 
 // components
 import {
@@ -15,10 +15,10 @@ import {
   InputLabelPassword,
   Button,
   LinkForm,
-} from '@/components'
+} from 'components'
 
 // utilties
-import { message, resources, requestId } from '@/utilities'
+import { message, resources, requestId } from 'utilities'
 
 // modules
 import { onSubmit } from './module'

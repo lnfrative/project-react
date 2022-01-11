@@ -2,8 +2,8 @@
 import { RefObject } from 'react';
 
 // utiltiies
-import { resources } from '@/utilities'
-import { CanvasValueVariationProps } from '@/utilities/Interfaces'
+import { resources } from 'utilities'
+import { CanvasValueVariationProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

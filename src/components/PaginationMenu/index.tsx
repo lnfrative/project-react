@@ -3,10 +3,10 @@ import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 // utilities
-import { PaginationMenuProps } from '@/utilities/Interfaces'
+import { PaginationMenuProps } from 'utilities/Interfaces'
 
 // components
-import { PaginationMenuTab } from '@/components'
+import { PaginationMenuTab } from 'components'
 
 // styles
 import styles from './style.css'

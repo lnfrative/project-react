@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { Stage } from '@/utilities/Interfaces'
+import { Stage } from 'utilities/Interfaces'
 
 function reducer(state, commit) {
   return { ...state, ...commit }

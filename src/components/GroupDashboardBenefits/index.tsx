@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { GroupDashboard, CardValue } from '@/components'
+import { GroupDashboard, CardValue } from 'components'
 
 // styles
 import styles from './style.css'

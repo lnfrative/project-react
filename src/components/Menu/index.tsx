@@ -2,10 +2,10 @@
 import React, { useEffect } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { MenuProps } from '@/utilities/Interfaces'
+import { MenuProps } from 'utilities/Interfaces'
 
 // modules
 import { initialState, onClick } from './module'

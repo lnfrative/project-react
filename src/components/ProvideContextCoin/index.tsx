@@ -2,13 +2,13 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { ContextCoinState } from '@/utilities/Interfaces'
+import { ContextCoinState } from 'utilities/Interfaces'
 
 // contexts
-import { Coin } from '@/contexts'
+import { Coin } from 'contexts'
 // endregion
 
 const initialState: ContextCoinState = {

@@ -2,7 +2,7 @@
 import React from 'react'
 
 // utilities
-import { ImgCoinProps } from '@/utilities/Interfaces'
+import { ImgCoinProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

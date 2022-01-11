@@ -2,8 +2,8 @@
 import React from 'react'
 
 // utilities
-import { message } from '@/utilities'
-import { InputProps } from '@/utilities/Interfaces'
+import { message } from 'utilities'
+import { InputProps } from 'utilities/Interfaces'
 
 // module
 import { nestStyles } from './module'

@@ -2,9 +2,9 @@
 import React, { useContext } from 'react'
 
 // utilities
-import { BackendCoin } from '@/utilities/Interfaces'
-import { BackendWallets } from '@/utilities/Types'
-import { message, resources } from '@/utilities'
+import { BackendCoin } from 'utilities/Interfaces'
+import { BackendWallets } from 'utilities/Types'
+import { message, resources } from 'utilities'
 
 // components
 import {
@@ -12,10 +12,10 @@ import {
   ButtonIcon,
   SVGIconEquis,
   CoinAvailable,
-} from '@/components'
+} from 'components'
 
 // contexts
-import { Modal as ContextModal, Backend } from '@/contexts'
+import { Modal as ContextModal, Backend } from 'contexts'
 
 // modules
 import { closeModal } from './module'

@@ -2,7 +2,7 @@
 import React, { PropsWithChildren } from 'react'
 
 // utilities
-import { ButtonIconProps } from '@/utilities/Interfaces'
+import { ButtonIconProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react'
-import { Stage, Error, InputLabelPasswordProps } from '@/utilities/Interfaces'
-import { invalidPassword } from '@/utilities/Errors'
-import { regex } from '@/utilities'
+import { Stage, Error, InputLabelPasswordProps } from 'utilities/Interfaces'
+import { invalidPassword } from 'utilities/Errors'
+import { regex } from 'utilities'
 
 interface InitialState {
   error: Error | undefined

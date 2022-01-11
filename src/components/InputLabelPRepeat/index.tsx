@@ -2,14 +2,14 @@
 import React from 'react'
 
 // utilities
-import { message } from '@/utilities'
-import { InputLabelPRepeatProps } from '@/utilities/Interfaces'
+import { message } from 'utilities'
+import { InputLabelPRepeatProps } from 'utilities/Interfaces'
 
 // components
-import { InputLabel } from '@/components'
+import { InputLabel } from 'components'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // modules
 import { initialState, onChange } from './module'

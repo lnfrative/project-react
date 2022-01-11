@@ -2,13 +2,13 @@
 import React, { PropsWithChildren } from 'react'
 
 // hooks
-import { useStage } from '@/hooks'
+import { useStage } from 'hooks'
 
 // utilities
-import { ContextModalState } from '@/utilities/Interfaces'
+import { ContextModalState } from 'utilities/Interfaces'
 
 // contexts
-import { Modal } from '@/contexts'
+import { Modal } from 'contexts'
 // endregion
 
 const initialState: ContextModalState = {

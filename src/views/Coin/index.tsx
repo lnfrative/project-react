@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { useRouteMatch } from 'react-router-dom'
 
 // contexts
-import { View as ContextView, Coin as ContextCoin } from '@/contexts'
+import { View as ContextView, Coin as ContextCoin } from 'contexts'
 
 // components
 import {
@@ -12,12 +12,12 @@ import {
   GroupCoinValues,
   PaginationBar,
   CoinPaginationOverview,
-} from '@/components'
+} from 'components'
 
 // utilities
-import { RouteParamsCoin, PaginationObject } from '@/utilities/Interfaces'
-import { parseNameCoin } from '@/utilities/Parsers'
-import { resources } from '@/utilities'
+import { RouteParamsCoin, PaginationObject } from 'utilities/Interfaces'
+import { parseNameCoin } from 'utilities/Parsers'
+import { resources } from 'utilities'
 
 // styles
 import styles from './style.css'

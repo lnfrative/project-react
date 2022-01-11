@@ -1,8 +1,8 @@
-import __vars__ from '@/__vars__'
+import __vars__ from '__vars__'
 import {
   RouteParamsCoin,
   RouteParamsSetting,
-} from '@/utilities/Interfaces'
+} from 'utilities/Interfaces'
 
 interface ResourceCoin {
   logo: string,

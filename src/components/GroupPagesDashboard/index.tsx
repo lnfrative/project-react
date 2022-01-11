@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // utilities
-import { message, resources } from '@/utilities'
+import { message, resources } from 'utilities'
 
 // styles
 import styles from './style.css'

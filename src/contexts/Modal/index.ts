@@ -2,7 +2,7 @@
 import { createContext } from 'react'
 
 // utilities
-import { Stage, ContextModalState } from '@/utilities/Interfaces'
+import { Stage, ContextModalState } from 'utilities/Interfaces'
 // endregion
 
 const state: ContextModalState = {

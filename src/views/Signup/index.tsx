@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { GridForm, FormAuthRegister } from '@/components'
+import { GridForm, FormAuthRegister } from 'components'
 // endregion
 
 function Signup() {

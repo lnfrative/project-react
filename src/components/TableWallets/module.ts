@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { BackendWallet } from '@/utilities/Interfaces'
+import { BackendWallet } from 'utilities/Interfaces'
 import styles from './style.css'
 
 interface WalletProps {

@@ -3,7 +3,7 @@ import { MouseEventHandler } from 'react'
 import classNames from 'classnames'
 
 // styles
-import { PaginationMenuTabProps } from '@/utilities/Interfaces'
+import { PaginationMenuTabProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

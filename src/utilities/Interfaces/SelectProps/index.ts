@@ -1,5 +1,5 @@
-import { SelectOption } from '@/utilities/Interfaces'
-import { OnSelect } from '@/utilities/Types'
+import { SelectOption } from 'utilities/Interfaces'
+import { OnSelect } from 'utilities/Types'
 
 interface SelectProps {
   options: Array<SelectOption>,

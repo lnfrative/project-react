@@ -7,10 +7,10 @@ import {
   GroupPagesDashboard,
   Header,
   GroupUserMenu,
-} from '@/components'
+} from 'components'
 
 // utilities
-import { HeaderDashboardProps } from '@/utilities/Interfaces'
+import { HeaderDashboardProps } from 'utilities/Interfaces'
 
 // styles
 import styles from './style.css'

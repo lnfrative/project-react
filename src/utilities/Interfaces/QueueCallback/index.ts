@@ -1,4 +1,4 @@
-import { BackendRequestMethodsAllowed } from '@/utilities/Types'
+import { BackendRequestMethodsAllowed } from 'utilities/Types'
 
 interface QueueCallback {
   id: string,

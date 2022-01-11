@@ -2,10 +2,10 @@
 import React from 'react'
 
 // components
-import { SVGIconApps } from '@/components'
+import { SVGIconApps } from 'components'
 
 // utilities
-import { externalResources } from '@/utilities'
+import { externalResources } from 'utilities'
 
 // styles
 import styles from './style.css'
