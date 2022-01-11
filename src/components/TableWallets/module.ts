@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { BackendWallet } from 'utilities/Interfaces'
-import styles from './style.css'
+import styles from './index.module.css'
 
 interface WalletProps {
   final: boolean,

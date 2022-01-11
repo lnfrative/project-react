@@ -9,7 +9,7 @@ import { PaginationMenuProps } from 'utilities/Interfaces'
 import { PaginationMenuTab } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function PaginationMenu(props: PaginationMenuProps) {

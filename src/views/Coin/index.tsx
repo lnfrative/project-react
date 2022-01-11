@@ -20,7 +20,7 @@ import { parseNameCoin } from 'utilities/Parsers'
 import { resources } from 'utilities'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [

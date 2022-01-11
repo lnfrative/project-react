@@ -8,7 +8,7 @@ import { message } from 'utilities'
 import { Card, ValueCoin, ButtonCombination, ButtonIcon, SVGIconArrowDouble } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function CardWallet() {

@@ -8,7 +8,7 @@ import { SVGIconApps } from 'components'
 import { externalResources } from 'utilities'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function GroupBrand() {

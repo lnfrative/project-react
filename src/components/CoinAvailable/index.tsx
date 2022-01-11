@@ -16,7 +16,7 @@ import { ImgCoin } from 'components'
 import { onClick } from './module'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 const { aliases } = resources.endpoints

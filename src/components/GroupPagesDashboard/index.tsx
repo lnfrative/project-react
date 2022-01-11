@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { message, resources } from 'utilities'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function GroupPagesDashboard() {

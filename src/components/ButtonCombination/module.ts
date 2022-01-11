@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { ButtonCombinationProps } from 'utilities/Interfaces'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function nestStyles(props: ButtonCombinationProps) {

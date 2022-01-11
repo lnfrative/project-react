@@ -26,7 +26,7 @@ import {
 import { initialState, onCheckTerms, onSubmit } from './module'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 const enduser = resources.endpoints.get.user

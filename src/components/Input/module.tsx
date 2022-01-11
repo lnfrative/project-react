@@ -4,7 +4,7 @@ import classNames from 'classnames'
 // interfaces
 import { Error } from 'utilities/Interfaces'
 
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function nestStyles(args: { error?: Error }) {

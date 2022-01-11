@@ -5,7 +5,7 @@ import React from 'react'
 import { ButtonProps } from 'utilities/Interfaces'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function Button(props: ButtonProps) {

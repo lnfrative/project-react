@@ -8,7 +8,7 @@ import { GroupValueDecimalProps } from 'utilities/Interfaces'
 import { ValueDecimal } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function GroupValueDecimal(props: GroupValueDecimalProps) {

@@ -5,7 +5,7 @@ import React from 'react'
 import { GroupDashboard, CardValue } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function GroupDashboardBenefits() {

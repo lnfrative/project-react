@@ -11,7 +11,7 @@ import { GroupSelectValueDecimalProps } from 'utilities/Interfaces'
 import { Select, ValueDecimal } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 
 // modules
 import { initialState, genOnSelect } from './module'

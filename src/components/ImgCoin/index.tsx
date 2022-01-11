@@ -5,7 +5,7 @@ import React from 'react'
 import { ImgCoinProps } from 'utilities/Interfaces'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function ImgCoin(props: ImgCoinProps) {

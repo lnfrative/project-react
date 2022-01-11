@@ -8,7 +8,7 @@ import { InputLabelProps } from 'utilities/Interfaces'
 import { Input } from 'components'
 
 // style
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function InputLabel(props: InputLabelProps) {

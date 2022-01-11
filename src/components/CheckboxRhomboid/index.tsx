@@ -8,7 +8,7 @@ import { CheckboxRhomboidProps } from 'utilities/Interfaces'
 import { onInputClick } from './module'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function CheckboxRhomboid(props: CheckboxRhomboidProps) {

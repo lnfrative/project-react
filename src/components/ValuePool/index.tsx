@@ -8,7 +8,7 @@ import { ValuePoolProps } from 'utilities/Interfaces'
 import { ValueDecimal, ValuePercentage } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function ValuePool(props: ValuePoolProps) {

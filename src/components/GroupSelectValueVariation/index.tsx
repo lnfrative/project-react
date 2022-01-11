@@ -8,7 +8,7 @@ import { GroupSelectValueVariationProps } from 'utilities/Interfaces'
 import { ValueVariation, Select } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function GroupSelectValueVariation(props: GroupSelectValueVariationProps) {

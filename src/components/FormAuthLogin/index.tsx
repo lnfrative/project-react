@@ -24,7 +24,7 @@ import { message, resources, requestId } from 'utilities'
 import { onSubmit } from './module'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 const endlogin = resources.endpoints.post.userCreateAccessToken

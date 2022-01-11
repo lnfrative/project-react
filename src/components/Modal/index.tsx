@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function Modal(props: PropsWithChildren<{}>) {

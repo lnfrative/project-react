@@ -8,7 +8,7 @@ import { GroupCoinPreviewProps } from 'utilities/Interfaces'
 import { ImgCoin } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function GroupCoinPreview(props: GroupCoinPreviewProps) {

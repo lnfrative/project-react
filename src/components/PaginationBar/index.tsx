@@ -15,7 +15,7 @@ import { PaginationBarProps } from 'utilities/Interfaces'
 import { initialState } from './module'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function PaginationBar(props: PaginationBarProps) {

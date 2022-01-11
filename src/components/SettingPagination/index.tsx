@@ -5,7 +5,7 @@ import React, { PropsWithChildren } from 'react'
 import { SettingPaginationProps } from 'utilities/Interfaces'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function SettingPagination(props: PropsWithChildren<SettingPaginationProps>) {

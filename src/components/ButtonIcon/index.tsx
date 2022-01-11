@@ -5,7 +5,7 @@ import React, { PropsWithChildren } from 'react'
 import { ButtonIconProps } from 'utilities/Interfaces'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 function ButtonIcon(props: PropsWithChildren<ButtonIconProps>) {

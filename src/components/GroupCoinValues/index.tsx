@@ -8,7 +8,7 @@ import { message } from 'utilities'
 import { GroupSelectValueDecimal, GroupValueDecimal, GroupSelectValueVariation } from 'components'
 
 // styles
-import styles from './style.css'
+import styles from './index.module.css'
 // endregion
 
 const testOptions = [
