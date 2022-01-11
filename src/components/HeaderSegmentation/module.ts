@@ -1,7 +1,4 @@
 // region  import
-import classNames from 'classnames'
-
-// styles
 import styles from './index.module.css'
 // endregion
 

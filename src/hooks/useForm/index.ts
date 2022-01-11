@@ -13,11 +13,9 @@ function parseState(stage: Stage<{}>) {
 }
 
 function handleSubmit(stage: Stage<{}>) {
-  return (args: { onSubmit: Function }): FormEventHandler<HTMLFormElement> => {
-    return (e) => {
-      e.preventDefault()
-      args.onSubmit(stage.state)
-    }
+  return (args: { onSubmit: Function }): FormEventHandler<HTMLFormElement> => (e) => {
+    e.preventDefault()
+    args.onSubmit(stage.state)
   }
 }
 

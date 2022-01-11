@@ -5,7 +5,9 @@ import React from 'react'
 import { message } from 'utilities'
 
 // components
-import { Card, ValueCoin, ButtonCombination, ButtonIcon, SVGIconArrowDouble } from 'components'
+import {
+  Card, ValueCoin, ButtonCombination, ButtonIcon, SVGIconArrowDouble,
+} from 'components'
 
 // styles
 import styles from './index.module.css'

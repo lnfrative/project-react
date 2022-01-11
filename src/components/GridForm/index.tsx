@@ -24,7 +24,10 @@ function GridForm(props: { children: JSX.Element }) {
         <div className={styles.horizontalLeftChild} />
         <div className={styles.mainChild}>
           <div className={styles.containerLogo}>
-            <img alt={externalResources.dogeCashLogo.alt} src={externalResources.dogeCashLogo.src} />
+            <img
+              alt={externalResources.dogeCashLogo.alt}
+              src={externalResources.dogeCashLogo.src}
+            />
           </div>
           <div className={styles.containerForm}>
             {props.children}
