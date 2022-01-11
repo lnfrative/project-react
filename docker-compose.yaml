@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  node:
+    image: node:14.17.0
+    container_name: node
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: sh -c "yarn install && yarn build && chmod -R 777 ./build"
