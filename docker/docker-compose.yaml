@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  node:
+    image: node:14.17.0
+    container_name: dogec-web-node
+    working_dir: /usr/src/app
+    volumes:
+      - ../:/usr/src/app
+    command: sh -c "yarn install && yarn build"
+  serve:
+    image: nginx:1.21.3
+    container_name: dogec-web-nginx
+    ports:
+      - "3000:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ../build:/var/www/code
