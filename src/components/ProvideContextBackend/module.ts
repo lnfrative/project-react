@@ -86,7 +86,7 @@ async function loader(stage: Stage<State>) {
     const { callback, id } = loading
     const requested = await callback()
     const response: BackendResponse = await requested.json()
-
+    response.status = requested.status
     stage.commitState({
       queueCallbacks: stage.state.queueCallbacks?.slice(1),
       loading: undefined,
