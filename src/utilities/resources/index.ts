@@ -24,16 +24,16 @@ const routeParams = {
 
 const coin: Record<string, ResourceCoin> = {
   dogecash: {
-    logo: 'https://dev-account.dogecash.org/assets/coins/DogeCash/logo.svg',
+    logo: 'https://dev-api.account.dogecash.org/assets/coins/DogeCash/logo.svg',
   },
   bitcoin: {
-    logo: 'https://dev-account.dogecash.org/assets/coins/Bitcoin/logo.svg',
+    logo: 'https://dev-api.account.dogecash.org/assets/coins/Bitcoin/logo.svg',
   },
   stakecube: {
-    logo: 'https://dev-account.dogecash.org/assets/coins/Stakecube/logo.png',
+    logo: 'https://dev-api.account.dogecash.org/assets/coins/Stakecube/logo.png',
   },
   litecoin: {
-    logo: 'https://dev-account.dogecash.org/assets/coins/Litecoin/logo.svg',
+    logo: 'https://dev-api.account.dogecash.org/assets/coins/Litecoin/logo.svg',
   },
 }
 
