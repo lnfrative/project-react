@@ -1,4 +1,6 @@
-const setting = {
+import { Route } from 'interfaces'
+
+const setting: Route = {
   base: '/setting',
   route: {
     path: '/setting/:section',
@@ -6,6 +8,7 @@ const setting = {
       section: ':section',
     },
   },
+  aliases: {},
 }
 
 export default setting

@@ -1,4 +1,6 @@
-const coin = {
+import { Route } from 'interfaces'
+
+const coin: Route = {
   base: '/coin',
   route: {
     path: '/coin/:name/:detail',
