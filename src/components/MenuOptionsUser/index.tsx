@@ -25,7 +25,7 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
       content={(
         <div className={styles.menuContent}>
           <div className={styles.group}>
-            <Link to={resources.path.setting} className={styles.containerOption}>
+            <Link to={resources.routes.setting.base} className={styles.containerOption}>
               <SVGIconSettings />
               <span className={styles.label}>
                 {message({ id: 'SETTINGS' })}

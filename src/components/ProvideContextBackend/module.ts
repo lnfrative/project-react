@@ -1,5 +1,5 @@
 // utilities
-import { resources, readCookie, requestId } from 'utilities'
+import { readCookie, requestId } from 'utilities'
 import { Stage, BackendResponse, QueueCallback } from 'interfaces'
 import { Responser, BackendRequestMethodsAllowed, Requester } from 'types'
 // endregion
@@ -70,7 +70,7 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
       && !inQueue
       && stage.state.queueCallbacks
     ) {
-      const path = `${resources.path.backendUrlBase}${method === 'get' ? urlParams : endpoint}`
+      const path = `${process.env.REACT_APP_API}${method === 'get' ? urlParams : endpoint}`
       const callback = requestCallback(path, method, params)
       stage.state.queueCallbacks.push({
         callback, method, endpoint, params, id, label,

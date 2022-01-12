@@ -81,7 +81,7 @@ function FormAuthRegister() {
           }}
         />
         <LinkForm
-          path={resources.path.login}
+          path={resources.routes.login.base}
           message={message({ id: 'ALREADY_HAVE_ACCUONT' })}
           linkName={message({ id: 'LOG_IN' })}
         />

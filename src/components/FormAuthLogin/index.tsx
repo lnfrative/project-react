@@ -62,7 +62,7 @@ function FormAuthLogin() {
           title={message({ id: 'LOG_IN' })}
         />
         <LinkForm
-          path={resources.path.signup}
+          path={resources.routes.register.base}
           message={message({ id: 'DONT_HAVE_ACCOUNT' })}
           linkName={message({ id: 'SIGN_UP' })}
         />

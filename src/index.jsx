@@ -39,10 +39,10 @@ const App = (
                 <Router>
                   <Suspense fallback={null}>
                     <Switch>
-                      <Route exact path={resources.path.home} component={Home} />
-                      <Route exact path={resources.path.signup} component={Signup} />
-                      <Route exact path={resources.path.coinSpecific} component={Coin} />
-                      <Route exact path={resources.path.settingSpecific} component={Setting} />
+                      <Route exact path={resources.routes.home.base} component={Home} />
+                      <Route exact path={resources.routes.register.base} component={Signup} />
+                      <Route exact path={resources.routes.coin.route.path} component={Coin} />
+                      <Route exact path={resources.routes.setting.route.path} component={Setting} />
                     </Switch>
                   </Suspense>
                 </Router>

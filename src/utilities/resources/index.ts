@@ -1,8 +1,8 @@
-import __vars__ from '__vars__'
 import {
   RouteParamsCoin,
   RouteParamsSetting,
 } from 'interfaces'
+import routes from './routes'
 
 interface ResourceCoin {
   logo: string,
@@ -54,17 +54,6 @@ const endpoints = {
   },
 }
 
-const path = {
-  backendUrlBase: __vars__.BACKEND_URL_BASE,
-  home: '/',
-  login: '/',
-  signup: '/sign-up',
-  coin: '/coin',
-  coinSpecific: `/coin/:${routeParamsCoin.nameCoin}/:${routeParamsCoin.nameCoinDetail}?`,
-  setting: '/setting',
-  settingSpecific: `/setting/:${routeParamsSetting.section}?`,
-}
-
 const colors = {
   variety_upstream: '#C8FCA3',
   variety_dowsntream: '#FF8C8C',
@@ -82,7 +71,7 @@ const utils = {
 
 export default {
   endpoints,
-  path,
+  routes,
   routeParams,
   colors,
   coin,

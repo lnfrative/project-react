@@ -32,6 +32,8 @@ const paginationObjects: Array<PaginationObject> = [
   { id: 'about', title: 'About', content: <div>About</div> },
 ]
 
+const routeCoin = resources.routes.coin.aliases.name
+
 function Coin() {
   const coinContextStage = useContext(ContextCoin)
   const viewContextStage = useContext(ContextView)
@@ -69,7 +71,9 @@ function Coin() {
             <GroupCoinValues />
             {!!coinContextStage.state.key && (
               <PaginationBar
-                pathnameBase={`${resources.path.coin}/${coinContextStage.state.key}`}
+                pathnameBase={
+                  routeCoin.path.replace(routeCoin.alias.name, coinContextStage.state.key)
+                }
                 pathParamId={coinContextStage.state.key}
                 paginationObjects={paginationObjects}
               />

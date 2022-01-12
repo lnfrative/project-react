@@ -12,7 +12,7 @@ import styles from './index.module.css'
 function GroupPagesDashboard() {
   return (
     <div className={styles.container}>
-      <Link to={resources.path.home} className={styles.containerFirst}>
+      <Link to={resources.routes.home.base} className={styles.containerFirst}>
         <div className={styles.titleGradient}>
           {message({ id: 'DASHBOARD' })}
         </div>

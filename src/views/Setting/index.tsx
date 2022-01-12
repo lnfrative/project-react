@@ -47,8 +47,8 @@ function Account() {
       primaryContent={(
         <PaginationMenu
           onChange={onChangePagination(stage)}
-          pathnameBase={resources.path.setting}
-          pathParamId={resources.path.setting.slice(1)}
+          pathnameBase={resources.routes.setting.base}
+          pathParamId={resources.routes.setting.base.slice(1)}
           paginationObjects={paginationObjects}
           title="Account Settings"
         />
