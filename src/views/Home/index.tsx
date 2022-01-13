@@ -10,7 +10,6 @@ import { resources } from 'utilities'
 // components
 import {
   HeaderDashboard,
-  GroupDashboardBenefits,
   GroupDashboardWallets,
   GridForm,
   FormAuthLogin,
@@ -29,7 +28,8 @@ function Dashboard() {
   if (!wallets?.success) return <PreloadPage />
   return (
     <HeaderDashboard>
-      <GroupDashboardBenefits />
+      {/* TODO: enable for show benefits */}
+      {/* <GroupDashboardBenefits /> */}
       <GroupDashboardWallets />
     </HeaderDashboard>
   )

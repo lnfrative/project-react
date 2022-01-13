@@ -26,9 +26,9 @@ const paginationObjects: Array<PaginationObject> = [
   {
     id: 'overview', title: 'Overview', main: true, content: <CoinPaginationOverview />,
   },
-  { id: 'giftcard_and_utilities', title: 'Giftcard & utilities', content: <div>Giftcard</div> },
-  { id: 'movement_history', title: 'Movement history', content: <div>Movement</div> },
-  { id: 'about', title: 'About', content: <div>About</div> },
+  // { id: 'giftcard_and_utilities', title: 'Giftcard & utilities', content: <div>Giftcard</div> },
+  // { id: 'movement_history', title: 'Movement history', content: <div>Movement</div> },
+  // { id: 'about', title: 'About', content: <div>About</div> },
 ]
 
 const routeCoin = resources.routes.coin.aliases.name
