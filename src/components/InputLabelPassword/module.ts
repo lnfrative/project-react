@@ -1,7 +1,6 @@
 import { ChangeEventHandler } from 'react'
 import { Stage, Error, InputLabelPasswordProps } from 'interfaces'
 import { invalidPassword } from 'utilities/Errors'
-import { regex } from 'utilities'
 
 interface InitialState {
   error: Error | undefined
@@ -12,7 +11,7 @@ function onChange(
 ): ChangeEventHandler<HTMLInputElement> {
   return (e) => {
     const password = e.target.value
-    const isPassword = regex.password.test(password)
+    const isPassword = password.length > 11
 
     arg.registerInput(password, !isPassword)
     if ((isPassword && !!stage.state.error) || !password) {

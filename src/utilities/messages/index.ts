@@ -40,8 +40,8 @@ const messages: Record<string, Record<string, string>> = {
     es: 'El email ingresado no es válido.',
   },
   INVALID_PASSWORD: {
-    en: 'Your password must be at least 8 characters long, between lowercase, uppercase, numbers, and special characters.',
-    es: 'Tu contraseña debe contener al menos 8 caractéres, entre minúsculas, mayúsculas, números y caractéres especiales',
+    en: 'The password needs a minimum of 12 characters in length.',
+    es: 'La contraseña necesita mínimo 12 caractéres de longitud.',
   },
   PASSWORD_NOT_MATCH: {
     en: 'Password does not match.',
