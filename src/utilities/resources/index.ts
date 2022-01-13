@@ -1,25 +1,8 @@
-import {
-  RouteParamsCoin,
-  RouteParamsSetting,
-} from 'interfaces'
+import { BackendCoin } from 'interfaces'
 import routes from './routes'
 
 interface ResourceCoin {
   logo: string,
-}
-
-const routeParamsCoin: RouteParamsCoin = {
-  nameCoin: 'nameCoin',
-  nameCoinDetail: 'nameCoinDetail',
-}
-
-const routeParamsSetting: RouteParamsSetting = {
-  section: 'section',
-}
-
-const routeParams = {
-  ...routeParamsCoin,
-  ...routeParamsSetting,
 }
 
 const coin: Record<string, ResourceCoin> = {
@@ -65,14 +48,31 @@ function normaliceCoinName(name: string) {
   return name.toLowerCase().replace(/ +/g, '_')
 }
 
+function filterCoin(
+  coins: Array<BackendCoin>, filter: { name?: string, id?: number },
+): BackendCoin | undefined {
+  const { name, id } = filter
+  if (name) {
+    const [backendCoin] = coins.filter((value) => (
+      normaliceCoinName(value.name) === normaliceCoinName(name)
+    ))
+    return backendCoin
+  }
+  if (id) {
+    const [backendCoin] = coins.filter((value) => value.id === id)
+    return backendCoin
+  }
+  return undefined
+}
+
 const utils = {
   normaliceCoinName,
+  filterCoin,
 }
 
 export default {
   endpoints,
   routes,
-  routeParams,
   colors,
   coin,
   utils,

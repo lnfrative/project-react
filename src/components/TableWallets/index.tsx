@@ -29,6 +29,8 @@ import { nestStyles, WalletProps } from './module'
 const endwallets = resources.endpoints.get.wallets
 const endpointCoins = resources.endpoints.get.coins
 
+const nameCoin = resources.routes.coin.aliases.name
+
 function TableWallets() {
   const { response, loading } = useContext(Backend)
   const styles = nestStyles()
@@ -107,9 +109,13 @@ function Wallet(props: WalletProps) {
   const currency = useContext(Currency)
   const { response } = useContext(Backend)
   const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
-  const [coin] = coins.filter((value) => value.id === props.wallet.coin_id)
+  const coin = resources.utils.filterCoin(coins, { id: props.wallet.coin_id })
   const styles = nestStyles(props)
-  const to = `/coin/${resources.utils.normaliceCoinName(coin.name)}`
+
+  if (!coin) return null
+  const to = nameCoin.path.replace(
+    nameCoin.alias.name, resources.utils.normaliceCoinName(coin.name),
+  )
   return (
     <Link to={to} className={styles.item}>
       <ValueCoin

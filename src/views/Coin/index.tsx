@@ -1,9 +1,9 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useRouteMatch } from 'react-router-dom'
 
 // contexts
-import { View as ContextView, Coin as ContextCoin } from 'contexts'
+import { Backend } from 'contexts'
 
 // components
 import {
@@ -15,8 +15,7 @@ import {
 } from 'components'
 
 // utilities
-import { RouteParamsCoin, PaginationObject } from 'interfaces'
-import { parseNameCoin } from 'utilities/Parsers'
+import { PaginationObject, BackendCoin } from 'interfaces'
 import { resources } from 'utilities'
 
 // styles
@@ -35,49 +34,41 @@ const paginationObjects: Array<PaginationObject> = [
 const routeCoin = resources.routes.coin.aliases.name
 
 function Coin() {
-  const coinContextStage = useContext(ContextCoin)
-  const viewContextStage = useContext(ContextView)
-  const match = useRouteMatch<RouteParamsCoin>()
+  const { response } = useContext(Backend)
+  const match = useRouteMatch<{ name: string }>()
+  const coins: Array<BackendCoin> = response.get({
+    endpoint: resources.endpoints.get.coins,
+  })?.data
+  const coin = resources.utils.filterCoin(
+    coins, { name: match.params.name },
+  )
 
-  useEffect(() => {
-    // const { nameCoin } = match.params
-    // TOOD: handle nameCoin fetching
-    const resourceCoinData = parseNameCoin('dogecash')
-    coinContextStage.commitState(resourceCoinData)
-    viewContextStage.commitState({
-      name: resourceCoinData.name,
-    })
-  }, [match.params.nameCoin])
-
+  // TODO: return a 404 error page instead null
+  if (!coin) return null
   return (
     <>
       <HeaderSegmentation
         primaryContent={(
-          !!coinContextStage.state.id
-          && !!coinContextStage.state.logo
-          && !!coinContextStage.state.name
-          && (
-            <div className={styles.primaryContent}>
-              <GroupCoinPreview
-                nameCoin={coinContextStage.state.name}
-                idCoin={coinContextStage.state.id}
-                srcImgCoin={coinContextStage.state.logo}
-              />
-            </div>
-          )
+          <div className={styles.primaryContent}>
+            <GroupCoinPreview
+              nameCoin={coin.name}
+              idCoin={coin.asset}
+              srcImgCoin={resources.coin[resources.utils.normaliceCoinName(coin.name)].logo}
+            />
+          </div>
         )}
         secondaryContent={(
           <div className={styles.secondaryContent}>
             <GroupCoinValues />
-            {!!coinContextStage.state.key && (
-              <PaginationBar
-                pathnameBase={
-                  routeCoin.path.replace(routeCoin.alias.name, coinContextStage.state.key)
-                }
-                pathParamId={coinContextStage.state.key}
-                paginationObjects={paginationObjects}
-              />
-            )}
+            <PaginationBar
+              pathnameBase={
+                routeCoin.path.replace(
+                  routeCoin.alias.name, resources.utils.normaliceCoinName(coin.name),
+                )
+              }
+              pathParamId={resources.utils.normaliceCoinName(coin.name)}
+              paginationObjects={paginationObjects}
+            />
           </div>
         )}
       />

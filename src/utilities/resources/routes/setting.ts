@@ -3,9 +3,9 @@ import { Route } from 'interfaces'
 const setting: Route = {
   base: '/setting',
   route: {
-    path: '/setting/:section',
+    path: '/setting/:section?',
     params: {
-      section: ':section',
+      section: 'section',
     },
   },
   aliases: {},

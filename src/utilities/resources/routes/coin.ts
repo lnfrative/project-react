@@ -3,7 +3,7 @@ import { Route } from 'interfaces'
 const coin: Route = {
   base: '/coin',
   route: {
-    path: '/coin/:name/:detail',
+    path: '/coin/:name?/:detail?',
     params: {
       name: 'name',
       detail: 'detail',
