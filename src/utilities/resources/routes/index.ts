@@ -1,4 +1,5 @@
 import coin from './coin'
+import email from './email'
 import home from './home'
 import login from './login'
 import register from './register'
@@ -10,6 +11,7 @@ const path = {
   login,
   register,
   setting,
+  email,
 }
 
 export default path

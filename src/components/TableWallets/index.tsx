@@ -1,7 +1,6 @@
 // region import
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
 import { Backend, Currency } from 'contexts'
@@ -20,6 +19,7 @@ import {
   SVGValueVariation,
   WalletActions,
   ButtonAddWallet,
+  BackdropLoader,
 } from 'components'
 
 // modules
@@ -67,9 +67,9 @@ function TableWallets() {
           </div>
         </div>
       )}
-      <Backdrop open={loading?.id === requestId('get', endwallets)} sx={{ zIndex: 10 }}>
-        <CircularProgress />
-      </Backdrop>
+      <BackdropLoader
+        open={loading?.id === requestId('get', endwallets)}
+      />
     </div>
   )
 }

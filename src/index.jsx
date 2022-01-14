@@ -26,6 +26,7 @@ const Home = lazy(() => import('views/Home'))
 const Signup = lazy(() => import('views/Signup'))
 const Coin = lazy(() => import('views/Coin'))
 const Setting = lazy(() => import('views/Setting'))
+const Email = lazy(() => import('views/Email'))
 // endregion
 
 const App = (
@@ -43,6 +44,7 @@ const App = (
                       <Route exact path={resources.routes.register.base} component={Signup} />
                       <Route exact path={resources.routes.coin.route.path} component={Coin} />
                       <Route exact path={resources.routes.setting.route.path} component={Setting} />
+                      <Route exact path={resources.routes.email.route.path} component={Email} />
                     </Switch>
                   </Suspense>
                 </Router>

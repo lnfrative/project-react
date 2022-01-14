@@ -1,6 +1,5 @@
 // region import
 import React, { useContext, useEffect } from 'react'
-import { Backdrop, CircularProgress } from '@mui/material'
 
 // hooks
 import { useForm } from 'hooks'
@@ -15,6 +14,7 @@ import {
   InputLabelPassword,
   Button,
   LinkForm,
+  BackdropLoader,
 } from 'components'
 
 // utilties
@@ -67,9 +67,7 @@ function FormAuthLogin() {
           linkName={message({ id: 'SIGN_UP' })}
         />
       </FormAuth>
-      <Backdrop open={loading} sx={{ zIndex: 10 }}>
-        <CircularProgress />
-      </Backdrop>
+      <BackdropLoader open={loading} />
     </form>
   )
 }

@@ -131,6 +131,10 @@ const messages: Record<string, Record<string, string>> = {
     en: 'This action may take a few seconds, do not reload the page.',
     es: 'Esta acción puede tomar unos segundos, no recargues la página.',
   },
+  VERIFYING_EMAIL: {
+    en: 'Verification is in progress.',
+    es: 'La verificación está en curso',
+  },
 }
 
 export default messages

@@ -1,16 +1,17 @@
 // region import
 import React, { useContext, useEffect } from 'react'
-import { Backdrop, CircularProgress } from '@mui/material'
 
 // utilities
 import { requestId, resources } from 'utilities'
+
+// interfaces
 import { CoinAvailableProps } from 'interfaces'
 
 // contexts
 import { Modal, Backend } from 'contexts'
 
 // components
-import { ImgCoin } from 'components'
+import { ImgCoin, BackdropLoader } from 'components'
 
 // modules
 import { onClick } from './module'
@@ -46,9 +47,7 @@ function CoinAvailable(props: CoinAvailableProps) {
           <div className={styles.name}>{props.name}</div>
         </div>
       </div>
-      <Backdrop open={loading} sx={{ zIndex: 10 }}>
-        <CircularProgress />
-      </Backdrop>
+      <BackdropLoader open={loading} />
     </>
   )
 }

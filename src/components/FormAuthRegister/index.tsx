@@ -1,6 +1,5 @@
 // region import
 import React, { useContext, useEffect } from 'react'
-import { Backdrop, CircularProgress } from '@mui/material'
 
 // contexts
 import { Backend } from 'contexts'
@@ -20,13 +19,11 @@ import {
   InputLabelPassword,
   InputLabelPRepeat,
   LinkForm,
+  BackdropLoader,
 } from 'components'
 
 // module
 import { initialState, onCheckTerms, onSubmit } from './module'
-
-// styles
-import styles from './index.module.css'
 // endregion
 
 const enduser = resources.endpoints.get.user
@@ -86,12 +83,7 @@ function FormAuthRegister() {
           linkName={message({ id: 'LOG_IN' })}
         />
       </FormAuth>
-      <Backdrop open={loading} sx={{ zIndex: 10 }}>
-        <div className={styles.loader}>
-          <CircularProgress />
-          <div className={styles.loaderMessage}>{message({ id: 'LONG_TIME_ACTION' })}</div>
-        </div>
-      </Backdrop>
+      <BackdropLoader open={loading} message={message({ id: 'LONG_TIME_ACTION' })} />
     </form>
   )
 }

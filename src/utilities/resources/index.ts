@@ -27,6 +27,7 @@ const endpoints = {
     wallets: '/api/user/wallets',
     coins: '/api/coins',
     newaddress: '/api/user/wallets/{coinId}/newaddress',
+    emailVerify: '/api/email/verify/{user_id}/{hash}/',
   },
   post: {
     userCreateAccessToken: '/api/user/create/access-token',
@@ -34,6 +35,8 @@ const endpoints = {
   },
   aliases: {
     coinId: '{coinId}',
+    userId: '{user_id}',
+    hash: '{hash}',
   },
 }
 
