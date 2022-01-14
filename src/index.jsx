@@ -12,6 +12,7 @@ import {
   ProvideContextCurrency,
   ApplicationStart,
   HandleBackendErrors,
+  Banners,
 } from 'components'
 
 // utilities
@@ -37,6 +38,7 @@ const App = (
           <ProvideContextCurrency>
             <ApplicationStart>
               <HandleBackendErrors>
+                <Banners />
                 <Router>
                   <Suspense fallback={null}>
                     <Switch>

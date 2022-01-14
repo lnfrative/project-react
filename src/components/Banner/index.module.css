@@ -1,0 +1,12 @@
+@import url('../../css/variables.css');
+
+.container {
+  padding: var(--space-md);
+  background: var(--color-twentinary);
+  color: var(--color-variety-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+  z-index: 2;
+}
