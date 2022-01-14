@@ -12,6 +12,7 @@ import {
   GroupCoinValues,
   PaginationBar,
   CoinPaginationOverview,
+  Middleware,
 } from 'components'
 
 // utilities
@@ -46,7 +47,7 @@ function Coin() {
   // TODO: return a 404 error page instead null
   if (!coin) return null
   return (
-    <>
+    <Middleware requirements={resources.routes.coin.middlewares}>
       <HeaderSegmentation
         primaryContent={(
           <div className={styles.primaryContent}>
@@ -72,7 +73,7 @@ function Coin() {
           </div>
         )}
       />
-    </>
+    </Middleware>
   )
 }
 

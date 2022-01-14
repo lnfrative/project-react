@@ -2,6 +2,7 @@ import { Route } from 'interfaces'
 
 const coin: Route = {
   base: '/coin',
+  middlewares: ['auth'],
   route: {
     path: '/coin/:name?/:detail?',
     params: {

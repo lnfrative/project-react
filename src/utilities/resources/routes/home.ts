@@ -2,6 +2,7 @@ import { Route } from 'interfaces'
 
 const home: Route = {
   base: '/',
+  middlewares: [],
   route: {
     path: '/',
     params: {},

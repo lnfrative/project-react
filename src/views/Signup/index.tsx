@@ -2,14 +2,19 @@
 import React from 'react'
 
 // components
-import { GridForm, FormAuthRegister } from 'components'
+import { GridForm, FormAuthRegister, Middleware } from 'components'
+
+// utilities
+import { resources } from 'utilities'
 // endregion
 
 function Signup() {
   return (
-    <GridForm>
-      <FormAuthRegister />
-    </GridForm>
+    <Middleware requirements={resources.routes.register.middlewares}>
+      <GridForm>
+        <FormAuthRegister />
+      </GridForm>
+    </Middleware>
   )
 }
 

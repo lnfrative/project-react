@@ -1,5 +1,8 @@
+import { UserRequirement } from 'types'
+
 interface Route {
   base: string,
+  middlewares: Array<UserRequirement>,
   route: {
     path: string,
     params: Record<string, string>,

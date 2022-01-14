@@ -46,7 +46,7 @@ function FormAuthRegister() {
   const loading = backend.loading?.id === requestId('post', endregister, params)
 
   useEffect(() => {
-    if (userResponse?.success || createUserResponse?.success) {
+    if (createUserResponse?.success) {
       document.location.href = '/'
     }
   }, [userResponse, createUserResponse])

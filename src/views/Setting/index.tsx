@@ -19,6 +19,7 @@ import {
   SettingPaginationMisc,
   SettingPaginationProfile,
   SettingPaginationSecurity,
+  Middleware,
 } from 'components'
 
 // modules
@@ -43,18 +44,20 @@ function Account() {
   }, [])
 
   return (
-    <HeaderSegmentation
-      primaryContent={(
-        <PaginationMenu
-          onChange={onChangePagination(stage)}
-          pathnameBase={resources.routes.setting.base}
-          pathParamId={resources.routes.setting.base.slice(1)}
-          paginationObjects={paginationObjects}
-          title="Account Settings"
-        />
-      )}
-      secondaryContent={stage.state.paginationObjectSelected?.content}
-    />
+    <Middleware requirements={resources.routes.setting.middlewares}>
+      <HeaderSegmentation
+        primaryContent={(
+          <PaginationMenu
+            onChange={onChangePagination(stage)}
+            pathnameBase={resources.routes.setting.base}
+            pathParamId={resources.routes.setting.base.slice(1)}
+            paginationObjects={paginationObjects}
+            title="Account Settings"
+          />
+        )}
+        secondaryContent={stage.state.paginationObjectSelected?.content}
+      />
+    </Middleware>
   )
 }
 
