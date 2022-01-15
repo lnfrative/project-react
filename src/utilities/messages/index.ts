@@ -135,6 +135,18 @@ const messages: Record<string, Record<string, string>> = {
     en: 'Verification is in progress.',
     es: 'La verificación está en curso',
   },
+  SEND: {
+    en: 'Send',
+    es: 'Enviar',
+  },
+  RECOVER_PASSWORD: {
+    en: 'Recover password',
+    es: 'Recuperar contraseña',
+  },
+  VERIFICATION_EMAIL_SENT: {
+    en: 'A verification email has been sent.',
+    es: 'Un correo de verificación ha sido enviado',
+  },
 }
 
 export default messages
