@@ -30,6 +30,8 @@ const Email = lazy(() => import('views/Email'))
 const Recover = lazy(() => import('views/Recover'))
 // endregion
 
+const { routes } = resources
+
 const App = (
   <ProvideContextBackend>
     <ProvideContextModal>
@@ -41,12 +43,13 @@ const App = (
                 <Router>
                   <Suspense fallback={null}>
                     <Switch>
-                      <Route exact path={resources.routes.home.base} component={Home} />
-                      <Route exact path={resources.routes.register.base} component={Signup} />
-                      <Route exact path={resources.routes.coin.route.path} component={Coin} />
-                      <Route exact path={resources.routes.setting.route.path} component={Setting} />
-                      <Route exact path={resources.routes.email.route.path} component={Email} />
-                      <Route exact path={resources.routes.recover.route.path} component={Recover} />
+                      <Route exact path={routes.home.base} component={Home} />
+                      <Route exact path={routes.register.base} component={Signup} />
+                      <Route exact path={routes.coin.route.path} component={Coin} />
+                      <Route exact path={routes.setting.route.path} component={Setting} />
+                      <Route exact path={routes.email.route.path} component={Email} />
+                      <Route exact path={routes.recover.route.path} component={Recover} />
+                      <Route exact path={routes.resetPassword.route.path} component={null} />
                     </Switch>
                   </Suspense>
                 </Router>
