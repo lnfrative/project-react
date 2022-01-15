@@ -21,7 +21,7 @@ function Email() {
 
   const params = new URLSearchParams(location.search)
   const userId = params.get('user_id') ?? ''
-  const hash = params.get('user_id') ?? ''
+  const hash = params.get('hash') ?? ''
 
   const endpoint = endemailverify.replace(aliases.userId, userId).replace(aliases.hash, hash)
   const emailVerify = response.get({ endpoint })
