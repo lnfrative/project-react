@@ -4,4 +4,14 @@
   font-style: italic;
   font-size: var(--font-size-xs);
   color: var(--color-fiftenary);
+
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.forgotPassword:active {
+  color: var(--color-variety-main-shadow);
 }

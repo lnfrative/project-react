@@ -4,6 +4,7 @@ import home from './home'
 import login from './login'
 import register from './register'
 import setting from './setting'
+import recover from './recover'
 
 const path = {
   coin,
@@ -12,6 +13,7 @@ const path = {
   register,
   setting,
   email,
+  recover,
 }
 
 export default path
