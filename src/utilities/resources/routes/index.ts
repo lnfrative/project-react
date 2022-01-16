@@ -1,5 +1,5 @@
 import coin from './coin'
-import email from './email'
+import confirmEmail from './confirmEmail'
 import home from './home'
 import login from './login'
 import register from './register'
@@ -13,7 +13,7 @@ const path = {
   login,
   register,
   setting,
-  email,
+  confirmEmail,
   recover,
   resetPassword,
 }

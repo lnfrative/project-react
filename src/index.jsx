@@ -26,7 +26,7 @@ const Home = lazy(() => import('views/Home'))
 const Signup = lazy(() => import('views/Signup'))
 const Coin = lazy(() => import('views/Coin'))
 const Setting = lazy(() => import('views/Setting'))
-const Email = lazy(() => import('views/Email'))
+const ConfirmEmail = lazy(() => import('views/ConfirmEmail'))
 const Recover = lazy(() => import('views/Recover'))
 const ResetPassword = lazy(() => import('views/ResetPassword'))
 // endregion
@@ -36,7 +36,7 @@ const {
   register,
   coin,
   setting,
-  email,
+  confirmEmail,
   recover,
   resetPassword,
 } = resources.routes
@@ -56,7 +56,7 @@ const App = (
                       <Route exact path={register.base} component={Signup} />
                       <Route exact path={coin.route.path} component={Coin} />
                       <Route exact path={setting.route.path} component={Setting} />
-                      <Route exact path={email.route.path} component={Email} />
+                      <Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
                       <Route exact path={recover.route.path} component={Recover} />
                       <Route exact path={resetPassword.route.path} component={ResetPassword} />
                     </Switch>
