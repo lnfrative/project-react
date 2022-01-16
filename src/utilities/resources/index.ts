@@ -33,6 +33,7 @@ const endpoints = {
     userCreateAccessToken: '/api/user/create/access-token',
     user: '/api/user',
     recoverPassword: '/api/user/recover-password',
+    resetPassword: '/api/user/update-password',
   },
   aliases: {
     coinId: '{coinId}',

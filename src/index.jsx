@@ -28,9 +28,18 @@ const Coin = lazy(() => import('views/Coin'))
 const Setting = lazy(() => import('views/Setting'))
 const Email = lazy(() => import('views/Email'))
 const Recover = lazy(() => import('views/Recover'))
+const ResetPassword = lazy(() => import('views/ResetPassword'))
 // endregion
 
-const { routes } = resources
+const {
+  home,
+  register,
+  coin,
+  setting,
+  email,
+  recover,
+  resetPassword,
+} = resources.routes
 
 const App = (
   <ProvideContextBackend>
@@ -43,13 +52,13 @@ const App = (
                 <Router>
                   <Suspense fallback={null}>
                     <Switch>
-                      <Route exact path={routes.home.base} component={Home} />
-                      <Route exact path={routes.register.base} component={Signup} />
-                      <Route exact path={routes.coin.route.path} component={Coin} />
-                      <Route exact path={routes.setting.route.path} component={Setting} />
-                      <Route exact path={routes.email.route.path} component={Email} />
-                      <Route exact path={routes.recover.route.path} component={Recover} />
-                      <Route exact path={routes.resetPassword.route.path} component={null} />
+                      <Route exact path={home.base} component={Home} />
+                      <Route exact path={register.base} component={Signup} />
+                      <Route exact path={coin.route.path} component={Coin} />
+                      <Route exact path={setting.route.path} component={Setting} />
+                      <Route exact path={email.route.path} component={Email} />
+                      <Route exact path={recover.route.path} component={Recover} />
+                      <Route exact path={resetPassword.route.path} component={ResetPassword} />
                     </Switch>
                   </Suspense>
                 </Router>
