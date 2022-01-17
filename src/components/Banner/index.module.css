@@ -1,6 +1,8 @@
 @import url('../../css/variables.css');
 
 .container {
+  font-family: var(--font-primary);
+
   padding: var(--space-md);
   background: var(--color-twentinary);
   color: var(--color-variety-main);
