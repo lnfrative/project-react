@@ -1,9 +1,17 @@
 {
   "extends": [
     "react-app",
-    "airbnb"
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "jsx-a11y",
+    "prettier"
   ],
   "rules": {
+    "react/jsx-no-constructed-context-values": "off",
+    "react/function-component-definition": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
     "react-hooks/exhaustive-deps": "off",

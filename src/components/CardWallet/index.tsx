@@ -27,7 +27,7 @@ function CardWallet() {
           </div>
           <ButtonIcon>
             <SVGIconArrowDouble />
-         </ButtonIcon>
+          </ButtonIcon>
         </div>
       </div>
     </Card>
