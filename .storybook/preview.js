@@ -1,3 +1,6 @@
+import 'css/fonts/Aileron/index.css'
+import 'css/index.css'
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

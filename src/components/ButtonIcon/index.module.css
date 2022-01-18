@@ -12,7 +12,7 @@
 
 .button:hover {
   opacity: var(--opacity-selecting);
-  background-color: var(--color-variety-main-shadow);
+  background-color: var(--color-variety-main-tiny-shadow);
 }
 
 .button:active {
