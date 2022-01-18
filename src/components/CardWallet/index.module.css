@@ -3,23 +3,20 @@
 .container {
   display: flex;
   justify-content: space-between;
-  gap: var(--space-lg);
-}
-
-.containerSecondSection {
-  display: flex;
-  align-items: flex-end;
-  gap: var(--space-md);
 }
 
 .groupButtons {
   display: flex;
-  gap: var(--space-sm);
+  margin-left: var(--space-lg);
 }
 
 .groupCombination {
   display: flex;
-  gap: var(--space-lg);
+  margin-right: var(--space-sm);
+}
+
+.combinationAfter {
+  margin-right: var(--space-lg);
 }
 
 @media screen and (max-width: 550px) {

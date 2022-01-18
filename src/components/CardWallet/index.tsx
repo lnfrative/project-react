@@ -20,12 +20,14 @@ function CardWallet() {
         <ValueCoin srcImageCoin="https://i.imgur.com/80rvyLS.png" value={3000} name="DogeCash" shortname="DOGE" />
         <div className={styles.groupButtons}>
           <div className={styles.groupCombination}>
-            <ButtonCombination position="after" title={message({ id: 'BUY' })} />
+            <div className={styles.combinationAfter}>
+              <ButtonCombination position="after" title={message({ id: 'BUY' })} />
+            </div>
             <ButtonCombination position="before" title={message({ id: 'SELL' })} />
           </div>
           <ButtonIcon>
             <SVGIconArrowDouble />
-          </ButtonIcon>
+         </ButtonIcon>
         </div>
       </div>
     </Card>
