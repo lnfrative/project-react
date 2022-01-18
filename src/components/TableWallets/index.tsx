@@ -31,49 +31,6 @@ const endpointCoins = resources.endpoints.get.coins
 
 const nameCoin = resources.routes.coin.aliases.name
 
-function TableWallets() {
-  const { response, loading } = useContext(Backend)
-  const styles = nestStyles()
-  const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data
-  const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
-
-  return (
-    <div className={styles.container}>
-      <Header />
-      {!wallets.length && (
-        <div className={styles.messageEmpty}>
-          {message({ id: 'NO_WALLETS_CREATED' })}
-        </div>
-      )}
-      {wallets.map((wallet, index) => (
-        <Wallet
-          key={wallet.coin_id}
-          wallet={wallet}
-          final={wallets.length === index + 1}
-        />
-      ))}
-      {!!coins.filter((coin) => (
-        wallets.filter((wallet) => wallet.coin_id === coin.id).length === 0
-      )).length && (
-        <div className={styles.addRow}>
-          <div className={styles.containerLine}>
-            <div className={styles.addSegmentSuperior} />
-            <div className={styles.addSegment} />
-          </div>
-          <ButtonAddWallet />
-          <div className={styles.containerLine}>
-            <div className={styles.addSegmentSuperior} />
-            <div className={styles.addSegment} />
-          </div>
-        </div>
-      )}
-      <BackdropLoader
-        open={loading?.id === requestId('get', endwallets)}
-      />
-    </div>
-  )
-}
-
 function Header() {
   const styles = nestStyles()
   return (
@@ -138,6 +95,49 @@ function Wallet(props: WalletProps) {
       />
       <WalletActions />
     </Link>
+  )
+}
+
+function TableWallets() {
+  const { response, loading } = useContext(Backend)
+  const styles = nestStyles()
+  const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data
+  const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
+
+  return (
+    <div className={styles.container}>
+      <Header />
+      {!wallets.length && (
+        <div className={styles.messageEmpty}>
+          {message({ id: 'NO_WALLETS_CREATED' })}
+        </div>
+      )}
+      {wallets.map((wallet, index) => (
+        <Wallet
+          key={wallet.coin_id}
+          wallet={wallet}
+          final={wallets.length === index + 1}
+        />
+      ))}
+      {!!coins.filter((coin) => (
+        wallets.filter((wallet) => wallet.coin_id === coin.id).length === 0
+      )).length && (
+        <div className={styles.addRow}>
+          <div className={styles.containerLine}>
+            <div className={styles.addSegmentSuperior} />
+            <div className={styles.addSegment} />
+          </div>
+          <ButtonAddWallet />
+          <div className={styles.containerLine}>
+            <div className={styles.addSegmentSuperior} />
+            <div className={styles.addSegment} />
+          </div>
+        </div>
+      )}
+      <BackdropLoader
+        open={loading?.id === requestId('get', endwallets)}
+      />
+    </div>
   )
 }
 
