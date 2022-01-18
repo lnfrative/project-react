@@ -1,7 +1,7 @@
 // region import
 import React from 'react'
 
-// utilities
+// interfaces
 import { ButtonAddProps } from 'interfaces'
 
 // components
