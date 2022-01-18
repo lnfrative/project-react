@@ -19,41 +19,46 @@ import { initialState, closeSnackbar } from './module'
 const { colors } = resources
 
 function HandleBackendErrors(props: PropsWithChildren<{}>) {
-  const stage = useStage(initialState)
-  const { loading, response } = useContext(Backend)
+	const stage = useStage(initialState)
+	const { loading, response } = useContext(Backend)
 
-  useEffect(() => {
-    if (loading) {
-      stage.commitState({ requestId: loading.id, method: loading.method })
-    } else {
-      const { state, commitState } = stage
-      if (state.method && state.requestId) {
-        const responser: Responser = response[state.method]
-        const backendResponse = responser({ id: state.requestId })
-        if (backendResponse?.error) {
-          commitState({ error: backendResponse.error, snackbar: 'open' })
-        }
-        if (backendResponse?.status === 401) {
-          window.location.reload()
-        }
-      }
-    }
-  }, [loading])
+	useEffect(() => {
+		if (loading) {
+			stage.commitState({ requestId: loading.id, method: loading.method })
+		} else {
+			const { state, commitState } = stage
+			if (state.method && state.requestId) {
+				const responser: Responser = response[state.method]
+				const backendResponse = responser({ id: state.requestId })
+				if (backendResponse?.error) {
+					commitState({ error: backendResponse.error, snackbar: 'open' })
+				}
+				if (backendResponse?.status === 401) {
+					window.location.reload()
+				}
+			}
+		}
+	}, [loading])
 
-  return (
-    <>
-      <Snackbar
-        open={stage.state.snackbar === 'open'}
-        autoHideDuration={4000}
-        onClose={closeSnackbar(stage)}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        TransitionComponent={Grow}
-      >
-        <Alert style={{ background: colors.passive_pager, color: colors.variety_main }} severity="error">{stage.state.error}</Alert>
-      </Snackbar>
-      {props.children}
-    </>
-  )
+	return (
+		<>
+			<Snackbar
+				open={stage.state.snackbar === 'open'}
+				autoHideDuration={4000}
+				onClose={closeSnackbar(stage)}
+				anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+				TransitionComponent={Grow}
+			>
+				<Alert
+					style={{ background: colors.passive_pager, color: colors.variety_main }}
+					severity="error"
+				>
+					{stage.state.error}
+				</Alert>
+			</Snackbar>
+			{props.children}
+		</>
+	)
 }
 
 export default HandleBackendErrors

@@ -12,17 +12,17 @@ import styles from './index.module.css'
 // endregion
 
 function GroupBrand() {
-  return (
-    <div className={styles.container}>
-      <SVGIconApps />
-      <img
-        alt={externalResources.dogeCashLogoIcon.alt}
-        src={externalResources.dogeCashLogoIcon.src}
-        width={externalResources.dogeCashLogoIcon.width}
-        height={externalResources.dogeCashLogoIcon.height}
-      />
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<SVGIconApps />
+			<img
+				alt={externalResources.dogeCashLogoIcon.alt}
+				src={externalResources.dogeCashLogoIcon.src}
+				width={externalResources.dogeCashLogoIcon.width}
+				height={externalResources.dogeCashLogoIcon.height}
+			/>
+		</div>
+	)
 }
 
 export default GroupBrand

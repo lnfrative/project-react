@@ -1,6 +1,6 @@
 @import url('../../css/variables.css');
 
 .design {
-  fill: var(--color-active-secundary);
-  fill-rule: evenodd;
+	fill: var(--color-active-secundary);
+	fill-rule: evenodd;
 }

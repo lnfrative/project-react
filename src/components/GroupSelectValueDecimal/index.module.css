@@ -1,16 +1,16 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .containerValues {
-  display: flex;
-  gap: var(--space-xxs);
+	display: flex;
+	gap: var(--space-xxs);
 }
 
 .optionValue {
-  font-size: var(--font-size-xl);
-  color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-xl);
+	color: var(--color-variety-main-shadow);
 }

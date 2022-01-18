@@ -1,35 +1,35 @@
 @import url('../../css/variables.css');
 
 .grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 230px auto;
-  gap: var(--space-lg);
+	width: 100%;
+	display: grid;
+	grid-template-columns: 230px auto;
+	gap: var(--space-lg);
 }
 
 .groupNav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-lg);
+	display: flex;
+	align-items: center;
+	gap: var(--space-lg);
 }
 
 .groupNavDetails {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .groupTitleView {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .seeing {
-  font-size: var(--font-size-xxs);
-  color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-xxs);
+	color: var(--color-variety-main-shadow);
 }
 
 .title {
-  font-size: var(--font-size-lg);
-  color: var(--color-active-secundary);
+	font-size: var(--font-size-lg);
+	color: var(--color-active-secundary);
 }

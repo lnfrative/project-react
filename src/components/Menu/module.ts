@@ -1,20 +1,17 @@
 import { Stage } from 'interfaces'
 
 interface InitialState {
-  isOpen: boolean,
+	isOpen: boolean
 }
 
 const initialState: InitialState = {
-  isOpen: false,
+	isOpen: false,
 }
 
 function onClick(stage: Stage<InitialState>) {
-  return () => {
-    stage.commitState({ isOpen: !stage.state.isOpen })
-  }
+	return () => {
+		stage.commitState({ isOpen: !stage.state.isOpen })
+	}
 }
 
-export {
-  initialState,
-  onClick,
-}
+export { initialState, onClick }

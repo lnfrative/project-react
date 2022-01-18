@@ -10,12 +10,12 @@ import { nestStyles, onClick, getPath } from './module'
 // endregion
 
 function PaginationMenuTab(props: PaginationMenuTabProps) {
-  const styles = nestStyles(props)
-  return (
-    <Link onClick={onClick(props)} to={getPath(props)} className={styles.tab}>
-      {props.paginationObject.title}
-    </Link>
-  )
+	const styles = nestStyles(props)
+	return (
+		<Link onClick={onClick(props)} to={getPath(props)} className={styles.tab}>
+			{props.paginationObject.title}
+		</Link>
+	)
 }
 
 export default PaginationMenuTab

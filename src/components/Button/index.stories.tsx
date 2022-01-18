@@ -4,8 +4,8 @@ import { ButtonProps } from 'interfaces'
 import { Button } from 'components'
 
 export default {
-  title: 'Button',
-  component: Button,
+	title: 'Button',
+	component: Button,
 }
 
 const Template: ComponentStory<typeof Button> = (props: ButtonProps) => <Button {...props} />
@@ -13,8 +13,8 @@ const Template: ComponentStory<typeof Button> = (props: ButtonProps) => <Button 
 export const Test = Template.bind({})
 
 Test.args = {
-  title: 'Test',
-  buttonHTMLAttributes: {
-    style: { width: 300 },
-  },
+	title: 'Test',
+	buttonHTMLAttributes: {
+		style: { width: 300 },
+	},
 }

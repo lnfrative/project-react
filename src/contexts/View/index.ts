@@ -6,12 +6,12 @@ import { ContextViewState, Stage } from 'interfaces'
 // endregion
 
 const state: ContextViewState = {
-  name: undefined,
+	name: undefined,
 }
 
 const View = createContext<Stage<ContextViewState>>({
-  state,
-  commitState: () => {},
+	state,
+	commitState: () => {},
 })
 
 export default View

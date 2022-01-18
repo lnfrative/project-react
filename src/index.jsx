@@ -5,13 +5,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // components
 import {
-  ProvideContextCoin,
-  ProvideContextView,
-  ProvideContextModal,
-  ProvideContextBackend,
-  ProvideContextCurrency,
-  ApplicationStart,
-  HandleBackendErrors,
+	ProvideContextCoin,
+	ProvideContextView,
+	ProvideContextModal,
+	ProvideContextBackend,
+	ProvideContextCurrency,
+	ApplicationStart,
+	HandleBackendErrors,
 } from 'components'
 
 // utilities
@@ -31,44 +31,36 @@ const Recover = lazy(() => import('views/Recover'))
 const ResetPassword = lazy(() => import('views/ResetPassword'))
 // endregion
 
-const {
-  home,
-  register,
-  coin,
-  setting,
-  confirmEmail,
-  recover,
-  resetPassword,
-} = resources.routes
+const { home, register, coin, setting, confirmEmail, recover, resetPassword } = resources.routes
 
 const App = (
-  <ProvideContextBackend>
-    <ProvideContextModal>
-      <ProvideContextView>
-        <ProvideContextCoin>
-          <ProvideContextCurrency>
-            <ApplicationStart>
-              <HandleBackendErrors>
-                <Router>
-                  <Suspense fallback={null}>
-                    <Switch>
-                      <Route exact path={home.base} component={Home} />
-                      <Route exact path={register.base} component={Signup} />
-                      <Route exact path={coin.route.path} component={Coin} />
-                      <Route exact path={setting.route.path} component={Setting} />
-                      <Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
-                      <Route exact path={recover.route.path} component={Recover} />
-                      <Route exact path={resetPassword.route.path} component={ResetPassword} />
-                    </Switch>
-                  </Suspense>
-                </Router>
-              </HandleBackendErrors>
-            </ApplicationStart>
-          </ProvideContextCurrency>
-        </ProvideContextCoin>
-      </ProvideContextView>
-    </ProvideContextModal>
-  </ProvideContextBackend>
+	<ProvideContextBackend>
+		<ProvideContextModal>
+			<ProvideContextView>
+				<ProvideContextCoin>
+					<ProvideContextCurrency>
+						<ApplicationStart>
+							<HandleBackendErrors>
+								<Router>
+									<Suspense fallback={null}>
+										<Switch>
+											<Route exact path={home.base} component={Home} />
+											<Route exact path={register.base} component={Signup} />
+											<Route exact path={coin.route.path} component={Coin} />
+											<Route exact path={setting.route.path} component={Setting} />
+											<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
+											<Route exact path={recover.route.path} component={Recover} />
+											<Route exact path={resetPassword.route.path} component={ResetPassword} />
+										</Switch>
+									</Suspense>
+								</Router>
+							</HandleBackendErrors>
+						</ApplicationStart>
+					</ProvideContextCurrency>
+				</ProvideContextCoin>
+			</ProvideContextView>
+		</ProvideContextModal>
+	</ProvideContextBackend>
 )
 
 // eslint-disable-next-line no-undef

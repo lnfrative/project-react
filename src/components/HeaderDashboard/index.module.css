@@ -1,18 +1,18 @@
 @import '../../css/variables.css';
 
 .firstGroup {
-    display: flex;
-    gap: var(--space-lg);
+	display: flex;
+	gap: var(--space-lg);
 }
 
 .secondGroup {
-    display: flex;
-    align-items: center;
-    gap: var(--space-lg);
+	display: flex;
+	align-items: center;
+	gap: var(--space-lg);
 }
 
 @media screen and (max-width: 800px) {
-    .headerPages {
-        display: none;
-    }
+	.headerPages {
+		display: none;
+	}
 }

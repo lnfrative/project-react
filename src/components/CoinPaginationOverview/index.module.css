@@ -1,50 +1,50 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
 
-  max-width: 1000px;
+	max-width: 1000px;
 }
 
 .containerBenefits {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
 }
 
 .title {
-  font-size: var(--font-size-sm);
-  color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-sm);
+	color: var(--color-variety-main-shadow);
 }
 
 .containerBenefitsValues {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .group {
-  display: flex;
-  gap: var(--space-lg);
+	display: flex;
+	gap: var(--space-lg);
 }
 
 .groupSecondary {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .line {
-  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .value {
-  font-size: var(--font-size-lg);
-  color: var(--color-variety-main);
+	font-size: var(--font-size-lg);
+	color: var(--color-variety-main);
 }
 
 .groupValue {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
 }

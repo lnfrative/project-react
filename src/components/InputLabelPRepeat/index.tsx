@@ -16,21 +16,21 @@ import { initialState, onChange } from './module'
 // endregion
 
 function InputLabelPRepeat(props: InputLabelPRepeatProps) {
-  const stage = useStage(initialState)
-  return (
-    <InputLabel
-      inputProps={{
-        error: stage.state.error,
-        InputHTMLAttributes: {
-          type: 'password',
-          name: 'repeatedPassword',
-          autoComplete: 'new-password',
-          onChange: onChange(stage, props),
-        },
-      }}
-      title={message({ id: 'REPEAT_PASSWORD' })}
-    />
-  )
+	const stage = useStage(initialState)
+	return (
+		<InputLabel
+			inputProps={{
+				error: stage.state.error,
+				InputHTMLAttributes: {
+					type: 'password',
+					name: 'repeatedPassword',
+					autoComplete: 'new-password',
+					onChange: onChange(stage, props),
+				},
+			}}
+			title={message({ id: 'REPEAT_PASSWORD' })}
+		/>
+	)
 }
 
 export default InputLabelPRepeat

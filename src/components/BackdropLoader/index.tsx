@@ -10,16 +10,14 @@ import styles from './index.module.css'
 // endregion
 
 function BackdropLoader(props: BackdropLoaderProps) {
-  return (
-    <Backdrop open={props.open} sx={{ zIndex: 10 }}>
-      <div className={styles.loader}>
-        <CircularProgress />
-        {props.message && (
-          <div className={styles.loaderMessage}>{props.message}</div>
-        )}
-      </div>
-    </Backdrop>
-  )
+	return (
+		<Backdrop open={props.open} sx={{ zIndex: 10 }}>
+			<div className={styles.loader}>
+				<CircularProgress />
+				{props.message && <div className={styles.loaderMessage}>{props.message}</div>}
+			</div>
+		</Backdrop>
+	)
 }
 
 export default BackdropLoader

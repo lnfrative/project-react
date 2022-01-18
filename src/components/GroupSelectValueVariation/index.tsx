@@ -12,12 +12,12 @@ import styles from './index.module.css'
 // endregion
 
 function GroupSelectValueVariation(props: GroupSelectValueVariationProps) {
-  return (
-    <div className={styles.container}>
-      <Select design="simple" title={props.titleSelect} options={props.optionsSelect} />
-      <ValueVariation design="medium" value={props.valueVariation} />
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<Select design="simple" title={props.titleSelect} options={props.optionsSelect} />
+			<ValueVariation design="medium" value={props.valueVariation} />
+		</div>
+	)
 }
 
 export default GroupSelectValueVariation

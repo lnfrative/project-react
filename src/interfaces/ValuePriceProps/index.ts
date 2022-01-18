@@ -1,5 +1,5 @@
 interface ValuePriceProps {
-  value: number,
+	value: number
 }
 
 export default ValuePriceProps

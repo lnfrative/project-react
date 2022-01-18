@@ -1,5 +1,5 @@
 interface ContextCurrencyState {
-  id?: string,
+	id?: string
 }
 
 export default ContextCurrencyState

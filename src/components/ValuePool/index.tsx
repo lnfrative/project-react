@@ -12,12 +12,12 @@ import styles from './index.module.css'
 // endregion
 
 function ValuePool(props: ValuePoolProps) {
-  return (
-    <div className={styles.container}>
-      <ValueDecimal sise="small" value={props.valueDecimal} />
-      <ValuePercentage value={props.valuePercentage} />
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<ValueDecimal sise="small" value={props.valueDecimal} />
+			<ValuePercentage value={props.valuePercentage} />
+		</div>
+	)
 }
 
 export default ValuePool

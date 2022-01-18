@@ -1,15 +1,16 @@
 @import url('../../css/variables.css');
 
-#gradient { }
+#gradient {
+}
 
 .primaryStop {
-  stop-color: var(--color-active-secundary);
+	stop-color: var(--color-active-secundary);
 }
 
 .secondaryStop {
-  stop-color: var(--color-active-main);
+	stop-color: var(--color-active-main);
 }
 
 .design {
-  fill-rule: evenodd;
+	fill-rule: evenodd;
 }

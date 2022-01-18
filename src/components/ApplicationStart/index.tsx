@@ -12,19 +12,19 @@ import { Backend, Currency } from 'contexts'
 // endregion
 
 function ApplicationStart(props: PropsWithChildren<{}>) {
-  const currency = useContext(Currency)
-  const backend = useContext(Backend)
-  const user = backend.response.get({ endpoint: resources.endpoints.get.user })
-  const coins = backend.response.get({ endpoint: resources.endpoints.get.coins })
+	const currency = useContext(Currency)
+	const backend = useContext(Backend)
+	const user = backend.response.get({ endpoint: resources.endpoints.get.user })
+	const coins = backend.response.get({ endpoint: resources.endpoints.get.coins })
 
-  useEffect(() => {
-    backend.request.get({ endpoint: resources.endpoints.get.user, label: 'LOADING_SESSION' })
-    backend.request.get({ endpoint: resources.endpoints.get.coins, label: 'LOADING_COINS' })
-    currency.commitState({ id: 'usd' })
-  }, [])
+	useEffect(() => {
+		backend.request.get({ endpoint: resources.endpoints.get.user, label: 'LOADING_SESSION' })
+		backend.request.get({ endpoint: resources.endpoints.get.coins, label: 'LOADING_COINS' })
+		currency.commitState({ id: 'usd' })
+	}, [])
 
-  if (!user || !coins?.success) return <PreloadPage />
-  return props.children
+	if (!user || !coins?.success) return <PreloadPage />
+	return props.children
 }
 
 export default ApplicationStart

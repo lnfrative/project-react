@@ -12,17 +12,13 @@ import { Modal } from 'contexts'
 // endregion
 
 const initialState: ContextModalState = {
-  status: 'close',
-  id: undefined,
+	status: 'close',
+	id: undefined,
 }
 
 function ProvideContextModal(props: PropsWithChildren<{}>) {
-  const stage = useStage(initialState)
-  return (
-    <Modal.Provider value={stage}>
-      {props.children}
-    </Modal.Provider>
-  )
+	const stage = useStage(initialState)
+	return <Modal.Provider value={stage}>{props.children}</Modal.Provider>
 }
 
 export default ProvideContextModal

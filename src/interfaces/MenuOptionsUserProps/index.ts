@@ -1,5 +1,5 @@
 interface MenuOptionsUserProps {
-  character: string
+	character: string
 }
 
 export default MenuOptionsUserProps

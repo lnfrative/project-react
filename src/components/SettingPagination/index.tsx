@@ -9,14 +9,12 @@ import styles from './index.module.css'
 // endregion
 
 function SettingPagination(props: PropsWithChildren<SettingPaginationProps>) {
-  return (
-    <div className={styles.container}>
-      <div className={styles.title}>{props.title}</div>
-      <div className={styles.content}>
-        {props.children}
-      </div>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<div className={styles.title}>{props.title}</div>
+			<div className={styles.content}>{props.children}</div>
+		</div>
+	)
 }
 
 export default SettingPagination

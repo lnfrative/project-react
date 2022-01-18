@@ -12,23 +12,17 @@ import styles from './index.module.css'
 // endregion
 
 function WalletActions() {
-  return (
-    <div className={styles.container}>
-      <div className={styles.containerCombination}>
-        <ButtonCombination
-          position="after"
-          title={message({ id: 'BUY' })}
-        />
-        <ButtonCombination
-          position="before"
-          title={message({ id: 'SELL' })}
-        />
-      </div>
-      <ButtonIcon>
-        <SVGIconArrowDouble />
-      </ButtonIcon>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<div className={styles.containerCombination}>
+				<ButtonCombination position="after" title={message({ id: 'BUY' })} />
+				<ButtonCombination position="before" title={message({ id: 'SELL' })} />
+			</div>
+			<ButtonIcon>
+				<SVGIconArrowDouble />
+			</ButtonIcon>
+		</div>
+	)
 }
 
 export default WalletActions

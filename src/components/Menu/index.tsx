@@ -15,32 +15,27 @@ import styles from './index.module.css'
 // endregion
 
 function Menu(props: MenuProps) {
-  const stage = useStage(initialState)
+	const stage = useStage(initialState)
 
-  useEffect(() => {
-    if (!stage.state.isOpen) return () => {}
-    function closeMenu() {
-      stage.commitState({ isOpen: false })
-    }
-    window.addEventListener('click', closeMenu)
-    return () => {
-      window.removeEventListener('click', closeMenu)
-    }
-  }, [stage.state.isOpen])
+	useEffect(() => {
+		if (!stage.state.isOpen) return () => {}
+		function closeMenu() {
+			stage.commitState({ isOpen: false })
+		}
+		window.addEventListener('click', closeMenu)
+		return () => {
+			window.removeEventListener('click', closeMenu)
+		}
+	}, [stage.state.isOpen])
 
-  return (
-    <div className={styles.container}>
-      {stage.state.isOpen && props.content}
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={onClick(stage)}
-        className={styles.children}
-      >
-        {props.children}
-      </div>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			{stage.state.isOpen && props.content}
+			<div role="button" tabIndex={0} onClick={onClick(stage)} className={styles.children}>
+				{props.children}
+			</div>
+		</div>
+	)
 }
 
 export default Menu

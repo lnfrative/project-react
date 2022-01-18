@@ -23,33 +23,39 @@ import styles from './index.module.css'
 const { aliases } = resources.endpoints
 
 function CoinAvailable(props: CoinAvailableProps) {
-  const backend = useContext(Backend)
-  const contextModal = useContext(Modal)
-  const endnewaddress = resources.endpoints.get.newaddress.replace(
-    aliases.coinId, props.id.toString(),
-  )
-  const newaddress = backend.response.get({ endpoint: endnewaddress })
-  const loading = backend.loading?.id === requestId('get', endnewaddress)
+	const backend = useContext(Backend)
+	const contextModal = useContext(Modal)
+	const endnewaddress = resources.endpoints.get.newaddress.replace(
+		aliases.coinId,
+		props.id.toString()
+	)
+	const newaddress = backend.response.get({ endpoint: endnewaddress })
+	const loading = backend.loading?.id === requestId('get', endnewaddress)
 
-  useEffect(() => {
-    if (newaddress) {
-      contextModal.commitState({ id: undefined, status: 'close' })
-    }
-  }, [newaddress])
+	useEffect(() => {
+		if (newaddress) {
+			contextModal.commitState({ id: undefined, status: 'close' })
+		}
+	}, [newaddress])
 
-  return (
-    <>
-      <div onClick={onClick(props, backend.request.get)} role="button" tabIndex={0} className={styles.container}>
-        <ImgCoin size="small" src={props.srcImageCoin} />
-        <div className={styles.details}>
-          <div className={styles.id}>{props.asset}</div>
-          <div className={styles.separator}>-</div>
-          <div className={styles.name}>{props.name}</div>
-        </div>
-      </div>
-      <BackdropLoader open={loading} />
-    </>
-  )
+	return (
+		<>
+			<div
+				onClick={onClick(props, backend.request.get)}
+				role="button"
+				tabIndex={0}
+				className={styles.container}
+			>
+				<ImgCoin size="small" src={props.srcImageCoin} />
+				<div className={styles.details}>
+					<div className={styles.id}>{props.asset}</div>
+					<div className={styles.separator}>-</div>
+					<div className={styles.name}>{props.name}</div>
+				</div>
+			</div>
+			<BackdropLoader open={loading} />
+		</>
+	)
 }
 
 export default CoinAvailable

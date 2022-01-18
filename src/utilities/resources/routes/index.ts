@@ -8,14 +8,14 @@ import recover from './recover'
 import resetPassword from './resetPassword'
 
 const path = {
-  coin,
-  home,
-  login,
-  register,
-  setting,
-  confirmEmail,
-  recover,
-  resetPassword,
+	coin,
+	home,
+	login,
+	register,
+	setting,
+	confirmEmail,
+	recover,
+	resetPassword,
 }
 
 export default path

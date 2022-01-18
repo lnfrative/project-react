@@ -9,12 +9,12 @@ import styles from './index.module.css'
 // endregion
 
 function ValuePercentage(props: ValuePercentageProps) {
-  return (
-    <div className={styles.container}>
-      <span>{props.value}</span>
-      <span>%</span>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<span>{props.value}</span>
+			<span>%</span>
+		</div>
+	)
 }
 
 export default ValuePercentage

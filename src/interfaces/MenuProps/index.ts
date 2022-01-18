@@ -1,6 +1,6 @@
 interface MenuProps {
-  children?:any,
-  content: any,
+	children?: any
+	content: any
 }
 
 export default MenuProps

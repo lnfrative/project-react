@@ -1,6 +1,5 @@
 import { PaginationTabProps } from 'interfaces'
 
-interface PaginationMenuTabProps extends PaginationTabProps {
-}
+interface PaginationMenuTabProps extends PaginationTabProps {}
 
 export default PaginationMenuTabProps

@@ -6,18 +6,16 @@ import { Stage, ContextModalState } from 'interfaces'
 // endregion
 
 export interface State {
-  id: number,
+	id: number
 }
 
 function onClick(
-  stage: Stage<State>,
-  modalContextStage: Stage<ContextModalState>,
+	stage: Stage<State>,
+	modalContextStage: Stage<ContextModalState>
 ): MouseEventHandler<HTMLDivElement> {
-  return () => {
-    modalContextStage.commitState({ status: 'open', id: stage.state.id })
-  }
+	return () => {
+		modalContextStage.commitState({ status: 'open', id: stage.state.id })
+	}
 }
 
-export {
-  onClick,
-}
+export { onClick }

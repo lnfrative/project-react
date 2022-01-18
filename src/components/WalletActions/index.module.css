@@ -1,13 +1,13 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  gap: var(--space-sm);
+	display: flex;
+	gap: var(--space-sm);
 
-  justify-self: flex-end;
+	justify-self: flex-end;
 }
 
 .containerCombination {
-  display: flex;
-  gap: var(--space-lg);
+	display: flex;
+	gap: var(--space-lg);
 }

@@ -6,11 +6,7 @@ import { SettingPagination } from 'components'
 // endregion
 
 function SettingPaginationMisc() {
-  return (
-    <SettingPagination title="Misc">
-      Misc.
-    </SettingPagination>
-  )
+	return <SettingPagination title="Misc">Misc.</SettingPagination>
 }
 
 export default SettingPaginationMisc

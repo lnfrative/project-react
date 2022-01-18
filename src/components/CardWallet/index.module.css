@@ -1,30 +1,30 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .groupButtons {
-  display: flex;
-  margin-left: var(--space-lg);
+	display: flex;
+	margin-left: var(--space-lg);
 }
 
 .groupCombination {
-  display: flex;
-  margin-right: var(--space-sm);
+	display: flex;
+	margin-right: var(--space-sm);
 }
 
 .combinationAfter {
-  margin-right: var(--space-lg);
+	margin-right: var(--space-lg);
 }
 
 @media screen and (max-width: 550px) {
-  .container {
-    flex-direction: column;
-  }
+	.container {
+		flex-direction: column;
+	}
 
-  .groupButtons {
-    justify-content: flex-end;
-  }
+	.groupButtons {
+		justify-content: flex-end;
+	}
 }

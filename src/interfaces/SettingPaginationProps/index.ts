@@ -1,5 +1,5 @@
 interface SettingPaginationProps {
-  title: string,
+	title: string
 }
 
 export default SettingPaginationProps

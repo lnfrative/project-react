@@ -1,23 +1,23 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xxxs);
-  width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-xxxs);
+	width: 100%;
 
-  font-family: var(--font-primary);
-  font-size: var(--font-size-xs);
+	font-family: var(--font-primary);
+	font-size: var(--font-size-xs);
 }
 
 .message {
-  font-style: italic;
-  color: var(--color-tertiary);
+	font-style: italic;
+	color: var(--color-tertiary);
 }
 
 .link {
-  text-decoration: none;
-  font-weight: bold;
-  color: var(--color-thirteenth);
+	text-decoration: none;
+	font-weight: bold;
+	color: var(--color-thirteenth);
 }

@@ -4,20 +4,18 @@ import { CardValueProps } from 'interfaces'
 import { CardValue } from 'components'
 
 export default {
-    title: 'CardValue',
-    component: CardValue,
+	title: 'CardValue',
+	component: CardValue,
 }
 
-const Template: ComponentStory<
-    typeof CardValue
-> = (props: CardValueProps) => (
-    <CardValue {...props} />
+const Template: ComponentStory<typeof CardValue> = (props: CardValueProps) => (
+	<CardValue {...props} />
 )
 
 export const Test = Template.bind({})
 
 Test.args = {
-    title: 'Title',
-    value: 455.65,
-    sign: '%'
+	title: 'Title',
+	value: 455.65,
+	sign: '%',
 }

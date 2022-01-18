@@ -2,20 +2,17 @@ import { Stage, SelectOption } from 'interfaces'
 import { OnSelect } from 'types'
 
 interface State {
-  optionSelected?: SelectOption
+	optionSelected?: SelectOption
 }
 
 const initialState: State = {
-  optionSelected: undefined,
+	optionSelected: undefined,
 }
 
 function genOnSelect(stage: Stage<State>): OnSelect {
-  return ({ option }) => {
-    stage.commitState({ optionSelected: option })
-  }
+	return ({ option }) => {
+		stage.commitState({ optionSelected: option })
+	}
 }
 
-export {
-  initialState,
-  genOnSelect,
-}
+export { initialState, genOnSelect }

@@ -16,21 +16,21 @@ import { initialState, onChange } from './module'
 // endregion
 
 function InputLabelPassword(props: InputLabelPasswordProps) {
-  const stage = useStage(initialState)
-  return (
-    <InputLabel
-      inputProps={{
-        error: props.disableError ? undefined : stage.state.error,
-        InputHTMLAttributes: {
-          type: 'password',
-          name: 'password',
-          autoComplete: 'new-password',
-          onChange: onChange(stage, props),
-        },
-      }}
-      title={message({ id: 'PASSWORD' })}
-    />
-  )
+	const stage = useStage(initialState)
+	return (
+		<InputLabel
+			inputProps={{
+				error: props.disableError ? undefined : stage.state.error,
+				InputHTMLAttributes: {
+					type: 'password',
+					name: 'password',
+					autoComplete: 'new-password',
+					onChange: onChange(stage, props),
+				},
+			}}
+			title={message({ id: 'PASSWORD' })}
+		/>
+	)
 }
 
 export default InputLabelPassword

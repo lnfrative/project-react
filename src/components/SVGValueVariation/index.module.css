@@ -1,9 +1,9 @@
 @import url('../../css/variables.css');
 
 .upstream {
-  fill: var(--color-variety-upstream);
+	fill: var(--color-variety-upstream);
 }
 
 .downstream {
-  fill: var(--color-variety-downstream);
+	fill: var(--color-variety-downstream);
 }

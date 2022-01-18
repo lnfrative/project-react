@@ -12,17 +12,13 @@ import { View } from 'contexts'
 // endregion
 
 const initialState: ContextViewState = {
-  name: undefined,
+	name: undefined,
 }
 
 function ProvideContextView(props: PropsWithChildren<{}>) {
-  const stage = useStage<ContextViewState>(initialState)
+	const stage = useStage<ContextViewState>(initialState)
 
-  return (
-    <View.Provider value={stage}>
-      {props.children}
-    </View.Provider>
-  )
+	return <View.Provider value={stage}>{props.children}</View.Provider>
 }
 
 export default ProvideContextView

@@ -20,23 +20,20 @@ import styles from './index.module.css'
 const enduser = resources.endpoints.get.user
 
 function Banners() {
-  const { response } = useContext(Backend)
-  const user: BackendUser | undefined = response.get({ endpoint: enduser })?.data
+	const { response } = useContext(Backend)
+	const user: BackendUser | undefined = response.get({ endpoint: enduser })?.data
 
-  return (
-    <div className={styles.container}>
-      {user && !user.email_verified_at && (
-        <Banner>
-          <span>
-            A verification email has been sent to
-            {' '}
-            <b>{user.email}</b>
-            .
-          </span>
-        </Banner>
-      )}
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			{user && !user.email_verified_at && (
+				<Banner>
+					<span>
+						A verification email has been sent to <b>{user.email}</b>.
+					</span>
+				</Banner>
+			)}
+		</div>
+	)
 }
 
 export default Banners

@@ -9,21 +9,17 @@ import { drawPolyline } from './module'
 // endregion
 
 function SVGValueVariation(props: CanvasValueVariationProps) {
-  const refPoline = useRef<SVGPolylineElement>(null)
+	const refPoline = useRef<SVGPolylineElement>(null)
 
-  useEffect(() => {
-    drawPolyline(refPoline, props)
-  }, [])
+	useEffect(() => {
+		drawPolyline(refPoline, props)
+	}, [])
 
-  return (
-    <svg viewBox="0 0 125 45">
-      <polyline
-        ref={refPoline}
-        fill="none"
-        strokeWidth={1}
-      />
-    </svg>
-  )
+	return (
+		<svg viewBox="0 0 125 45">
+			<polyline ref={refPoline} fill="none" strokeWidth={1} />
+		</svg>
+	)
 }
 
 export default SVGValueVariation

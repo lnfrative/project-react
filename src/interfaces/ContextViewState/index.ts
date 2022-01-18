@@ -1,5 +1,5 @@
 interface ContextViewState {
-  name?: string,
+	name?: string
 }
 
 export default ContextViewState

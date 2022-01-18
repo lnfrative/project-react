@@ -1,7 +1,7 @@
 import { CheckboxRhomboidProps } from 'interfaces'
 
 interface CheckboxRhomboidTermsProps {
-  checkboxRhomboidProps: CheckboxRhomboidProps
+	checkboxRhomboidProps: CheckboxRhomboidProps
 }
 
 export default CheckboxRhomboidTermsProps

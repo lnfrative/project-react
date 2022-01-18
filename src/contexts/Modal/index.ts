@@ -6,13 +6,13 @@ import { Stage, ContextModalState } from 'interfaces'
 // endregion
 
 const state: ContextModalState = {
-  status: 'close',
-  id: undefined,
+	status: 'close',
+	id: undefined,
 }
 
 const Modal = createContext<Stage<ContextModalState>>({
-  state,
-  commitState: () => {},
+	state,
+	commitState: () => {},
 })
 
 export default Modal

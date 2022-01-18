@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react'
 
 interface ButtonIconProps {
-  onClick?: MouseEventHandler<HTMLButtonElement>,
+	onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export default ButtonIconProps

@@ -8,9 +8,7 @@ import { Backend } from 'contexts'
 import { useForm } from 'hooks'
 
 // components
-import {
-  FormAuth, InputLabelEmail, Button, BackdropLoader,
-} from 'components'
+import { FormAuth, InputLabelEmail, Button, BackdropLoader } from 'components'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
@@ -25,35 +23,31 @@ import styles from './index.module.css'
 const endrecoverpassword = resources.endpoints.post.recoverPassword
 
 function FormAuthRecoverPassword() {
-  const backend = useContext(Backend)
-  const { register, handleSubmit, watch } = useForm()
-  const { email } = watch
-  const params = { email: email?.value }
+	const backend = useContext(Backend)
+	const { register, handleSubmit, watch } = useForm()
+	const { email } = watch
+	const params = { email: email?.value }
 
-  const response = backend.response.post({ endpoint: endrecoverpassword, params })
-  const loading = backend.loading?.id === requestId('post', endrecoverpassword, params)
+	const response = backend.response.post({ endpoint: endrecoverpassword, params })
+	const loading = backend.loading?.id === requestId('post', endrecoverpassword, params)
 
-  if (response?.success) {
-    return (
-      <div className={styles.success}>
-        {message({ id: 'VERIFICATION_EMAIL_SENT' })}
-      </div>
-    )
-  }
-  return (
-    <form onSubmit={handleSubmit({ onSubmit: onSubmit(backend) })}>
-      <FormAuth title={message({ id: 'RECOVER_PASSWORD' })}>
-        <InputLabelEmail disableError registerInput={register({ name: 'email' })} />
-        <Button
-          buttonHTMLAttributes={{
-            type: 'submit',
-          }}
-          title={message({ id: 'SEND' })}
-        />
-      </FormAuth>
-      <BackdropLoader open={loading} />
-    </form>
-  )
+	if (response?.success) {
+		return <div className={styles.success}>{message({ id: 'VERIFICATION_EMAIL_SENT' })}</div>
+	}
+	return (
+		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend) })}>
+			<FormAuth title={message({ id: 'RECOVER_PASSWORD' })}>
+				<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
+				<Button
+					buttonHTMLAttributes={{
+						type: 'submit',
+					}}
+					title={message({ id: 'SEND' })}
+				/>
+			</FormAuth>
+			<BackdropLoader open={loading} />
+		</form>
+	)
 }
 
 export default FormAuthRecoverPassword

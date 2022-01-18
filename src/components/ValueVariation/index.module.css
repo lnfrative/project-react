@@ -1,27 +1,27 @@
 @import url('../../css/variables.css');
 
 .smallFont {
-  font-size: var(--font-size-xxs);
+	font-size: var(--font-size-xxs);
 }
 
 .mediumFont {
-  font-size: var(--font-size-xl);
+	font-size: var(--font-size-xl);
 }
 
 .largeFont {
-  font-size: var(--font-size-xxl);
+	font-size: var(--font-size-xxl);
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xxs);
+	display: flex;
+	align-items: center;
+	gap: var(--space-xxs);
 }
 
 .upstream {
-  color: var(--color-variety-upstream);
+	color: var(--color-variety-upstream);
 }
 
 .downstream {
-  color: var(--color-variety-downstream);
+	color: var(--color-variety-downstream);
 }

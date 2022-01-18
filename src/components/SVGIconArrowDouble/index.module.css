@@ -1,6 +1,6 @@
 @import url('../../css/variables.css');
 
 .design {
-  fill-rule: evenodd;
-  fill: var(--color-variety-main);
+	fill-rule: evenodd;
+	fill: var(--color-variety-main);
 }

@@ -1,6 +1,6 @@
 @import url('../../css/variables.css');
 
 .success {
-  color: var(--color-variety-main);
-  margin: var(--space-sm);
+	color: var(--color-variety-main);
+	margin: var(--space-sm);
 }

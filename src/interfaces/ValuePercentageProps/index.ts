@@ -1,5 +1,5 @@
 interface ValuePercentageProps {
-  value: number
+	value: number
 }
 
 export default ValuePercentageProps

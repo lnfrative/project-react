@@ -1,6 +1,6 @@
 interface CoordValueVariation {
-  value: number,
-  timestamp: number,
+	value: number
+	timestamp: number
 }
 
 export default CoordValueVariation

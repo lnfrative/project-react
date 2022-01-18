@@ -6,11 +6,7 @@ import { SettingPagination } from 'components'
 // endregion
 
 function SettingPaginationSecurity() {
-  return (
-    <SettingPagination title="Security">
-      Security.
-    </SettingPagination>
-  )
+	return <SettingPagination title="Security">Security.</SettingPagination>
 }
 
 export default SettingPaginationSecurity

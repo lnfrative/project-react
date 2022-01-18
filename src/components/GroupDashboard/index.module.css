@@ -1,26 +1,26 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
 }
 
 .containerTitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-variety-main);
+	font-size: var(--font-size-lg);
+	color: var(--color-variety-main);
 
-  display: flex;
-  align-items: flex-end;
-  gap: var(--space-xs);
+	display: flex;
+	align-items: flex-end;
+	gap: var(--space-xs);
 }
 
 .groupTitle {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .sign {
-  font-size: var(--font-size-xs);
-  transform: rotate(65deg);
+	font-size: var(--font-size-xs);
+	transform: rotate(65deg);
 }

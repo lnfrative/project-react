@@ -1,92 +1,92 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  background-color: var(--color-passive-pager);
-  border-radius: var(--border-radius-standard);
+	background-color: var(--color-passive-pager);
+	border-radius: var(--border-radius-standard);
 }
 
 .emptyMessage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-variety-main-shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-variety-main-shadow);
 
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-lg);
+	margin-top: var(--space-xl);
+	margin-bottom: var(--space-lg);
 }
 
 .row {
-  display: grid;
-  overflow: auto;
-  grid-template-columns: minmax(175px, 350px) 95px 70px 145px 125px minmax(200px, 850px);
-  gap: var(--space-sm);
+	display: grid;
+	overflow: auto;
+	grid-template-columns: minmax(175px, 350px) 95px 70px 145px 125px minmax(200px, 850px);
+	gap: var(--space-sm);
 
-  padding: var(--space-md);
+	padding: var(--space-md);
 }
 
 .borderBottom {
-  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .item {
-  text-decoration: none;
-  cursor: pointer;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .item:hover {
-  background-color: var(--color-variety-main-tiny-shadow);
-  opacity: var(--opacity-selecting);
+	background-color: var(--color-variety-main-tiny-shadow);
+	opacity: var(--opacity-selecting);
 }
 
 .item:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }
 
 .header {
-  font-size: var(--font-size-xs);
-  color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-xs);
+	color: var(--color-variety-main-shadow);
 }
 
 .headerCell {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
 }
 
 .headerCell:hover {
-  opacity: var(--opacity-selecting);
+	opacity: var(--opacity-selecting);
 }
 
 .headerCell:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }
 
 .arrow {
-  font-size: var(--font-size-xxs);
+	font-size: var(--font-size-xxs);
 }
 
 .addRow {
-  padding: var(--space-md);
-  display: flex;
+	padding: var(--space-md);
+	display: flex;
 
-  gap: var(--space-md);
+	gap: var(--space-md);
 }
 
 .containerLine {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 }
 
 .addSegment {
-  width: 100%;
-  flex: 1;
+	width: 100%;
+	flex: 1;
 }
 
 .addSegmentSuperior {
-  border-bottom: solid 2px var(--color-variety-main-tiny-shadow);
+	border-bottom: solid 2px var(--color-variety-main-tiny-shadow);
 }

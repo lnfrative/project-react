@@ -16,21 +16,21 @@ import { onChange, initialState } from './module'
 // endregion
 
 function InputLabelEmail(props: InputLabelEmailProps) {
-  const stage = useStage(initialState)
-  return (
-    <InputLabel
-      inputProps={{
-        error: props.disableError ? undefined : stage.state.error,
-        InputHTMLAttributes: {
-          type: 'email',
-          name: 'email',
-          autoComplete: 'email',
-          onChange: onChange(stage, { registerInput: props.registerInput }),
-        },
-      }}
-      title={message({ id: 'EMAIL' })}
-    />
-  )
+	const stage = useStage(initialState)
+	return (
+		<InputLabel
+			inputProps={{
+				error: props.disableError ? undefined : stage.state.error,
+				InputHTMLAttributes: {
+					type: 'email',
+					name: 'email',
+					autoComplete: 'email',
+					onChange: onChange(stage, { registerInput: props.registerInput }),
+				},
+			}}
+			title={message({ id: 'EMAIL' })}
+		/>
+	)
 }
 
 export default InputLabelEmail

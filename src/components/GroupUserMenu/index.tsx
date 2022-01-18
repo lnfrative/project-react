@@ -9,12 +9,12 @@ import styles from './index.module.css'
 // endregion
 
 function GroupUserMenu() {
-  return (
-    <div className={styles.container}>
-      <SVGIconNotifications />
-      <MenuOptionsUser character="W" />
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<SVGIconNotifications />
+			<MenuOptionsUser character="W" />
+		</div>
+	)
 }
 
 export default GroupUserMenu

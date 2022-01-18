@@ -15,25 +15,26 @@ import { MiddlewareProps, BackendUser } from 'interfaces'
 const enduser = resources.endpoints.get.user
 
 function Middleware(props: MiddlewareProps) {
-  const { response } = useContext(Backend)
-  const user: BackendUser | undefined = response.get({ endpoint: enduser })?.data
+	const { response } = useContext(Backend)
+	const user: BackendUser | undefined = response.get({ endpoint: enduser })?.data
 
-  const [requirement] = props.requirements.filter((middleware) => (
-    (middleware === 'auth' && !user?.id)
-    || (middleware === 'guess' && user?.id)
-    || (middleware === 'verified.email' && !user?.email_verified_at)
-  ))
+	const [requirement] = props.requirements.filter(
+		middleware =>
+			(middleware === 'auth' && !user?.id) ||
+			(middleware === 'guess' && user?.id) ||
+			(middleware === 'verified.email' && !user?.email_verified_at)
+	)
 
-  if (requirement === 'auth') {
-    return <Redirect to={resources.routes.login.route.path} />
-  }
-  if (requirement === 'guess') {
-    return <Redirect to={resources.routes.home.route.path} />
-  }
-  if (requirement === 'verified.email') {
-    return <Redirect to={resources.routes.home.route.path} />
-  }
-  return props.children
+	if (requirement === 'auth') {
+		return <Redirect to={resources.routes.login.route.path} />
+	}
+	if (requirement === 'guess') {
+		return <Redirect to={resources.routes.home.route.path} />
+	}
+	if (requirement === 'verified.email') {
+		return <Redirect to={resources.routes.home.route.path} />
+	}
+	return props.children
 }
 
 export default Middleware

@@ -13,34 +13,31 @@ import styles from './index.module.css'
 // endregion
 
 function PaginationMenu(props: PaginationMenuProps) {
-  const { pathname } = useLocation()
+	const { pathname } = useLocation()
 
-  useEffect(() => {
-    const [paginationObjectCurrent] = props.paginationObjects.filter((paginationObject) => {
-      const id = pathname.split('/').reverse()[0]
-      return (
-        (id === props.pathParamId && paginationObject.main)
-        || (id === paginationObject.id)
-      )
-    })
-    props.onChange(paginationObjectCurrent)
-  }, [pathname])
+	useEffect(() => {
+		const [paginationObjectCurrent] = props.paginationObjects.filter(paginationObject => {
+			const id = pathname.split('/').reverse()[0]
+			return (id === props.pathParamId && paginationObject.main) || id === paginationObject.id
+		})
+		props.onChange(paginationObjectCurrent)
+	}, [pathname])
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.title}>{props.title}</div>
-      <div className={styles.tabs}>
-        {props.paginationObjects.map((paginationObject) => (
-          <PaginationMenuTab
-            key={paginationObject.id}
-            paginationObject={paginationObject}
-            pathnameBase={props.pathnameBase}
-            pathname={pathname}
-          />
-        ))}
-      </div>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<div className={styles.title}>{props.title}</div>
+			<div className={styles.tabs}>
+				{props.paginationObjects.map(paginationObject => (
+					<PaginationMenuTab
+						key={paginationObject.id}
+						paginationObject={paginationObject}
+						pathnameBase={props.pathnameBase}
+						pathname={pathname}
+					/>
+				))}
+			</div>
+		</div>
+	)
 }
 
 export default PaginationMenu

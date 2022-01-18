@@ -1,18 +1,18 @@
 @import url('../../css/variables.css');
 
 .container {
-  position: relative;
-  z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .children {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .children:hover {
-  opacity: var(--opacity-selecting);
+	opacity: var(--opacity-selecting);
 }
 
 .children:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }

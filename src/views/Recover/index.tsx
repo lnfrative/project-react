@@ -9,13 +9,13 @@ import { Middleware, GridForm, FormAuthRecoverPassword } from 'components'
 // endregion
 
 function Recover() {
-  return (
-    <Middleware requirements={resources.routes.recover.middlewares}>
-      <GridForm>
-        <FormAuthRecoverPassword />
-      </GridForm>
-    </Middleware>
-  )
+	return (
+		<Middleware requirements={resources.routes.recover.middlewares}>
+			<GridForm>
+				<FormAuthRecoverPassword />
+			</GridForm>
+		</Middleware>
+	)
 }
 
 export default Recover

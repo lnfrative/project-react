@@ -1,13 +1,13 @@
 @import url('../../css/variables.css');
 
 .primaryContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
 }
 
 .secondaryContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xl);
 }

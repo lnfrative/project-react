@@ -12,12 +12,8 @@ import { initialState } from './module'
 // endregion
 
 function ProvideContextCurrency(props: PropsWithChildren<{}>) {
-  const stage = useStage(initialState)
-  return (
-    <Currency.Provider value={stage}>
-      {props.children}
-    </Currency.Provider>
-  )
+	const stage = useStage(initialState)
+	return <Currency.Provider value={stage}>{props.children}</Currency.Provider>
 }
 
 export default ProvideContextCurrency

@@ -4,31 +4,29 @@ import { regex } from 'utilities'
 import { invalidEmail } from 'utilities/Errors'
 
 interface InitialState {
-  error: Error | undefined,
+	error: Error | undefined
 }
 
 const initialState: InitialState = {
-  error: undefined,
+	error: undefined,
 }
 
 function onChange(
-  stage: Stage<InitialState>, arg: InputLabelEmailProps,
+	stage: Stage<InitialState>,
+	arg: InputLabelEmailProps
 ): ChangeEventHandler<HTMLInputElement> {
-  return (e) => {
-    const email = e.target.value
-    const isEmail = regex.email.test(email)
+	return e => {
+		const email = e.target.value
+		const isEmail = regex.email.test(email)
 
-    arg.registerInput(email, !isEmail)
-    if ((isEmail && !!stage.state.error) || !email) {
-      stage.commitState({ error: undefined })
-      return
-    }
-    if (isEmail) return
-    stage.commitState({ error: invalidEmail })
-  }
+		arg.registerInput(email, !isEmail)
+		if ((isEmail && !!stage.state.error) || !email) {
+			stage.commitState({ error: undefined })
+			return
+		}
+		if (isEmail) return
+		stage.commitState({ error: invalidEmail })
+	}
 }
 
-export {
-  onChange,
-  initialState,
-}
+export { onChange, initialState }

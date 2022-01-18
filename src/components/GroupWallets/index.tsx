@@ -9,14 +9,14 @@ import styles from './index.module.css'
 // endregion
 
 function GroupWallets() {
-  return (
-    <div className={styles.container}>
-      <CardWallet />
-      <CardWallet />
-      <CardWallet />
-      <CardWallet />
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<CardWallet />
+			<CardWallet />
+			<CardWallet />
+			<CardWallet />
+		</div>
+	)
 }
 
 export default GroupWallets

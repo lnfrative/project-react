@@ -1,5 +1,5 @@
 :root {
-  --font-primary: 'Aileron';
+	--font-primary: 'Aileron';
 
 	--font-size-xxl: 35px;
 	--font-size-xl: 30px;
@@ -10,40 +10,39 @@
 	--font-size-xxs: 14px;
 	--font-size-xxxs: 12px;
 
-  --color-primary: #18171D;
-  --color-secondary: #FFA068;
-  --color-tertiary: #A8633A;
-  --color-quaternary: #CC8E58;
-  --color-quinary: #A39BE9;
-  --color-sextary: white;
-  --color-septary: rgba(204,142, 88, 0.11);
-  --color-octary: rgba(72, 78, 109, 0.07);
-  --color-novenary: #484E6D;
-  --color-tenary: rgba(255, 140, 140, 0.05);
-  --color-elevenary: #FF8C8C;
-  --color-twelnary: #18171D;
-	--color-thirteenth: #FEBD97;
+	--color-primary: #18171d;
+	--color-secondary: #ffa068;
+	--color-tertiary: #a8633a;
+	--color-quaternary: #cc8e58;
+	--color-quinary: #a39be9;
+	--color-sextary: white;
+	--color-septary: rgba(204, 142, 88, 0.11);
+	--color-octary: rgba(72, 78, 109, 0.07);
+	--color-novenary: #484e6d;
+	--color-tenary: rgba(255, 140, 140, 0.05);
+	--color-elevenary: #ff8c8c;
+	--color-twelnary: #18171d;
+	--color-thirteenth: #febd97;
 	--color-fortuary: #979797;
-	--color-fiftenary: #626A95;
+	--color-fiftenary: #626a95;
 	--color-sixtenary: rgba(211, 211, 211, 0.01);
 	--color-septenary: #151419;
-	--color-eightenary: #1A191F;
-	--color-ninetenary: #1D1C23;
-	--color-twentinary: #2E2C40;
+	--color-eightenary: #1a191f;
+	--color-ninetenary: #1d1c23;
+	--color-twentinary: #2e2c40;
 
-	--color-passive-main: #18171D;
-	--color-passive-pager: #27262D;
-	--color-active-main: #FFB677;
+	--color-passive-main: #18171d;
+	--color-passive-pager: #27262d;
+	--color-active-main: #ffb677;
 	--color-active-main-shadow: rgba(255, 182, 119, 0.7);
-	--color-active-secundary: #B0A9E6;
-	--color-variety-main: #D0CBE6;
+	--color-active-secundary: #b0a9e6;
+	--color-variety-main: #d0cbe6;
 	--color-variety-main-shadow: rgba(208, 203, 230, 0.5);
 	--color-variety-main-tiny-shadow: rgba(208, 203, 230, 0.04);
-	--color-variety-upstream: #C8FCA3;
-	--color-variety-downstream: #FF8C8C;
+	--color-variety-upstream: #c8fca3;
+	--color-variety-downstream: #ff8c8c;
 
-
-  --space-unit: 1rem;
+	--space-unit: 1rem;
 	--space-default: var(--space-unit);
 	--space-xxxxs: calc(0.125 * var(--space-unit));
 	--space-xxxs: calc(0.25 * var(--space-unit));

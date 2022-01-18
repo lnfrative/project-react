@@ -6,8 +6,8 @@ import { Stage, ContextCurrencyState } from 'interfaces'
 // endregion
 
 const Currency = createContext<Stage<ContextCurrencyState>>({
-  state: { id: undefined },
-  commitState: () => {},
+	state: { id: undefined },
+	commitState: () => {},
 })
 
 export default Currency

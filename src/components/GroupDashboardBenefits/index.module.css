@@ -1,13 +1,13 @@
 @import url('../../css/variables.css');
 
 .containerCards {
-  display: flex;
-  gap: var(--space-md);
-  flex-wrap: wrap;
+	display: flex;
+	gap: var(--space-md);
+	flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {
-  .containerCards {
-    flex-direction: column;
-  }
+	.containerCards {
+		flex-direction: column;
+	}
 }

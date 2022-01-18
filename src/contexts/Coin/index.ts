@@ -6,14 +6,14 @@ import { Stage, ContextCoinState } from 'interfaces'
 // endregion
 
 const state: ContextCoinState = {
-  name: undefined,
-  id: undefined,
-  logo: undefined,
+	name: undefined,
+	id: undefined,
+	logo: undefined,
 }
 
 const Coin = createContext<Stage<ContextCoinState>>({
-  state,
-  commitState: () => {},
+	state,
+	commitState: () => {},
 })
 
 export default Coin

@@ -1,72 +1,72 @@
 @import url('../../css/variables.css');
 
 .container {
-  position: relative;
+	position: relative;
 }
 
 .simpleSelected {
-  display: flex;
-  gap: var(--space-xxs);
-  border-radius: var(--border-radius-standard);
+	display: flex;
+	gap: var(--space-xxs);
+	border-radius: var(--border-radius-standard);
 }
 
 .filledSelected {
-  background-color: var(--color-variety-main-tiny-shadow);
-  border-radius: var(--border-radius-standard);
+	background-color: var(--color-variety-main-tiny-shadow);
+	border-radius: var(--border-radius-standard);
 
-  display: flex;
-  gap: var(--space-xxs);
-  padding: 0 var(--space-sm);
+	display: flex;
+	gap: var(--space-xxs);
+	padding: 0 var(--space-sm);
 }
 
 .commonOption:hover {
-  opacity: var(--opacity-selecting);
+	opacity: var(--opacity-selecting);
 }
 
 .commonOption:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }
 
 .commonOption {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
 
-  height: 40px;
+	height: 40px;
 }
 
 .option {
-  justify-content: flex-end;
-  color: var(--color-variety-main);
-  padding: 0 var(--space-sm);
+	justify-content: flex-end;
+	color: var(--color-variety-main);
+	padding: 0 var(--space-sm);
 }
 
 .option:hover {
-  opacity: var(--opacity-selecting);
-  background-color: var(--color-variety-main-tiny-shadow);
+	opacity: var(--opacity-selecting);
+	background-color: var(--color-variety-main-tiny-shadow);
 }
 
 .option:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }
 
 .groupOptions {
-  top: 0;
-  width: 100%;
-  position: absolute;
-  background-color: var(--color-passive-pager);
-  border-radius: var(--border-radius-standard);
-  overflow: hidden;
+	top: 0;
+	width: 100%;
+	position: absolute;
+	background-color: var(--color-passive-pager);
+	border-radius: var(--border-radius-standard);
+	overflow: hidden;
 }
 
 .filledTitle {
-  color: var(--color-active-main-shadow);
+	color: var(--color-active-main-shadow);
 }
 
 .simpleTitle {
-  color: var(--color-variety-main-shadow);
+	color: var(--color-variety-main-shadow);
 }
 
 .valueSelected {
-  color: var(--color-active-main);
+	color: var(--color-active-main);
 }

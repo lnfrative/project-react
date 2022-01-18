@@ -2,20 +2,17 @@ import { Stage, PaginationObject } from 'interfaces'
 import { PaginationOnChange } from 'types'
 
 interface State {
-  paginationObjectSelected?: PaginationObject,
+	paginationObjectSelected?: PaginationObject
 }
 
 const initialState: State = {
-  paginationObjectSelected: undefined,
+	paginationObjectSelected: undefined,
 }
 
 function onChangePagination(stage: Stage<State>): PaginationOnChange {
-  return (paginationObjectSelected) => {
-    stage.commitState({ paginationObjectSelected })
-  }
+	return paginationObjectSelected => {
+		stage.commitState({ paginationObjectSelected })
+	}
 }
 
-export {
-  onChangePagination,
-  initialState,
-}
+export { onChangePagination, initialState }

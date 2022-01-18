@@ -1,50 +1,50 @@
 @import url('../../css/variables.css');
 
 .container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  gap: var(--space-lg);
+	gap: var(--space-lg);
 }
 
 .header {
-  background-color: var(--color-passive-pager);
-  border-bottom: solid 2px var(--color-septenary);
-  
-  min-height: 85px;
-  width: 100%;
-  
-  display: flex;
-  justify-content: center;
-  
-  flex: 1;
+	background-color: var(--color-passive-pager);
+	border-bottom: solid 2px var(--color-septenary);
+
+	min-height: 85px;
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+
+	flex: 1;
 }
 
 .contentHeader {
-  min-height: inherit;
-  max-width: 1715px;
-  
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
+	min-height: inherit;
+	max-width: 1715px;
 
-  padding: 0 var(--space-xl);
+	display: flex;
+	justify-content: space-between;
+	flex: 1;
+
+	padding: 0 var(--space-xl);
 }
 
 .page {
-  flex: 1;
-  padding: 0 var(--space-xl);
+	flex: 1;
+	padding: 0 var(--space-xl);
 
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .contentPage {
-  width: 100%;
+	width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  max-width: 1715px;
-  box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+	max-width: 1715px;
+	box-sizing: border-box;
 }

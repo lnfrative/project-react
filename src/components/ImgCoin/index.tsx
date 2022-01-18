@@ -9,9 +9,7 @@ import styles from './index.module.css'
 // endregion
 
 function ImgCoin(props: ImgCoinProps) {
-  return (
-    <img alt="Coin" className={styles[props.size]} src={props.src} />
-  )
+	return <img alt="Coin" className={styles[props.size]} src={props.src} />
 }
 
 export default ImgCoin

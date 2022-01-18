@@ -1,71 +1,70 @@
 @import url('../../css/variables.css');
 
 .container {
-  position: relative;
+	position: relative;
 }
 
 .errorContainer {
-  font-family: var(--font-primary);
-  font-weight: bold;
-  font-size: var(--font-size-xs);
+	font-family: var(--font-primary);
+	font-weight: bold;
+	font-size: var(--font-size-xs);
 
-  position: absolute;
-  right: calc((100% + var(--space-md)));
+	position: absolute;
+	right: calc((100% + var(--space-md)));
 
-  min-width: 220px;
-  min-height: 45px;
+	min-width: 220px;
+	min-height: 45px;
 
-  display: flex;
-  align-items: flex-start;
+	display: flex;
+	align-items: flex-start;
 
-  background-color: var(--color-elevenary);
-  color: var(--color-twelnary);
+	background-color: var(--color-elevenary);
+	color: var(--color-twelnary);
 }
 
 .common {
-  height: 45px;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  color: var(--color-quinary);
-  border-bottom: solid 2px transparent;
-  padding-left: var(--space-sm);
-  width: 100%;
-  box-sizing: border-box;
-
+	height: 45px;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	color: var(--color-quinary);
+	border-bottom: solid 2px transparent;
+	padding-left: var(--space-sm);
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .inputNormal {
-  background-color: var(--color-octary);
-  border-color: var(--color-novenary);
+	background-color: var(--color-octary);
+	border-color: var(--color-novenary);
 }
 
 .inputError {
-  background-color: var(--color-tenary);
-  border-color: var(--color-elevenary);
+	background-color: var(--color-tenary);
+	border-color: var(--color-elevenary);
 }
 
 .errorSign {
-  font-size: var(--font-size-xxl);
-  margin: 0 var(--space-sm);
+	font-size: var(--font-size-xxl);
+	margin: 0 var(--space-sm);
 }
 
 .errorMessage {
-  margin: var(--space-sm) var(--space-sm) var(--space-sm) 0;
+	margin: var(--space-sm) var(--space-sm) var(--space-sm) 0;
 }
 
 .errorContainer::before {
-  content:"";
-  border-style: solid;
-  border-width: 10px 0 10px 15px;
-  border-color: transparent transparent transparent var(--color-elevenary);
-  position: absolute;
-  left: 100%;
-  top: var(--space-sm);
+	content: '';
+	border-style: solid;
+	border-width: 10px 0 10px 15px;
+	border-color: transparent transparent transparent var(--color-elevenary);
+	position: absolute;
+	left: 100%;
+	top: var(--space-sm);
 }
 
 @media screen and (max-width: 800px) {
-  .errorContainer {
-    display: none;
-  }
+	.errorContainer {
+		display: none;
+	}
 }

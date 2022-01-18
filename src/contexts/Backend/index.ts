@@ -13,8 +13,8 @@ const commitState = () => {}
 const stage = { state, commitState }
 
 const Backend = createContext<ContextBackend>({
-  request: genRequest(stage),
-  response: genResponse(stage),
+	request: genRequest(stage),
+	response: genResponse(stage),
 })
 
 export default Backend

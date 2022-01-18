@@ -1,20 +1,20 @@
 @import url('../../css/variables.css');
 
 .button {
-  cursor: pointer;
-  border: none;
-  background-color: var(--color-passive-main);
-  height: 45px;
-  outline: none;
-  padding: 0 var(--space-sm);
-  border-radius: var(--border-radius-standard);
+	cursor: pointer;
+	border: none;
+	background-color: var(--color-passive-main);
+	height: 45px;
+	outline: none;
+	padding: 0 var(--space-sm);
+	border-radius: var(--border-radius-standard);
 }
 
 .button:hover {
-  opacity: var(--opacity-selecting);
-  background-color: var(--color-variety-main-tiny-shadow);
+	opacity: var(--opacity-selecting);
+	background-color: var(--color-variety-main-tiny-shadow);
 }
 
 .button:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }

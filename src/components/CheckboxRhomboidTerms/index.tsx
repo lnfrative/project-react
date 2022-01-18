@@ -13,16 +13,15 @@ import styles from './index.module.css'
 // endregion
 
 function CheckboxRhomboidTerms(props: CheckboxRhomboidTermsProps) {
-  return (
-    <div className={styles.container}>
-      <CheckboxRhomboid {...props.checkboxRhomboidProps} />
-      <div className={styles.title}>
-        {message({ id: 'AGREE_WITH_THE' })}
-        {' '}
-        <b className={styles.terms}>{message({ id: 'TERMS_OF_USE' })}</b>
-      </div>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<CheckboxRhomboid {...props.checkboxRhomboidProps} />
+			<div className={styles.title}>
+				{message({ id: 'AGREE_WITH_THE' })}{' '}
+				<b className={styles.terms}>{message({ id: 'TERMS_OF_USE' })}</b>
+			</div>
+		</div>
+	)
 }
 
 export default CheckboxRhomboidTerms

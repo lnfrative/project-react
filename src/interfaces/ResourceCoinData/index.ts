@@ -1,8 +1,8 @@
 interface ResourceCoinData {
-  name?: string,
-  id?: string,
-  logo?: string,
-  key?: string,
+	name?: string
+	id?: string
+	logo?: string
+	key?: string
 }
 
 export default ResourceCoinData

@@ -1,14 +1,14 @@
 @import url('../../css/variables.css');
 
 .container {
-  font-family: var(--font-primary);
+	font-family: var(--font-primary);
 
-  padding: var(--space-md);
-  background: var(--color-twentinary);
-  color: var(--color-variety-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
-  z-index: 2;
+	padding: var(--space-md);
+	background: var(--color-twentinary);
+	color: var(--color-variety-main);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	z-index: 2;
 }

@@ -1,6 +1,6 @@
 interface HeaderSegmentationProps {
-  primaryContent: any,
-  secondaryContent: any,
+	primaryContent: any
+	secondaryContent: any
 }
 
 export default HeaderSegmentationProps

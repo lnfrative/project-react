@@ -12,19 +12,19 @@ import styles from './index.module.css'
 // endregion
 
 function ValueCoin(props: ValueCoinProps) {
-  return (
-    <div className={styles.container}>
-      <ImgCoin size="medium" src={props.srcImageCoin} />
-      <div>
-        <ValueDecimal sise="small" value={props.value} />
-        <div className={styles.containerName}>
-          <span>{props.name}</span>
-          <span>-</span>
-          <span className={styles.shortname}>{props.shortname}</span>
-        </div>
-      </div>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<ImgCoin size="medium" src={props.srcImageCoin} />
+			<div>
+				<ValueDecimal sise="small" value={props.value} />
+				<div className={styles.containerName}>
+					<span>{props.name}</span>
+					<span>-</span>
+					<span className={styles.shortname}>{props.shortname}</span>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default ValueCoin

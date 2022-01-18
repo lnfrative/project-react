@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 services:
   node:
     image: node:14.17.0
@@ -11,7 +11,7 @@ services:
     image: nginx:1.21.3
     container_name: dogec-web-nginx
     ports:
-      - "3000:80"
+      - '3000:80'
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ../build:/var/www/code

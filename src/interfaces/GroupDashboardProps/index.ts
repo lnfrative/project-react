@@ -1,7 +1,7 @@
 interface GroupDashboardProps {
-  title: string,
-  children: any,
-  afterTitle?: any,
+	title: string
+	children: any
+	afterTitle?: any
 }
 
 export default GroupDashboardProps

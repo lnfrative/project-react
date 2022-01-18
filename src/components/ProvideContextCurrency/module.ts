@@ -1,9 +1,7 @@
 import { ContextCurrencyState } from 'interfaces'
 
 const initialState: ContextCurrencyState = {
-  id: undefined,
+	id: undefined,
 }
 
-export {
-  initialState,
-}
+export { initialState }

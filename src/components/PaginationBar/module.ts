@@ -1,13 +1,11 @@
 import { PaginationObject } from 'interfaces'
 
 interface State {
-  paginationObjectMatch?: PaginationObject
+	paginationObjectMatch?: PaginationObject
 }
 
 const initialState: State = {
-  paginationObjectMatch: undefined,
+	paginationObjectMatch: undefined,
 }
 
-export {
-  initialState,
-}
+export { initialState }

@@ -1,63 +1,63 @@
 @import url('../../css/variables.css');
 
 .container {
-  border: solid 1px var(--color-variety-main-tiny-shadow);
-  background-color: var(--color-passive-pager);
-  border-radius: var(--border-radius-standard);
-  padding: var(--space-xs);
+	border: solid 1px var(--color-variety-main-tiny-shadow);
+	background-color: var(--color-passive-pager);
+	border-radius: var(--border-radius-standard);
+	padding: var(--space-xs);
 
-  font-size: var(--font-size-xl);
-  color: var(--color-active-secundary);
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	font-size: var(--font-size-xl);
+	color: var(--color-active-secundary);
 
-  position: relative;
-  min-width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+	min-width: 40px;
 }
 
 .group {
-  border-bottom: solid 1px var(--color-twentinary);
+	border-bottom: solid 1px var(--color-twentinary);
 }
 
 .containerOption {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
 
-  padding: var(--space-md);
-  text-decoration: none;
+	padding: var(--space-md);
+	text-decoration: none;
 }
 
 .containerOption:hover {
-  background-color: var(--color-variety-main-tiny-shadow);
-  opacity: var(--opacity-selecting);
+	background-color: var(--color-variety-main-tiny-shadow);
+	opacity: var(--opacity-selecting);
 }
 
 .containerOption:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }
 
 .label {
-  font-size: var(--font-size-md);
-  color: var(--color-active-secundary);
+	font-size: var(--font-size-md);
+	color: var(--color-active-secundary);
 }
 
 .menuContent {
-  position: absolute;
-  background-color: var(--color-passive-pager);
-  border: solid 1px var(--color-variety-main-tiny-shadow);
-  border-radius: var(--border-radius-standard);
+	position: absolute;
+	background-color: var(--color-passive-pager);
+	border: solid 1px var(--color-variety-main-tiny-shadow);
+	border-radius: var(--border-radius-standard);
 
-  min-width: 300px;
+	min-width: 300px;
 
-  box-shadow: 0px 2px 4px 4px rgb(0 0 0 / 27%);
+	box-shadow: 0px 2px 4px 4px rgb(0 0 0 / 27%);
 
-  width: 200px;
-  right: -20px;
-  top: 28px;
+	width: 200px;
+	right: -20px;
+	top: 28px;
 
-  padding-top: var(--space-md);
+	padding-top: var(--space-md);
 }

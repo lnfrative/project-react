@@ -6,11 +6,9 @@ import { ContextModalState, Stage } from 'interfaces'
 // endregion
 
 function closeModal(stage: Stage<ContextModalState>): MouseEventHandler<HTMLButtonElement> {
-  return () => {
-    stage.commitState({ status: 'close', id: undefined })
-  }
+	return () => {
+		stage.commitState({ status: 'close', id: undefined })
+	}
 }
 
-export {
-  closeModal,
-}
+export { closeModal }

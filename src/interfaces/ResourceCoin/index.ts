@@ -1,5 +1,5 @@
 interface ResourceCoin<Data> {
-  dogecash: Data,
+	dogecash: Data
 }
 
 export default ResourceCoin

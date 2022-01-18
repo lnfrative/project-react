@@ -1,12 +1,12 @@
 @import url('../../css/variables.css');
 
 .icon {
-  width: 22px;
-  height: 17px;
+	width: 22px;
+	height: 17px;
 }
 
 .design {
-  fill: var(--color-quinary);
-  fill-rule: evenodd;
-  stroke: none;
+	fill: var(--color-quinary);
+	fill-rule: evenodd;
+	stroke: none;
 }

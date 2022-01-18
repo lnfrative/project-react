@@ -1,21 +1,21 @@
 @import url('../../css/variables.css');
 
 .tab {
-  text-decoration: none;
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  color: var(--color-variety-main-shadow);
-  height: 100%;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: var(--font-size-sm);
+	color: var(--color-variety-main-shadow);
+	height: 100%;
 }
 
 .tabActive {
-  border-bottom: solid 2px var(--color-active-main);
+	border-bottom: solid 2px var(--color-active-main);
 }
 
 .tab:hover {
-  opacity: var(--opacity-selecting);
+	opacity: var(--opacity-selecting);
 }
 
 .tab:active {
-  opacity: var(--opacity-selected);
+	opacity: var(--opacity-selected);
 }

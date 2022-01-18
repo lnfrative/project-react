@@ -1,5 +1,5 @@
 interface FormAuthProps {
-  title: string,
+	title: string
 }
 
 export default FormAuthProps

@@ -18,18 +18,16 @@ import { onClick, State } from './module'
 // endregion
 
 function ButtonAddWallet() {
-  const stage = useStage<State>({ id: Math.random() })
-  const contextStage = useContext(ContextModal)
-  return (
-    <>
-      <ButtonAdd onClick={onClick(stage, contextStage)} title={message({ id: 'ADD_NEW_WALLET' })} />
-      {contextStage.state.status === 'open'
-      && contextStage.state.id === stage.state.id
-      && (
-        <ModalCreateWallet />
-      )}
-    </>
-  )
+	const stage = useStage<State>({ id: Math.random() })
+	const contextStage = useContext(ContextModal)
+	return (
+		<>
+			<ButtonAdd onClick={onClick(stage, contextStage)} title={message({ id: 'ADD_NEW_WALLET' })} />
+			{contextStage.state.status === 'open' && contextStage.state.id === stage.state.id && (
+				<ModalCreateWallet />
+			)}
+		</>
+	)
 }
 
 export default ButtonAddWallet

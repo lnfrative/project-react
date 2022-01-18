@@ -12,19 +12,15 @@ import { Coin } from 'contexts'
 // endregion
 
 const initialState: ContextCoinState = {
-  name: undefined,
-  id: undefined,
-  logo: undefined,
+	name: undefined,
+	id: undefined,
+	logo: undefined,
 }
 
 function ProvideContextCoin(props: PropsWithChildren<{}>) {
-  const stage = useStage<ContextCoinState>(initialState)
+	const stage = useStage<ContextCoinState>(initialState)
 
-  return (
-    <Coin.Provider value={stage}>
-      {props.children}
-    </Coin.Provider>
-  )
+	return <Coin.Provider value={stage}>{props.children}</Coin.Provider>
 }
 
 export default ProvideContextCoin

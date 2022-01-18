@@ -9,13 +9,13 @@ import { resources } from 'utilities'
 // endregion
 
 function ResetPassword() {
-  return (
-    <Middleware requirements={resources.routes.resetPassword.middlewares}>
-      <GridForm>
-        <FormAuthResetPassword />
-      </GridForm>
-    </Middleware>
-  )
+	return (
+		<Middleware requirements={resources.routes.resetPassword.middlewares}>
+			<GridForm>
+				<FormAuthResetPassword />
+			</GridForm>
+		</Middleware>
+	)
 }
 
 export default ResetPassword

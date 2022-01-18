@@ -13,15 +13,15 @@ import styles from './index.module.css'
 // endregion
 
 function LinkBackDashboard() {
-  return (
-    <Link to={resources.routes.home.base} className={styles.link}>
-      <SVGIconBack />
-      <div className={styles.title}>
-        <span>{message({ id: 'BACK_TO' })}</span>
-        <span style={{ fontWeight: 'bold' }}>{message({ id: 'DASHBOARD' })}</span>
-      </div>
-    </Link>
-  )
+	return (
+		<Link to={resources.routes.home.base} className={styles.link}>
+			<SVGIconBack />
+			<div className={styles.title}>
+				<span>{message({ id: 'BACK_TO' })}</span>
+				<span style={{ fontWeight: 'bold' }}>{message({ id: 'DASHBOARD' })}</span>
+			</div>
+		</Link>
+	)
 }
 
 export default LinkBackDashboard

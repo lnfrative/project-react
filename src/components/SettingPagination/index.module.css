@@ -1,17 +1,17 @@
 @import url('../../css/variables.css');
 
 .container {
-  border-radius: var(--border-radius-standard);
-  background-color: var(--color-variety-main-tiny-shadow);
+	border-radius: var(--border-radius-standard);
+	background-color: var(--color-variety-main-tiny-shadow);
 }
 
 .title {
-  font-size: var(--font-size-lg);
-  color: var(--color-variety-main);
-  padding: var(--space-lg);
-  border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	font-size: var(--font-size-lg);
+	color: var(--color-variety-main);
+	padding: var(--space-lg);
+	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .content {
-  padding: var(--space-lg);
+	padding: var(--space-lg);
 }

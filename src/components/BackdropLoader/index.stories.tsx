@@ -4,17 +4,17 @@ import { BackdropLoaderProps } from 'interfaces'
 import { BackdropLoader } from 'components'
 
 export default {
-  title: 'BackdropLoader',
-  component: BackdropLoader,
+	title: 'BackdropLoader',
+	component: BackdropLoader,
 }
 
-const Template: ComponentStory<
-  typeof BackdropLoader
-> = (props: BackdropLoaderProps) => <BackdropLoader {...props} />
+const Template: ComponentStory<typeof BackdropLoader> = (props: BackdropLoaderProps) => (
+	<BackdropLoader {...props} />
+)
 
 export const Test = Template.bind({})
 
 Test.args = {
-  message: 'Something for testing purposes.',
-  open: true,
+	message: 'Something for testing purposes.',
+	open: true,
 }

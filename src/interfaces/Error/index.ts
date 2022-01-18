@@ -1,8 +1,8 @@
 interface Error {
-  sign: string,
-  data: {
-    message: string
-  }
+	sign: string
+	data: {
+		message: string
+	}
 }
 
 export default Error
