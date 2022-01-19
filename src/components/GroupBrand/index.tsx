@@ -20,6 +20,7 @@ function GroupBrand() {
 				src={externalResources.dogeCashLogoIcon.src}
 				width={externalResources.dogeCashLogoIcon.width}
 				height={externalResources.dogeCashLogoIcon.height}
+				className={styles.logo}
 			/>
 		</div>
 	)
