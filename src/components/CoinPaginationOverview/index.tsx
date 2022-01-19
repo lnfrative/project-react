@@ -31,7 +31,7 @@ function CoinPaginationOverview() {
 						<div className={styles.value}>3%</div>
 					</div>
 				</div>
-				<div className={styles.groupValue}>
+				<div className={styles.regards}>
 					<div className={styles.title}>Last pool reward</div>
 					<div className={styles.title}>09.31.2010:30 pm</div>
 				</div>

@@ -3,7 +3,6 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-md);
 
 	max-width: 1000px;
 }
@@ -11,22 +10,22 @@
 .containerBenefits {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-sm);
 }
 
 .title {
 	font-size: var(--font-size-sm);
 	color: var(--color-variety-main-shadow);
+	margin-bottom: var(--space-xs);
 }
 
 .containerBenefitsValues {
 	display: flex;
 	justify-content: space-between;
+	margin-top: var(--space-sm);
 }
 
 .group {
 	display: flex;
-	gap: var(--space-lg);
 }
 
 .groupSecondary {
@@ -36,6 +35,7 @@
 
 .line {
 	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	margin: var(--space-md) 0;
 }
 
 .value {
@@ -46,5 +46,11 @@
 .groupValue {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-xs);
+	margin-right: var(--space-lg);
+}
+
+.regards {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 }
