@@ -32,11 +32,13 @@ function GroupCoinValues() {
 					titleSelect="Worth in"
 					optionsSelect={testOptions}
 				/>
-				<GroupSelectValueDecimal
-					valueDecimal={0.4568036}
-					titleSelect="Price in"
-					optionsSelect={testOptions}
-				/>
+				<div className={styles.space}>
+					<GroupSelectValueDecimal
+						valueDecimal={0.4568036}
+						titleSelect="Price in"
+						optionsSelect={testOptions}
+					/>
+				</div>
 				<GroupSelectValueVariation
 					valueVariation={12.5}
 					titleSelect="Last"
