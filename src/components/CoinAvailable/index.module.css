@@ -5,7 +5,6 @@
 	padding: var(--space-md);
 	display: flex;
 	align-items: center;
-	gap: var(--space-md);
 }
 
 .id {
@@ -22,11 +21,12 @@
 .separator {
 	color: var(--color-variety-main);
 	font-size: var(--font-size-xs);
+	margin: 0 var(--space-xxs);
 }
 
 .details {
 	display: flex;
-	gap: var(--space-xxs);
+	margin-left: var(--space-md);
 }
 
 .container:hover {
