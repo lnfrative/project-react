@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import {
 	ProvideContextBackend,
 	ProvideContextCoin,
@@ -28,7 +29,9 @@ export const decorators = [
 			<ProvideContextView>
 				<ProvideContextCoin>
 					<ProvideContextCurrency>
-						<Story />
+						<Router>
+							<Story />
+						</Router>
 					</ProvideContextCurrency>
 				</ProvideContextCoin>
 			</ProvideContextView>

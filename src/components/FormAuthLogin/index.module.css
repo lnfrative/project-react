@@ -6,6 +6,11 @@
 	color: var(--color-fiftenary);
 
 	text-decoration: none;
+	margin-bottom: var(--space-lg);
+}
+
+.space {
+	margin-bottom: var(--space-lg);
 }
 
 .forgotPassword:hover {
