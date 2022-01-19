@@ -4,20 +4,22 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
-	gap: var(--space-md);
 }
 
 .details {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	margin-top: var(--space-md);
 }
 
 .nameCoin {
 	font-size: var(--font-size-lg);
 	color: var(--color-active-main);
 	font-weight: bold;
+
+	margin-bottom: var(--space-xs);
 }
 
 .idCoin {
