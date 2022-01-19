@@ -2,12 +2,19 @@
 
 .containerCards {
 	display: flex;
-	gap: var(--space-md);
 	flex-wrap: wrap;
 }
 
-@media screen and (max-width: 768px) {
+.space {
+	margin: 0 var(--space-md) 0 0;
+}
+
+@media screen and (max-width: 900px) {
 	.containerCards {
 		flex-direction: column;
+	}
+
+	.space {
+		margin: 0 0 var(--space-md) 0;
 	}
 }

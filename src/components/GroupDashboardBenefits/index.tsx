@@ -12,10 +12,18 @@ function GroupDashboardBenefits() {
 	return (
 		<GroupDashboard title="Benefits">
 			<div className={styles.containerCards}>
-				<CardValue title="Daily benefits" sign="$" value={32.65} />
-				<CardValue title="Monthly benefits" sign="$" value={935} />
-				<CardValue title="Yearly  benefits" sign="$" value={11254} />
-				<CardValue title="APY" sign="%" value={13.5} />
+				<div className={styles.space}>
+					<CardValue title="Daily benefits" sign="$" value={32.65} />
+				</div>
+				<div className={styles.space}>
+					<CardValue title="Monthly benefits" sign="$" value={935} />
+				</div>
+				<div className={styles.space}>
+					<CardValue title="Yearly  benefits" sign="$" value={11254} />
+				</div>
+				<div className={styles.space}>
+					<CardValue title="APY" sign="%" value={13.5} />
+				</div>
 			</div>
 		</GroupDashboard>
 	)
