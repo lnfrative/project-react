@@ -3,7 +3,6 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-md);
 }
 
 .containerTitle {
@@ -12,15 +11,16 @@
 
 	display: flex;
 	align-items: flex-end;
-	gap: var(--space-xs);
 }
 
 .groupTitle {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: var(--space-md);
 }
 
 .sign {
 	font-size: var(--font-size-xs);
 	transform: rotate(65deg);
+	margin-right: var(--space-sm);
 }
