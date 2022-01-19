@@ -7,10 +7,10 @@
 
 .containerValues {
 	display: flex;
-	gap: var(--space-xxs);
 }
 
 .optionValue {
 	font-size: var(--font-size-xl);
 	color: var(--color-variety-main-shadow);
+	margin-left: var(--space-xxs);
 }
