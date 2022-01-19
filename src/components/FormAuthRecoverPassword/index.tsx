@@ -37,7 +37,9 @@ function FormAuthRecoverPassword() {
 	return (
 		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend) })}>
 			<FormAuth title={message({ id: 'RECOVER_PASSWORD' })}>
-				<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
+				<div className={styles.space}>
+					<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
+				</div>
 				<Button
 					buttonHTMLAttributes={{
 						type: 'submit',

@@ -4,3 +4,7 @@
 	color: var(--color-variety-main);
 	margin: var(--space-sm);
 }
+
+.space {
+	margin-bottom: var(--space-lg);
+}
