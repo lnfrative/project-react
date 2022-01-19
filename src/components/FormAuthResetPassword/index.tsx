@@ -16,6 +16,9 @@ import { message, requestId, resources } from 'utilities'
 
 // modules
 import { onSubmit } from './module'
+
+// styles
+import styles from './index.module.css'
 // endregion
 
 const endresetpassword = resources.endpoints.post.resetPassword
@@ -42,15 +45,18 @@ function FormAuthResetPassword() {
 	const response = backend.response.post({ endpoint: endresetpassword, params })
 
 	if (response?.success) return <Redirect to={resources.routes.login.route.path} />
-	if (!email && !token) return <Redirect to={resources.routes.home.route.path} />
 	return (
 		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend, params) })}>
 			<FormAuth title="Reset Password">
-				<InputLabelPassword registerInput={register({ name: 'password' })} />
-				<InputLabelPRepeat
-					password={password}
-					registerInput={register({ name: 'passwordRepeat' })}
-				/>
+				<div className={styles.space}>
+					<InputLabelPassword registerInput={register({ name: 'password' })} />
+				</div>
+				<div className={styles.space}>
+					<InputLabelPRepeat
+						password={password}
+						registerInput={register({ name: 'passwordRepeat' })}
+					/>
+				</div>
 				<Button
 					buttonHTMLAttributes={{
 						type: 'submit',
