@@ -29,7 +29,9 @@ function GroupDashboardWallets() {
 			afterTitle={
 				<div className={styles.groupSelects}>
 					<Select design="filled" title="Price in" options={testPriceOptions} />
-					<Select design="filled" title="Last" options={testTimeOptions} />
+					<div className={styles.selectSpace}>
+						<Select design="filled" title="Last" options={testTimeOptions} />
+					</div>
 				</div>
 			}
 		>

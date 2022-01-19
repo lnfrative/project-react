@@ -98,8 +98,8 @@ function Wallet(props: WalletProps) {
 function TableWallets() {
 	const { response, loading } = useContext(Backend)
 	const styles = nestStyles()
-	const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data
-	const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
+	const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data ?? []
+	const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data ?? []
 
 	return (
 		<div className={styles.container}>

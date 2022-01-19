@@ -6,7 +6,10 @@
 
 .groupSelects {
 	display: flex;
-	gap: var(--space-md);
+}
+
+.selectSpace {
+	margin-left: var(--space-md);
 }
 
 @media screen and (max-width: 1050px) {
