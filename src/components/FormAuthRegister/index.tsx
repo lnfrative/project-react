@@ -24,6 +24,9 @@ import {
 
 // module
 import { initialState, onCheckTerms, onSubmit } from './module'
+
+// styles
+import styles from './index.module.css'
 // endregion
 
 const enduser = resources.endpoints.get.user
@@ -54,28 +57,38 @@ function FormAuthRegister() {
 	return (
 		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend, stage) })}>
 			<FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
-				<InputLabelEmail registerInput={register({ name: 'email' })} />
-				<InputLabelPassword registerInput={register({ name: 'password' })} />
-				<InputLabelPRepeat
-					registerInput={register({ name: 'repeatedPassword' })}
-					password={password?.value}
-				/>
-				<CheckboxRhomboidTerms
-					checkboxRhomboidProps={{
-						onCheck: onCheckTerms(stage),
-					}}
-				/>
-				<Button
-					title={message({ id: 'SIGN_UP' })}
-					buttonHTMLAttributes={{
-						disabled:
-							!stage.state.termsAccepted ||
-							password?.hasError ||
-							email?.hasError ||
-							repeatedPassword?.hasError,
-						type: 'submit',
-					}}
-				/>
+				<div className={styles.space}>
+					<InputLabelEmail registerInput={register({ name: 'email' })} />
+				</div>
+				<div className={styles.space}>
+					<InputLabelPassword registerInput={register({ name: 'password' })} />
+				</div>
+				<div className={styles.space}>
+					<InputLabelPRepeat
+						registerInput={register({ name: 'repeatedPassword' })}
+						password={password?.value}
+					/>
+				</div>
+				<div className={styles.space}>
+					<CheckboxRhomboidTerms
+						checkboxRhomboidProps={{
+							onCheck: onCheckTerms(stage),
+						}}
+					/>
+				</div>
+				<div className={styles.space}>
+					<Button
+						title={message({ id: 'SIGN_UP' })}
+						buttonHTMLAttributes={{
+							disabled:
+								!stage.state.termsAccepted ||
+								password?.hasError ||
+								email?.hasError ||
+								repeatedPassword?.hasError,
+							type: 'submit',
+						}}
+					/>
+				</div>
 				<LinkForm
 					path={resources.routes.login.base}
 					message={message({ id: 'ALREADY_HAVE_ACCUONT' })}

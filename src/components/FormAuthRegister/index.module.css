@@ -1,0 +1,5 @@
+@import url('../../css/variables.css');
+
+.space {
+	margin-bottom: var(--space-lg);
+}
