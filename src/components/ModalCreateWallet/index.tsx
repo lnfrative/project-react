@@ -25,8 +25,8 @@ const endpointWallets = resources.endpoints.get.wallets
 function ModalCreateWallet() {
 	const { response } = useContext(Backend)
 	const contextStage = useContext(ContextModal)
-	const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
-	const wallets: BackendWallets = response.get({ endpoint: endpointWallets })?.data
+	const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data ?? []
+	const wallets: BackendWallets = response.get({ endpoint: endpointWallets })?.data ?? []
 
 	return (
 		<Modal>

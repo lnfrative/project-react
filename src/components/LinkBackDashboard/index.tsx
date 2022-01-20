@@ -18,7 +18,7 @@ function LinkBackDashboard() {
 			<SVGIconBack />
 			<div className={styles.title}>
 				<span>{message({ id: 'BACK_TO' })}</span>
-				<span style={{ fontWeight: 'bold' }}>{message({ id: 'DASHBOARD' })}</span>
+				<span className={styles.dashboard}>{message({ id: 'DASHBOARD' })}</span>
 			</div>
 		</Link>
 	)

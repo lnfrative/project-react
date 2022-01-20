@@ -11,12 +11,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: var(--space-xxs);
 
 	cursor: pointer;
 }
 
 .title {
+	margin-left: var(--space-xxs);
 	white-space: nowrap;
 	font-size: var(--font-size-xxs);
 
@@ -31,7 +31,11 @@
 
 	display: flex;
 	align-items: center;
-	gap: var(--space-xxs);
+}
+
+.dashboard {
+	font-weight: bold;
+	margin-left: var(--space-xxs);
 }
 
 .link:hover {

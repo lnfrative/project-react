@@ -25,7 +25,6 @@
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	gap: var(--space-sm);
 
 	padding: var(--space-md);
 	text-decoration: none;
@@ -43,6 +42,7 @@
 .label {
 	font-size: var(--font-size-md);
 	color: var(--color-active-secundary);
+	margin-left: var(--space-sm);
 }
 
 .menuContent {

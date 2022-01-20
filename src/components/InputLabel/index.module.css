@@ -3,11 +3,11 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-xs);
 }
 
 .title {
 	font-family: var(--font-primary);
 	font-size: var(--font-size-xs);
 	color: var(--color-quaternary);
+	margin-bottom: var(--space-xs);
 }
