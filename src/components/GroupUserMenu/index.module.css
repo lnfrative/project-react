@@ -3,5 +3,8 @@
 .container {
 	display: flex;
 	align-items: center;
-	gap: var(--space-lg);
+}
+
+.menu {
+	margin-left: var(--space-lg);
 }

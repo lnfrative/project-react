@@ -3,10 +3,10 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-xs);
 }
 
 .title {
 	color: var(--color-variety-main-shadow);
 	font-size: var(--font-size-sm);
+	margin: var(--space-xs) 0;
 }

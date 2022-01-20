@@ -12,7 +12,9 @@ function GroupUserMenu() {
 	return (
 		<div className={styles.container}>
 			<SVGIconNotifications />
-			<MenuOptionsUser character="W" />
+			<div className={styles.menu}>
+				<MenuOptionsUser character="W" />
+			</div>
 		</div>
 	)
 }

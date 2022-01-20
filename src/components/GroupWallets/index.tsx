@@ -11,10 +11,21 @@ import styles from './index.module.css'
 function GroupWallets() {
 	return (
 		<div className={styles.container}>
-			<CardWallet />
-			<CardWallet />
-			<CardWallet />
-			<CardWallet />
+			<div className={styles.cardWallet}>
+				<CardWallet />
+			</div>
+			<div className={styles.cardWallet}>
+				<CardWallet />
+			</div>
+			<div className={styles.cardWallet}>
+				<CardWallet />
+			</div>
+			<div className={styles.cardWallet}>
+				<CardWallet />
+			</div>
+			<div className={styles.cardWallet}>
+				<CardWallet />
+			</div>
 		</div>
 	)
 }
