@@ -15,7 +15,6 @@
 .container {
 	display: flex;
 	align-items: center;
-	gap: var(--space-xxs);
 }
 
 .upstream {
@@ -24,4 +23,8 @@
 
 .downstream {
 	color: var(--color-variety-downstream);
+}
+
+.sign {
+	margin-left: var(--space-xxs);
 }

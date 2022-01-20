@@ -2,12 +2,15 @@
 
 .container {
 	display: flex;
-	gap: var(--space-sm);
 
 	justify-self: flex-end;
 }
 
 .containerCombination {
 	display: flex;
-	gap: var(--space-lg);
+	margin-right: var(--space-sm);
+}
+
+.space {
+	margin-right: var(--space-lg);
 }

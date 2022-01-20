@@ -12,7 +12,7 @@ function ValuePercentage(props: ValuePercentageProps) {
 	return (
 		<div className={styles.container}>
 			<span>{props.value}</span>
-			<span>%</span>
+			<span className={styles.sign}>%</span>
 		</div>
 	)
 }

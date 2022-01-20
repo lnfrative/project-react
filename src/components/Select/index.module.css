@@ -6,7 +6,6 @@
 
 .simpleSelected {
 	display: flex;
-	gap: var(--space-xxs);
 	border-radius: var(--border-radius-standard);
 }
 
@@ -15,7 +14,6 @@
 	border-radius: var(--border-radius-standard);
 
 	display: flex;
-	gap: var(--space-xxs);
 	padding: 0 var(--space-sm);
 }
 
@@ -69,4 +67,5 @@
 
 .valueSelected {
 	color: var(--color-active-main);
+	margin: 0 var(--space-sm) 0 var(--space-xxs);
 }

@@ -14,6 +14,7 @@ function nestStyles(props: ValueVariationProps) {
 			[styles.upstream]: props.value > 0,
 			[styles.downstream]: props.value < 0,
 		}),
+		sign: styles.sign,
 	}
 }
 

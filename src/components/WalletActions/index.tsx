@@ -15,7 +15,9 @@ function WalletActions() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.containerCombination}>
-				<ButtonCombination position="after" title={message({ id: 'BUY' })} />
+				<div className={styles.space}>
+					<ButtonCombination position="after" title={message({ id: 'BUY' })} />
+				</div>
 				<ButtonCombination position="before" title={message({ id: 'SELL' })} />
 			</div>
 			<ButtonIcon>

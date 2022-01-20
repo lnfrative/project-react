@@ -3,16 +3,22 @@
 .container {
 	display: flex;
 	align-items: center;
-	gap: var(--space-xs);
+}
+
+.values {
+	margin-left: var(--space-xs);
 }
 
 .containerName {
 	font-size: var(--font-size-xxxs);
 	display: flex;
 	align-items: center;
-	gap: var(--space-xxs);
 
 	color: var(--color-variety-main-shadow);
+}
+
+.separator {
+	margin: 0 var(--space-xxs);
 }
 
 .shortname {

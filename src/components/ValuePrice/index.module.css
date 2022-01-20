@@ -5,11 +5,11 @@
 
 	display: flex;
 	align-items: center;
-	gap: var(--space-xxs);
 }
 
 .sign {
 	color: var(--color-variety-main-shadow);
+	margin-right: var(--space-xxs);
 }
 
 .value {

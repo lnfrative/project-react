@@ -25,7 +25,7 @@ function ValueVariation(props: ValueVariationProps) {
 				{props.value > 0 ? '+' : ''}
 				{variation}
 			</span>
-			<span>%</span>
+			<span className={styles.sign}>%</span>
 		</div>
 	)
 }
