@@ -2,13 +2,10 @@
 
 .firstGroup {
 	display: flex;
-	gap: var(--space-lg);
 }
 
-.secondGroup {
-	display: flex;
-	align-items: center;
-	gap: var(--space-lg);
+.headerPages {
+	margin-left: var(--space-lg);
 }
 
 @media screen and (max-width: 800px) {
