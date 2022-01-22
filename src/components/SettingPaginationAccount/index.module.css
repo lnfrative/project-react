@@ -1,0 +1,36 @@
+@import url('../../css/variables.css');
+
+.container {
+	margin-bottom: var(--space-lg);
+}
+
+.label {
+	font-size: var(--font-size-md);
+	color: var(--color-variety-main-shadow);
+	margin-bottom: var(--space-sm);
+}
+
+.email {
+	font-size: var(--font-size-lg);
+	color: var(--color-variety-main);
+	margin-right: var(--space-md);
+}
+
+.groupEmail {
+	display: flex;
+	align-items: center;
+}
+
+.input {
+	max-width: 400px;
+	margin: var(--space-lg) 0;
+}
+
+.groupButton {
+	display: flex;
+	align-items: center;
+}
+
+.linkForgot {
+	margin-left: var(--space-md);
+}

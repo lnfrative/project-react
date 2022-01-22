@@ -1,22 +1,5 @@
 @import url('../../css/variables.css');
 
-.forgotPassword {
-	font-style: italic;
-	font-size: var(--font-size-xs);
-	color: var(--color-fiftenary);
-
-	text-decoration: none;
-	margin-bottom: var(--space-lg);
-}
-
 .space {
 	margin-bottom: var(--space-lg);
-}
-
-.forgotPassword:hover {
-	text-decoration: underline;
-}
-
-.forgotPassword:active {
-	color: var(--color-variety-main-shadow);
 }

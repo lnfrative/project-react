@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from 'react'
 import { Stage, Error, InputLabelPasswordProps } from 'interfaces'
-import { invalidPassword } from 'utilities/Errors'
+import { invalidPassword, passwordNotMatch } from 'utilities/Errors'
 
 interface InitialState {
 	error: Error | undefined
@@ -12,6 +12,7 @@ function onChange(
 ): ChangeEventHandler<HTMLInputElement> {
 	return e => {
 		const password = e.target.value
+		const { confirm } = arg
 		const isPassword = password.length > 11
 
 		arg.registerInput(password, !isPassword)
@@ -19,7 +20,10 @@ function onChange(
 			stage.commitState({ error: undefined })
 			return
 		}
-		if (isPassword) return
+		if (confirm && confirm !== password) {
+			stage.commitState({ error: passwordNotMatch })
+		}
+		if (isPassword || confirm) return
 		stage.commitState({ error: invalidPassword })
 	}
 }

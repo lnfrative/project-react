@@ -17,4 +17,5 @@ Test.args = {
 	buttonHTMLAttributes: {
 		style: { width: 300 },
 	},
+	design: 'normal',
 }

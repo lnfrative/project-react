@@ -78,6 +78,7 @@ function FormAuthRegister() {
 				</div>
 				<div className={styles.space}>
 					<Button
+						design="normal"
 						title={message({ id: 'SIGN_UP' })}
 						buttonHTMLAttributes={{
 							disabled:

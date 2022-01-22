@@ -5,10 +5,11 @@ import React from 'react'
 import { ButtonProps } from 'interfaces'
 
 // styles
-import styles from './index.module.css'
+import { createStyles } from './module'
 // endregion
 
 function Button(props: ButtonProps) {
+	const styles = createStyles(props)
 	return (
 		<button {...props.buttonHTMLAttributes} className={styles.button}>
 			{props.title}

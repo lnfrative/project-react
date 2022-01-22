@@ -1,6 +1,5 @@
 // region import
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 // hooks
 import { useForm } from 'hooks'
@@ -16,6 +15,7 @@ import {
 	Button,
 	LinkForm,
 	BackdropLoader,
+	ForgotPassword,
 } from 'components'
 
 // utilties
@@ -59,11 +59,10 @@ function FormAuthLogin() {
 				<div className={styles.space}>
 					<InputLabelPassword disableError registerInput={register({ name: 'password' })} />
 				</div>
-				<Link to={resources.routes.recover.route.path} className={styles.forgotPassword}>
-					{message({ id: 'FORGOT_PASSWORD' })}
-				</Link>
+				<ForgotPassword />
 				<div className={styles.space}>
 					<Button
+						design="normal"
 						buttonHTMLAttributes={{
 							type: 'submit',
 						}}

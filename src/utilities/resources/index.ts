@@ -34,6 +34,7 @@ const endpoints = {
 		user: '/api/user',
 		recoverPassword: '/api/user/recover-password',
 		resetPassword: '/api/user/update-password',
+		changePassword: '/api/user/change-password',
 	},
 	aliases: {
 		coinId: '{coinId}',

@@ -28,7 +28,7 @@ function InputLabelPassword(props: InputLabelPasswordProps) {
 					onChange: onChange(stage, props),
 				},
 			}}
-			title={message({ id: 'PASSWORD' })}
+			title={props.title ?? message({ id: 'PASSWORD' })}
 		/>
 	)
 }

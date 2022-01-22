@@ -1,0 +1,15 @@
+@import url('../../css/variables.css');
+
+.input {
+	max-width: 400px;
+	margin: var(--space-lg) 0;
+}
+
+.groupButton {
+	display: flex;
+	align-items: center;
+}
+
+.linkForgot {
+	margin-left: var(--space-md);
+}

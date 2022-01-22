@@ -41,6 +41,7 @@ function FormAuthRecoverPassword() {
 					<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
 				</div>
 				<Button
+					design="normal"
 					buttonHTMLAttributes={{
 						type: 'submit',
 					}}

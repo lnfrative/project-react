@@ -1,9 +1,20 @@
 @import url('../../css/variables.css');
 
-.button {
-	cursor: pointer;
+.inherit {
 	font-family: var(--font-primary);
+	cursor: pointer;
 	font-size: var(--font-size-sm);
+}
+
+.inherit:hover {
+	opacity: var(--opacity-selecting);
+}
+
+.inherit:active {
+	opacity: var(--opacity-selected);
+}
+
+.normal {
 	color: var(--color-primary);
 	font-weight: bold;
 	width: 100%;
@@ -15,10 +26,13 @@
 	border: solid 1px var(--color-fortuary);
 }
 
-.button:hover {
-	opacity: var(--opacity-selecting);
-}
+.simple {
+	border-radius: 6px;
+	min-height: 48px;
 
-.button:active {
-	opacity: var(--opacity-selected);
+	background-color: var(--color-variety-main-tiny-shadow);
+	border: none;
+	color: var(--color-variety-main-shadow);
+
+	padding: 0 var(--space-md);
 }

@@ -147,6 +147,22 @@ const messages: Record<string, Record<string, string>> = {
 		en: 'A verification email has been sent.',
 		es: 'Un correo de verificación ha sido enviado',
 	},
+	DISABE_EMAIL_CHANGE: {
+		en: "For security reasons, you can't change your email manually.",
+		es: 'Por motivos de seguridad, no puedes cambiar tu email manualmente.',
+	},
+	CHANGE_PASSWORD: {
+		en: 'Change password',
+	},
+	CHANGE_EMAIL: {
+		en: 'Change email',
+	},
+	CURRENT_PASSWORD: {
+		en: 'Current password',
+	},
+	NEW_PASSWORD: {
+		en: 'New password',
+	},
 }
 
 export default messages

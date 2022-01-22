@@ -58,6 +58,7 @@ function FormAuthResetPassword() {
 					/>
 				</div>
 				<Button
+					design="normal"
 					buttonHTMLAttributes={{
 						type: 'submit',
 					}}
