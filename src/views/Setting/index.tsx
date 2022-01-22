@@ -16,7 +16,7 @@ import {
 	HeaderSegmentation,
 	PaginationMenu,
 	SettingPaginationAccount,
-	SettingPaginationMisc,
+	// SettingPaginationMisc,
 	// SettingPaginationProfile,
 	SettingPaginationSecurity,
 	Middleware,
@@ -24,6 +24,9 @@ import {
 
 // modules
 import { onChangePagination, initialState } from './module'
+
+// styles
+import styles from './index.module.css'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [
@@ -35,7 +38,7 @@ const paginationObjects: Array<PaginationObject> = [
 	},
 	// { id: 'public_profile', title: 'Public profile', content: <SettingPaginationProfile /> },
 	{ id: 'security', title: 'Security', content: <SettingPaginationSecurity /> },
-	{ id: 'misc', title: 'Misc', content: <SettingPaginationMisc /> },
+	// { id: 'misc', title: 'Misc', content: <SettingPaginationMisc /> },
 ]
 
 function Account() {
@@ -50,13 +53,15 @@ function Account() {
 		<Middleware requirements={resources.routes.setting.middlewares}>
 			<HeaderSegmentation
 				primaryContent={
-					<PaginationMenu
-						onChange={onChangePagination(stage)}
-						pathnameBase={resources.routes.setting.base}
-						pathParamId={resources.routes.setting.base.slice(1)}
-						paginationObjects={paginationObjects}
-						title="Account Settings"
-					/>
+					<div className={styles.paginator}>
+						<PaginationMenu
+							onChange={onChangePagination(stage)}
+							pathnameBase={resources.routes.setting.base}
+							pathParamId={resources.routes.setting.base.slice(1)}
+							paginationObjects={paginationObjects}
+							title="Account Settings"
+						/>
+					</div>
 				}
 				secondaryContent={stage.state.paginationObjectSelected?.content}
 			/>

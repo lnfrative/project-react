@@ -5,6 +5,7 @@
 	display: grid;
 	grid-template-columns: 230px auto;
 	gap: var(--space-lg);
+	margin-bottom: var(--space-lg);
 }
 
 .groupNav {
