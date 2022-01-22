@@ -8,6 +8,6 @@
 .title {
 	font-family: var(--font-primary);
 	font-size: var(--font-size-xs);
-	color: var(--color-quaternary);
+	color: var(--color-variety-main);
 	margin-bottom: var(--space-xs);
 }
