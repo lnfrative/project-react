@@ -62,6 +62,7 @@ function FormUpdatePassword() {
 				<InputLabelPassword
 					registerInput={register({ name: 'repeatPassword' })}
 					title={message({ id: 'REPEAT_PASSWORD' })}
+					confirm={params.password}
 				/>
 			</div>
 			<div className={styles.groupButton}>

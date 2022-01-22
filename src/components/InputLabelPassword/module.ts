@@ -22,6 +22,7 @@ function onChange(
 		}
 		if (confirm && confirm !== password) {
 			stage.commitState({ error: passwordNotMatch })
+			return
 		}
 		if (isPassword || confirm) return
 		stage.commitState({ error: invalidPassword })
