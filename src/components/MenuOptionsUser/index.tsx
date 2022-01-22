@@ -7,7 +7,13 @@ import { message, resources } from 'utilities'
 import { MenuOptionsUserProps } from 'interfaces'
 
 // components
-import { Menu, SVGIconSettings, SVGIconCheck, SVGIconBook, SVGIconLogout } from 'components'
+import {
+	Menu,
+	SVGIconSettings,
+	// SVGIconCheck,
+	// SVGIconBook,
+	SVGIconLogout,
+} from 'components'
 
 // styles
 import styles from './index.module.css'
@@ -24,7 +30,7 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
 							<span className={styles.label}>{message({ id: 'SETTINGS' })}</span>
 						</Link>
 					</div>
-					<div className={styles.group}>
+					{/* <div className={styles.group}>
 						<div className={styles.containerOption}>
 							<SVGIconCheck />
 							<span className={styles.label}>{message({ id: 'MOVEMENT_HISTORY' })}</span>
@@ -33,7 +39,7 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
 							<SVGIconBook />
 							<span className={styles.label}>{message({ id: 'ADDRESS_BOOK' })}</span>
 						</div>
-					</div>
+					</div> */}
 					<div className={styles.containerOption}>
 						<SVGIconLogout />
 						<span className={styles.label}>{message({ id: 'SIGN_OUT' })}</span>
