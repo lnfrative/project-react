@@ -17,7 +17,7 @@ import {
 	PaginationMenu,
 	SettingPaginationAccount,
 	SettingPaginationMisc,
-	SettingPaginationProfile,
+	// SettingPaginationProfile,
 	SettingPaginationSecurity,
 	Middleware,
 } from 'components'
@@ -33,7 +33,7 @@ const paginationObjects: Array<PaginationObject> = [
 		main: true,
 		content: <SettingPaginationAccount />,
 	},
-	{ id: 'public_profile', title: 'Public profile', content: <SettingPaginationProfile /> },
+	// { id: 'public_profile', title: 'Public profile', content: <SettingPaginationProfile /> },
 	{ id: 'security', title: 'Security', content: <SettingPaginationSecurity /> },
 	{ id: 'misc', title: 'Misc', content: <SettingPaginationMisc /> },
 ]
