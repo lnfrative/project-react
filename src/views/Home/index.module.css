@@ -1,0 +1,5 @@
+@import url('../../css/variables.css');
+
+.balance {
+	margin-bottom: var(--space-xl);
+}

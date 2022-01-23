@@ -1,6 +1,7 @@
 @import url('../../css/variables.css');
 
 .tab {
+	display: flex;
 	text-decoration: none;
 	cursor: pointer;
 	font-size: var(--font-size-sm);

@@ -1,6 +1,9 @@
 // region import
 import React, { useContext, useEffect } from 'react'
 
+// interfaces
+import { PaginationObject } from 'interfaces'
+
 // contexts
 import { Backend } from 'contexts'
 
@@ -10,12 +13,28 @@ import { resources } from 'utilities'
 // components
 import {
 	HeaderDashboard,
-	GroupDashboardWallets,
 	GridForm,
 	FormAuthLogin,
 	PreloadPage,
+	GroupCoinValues,
+	PaginationBar,
 } from 'components'
+
+// styles
+import styles from './index.module.css'
 // endregion
+
+const paginationObjects: Array<PaginationObject> = [
+	{
+		id: 'overview',
+		title: 'Overview',
+		main: true,
+		content: <div>content</div>,
+	},
+	{ id: 'income', title: 'Income', content: <div>Giftcard</div> },
+	{ id: 'send_and_receive', title: 'Send & Receive', content: <div>Movement</div> },
+	{ id: 'subscriptions', title: 'Subscriptions', content: <div>About</div> },
+]
 
 function Dashboard() {
 	const { request, response } = useContext(Backend)
@@ -28,9 +47,14 @@ function Dashboard() {
 	if (!wallets?.success) return <PreloadPage />
 	return (
 		<HeaderDashboard>
-			{/* TODO: enable for show benefits */}
-			{/* <GroupDashboardBenefits /> */}
-			<GroupDashboardWallets />
+			<div className={styles.balance}>
+				<GroupCoinValues />
+			</div>
+			<PaginationBar
+				pathnameBase={resources.routes.home.base}
+				pathParamId={resources.routes.home.base}
+				paginationObjects={paginationObjects}
+			/>
 		</HeaderDashboard>
 	)
 }

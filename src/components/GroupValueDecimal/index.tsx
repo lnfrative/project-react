@@ -15,7 +15,7 @@ function GroupValueDecimal(props: GroupValueDecimalProps) {
 	return (
 		<div className={styles.container}>
 			{props.design === 'top' && <div className={styles.title}>{props.title}</div>}
-			<ValueDecimal sise="large" value={props.value} />
+			<ValueDecimal sise="huge" value={props.value} />
 			{props.design === 'bottom' && <div className={styles.title}>{props.title}</div>}
 		</div>
 	)

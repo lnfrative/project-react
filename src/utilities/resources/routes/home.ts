@@ -4,8 +4,10 @@ const home: Route = {
 	base: '/',
 	middlewares: [],
 	route: {
-		path: '/',
-		params: {},
+		path: '/:section?',
+		params: {
+			section: 'section',
+		},
 	},
 	aliases: {},
 }

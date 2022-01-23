@@ -1,6 +1,7 @@
 @import url('../../css/variables.css');
 
 .container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 }

@@ -31,3 +31,11 @@
 .largeDecimal {
 	font-size: var(--font-size-md);
 }
+
+.hugeInteger {
+	font-size: var(--font-size-huge);
+}
+
+.hugeDecimal {
+	font-size: var(--font-size-xl);
+}

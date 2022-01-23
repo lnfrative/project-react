@@ -163,6 +163,9 @@ const messages: Record<string, Record<string, string>> = {
 	NEW_PASSWORD: {
 		en: 'New password',
 	},
+	BALANCE: {
+		en: 'Balance',
+	},
 }
 
 export default messages

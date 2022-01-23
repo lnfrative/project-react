@@ -4,7 +4,7 @@ export default {
 		alt: 'DogeCash Logo',
 	},
 	dogeCashLogoIcon: {
-		src: 'https://i.imgur.com/80rvyLS.png',
+		src: 'https://dev-api.account.dogecash.org/assets/coins/DogeCash/logo.svg',
 		alt: 'DogeCash Logo Icon',
 		width: 43,
 		height: 45,

@@ -11,5 +11,5 @@
 }
 
 .space {
-	margin: 0 var(--space-lg);
+	margin-right: var(--space-xl);
 }
