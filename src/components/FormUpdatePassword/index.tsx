@@ -27,9 +27,8 @@ function FormUpdatePassword() {
 	const { handleSubmit, register, watch } = useForm()
 
 	const params = {
-		password_current: watch.currentPassword?.value,
-		password: watch.newPassword?.value,
-		password_confirmation: watch.repeatPassword?.value,
+		password: watch.currentPassword?.value,
+		new_password: watch.newPassword?.value,
 	}
 
 	const passwordChanged = backend.response.post({
