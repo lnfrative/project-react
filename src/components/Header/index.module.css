@@ -1,12 +1,19 @@
 @import url('../../css/variables.css');
 
 .container {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 }
 
+.logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .header {
+	position: relative;
 	background-color: var(--color-passive-pager);
 	border-bottom: solid 2px var(--color-septenary);
 

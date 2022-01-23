@@ -5,7 +5,7 @@ import React from 'react'
 import { HeaderProps } from 'interfaces'
 
 // components
-import { Banners } from 'components'
+import { Banners, SVGLogo } from 'components'
 
 // styles
 import styles from './index.module.css'
@@ -17,6 +17,9 @@ function Header(props: HeaderProps) {
 			<Banners />
 			<div className={styles.container}>
 				<div className={styles.header}>
+					<div className={styles.logo}>
+						<SVGLogo />
+					</div>
 					<div className={styles.contentHeader}>{props.contentHeader}</div>
 				</div>
 				<div className={styles.page}>
