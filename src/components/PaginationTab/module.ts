@@ -10,8 +10,15 @@ import styles from './index.module.css'
 // endregion
 
 function getPath(props: PaginationTabProps) {
+	const { pathnameBase } = props
 	const { id, main } = props.paginationObject
-	return main ? props.pathnameBase : `${props.pathnameBase}/${id}`
+	if (main) {
+		return pathnameBase
+	}
+	if (pathnameBase.slice(pathnameBase.length - 1) === '/') {
+		return `${props.pathnameBase}${id}`
+	}
+	return `${props.pathnameBase}/${id}`
 }
 
 function nestStyles(props: PaginationTabProps) {

@@ -34,9 +34,8 @@ function PaginationBar(props: PaginationBarProps) {
 		<div className={styles.container}>
 			<div className={styles.containerBar}>
 				{props.paginationObjects.map(paginationObject => (
-					<div className={styles.tab}>
+					<div key={paginationObject.id} className={styles.tab}>
 						<PaginationTab
-							key={paginationObject.id}
 							paginationObject={paginationObject}
 							pathnameBase={props.pathnameBase}
 							pathname={pathname}

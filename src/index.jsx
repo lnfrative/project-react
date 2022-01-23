@@ -44,7 +44,7 @@ const App = (
 								<Router>
 									<Suspense fallback={null}>
 										<Switch>
-											<Route exact path={home.base} component={Home} />
+											<Route exact path={home.route.path} component={Home} />
 											<Route exact path={register.base} component={Signup} />
 											<Route exact path={coin.route.path} component={Coin} />
 											<Route exact path={setting.route.path} component={Setting} />
