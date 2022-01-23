@@ -44,13 +44,13 @@ const App = (
 								<Router>
 									<Suspense fallback={null}>
 										<Switch>
-											<Route exact path={home.route.path} component={Home} />
+											<Route exact path={setting.route.path} component={Setting} />
 											<Route exact path={register.base} component={Signup} />
 											<Route exact path={coin.route.path} component={Coin} />
-											<Route exact path={setting.route.path} component={Setting} />
 											<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
 											<Route exact path={recover.route.path} component={Recover} />
 											<Route exact path={resetPassword.route.path} component={ResetPassword} />
+											<Route exact path={home.route.path} component={Home} />
 										</Switch>
 									</Suspense>
 								</Router>
