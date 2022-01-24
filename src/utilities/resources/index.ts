@@ -28,6 +28,7 @@ const endpoints = {
 		coins: '/api/coins',
 		newaddress: '/api/user/wallets/{coinId}/newaddress',
 		emailVerify: '/api/email/verify/{user_id}/{hash}/',
+		captchaKey: '/api/captcha/key',
 	},
 	post: {
 		userCreateAccessToken: '/api/user/create/access-token',
@@ -35,6 +36,7 @@ const endpoints = {
 		recoverPassword: '/api/user/recover-password',
 		resetPassword: '/api/user/update-password',
 		changePassword: '/api/user/change-password',
+		captchaValidate: '/api/captcha/validate',
 	},
 	aliases: {
 		coinId: '{coinId}',

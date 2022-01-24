@@ -166,6 +166,9 @@ const messages: Record<string, Record<string, string>> = {
 	BALANCE: {
 		en: 'Balance',
 	},
+	RETRIEVING_CAPTCHA_KEY: {
+		en: 'Retrieving captcha key.',
+	}
 }
 
 export default messages
