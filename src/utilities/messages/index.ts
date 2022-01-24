@@ -168,7 +168,10 @@ const messages: Record<string, Record<string, string>> = {
 	},
 	RETRIEVING_CAPTCHA_KEY: {
 		en: 'Retrieving captcha key.',
-	}
+	},
+	CAPTCHA_VERIFICTION: {
+		en: 'Captcha verification',
+	},
 }
 
 export default messages
