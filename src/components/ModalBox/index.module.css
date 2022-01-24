@@ -2,7 +2,7 @@
 
 .container {
 	background-color: var(--color-passive-main);
-	min-width: 355px;
+	min-width: 300px;
 
 	border-radius: var(--border-radius-standard);
 	border: solid 1px var(--color-passive-pager);

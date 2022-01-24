@@ -1,5 +1,5 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 // interfaces
@@ -21,6 +21,7 @@ import { onChange } from './module'
 function Captcha(props: CaptchaProps) {
 	const backend = useContext(Backend)
 	const captcha = useContext(ContextCaptcha)
+	const ref = useRef<ReCAPTCHA>(null)
 	const captchaKey = backend.response.get({
 		endpoint: resources.endpoints.get.captchaKey,
 	})?.data
@@ -29,24 +30,27 @@ function Captcha(props: CaptchaProps) {
 		'g-recaptcha-response': captcha.state['g-recaptcha-response'] ?? '',
 	}
 
-	const hash = backend.response.post({
+	const captchaValidate = backend.response.post({
 		endpoint: resources.endpoints.post.captchaValidate,
 		params,
-	})?.data
+	})
 
 	const loading =
 		backend.loading?.id === requestId('post', resources.endpoints.post.captchaValidate, params)
 
 	useEffect(() => {
-		if (hash) {
-			captcha.commitState({ hash })
+		if (captchaValidate?.success) {
+			captcha.commitState({ hash: captchaValidate.data })
 			props.onSuccess()
 		}
-	}, [hash])
+		if (captchaValidate?.error && ref.current) {
+			ref.current.reset()
+		}
+	}, [captchaValidate])
 
 	return (
 		<>
-			<ReCAPTCHA sitekey={captchaKey} onChange={onChange(backend)} />
+			<ReCAPTCHA ref={ref} sitekey={captchaKey} onChange={onChange(backend)} />
 			<BackdropLoader open={loading} />
 		</>
 	)
