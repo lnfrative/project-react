@@ -5,7 +5,7 @@ import React, { useContext, useEffect } from 'react'
 import { useForm } from 'hooks'
 
 // contexts
-import { Backend, Modal, Captcha } from 'contexts'
+import { Backend, Captcha } from 'contexts'
 
 // components
 import {
@@ -16,14 +16,14 @@ import {
 	LinkForm,
 	BackdropLoader,
 	ForgotPassword,
-	ModalBoxCaptcha,
+	Form,
 } from 'components'
 
 // utilties
 import { message, resources, requestId } from 'utilities'
 
 // modules
-import { openCaptcha, successCaptcha } from './module'
+import { onSubmit } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -33,7 +33,6 @@ const endlogin = resources.endpoints.post.userCreateAccessToken
 
 function FormAuthLogin() {
 	const backend = useContext(Backend)
-	const modal = useContext(Modal)
 	const captcha = useContext(Captcha)
 	const { register, handleSubmit, watch } = useForm()
 	const { email, password } = watch
@@ -56,7 +55,12 @@ function FormAuthLogin() {
 	}, [response])
 
 	return (
-		<form onSubmit={handleSubmit({ onSubmit: openCaptcha(modal) })}>
+		<Form
+			captcha
+			formHTMLAttributes={{
+				onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+			}}
+		>
 			<FormAuth title={message({ id: 'LOG_IN' })}>
 				<div className={styles.space}>
 					<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
@@ -81,10 +85,7 @@ function FormAuthLogin() {
 				/>
 			</FormAuth>
 			<BackdropLoader open={loading} />
-			{modal.state.status === 'open' && (
-				<ModalBoxCaptcha onSuccess={successCaptcha(modal, backend, params)} />
-			)}
-		</form>
+		</Form>
 	)
 }
 

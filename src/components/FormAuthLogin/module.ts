@@ -1,4 +1,4 @@
-import { ContextBackend, ContextModalState, Stage } from 'interfaces'
+import { ContextBackend } from 'interfaces'
 import { resources } from 'utilities'
 
 function onSubmit(backend: ContextBackend, params: Record<string, string>) {
@@ -11,28 +11,4 @@ function onSubmit(backend: ContextBackend, params: Record<string, string>) {
 	}
 }
 
-function openCaptcha(modal: Stage<ContextModalState>) {
-	return (args: { email: any; password: any }) => {
-		const email = args.email.value
-		const password = args.password.value
-		if (email && password) {
-			modal.commitState({ id: Math.random(), status: 'open' })
-		}
-	}
-}
-
-function successCaptcha(
-	modal: Stage<ContextModalState>,
-	backend: ContextBackend,
-	params: Record<string, string>
-) {
-	return (hash: string) => {
-		modal.commitState({ id: undefined, status: 'close' })
-		onSubmit(backend, {
-			...params,
-			captcha_hash: hash,
-		})()
-	}
-}
-
-export { onSubmit, openCaptcha, successCaptcha }
+export { onSubmit }

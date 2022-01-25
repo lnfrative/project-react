@@ -1,7 +1,7 @@
 // region import
 import React, { PropsWithChildren } from 'react'
 
-// utilities
+// interfaces
 import { FormAuthProps } from 'interfaces'
 
 // styles
