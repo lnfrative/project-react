@@ -6,10 +6,17 @@ import { useLocation, Redirect } from 'react-router-dom'
 import { useForm } from 'hooks'
 
 // contexts
-import { Backend } from 'contexts'
+import { Backend, Captcha } from 'contexts'
 
 // components
-import { FormAuth, InputLabelPassword, InputLabelPRepeat, Button, BackdropLoader } from 'components'
+import {
+	FormAuth,
+	InputLabelPassword,
+	InputLabelPRepeat,
+	Button,
+	BackdropLoader,
+	Form,
+} from 'components'
 
 // utilities
 import { message, requestId, resources } from 'utilities'
@@ -25,6 +32,7 @@ const endresetpassword = resources.endpoints.post.resetPassword
 
 function FormAuthResetPassword() {
 	const backend = useContext(Backend)
+	const captcha = useContext(Captcha)
 	const { register, handleSubmit, watch } = useForm()
 
 	const { search } = useLocation()
@@ -39,6 +47,7 @@ function FormAuthResetPassword() {
 		email,
 		password,
 		password_confirmation: passwordRepeat,
+		captcha_hash: captcha.state.hash ?? '',
 	}
 
 	const loading = backend.loading?.id === requestId('post', endresetpassword, params)
@@ -46,7 +55,12 @@ function FormAuthResetPassword() {
 
 	if (response?.success) return <Redirect to={resources.routes.login.route.path} />
 	return (
-		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend, params) })}>
+		<Form
+			captcha
+			formHTMLAttributes={{
+				onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+			}}
+		>
 			<FormAuth title="Reset Password">
 				<div className={styles.space}>
 					<InputLabelPassword registerInput={register({ name: 'password' })} />
@@ -66,7 +80,7 @@ function FormAuthResetPassword() {
 				/>
 			</FormAuth>
 			<BackdropLoader open={loading} />
-		</form>
+		</Form>
 	)
 }
 

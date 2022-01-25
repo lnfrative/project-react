@@ -2,13 +2,13 @@
 import React, { useContext } from 'react'
 
 // contexts
-import { Backend } from 'contexts'
+import { Backend, Captcha } from 'contexts'
 
 // hooks
 import { useForm } from 'hooks'
 
 // components
-import { FormAuth, InputLabelEmail, Button, BackdropLoader } from 'components'
+import { FormAuth, InputLabelEmail, Button, BackdropLoader, Form } from 'components'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
@@ -24,9 +24,13 @@ const endrecoverpassword = resources.endpoints.post.recoverPassword
 
 function FormAuthRecoverPassword() {
 	const backend = useContext(Backend)
+	const captcha = useContext(Captcha)
 	const { register, handleSubmit, watch } = useForm()
 	const { email } = watch
-	const params = { email: email?.value }
+	const params = {
+		email: email?.value,
+		captcha_hash: captcha.state.hash ?? '',
+	}
 
 	const response = backend.response({ endpoint: endrecoverpassword, params, method: 'post' })
 	const loading = backend.loading?.id === requestId('post', endrecoverpassword, params)
@@ -35,7 +39,12 @@ function FormAuthRecoverPassword() {
 		return <div className={styles.success}>{message({ id: 'VERIFICATION_EMAIL_SENT' })}</div>
 	}
 	return (
-		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend) })}>
+		<Form
+			captcha
+			formHTMLAttributes={{
+				onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+			}}
+		>
 			<FormAuth title={message({ id: 'RECOVER_PASSWORD' })}>
 				<div className={styles.space}>
 					<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
@@ -49,7 +58,7 @@ function FormAuthRecoverPassword() {
 				/>
 			</FormAuth>
 			<BackdropLoader open={loading} />
-		</form>
+		</Form>
 	)
 }
 

@@ -2,7 +2,7 @@
 import React, { useContext, useEffect } from 'react'
 
 // contexts
-import { Backend } from 'contexts'
+import { Backend, Captcha } from 'contexts'
 
 // hooks
 import { useStage, useForm } from 'hooks'
@@ -20,6 +20,7 @@ import {
 	InputLabelPRepeat,
 	LinkForm,
 	BackdropLoader,
+	Form,
 } from 'components'
 
 // module
@@ -35,11 +36,13 @@ const endregister = resources.endpoints.post.user
 function FormAuthRegister() {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
+	const captcha = useContext(Captcha)
 	const { register, watch, handleSubmit } = useForm()
 	const { password, email, repeatedPassword } = watch
 	const params = {
 		email: email?.value,
 		password: password?.value,
+		captcha_hash: captcha.state.hash ?? '',
 	}
 	const userResponse = backend.response({ endpoint: enduser, method: 'get' })
 	const createUserResponse = backend.response({
@@ -56,7 +59,12 @@ function FormAuthRegister() {
 	}, [userResponse, createUserResponse])
 
 	return (
-		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend, stage) })}>
+		<Form
+			captcha
+			formHTMLAttributes={{
+				onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+			}}
+		>
 			<FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
 				<div className={styles.space}>
 					<InputLabelEmail registerInput={register({ name: 'email' })} />
@@ -98,7 +106,7 @@ function FormAuthRegister() {
 				/>
 			</FormAuth>
 			<BackdropLoader open={loading} message={message({ id: 'LONG_TIME_ACTION' })} />
-		</form>
+		</Form>
 	)
 }
 

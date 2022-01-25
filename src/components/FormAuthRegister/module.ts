@@ -11,19 +11,11 @@ function onCheckTerms(stage: Stage<InitialState>) {
 	}
 }
 
-function onSubmit(backend: ContextBackend, stage: Stage<InitialState>) {
-	return (inputs: any) => {
-		const { password, email, repeatedPassword } = inputs
-		if (!stage.state.termsAccepted) return
-		if (password?.hasError || email?.hasError || repeatedPassword?.hasError) return
-
-		const { request } = backend
-		request.post({
+function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+	return () => {
+		backend.request.post({
 			endpoint: resources.endpoints.post.user,
-			params: {
-				email: email.value,
-				password: password.value,
-			},
+			params,
 			updateCache: true,
 		})
 	}
