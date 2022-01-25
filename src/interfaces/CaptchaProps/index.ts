@@ -1,5 +1,5 @@
 interface CaptchaProps {
-	onSuccess: Function
+	onSuccess: (hash: string) => void
 }
 
 export default CaptchaProps

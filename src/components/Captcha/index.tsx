@@ -41,16 +41,16 @@ function Captcha(props: CaptchaProps) {
 	useEffect(() => {
 		if (captchaValidate?.success) {
 			captcha.commitState({ hash: captchaValidate.data })
-			props.onSuccess()
+			props.onSuccess(captchaValidate.data)
 		}
 		if (captchaValidate?.error && ref.current) {
 			ref.current.reset()
 		}
-	}, [captchaValidate])
+	}, [captchaValidate?.success])
 
 	return (
 		<>
-			<ReCAPTCHA ref={ref} sitekey={captchaKey} onChange={onChange(backend)} />
+			<ReCAPTCHA ref={ref} sitekey={captchaKey} onChange={onChange(backend, captcha)} />
 			<BackdropLoader open={loading} />
 		</>
 	)

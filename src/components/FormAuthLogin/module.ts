@@ -26,9 +26,12 @@ function successCaptcha(
 	backend: ContextBackend,
 	params: Record<string, string>
 ) {
-	return () => {
+	return (hash: string) => {
 		modal.commitState({ id: undefined, status: 'close' })
-		onSubmit(backend, params)
+		onSubmit(backend, {
+			...params,
+			captcha_hash: hash,
+		})()
 	}
 }
 
