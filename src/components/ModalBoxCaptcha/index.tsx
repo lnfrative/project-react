@@ -9,12 +9,17 @@ import { message } from 'utilities'
 
 // components
 import { ModalBox, Captcha } from 'components'
+
+// styles
+import styles from './index.module.css'
 // endregion
 
 function ModalBoxCaptcha(props: ModalBoxCaptchaProps) {
 	return (
 		<ModalBox title={message({ id: 'CAPTCHA_VERIFICTION' })}>
-			<Captcha onSuccess={props.onSuccess} />
+			<div className={styles.captcha}>
+				<Captcha onSuccess={props.onSuccess} />
+			</div>
 		</ModalBox>
 	)
 }

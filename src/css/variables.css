@@ -42,6 +42,7 @@
 	--color-variety-main-tiny-shadow: rgba(208, 203, 230, 0.04);
 	--color-variety-upstream: #c8fca3;
 	--color-variety-downstream: #ff8c8c;
+	--color-shadow-delay: rgba(0, 0, 0, 0.5);
 
 	--space-unit: 1rem;
 	--space-default: var(--space-unit);
