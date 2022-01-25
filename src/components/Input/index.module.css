@@ -10,7 +10,7 @@
 	font-size: var(--font-size-xs);
 
 	position: absolute;
-	right: calc((100% + var(--space-md)));
+	right: calc(100% + var(--space-md));
 
 	min-width: 220px;
 	min-height: 45px;
