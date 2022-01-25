@@ -20,8 +20,9 @@ import styles from './index.module.css'
 
 function SettingPaginationAccount() {
 	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response.get({
+	const user: BackendUser | undefined = response({
 		endpoint: resources.endpoints.get.user,
+		method: 'get',
 	})?.data
 	return (
 		<SettingPagination title="Account">

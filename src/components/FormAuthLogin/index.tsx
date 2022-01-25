@@ -42,9 +42,10 @@ function FormAuthLogin() {
 		password: password?.value,
 		captcha_hash: captcha.state.hash ?? '',
 	}
-	const response = backend.response.post({
+	const response = backend.response({
 		endpoint: endlogin,
 		params,
+		method: 'post',
 	})
 	const loading = backend.loading?.id === requestId('post', endlogin, params)
 

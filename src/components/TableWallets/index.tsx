@@ -65,7 +65,7 @@ function Header() {
 function Wallet(props: WalletProps) {
 	const currency = useContext(Currency)
 	const { response } = useContext(Backend)
-	const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data
+	const coins: Array<BackendCoin> = response({ endpoint: endpointCoins, method: 'get' })?.data
 	const coin = resources.utils.filterCoin(coins, { id: props.wallet.coin_id })
 	const styles = nestStyles(props)
 
@@ -98,8 +98,8 @@ function Wallet(props: WalletProps) {
 function TableWallets() {
 	const { response, loading } = useContext(Backend)
 	const styles = nestStyles()
-	const wallets: BackendWallets = response.get({ endpoint: endwallets })?.data ?? []
-	const coins: Array<BackendCoin> = response.get({ endpoint: endpointCoins })?.data ?? []
+	const wallets: BackendWallets = response({ endpoint: endwallets, method: 'get' })?.data ?? []
+	const coins: Array<BackendCoin> = response({ endpoint: endpointCoins, method: 'get' })?.data ?? []
 
 	return (
 		<div className={styles.container}>

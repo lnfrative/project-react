@@ -21,7 +21,7 @@ const enduser = resources.endpoints.get.user
 
 function Banners() {
 	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response.get({ endpoint: enduser })?.data
+	const user: BackendUser | undefined = response({ endpoint: enduser, method: 'get' })?.data
 
 	return (
 		<div className={styles.container}>

@@ -11,7 +11,6 @@ interface BackendMethods<T> {
 	delete: T
 }
 
-interface BackendResponser extends Record<string, Responser> {}
 interface BackendRequester extends BackendMethods<Requester> {}
 
 interface State {
@@ -101,14 +100,19 @@ async function loader(stage: Stage<State>) {
 	}
 }
 
-function responser(stage: Stage<State>, method: BackendRequestMethodsAllowed): Responser {
-	return (args: { endpoint?: string; params?: Record<string, string>; id?: string }) => {
-		const { endpoint, params } = args
+function responser(stage: Stage<State>): Responser {
+	return (args: {
+		endpoint?: string
+		params?: Record<string, string>
+		id?: string
+		method?: BackendRequestMethodsAllowed
+	}) => {
+		const { endpoint, params, method } = args
 		const { state } = stage
 
 		if (!state.store) return undefined
 		if (args.id) return state.store.get(args.id)
-		if (!endpoint) return undefined
+		if (!endpoint || !method) return undefined
 		const id = requestId(method, endpoint, params)
 		return state.store.get(id)
 	}
@@ -123,13 +127,4 @@ function genRequest(stage: Stage<State>): BackendRequester {
 	}
 }
 
-function genResponse(stage: Stage<State>): BackendResponser {
-	return {
-		get: responser(stage, 'get'),
-		post: responser(stage, 'post'),
-		put: responser(stage, 'put'),
-		delete: responser(stage, 'delete'),
-	}
-}
-
-export { loader, genRequest, genResponse, initialState }
+export { loader, genRequest, responser, initialState }

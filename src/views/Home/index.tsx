@@ -38,7 +38,7 @@ const paginationObjects: Array<PaginationObject> = [
 
 function Dashboard() {
 	const { request, response } = useContext(Backend)
-	const wallets = response.get({ endpoint: resources.endpoints.get.wallets })
+	const wallets = response({ endpoint: resources.endpoints.get.wallets, method: 'get' })
 
 	useEffect(() => {
 		request.get({ endpoint: resources.endpoints.get.wallets, label: 'LOADING_WALLLETS' })
@@ -67,7 +67,7 @@ const Login = () => (
 
 function Home() {
 	const { response } = useContext(Backend)
-	const user = response.get({ endpoint: resources.endpoints.get.user })
+	const user = response({ endpoint: resources.endpoints.get.user, method: 'get' })
 	if (!user?.success) return <Login />
 	return <Dashboard />
 }

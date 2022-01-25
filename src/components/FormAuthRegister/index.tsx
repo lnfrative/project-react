@@ -41,10 +41,11 @@ function FormAuthRegister() {
 		email: email?.value,
 		password: password?.value,
 	}
-	const userResponse = backend.response.get({ endpoint: enduser })
-	const createUserResponse = backend.response.post({
+	const userResponse = backend.response({ endpoint: enduser, method: 'get' })
+	const createUserResponse = backend.response({
 		endpoint: endregister,
 		params,
+		method: 'post',
 	})
 	const loading = backend.loading?.id === requestId('post', endregister, params)
 

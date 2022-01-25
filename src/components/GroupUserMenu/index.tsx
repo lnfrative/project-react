@@ -19,8 +19,9 @@ import styles from './index.module.css'
 
 function GroupUserMenu() {
 	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response.get({
+	const user: BackendUser | undefined = response({
 		endpoint: resources.endpoints.get.user,
+		method: 'get',
 	})?.data
 	const letter = user?.email.slice(0, 1).toUpperCase() ?? ''
 	return (

@@ -16,7 +16,7 @@ const enduser = resources.endpoints.get.user
 
 function Middleware(props: MiddlewareProps) {
 	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response.get({ endpoint: enduser })?.data
+	const user: BackendUser | undefined = response({ endpoint: enduser, method: 'get' })?.data
 
 	const [requirement] = props.requirements.filter(
 		middleware =>

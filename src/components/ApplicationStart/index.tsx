@@ -14,9 +14,9 @@ import { Backend, Currency } from 'contexts'
 function ApplicationStart(props: PropsWithChildren<{}>) {
 	const currency = useContext(Currency)
 	const backend = useContext(Backend)
-	const user = backend.response.get({ endpoint: resources.endpoints.get.user })
-	const coins = backend.response.get({ endpoint: resources.endpoints.get.coins })
-	const captcha = backend.response.get({ endpoint: resources.endpoints.get.captchaKey })
+	const user = backend.response({ endpoint: resources.endpoints.get.user, method: 'get' })
+	const coins = backend.response({ endpoint: resources.endpoints.get.coins, method: 'get' })
+	const captcha = backend.response({ endpoint: resources.endpoints.get.captchaKey, method: 'get' })
 
 	useEffect(() => {
 		backend.request.get({ endpoint: resources.endpoints.get.user, label: 'LOADING_SESSION' })

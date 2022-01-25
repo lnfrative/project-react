@@ -42,7 +42,7 @@ function FormAuthResetPassword() {
 	}
 
 	const loading = backend.loading?.id === requestId('post', endresetpassword, params)
-	const response = backend.response.post({ endpoint: endresetpassword, params })
+	const response = backend.response({ endpoint: endresetpassword, params, method: 'post' })
 
 	if (response?.success) return <Redirect to={resources.routes.login.route.path} />
 	return (

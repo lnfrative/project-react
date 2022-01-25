@@ -29,7 +29,7 @@ function CoinAvailable(props: CoinAvailableProps) {
 		aliases.coinId,
 		props.id.toString()
 	)
-	const newaddress = backend.response.get({ endpoint: endnewaddress })
+	const newaddress = backend.response({ endpoint: endnewaddress, method: 'get' })
 	const loading = backend.loading?.id === requestId('get', endnewaddress)
 
 	useEffect(() => {

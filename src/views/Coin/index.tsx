@@ -40,8 +40,9 @@ const routeCoin = resources.routes.coin.aliases.name
 function Coin() {
 	const { response } = useContext(Backend)
 	const match = useRouteMatch<{ name: string }>()
-	const coins: Array<BackendCoin> = response.get({
+	const coins: Array<BackendCoin> = response({
 		endpoint: resources.endpoints.get.coins,
+		method: 'get',
 	})?.data
 	const coin = resources.utils.filterCoin(coins, { name: match.params.name })
 

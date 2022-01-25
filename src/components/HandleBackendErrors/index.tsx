@@ -7,7 +7,6 @@ import { useStage } from 'hooks'
 
 // utilities
 import { resources } from 'utilities'
-import { Responser } from 'types'
 
 // contexts
 import { Backend } from 'contexts'
@@ -28,8 +27,7 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
 		} else {
 			const { state, commitState } = stage
 			if (state.method && state.requestId) {
-				const responser: Responser = response[state.method]
-				const backendResponse = responser({ id: state.requestId })
+				const backendResponse = response({ id: state.requestId })
 				if (backendResponse?.error) {
 					commitState({ error: backendResponse.error, snackbar: 'open' })
 				}

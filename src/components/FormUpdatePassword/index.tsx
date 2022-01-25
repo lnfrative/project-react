@@ -31,9 +31,10 @@ function FormUpdatePassword() {
 		new_password: watch.newPassword?.value,
 	}
 
-	const passwordChanged = backend.response.post({
+	const passwordChanged = backend.response({
 		endpoint: endchangepassword,
 		params,
+		method: 'post',
 	})
 	const loading = backend.loading?.id === requestId('post', endchangepassword, params)
 

@@ -28,7 +28,7 @@ function FormAuthRecoverPassword() {
 	const { email } = watch
 	const params = { email: email?.value }
 
-	const response = backend.response.post({ endpoint: endrecoverpassword, params })
+	const response = backend.response({ endpoint: endrecoverpassword, params, method: 'post' })
 	const loading = backend.loading?.id === requestId('post', endrecoverpassword, params)
 
 	if (response?.success) {

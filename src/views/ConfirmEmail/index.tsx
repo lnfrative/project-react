@@ -19,7 +19,7 @@ function ConfirmEmail() {
 	const params = new URLSearchParams(location.search)
 	const verifyURL = decodeURIComponent(params.get('verify_url') ?? '')
 	const endpoint = verifyURL.split(`${process.env.REACT_APP_API}`)[1]
-	const emailVerify = backend.response.get({ endpoint })
+	const emailVerify = backend.response({ endpoint, method: 'get' })
 	const loading = backend.loading?.id === requestId('get', endpoint)
 
 	useEffect(() => {

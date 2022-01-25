@@ -22,17 +22,19 @@ function Captcha(props: CaptchaProps) {
 	const backend = useContext(Backend)
 	const captcha = useContext(ContextCaptcha)
 	const ref = useRef<ReCAPTCHA>(null)
-	const captchaKey = backend.response.get({
+	const captchaKey = backend.response({
 		endpoint: resources.endpoints.get.captchaKey,
+		method: 'get',
 	})?.data
 
 	const params = {
 		'g-recaptcha-response': captcha.state['g-recaptcha-response'] ?? '',
 	}
 
-	const captchaValidate = backend.response.post({
+	const captchaValidate = backend.response({
 		endpoint: resources.endpoints.post.captchaValidate,
 		params,
+		method: 'post',
 	})
 
 	const loading =
