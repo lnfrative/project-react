@@ -1,12 +1,4 @@
-import { BackendResponse } from 'interfaces'
-import { BackendRequestMethodsAllowed } from 'types'
-
-interface ResponserArgs {
-	endpoint?: string
-	params?: Record<string, string>
-	id?: string
-	method?: BackendRequestMethodsAllowed
-}
+import { BackendResponse, ResponserArgs } from 'interfaces'
 
 type Responser = (args: ResponserArgs) => BackendResponse | undefined
 

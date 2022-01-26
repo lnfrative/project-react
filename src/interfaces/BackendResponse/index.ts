@@ -1,6 +1,6 @@
 interface BackendResponse {
 	success?: boolean
-	error?: string
+	error?: string | { second_factor: boolean }
 	data?: any
 	status: number
 }

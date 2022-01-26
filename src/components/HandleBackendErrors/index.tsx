@@ -28,7 +28,7 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
 			const { state, commitState } = stage
 			if (state.method && state.requestId) {
 				const backendResponse = response({ id: state.requestId })
-				if (backendResponse?.error) {
+				if (backendResponse?.error && typeof backendResponse.error !== 'object') {
 					commitState({ error: backendResponse.error, snackbar: 'open' })
 				}
 				if (backendResponse?.status === 401) {

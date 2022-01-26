@@ -17,6 +17,7 @@ import {
 	BackdropLoader,
 	ForgotPassword,
 	Form,
+	TwoFactor,
 } from 'components'
 
 // utilties
@@ -55,37 +56,39 @@ function FormAuthLogin() {
 	}, [response])
 
 	return (
-		<Form
-			captcha
-			formHTMLAttributes={{
-				onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
-			}}
-		>
-			<FormAuth title={message({ id: 'LOG_IN' })}>
-				<div className={styles.space}>
-					<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
-				</div>
-				<div className={styles.space}>
-					<InputLabelPassword disableError registerInput={register({ name: 'password' })} />
-				</div>
-				<ForgotPassword />
-				<div className={styles.space}>
-					<Button
-						design="normal"
-						buttonHTMLAttributes={{
-							type: 'submit',
-						}}
-						title={message({ id: 'LOG_IN' })}
+		<TwoFactor endpoint={endlogin} params={params} method="post">
+			<Form
+				captcha
+				formHTMLAttributes={{
+					onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+				}}
+			>
+				<FormAuth title={message({ id: 'LOG_IN' })}>
+					<div className={styles.space}>
+						<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
+					</div>
+					<div className={styles.space}>
+						<InputLabelPassword disableError registerInput={register({ name: 'password' })} />
+					</div>
+					<ForgotPassword />
+					<div className={styles.space}>
+						<Button
+							design="normal"
+							buttonHTMLAttributes={{
+								type: 'submit',
+							}}
+							title={message({ id: 'LOG_IN' })}
+						/>
+					</div>
+					<LinkForm
+						path={resources.routes.register.base}
+						message={message({ id: 'DONT_HAVE_ACCOUNT' })}
+						linkName={message({ id: 'SIGN_UP' })}
 					/>
-				</div>
-				<LinkForm
-					path={resources.routes.register.base}
-					message={message({ id: 'DONT_HAVE_ACCOUNT' })}
-					linkName={message({ id: 'SIGN_UP' })}
-				/>
-			</FormAuth>
-			<BackdropLoader open={loading} />
-		</Form>
+				</FormAuth>
+				<BackdropLoader open={loading} />
+			</Form>
+		</TwoFactor>
 	)
 }
 

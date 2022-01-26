@@ -172,6 +172,9 @@ const messages: Record<string, Record<string, string>> = {
 	CAPTCHA_VERIFICTION: {
 		en: 'Captcha verification',
 	},
+	TWO_FACTOR_AUTH: {
+		en: 'Two-factor authentication',
+	},
 }
 
 export default messages
