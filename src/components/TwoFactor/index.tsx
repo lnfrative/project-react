@@ -11,7 +11,10 @@ import { Backend, Modal } from 'contexts'
 import { TwoFactorProps } from 'interfaces'
 
 // components
-import { ModalBox2FA } from 'components'
+import { ModalBox2FA, BackdropLoader } from 'components'
+
+// utilities
+import { requestId } from 'utilities'
 
 // modules
 import { initialState, onCode } from './module'
@@ -26,9 +29,27 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 		params: props.params,
 	})
 
+	const params = {
+		...props.params,
+		second_factor: stage.state.code ?? '',
+	}
+
+	const loading = backend.loading?.id === requestId(props.method, props.endpoint, params)
+
+	const responseWithSecondFactor = backend.response({
+		endpoint: props.endpoint,
+		params,
+		method: props.method,
+	})
+
 	useEffect(() => {
+		const { endpoint, method } = props
 		if (stage.state.code) {
-			// TODO: make the request with 2FA.
+			backend.request({
+				endpoint,
+				params,
+				method,
+			})
 		}
 	}, [stage.state.code])
 
@@ -42,11 +63,20 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 		}
 	}, [response?.error])
 
+	useEffect(() => {
+		if (responseWithSecondFactor?.success) {
+			stage.commitState({
+				code: undefined,
+			})
+		}
+	}, [responseWithSecondFactor?.success])
+
 	return (
 		<>
 			{modal.state.id === stage.state.id && modal.state.status === 'open' && (
 				<ModalBox2FA onCode={onCode(stage, modal)} />
 			)}
+			<BackdropLoader open={loading} />
 			{props.children}
 		</>
 	)

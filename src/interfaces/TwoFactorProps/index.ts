@@ -1,5 +1,9 @@
-import { ResponserArgs } from 'interfaces'
+import { BackendRequestMethodsAllowed } from 'types'
 
-interface TwoFactorProps extends ResponserArgs {}
+interface TwoFactorProps {
+	endpoint: string
+	method: BackendRequestMethodsAllowed
+	params?: Record<string, string>
+}
 
 export default TwoFactorProps
