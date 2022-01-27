@@ -27,6 +27,12 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	})
 
 	useEffect(() => {
+		if (stage.state.code) {
+			// TODO: make the request with 2FA.
+		}
+	}, [stage.state.code])
+
+	useEffect(() => {
 		if (typeof response?.error === 'object' && response.error) {
 			if (response.error.second_factor) {
 				const id = Math.random()

@@ -1,26 +1,19 @@
-import { TwoFactorProps, Stage, ContextModalState, ContextBackend } from 'interfaces'
+import { Stage, ContextModalState } from 'interfaces'
 
 interface State {
 	id?: number
+	code?: string
 }
 
 const initialState: State = {
 	id: undefined,
 }
 
-function onCode(props: TwoFactorProps, backend: ContextBackend, modal: Stage<ContextModalState>) {
+function onCode(stage: Stage<State>, modal: Stage<ContextModalState>) {
 	return (code: string) => {
-		const { endpoint, params, method } = props
-		if (code.length === 6 && method && endpoint) {
-			modal.commitState({ id: undefined, status: 'close' })
-			backend.request[method]({
-				endpoint,
-				params: {
-					...params,
-					second_factor: code,
-				},
-				updateCache: true,
-			})
+		if (code.length === 6) {
+			stage.commitState({ code, id: undefined })
+			modal.commitState({ status: 'close', id: undefined })
 		}
 	}
 }
