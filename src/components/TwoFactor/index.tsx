@@ -45,7 +45,7 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	return (
 		<>
 			{modal.state.id === stage.state.id && modal.state.status === 'open' && (
-				<ModalBox2FA onCode={onCode(props, backend, modal)} />
+				<ModalBox2FA onCode={onCode(stage, modal)} />
 			)}
 			{props.children}
 		</>
