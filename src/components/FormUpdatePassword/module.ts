@@ -13,10 +13,11 @@ function onSubmit(backend: ContextBackend, params: Record<string, string>) {
 		if (!args.newPassword) return
 		if (!args.repeatPassword) return
 
-		backend.request.post({
+		backend.request({
 			endpoint: endchangepassword,
 			params,
 			updateCache: true,
+			method: 'post',
 		})
 	}
 }

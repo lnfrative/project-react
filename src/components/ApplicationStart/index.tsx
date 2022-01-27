@@ -19,12 +19,21 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
 	const captcha = backend.response({ endpoint: resources.endpoints.get.captchaKey, method: 'get' })
 
 	useEffect(() => {
-		backend.request.get({ endpoint: resources.endpoints.get.user, label: 'LOADING_SESSION' })
-		backend.request.get({
+		backend.request({
+			endpoint: resources.endpoints.get.user,
+			label: 'LOADING_SESSION',
+			method: 'get',
+		})
+		backend.request({
 			endpoint: resources.endpoints.get.captchaKey,
 			label: 'RETRIEVING_CAPTCHA_KEY',
+			method: 'get',
 		})
-		backend.request.get({ endpoint: resources.endpoints.get.coins, label: 'LOADING_COINS' })
+		backend.request({
+			endpoint: resources.endpoints.get.coins,
+			label: 'LOADING_COINS',
+			method: 'get',
+		})
 		currency.commitState({ id: 'usd' })
 	}, [])
 

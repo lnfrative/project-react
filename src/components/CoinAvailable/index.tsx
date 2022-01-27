@@ -41,7 +41,7 @@ function CoinAvailable(props: CoinAvailableProps) {
 	return (
 		<>
 			<div
-				onClick={onClick(props, backend.request.get)}
+				onClick={onClick(props, backend)}
 				role="button"
 				tabIndex={0}
 				className={styles.container}

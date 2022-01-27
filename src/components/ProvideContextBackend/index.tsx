@@ -8,12 +8,12 @@ import { useStage } from 'hooks'
 import { Backend } from 'contexts'
 
 // modules
-import { genRequest, responser, initialState, loader } from './module'
+import { requester, responser, initialState, loader } from './module'
 // endregion
 
 function ProvideContextBackend(props: PropsWithChildren<{}>) {
 	const stage = useStage(initialState)
-	const request = genRequest(stage)
+	const request = requester(stage)
 	const response = responser(stage)
 
 	useEffect(() => {

@@ -13,10 +13,11 @@ function onCheckTerms(stage: Stage<InitialState>) {
 
 function onSubmit(backend: ContextBackend, params: Record<string, string>) {
 	return () => {
-		backend.request.post({
+		backend.request({
 			endpoint: resources.endpoints.post.user,
 			params,
 			updateCache: true,
+			method: 'post',
 		})
 	}
 }

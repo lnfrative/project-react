@@ -5,10 +5,11 @@ const endrecoverpassword = resources.endpoints.post.recoverPassword
 
 function onSubmit(backend: ContextBackend, params: Record<string, string>) {
 	return () => {
-		backend.request.post({
+		backend.request({
 			endpoint: endrecoverpassword,
 			params,
 			updateCache: true,
+			method: 'post',
 		})
 	}
 }

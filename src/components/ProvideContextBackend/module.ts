@@ -4,15 +4,6 @@ import { Stage, BackendResponse, QueueCallback } from 'interfaces'
 import { Responser, BackendRequestMethodsAllowed, Requester } from 'types'
 // endregion
 
-interface BackendMethods<T> {
-	get: T
-	post: T
-	put: T
-	delete: T
-}
-
-interface BackendRequester extends BackendMethods<Requester> {}
-
 interface State {
 	store?: Map<string, BackendResponse>
 	queueCallbacks?: QueueCallback[]
@@ -49,15 +40,25 @@ function requestCallback(
 	}
 }
 
-function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): Requester {
-	return (args: {
-		endpoint: string
-		params?: Record<string, string>
-		updateCache?: boolean
-		label?: string
-	}) => {
+async function loader(stage: Stage<State>) {
+	const { loading, store } = stage.state
+	if (loading) {
+		const { callback, id } = loading
+		const requested = await callback()
+		const response: BackendResponse = await requested.json()
+		response.status = requested.status
+		stage.commitState({
+			queueCallbacks: stage.state.queueCallbacks?.slice(1),
+			loading: undefined,
+			store: (store || new Map<string, BackendResponse>()).set(id, response),
+		})
+	}
+}
+
+function requester(stage: Stage<State>): Requester {
+	return args => {
 		const { state } = stage
-		const { endpoint, params, updateCache, label } = args
+		const { endpoint, params, updateCache, label, method } = args
 
 		const searchParams = new URLSearchParams(params).toString()
 		const urlParams = `${endpoint}${searchParams ? `?${searchParams}` : ''}`
@@ -85,28 +86,8 @@ function requester(stage: Stage<State>, method: BackendRequestMethodsAllowed): R
 	}
 }
 
-async function loader(stage: Stage<State>) {
-	const { loading, store } = stage.state
-	if (loading) {
-		const { callback, id } = loading
-		const requested = await callback()
-		const response: BackendResponse = await requested.json()
-		response.status = requested.status
-		stage.commitState({
-			queueCallbacks: stage.state.queueCallbacks?.slice(1),
-			loading: undefined,
-			store: (store || new Map<string, BackendResponse>()).set(id, response),
-		})
-	}
-}
-
 function responser(stage: Stage<State>): Responser {
-	return (args: {
-		endpoint?: string
-		params?: Record<string, string>
-		id?: string
-		method?: BackendRequestMethodsAllowed
-	}) => {
+	return args => {
 		const { endpoint, params, method } = args
 		const { state } = stage
 
@@ -118,13 +99,4 @@ function responser(stage: Stage<State>): Responser {
 	}
 }
 
-function genRequest(stage: Stage<State>): BackendRequester {
-	return {
-		get: requester(stage, 'get'),
-		post: requester(stage, 'post'),
-		put: requester(stage, 'put'),
-		delete: requester(stage, 'put'),
-	}
-}
-
-export { loader, genRequest, responser, initialState }
+export { loader, requester, responser, initialState }

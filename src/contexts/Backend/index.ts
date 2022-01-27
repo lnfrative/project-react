@@ -2,7 +2,7 @@
 import { createContext } from 'react'
 
 // modules
-import { genRequest, responser } from 'components/ProvideContextBackend/module'
+import { requester, responser } from 'components/ProvideContextBackend/module'
 
 // utilities
 import { ContextBackend } from 'interfaces'
@@ -13,7 +13,7 @@ const commitState = () => {}
 const stage = { state, commitState }
 
 const Backend = createContext<ContextBackend>({
-	request: genRequest(stage),
+	request: requester(stage),
 	response: responser(stage),
 })
 
