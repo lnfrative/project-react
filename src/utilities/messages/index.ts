@@ -178,6 +178,12 @@ const messages: Record<string, Record<string, string>> = {
 	ENABLE: {
 		en: 'Enable',
 	},
+	ENABLE_TWO_FACTOR: {
+		en: 'Enable two-factor authentication',
+	},
+	ENABLE_TWO_FACTOR_INFO: {
+		en: 'Scan this code using any authenticator app, such as the free "Google Authenticator" (Android and iOS). This software generates a time-based one-time password that you\'ll need to enter to authenticate yourself.',
+	},
 }
 
 export default messages
