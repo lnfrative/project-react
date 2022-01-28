@@ -1,21 +1,10 @@
 // region import
-import React, { useContext } from 'react'
-
-// contexts
-import { View } from 'contexts'
+import React from 'react'
 
 // components
-import {
-	Header,
-	GroupBrand,
-	SVGIconDashboard,
-	SVGIconGroups,
-	GroupUserMenu,
-	LinkBackDashboard,
-} from 'components'
+import { Header, GroupBrand, GroupUserMenu, LinkBackDashboard } from 'components'
 
 // utilities
-import { message } from 'utilities'
 import { HeaderSegmentationProps } from 'interfaces'
 
 // modules
@@ -23,7 +12,6 @@ import { nestStyles } from './module'
 // endregion
 
 function HeaderSegmentation(props: HeaderSegmentationProps) {
-	const contextStage = useContext(View)
 	const styles = nestStyles()
 	return (
 		<Header
@@ -31,14 +19,8 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
 				<div className={styles.grid}>
 					<div className={styles.groupNav}>
 						<GroupBrand />
-						<SVGIconDashboard />
-						<SVGIconGroups />
 					</div>
 					<div className={styles.groupNavDetails}>
-						<div className={styles.groupTitleView}>
-							<div className={styles.seeing}>{message({ id: 'SEEING' })}</div>
-							<div className={styles.title}>{contextStage.state.name}</div>
-						</div>
 						<GroupUserMenu />
 					</div>
 				</div>
