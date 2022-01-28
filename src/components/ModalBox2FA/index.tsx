@@ -10,6 +10,9 @@ import { ModalBox2FAProps } from 'interfaces'
 // utilities
 import { message } from 'utilities'
 
+// modules
+import { onChange } from './module'
+
 // styles
 import styles from './index.module.css'
 // endregion
@@ -24,6 +27,7 @@ function ModalBox2FA(props: ModalBox2FAProps) {
 						InputHTMLAttributes={{
 							style: { textAlign: 'center' },
 							type: 'text',
+							onChange: onChange(props),
 						}}
 					/>
 				</div>
