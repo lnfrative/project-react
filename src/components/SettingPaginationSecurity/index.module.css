@@ -9,14 +9,3 @@
 	color: var(--color-variety-main-shadow);
 	margin-bottom: var(--space-sm);
 }
-
-.email {
-	font-size: var(--font-size-lg);
-	color: var(--color-variety-main);
-	margin-right: var(--space-md);
-}
-
-.groupEmail {
-	display: flex;
-	align-items: center;
-}

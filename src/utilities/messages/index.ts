@@ -175,6 +175,9 @@ const messages: Record<string, Record<string, string>> = {
 	TWO_FACTOR_AUTH: {
 		en: 'Two-factor authentication',
 	},
+	ENABLE: {
+		en: 'Enable',
+	},
 }
 
 export default messages
