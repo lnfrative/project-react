@@ -184,6 +184,9 @@ const messages: Record<string, Record<string, string>> = {
 	ENABLE_TWO_FACTOR_INFO: {
 		en: 'Scan this code using any authenticator app, such as the free "Google Authenticator" (Android and iOS). This software generates a time-based one-time password that you\'ll need to enter to authenticate yourself.',
 	},
+	ENTER_OTP: {
+		en: 'Enter OTP',
+	},
 }
 
 export default messages

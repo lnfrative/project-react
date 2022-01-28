@@ -5,7 +5,7 @@ import React, { useContext, useEffect } from 'react'
 import { Backend } from 'contexts'
 
 // components
-import { ModalBox, BackdropLoader } from 'components'
+import { ModalBox, BackdropLoader, EnableTwoFactor } from 'components'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
@@ -41,6 +41,9 @@ function ModalBoxEnable2FA() {
 					src={`data:image/svg+xml;utf8,${encodeURIComponent(response?.data)}`}
 					alt="QR Code"
 				/>
+				<div className={styles.enable}>
+					<EnableTwoFactor />
+				</div>
 			</div>
 		</ModalBox>
 	)
