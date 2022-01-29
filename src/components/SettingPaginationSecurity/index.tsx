@@ -23,15 +23,17 @@ import { initialState, enableTwoFactor } from './module'
 import styles from './index.module.css'
 // endregion
 
+const enduser = resources.endpoints.get.user
+
 function SettingPaginationSecurity() {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
 	const modal = useContext(Modal)
 
-	const updatingUser = backend.loading?.id === requestId('get', resources.endpoints.get.user)
+	const updatingUser = backend.loading?.id === requestId('get', enduser)
 
 	const user: BackendUser = backend.response({
-		endpoint: resources.endpoints.get.user,
+		endpoint: enduser,
 		method: 'get',
 	})?.data
 

@@ -51,7 +51,7 @@ function EnableTwoFactor() {
 
 	useEffect(() => {
 		if (response?.success) {
-			backend.request({ endpoint: resources.endpoints.get.user, method: 'get' })
+			backend.request({ endpoint: resources.endpoints.get.user, method: 'get', updateCache: true })
 			modal.commitState({ id: undefined, status: 'close' })
 		}
 	}, [response?.success])
