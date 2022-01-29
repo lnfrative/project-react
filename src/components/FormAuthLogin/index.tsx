@@ -24,7 +24,7 @@ import {
 import { message, resources, requestId } from 'utilities'
 
 // modules
-import { onSubmit } from './module'
+import { onSubmit, reload } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -51,12 +51,12 @@ function FormAuthLogin() {
 
 	useEffect(() => {
 		if (response?.success) {
-			window.location.reload()
+			reload()
 		}
 	}, [response])
 
 	return (
-		<TwoFactor endpoint={endlogin} params={params} method="post">
+		<TwoFactor onSuccess={reload} endpoint={endlogin} params={params} method="post">
 			<Form
 				captcha
 				formHTMLAttributes={{

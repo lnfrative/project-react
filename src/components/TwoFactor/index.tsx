@@ -25,6 +25,7 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	const modal = useContext(Modal)
 	const stage = useStage(initialState)
 	const response = backend.response({
+		method: props.method,
 		endpoint: props.endpoint,
 		params: props.params,
 	})
@@ -68,6 +69,7 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 			stage.commitState({
 				code: undefined,
 			})
+			props.onSuccess(requestId(props.method, props.endpoint, params))
 		}
 	}, [responseWithSecondFactor?.success])
 

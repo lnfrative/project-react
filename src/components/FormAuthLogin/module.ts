@@ -12,4 +12,8 @@ function onSubmit(backend: ContextBackend, params: Record<string, string>) {
 	}
 }
 
-export { onSubmit }
+function reload() {
+	window.location.reload()
+}
+
+export { onSubmit, reload }
