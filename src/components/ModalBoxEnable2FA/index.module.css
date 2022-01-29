@@ -1,25 +1,26 @@
 @import url('../../css/variables.css');
 
 .container {
-	padding: var(--space-sm) var(--space-lg) var(--space-lg) var(--space-lg);
+	padding: var(--space-sm);
 	display: flex;
 	flex-direction: column;
+	max-width: 300px;
 }
 
 .info {
 	font-size: var(--font-size-xxxs);
 	color: var(--color-variety-main);
-	max-width: 300px;
 	margin-bottom: var(--space-sm);
+	line-height: 1.5;
 }
 
 .image {
 	background-color: var(--color-white);
-	padding: var(--space-xxxs);
+	padding: var(--space-xxs);
 }
 
 .enable {
 	display: flex;
 	justify-content: center;
-	margin-top: var(--space-md);
+	margin-top: var(--space-sm);
 }
