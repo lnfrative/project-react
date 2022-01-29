@@ -13,3 +13,7 @@
 .text {
 	color: var(--color-variety-main-shadow);
 }
+
+.containerButton {
+	display: flex;
+}

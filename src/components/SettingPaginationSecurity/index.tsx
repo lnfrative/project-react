@@ -1,5 +1,6 @@
 // region import
 import React, { useContext } from 'react'
+import { Tooltip } from '@mui/material'
 
 // hooks
 import { useStage } from 'hooks'
@@ -52,13 +53,19 @@ function SettingPaginationSecurity() {
 					/>
 				)}
 				{user.two_factor_verified && (
-					<Button
-						buttonHTMLAttributes={{
-							type: 'button',
-						}}
-						design="simple"
-						title={message({ id: 'DEACTIVATE' })}
-					/>
+					<div className={styles.containerButton}>
+						<Tooltip title={message({ id: 'DEACTIVATE_TWO_FACTOR' })}>
+							<div>
+								<Button
+									buttonHTMLAttributes={{
+										type: 'button',
+									}}
+									design="simple"
+									title={message({ id: 'DEACTIVATE' })}
+								/>
+							</div>
+						</Tooltip>
+					</div>
 				)}
 				{stage.state.id === modal.state.id && modal.state.status === 'open' && (
 					<ModalBoxEnable2FA />

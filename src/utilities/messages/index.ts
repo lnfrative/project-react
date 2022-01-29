@@ -190,6 +190,9 @@ const messages: Record<string, Record<string, string>> = {
 	DEACTIVATE: {
 		en: 'Deactivate',
 	},
+	DEACTIVATE_TWO_FACTOR: {
+		en: 'For security reasons, you cannot manually disable two-factor verification.',
+	},
 }
 
 export default messages
