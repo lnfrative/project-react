@@ -9,3 +9,7 @@
 	color: var(--color-variety-main-shadow);
 	margin-bottom: var(--space-sm);
 }
+
+.text {
+	color: var(--color-variety-main-shadow);
+}

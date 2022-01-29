@@ -173,7 +173,7 @@ const messages: Record<string, Record<string, string>> = {
 		en: 'Captcha verification',
 	},
 	TWO_FACTOR_AUTH: {
-		en: 'Two-factor authentication',
+		en: 'Two-factor verification',
 	},
 	ENABLE: {
 		en: 'Enable',
@@ -186,6 +186,9 @@ const messages: Record<string, Record<string, string>> = {
 	},
 	ENTER_OTP: {
 		en: 'Enter OTP',
+	},
+	DEACTIVATE: {
+		en: 'Deactivate',
 	},
 }
 
