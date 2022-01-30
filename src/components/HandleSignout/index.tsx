@@ -12,7 +12,6 @@ import { requestId, resources } from 'utilities'
 // endregion
 
 const endsignout = resources.endpoints.post.signout
-const enduser = resources.endpoints.get.user
 
 function HandleSignout(props: PropsWithChildren<{}>) {
 	const backend = useContext(Backend)
@@ -26,11 +25,7 @@ function HandleSignout(props: PropsWithChildren<{}>) {
 
 	useEffect(() => {
 		if (signout?.success) {
-			backend.request({
-				method: 'get',
-				endpoint: enduser,
-				updateCache: true,
-			})
+			window.location.reload()
 		}
 	}, [signout?.success])
 
