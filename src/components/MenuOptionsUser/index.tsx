@@ -13,6 +13,7 @@ import {
 	// SVGIconCheck,
 	// SVGIconBook,
 	SVGIconLogout,
+	Signout,
 } from 'components'
 
 // styles
@@ -41,8 +42,10 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
 						</div>
 					</div> */}
 					<div className={styles.containerOption}>
-						<SVGIconLogout />
-						<span className={styles.label}>{message({ id: 'SIGN_OUT' })}</span>
+						<Signout>
+							<SVGIconLogout />
+							<span className={styles.label}>{message({ id: 'SIGN_OUT' })}</span>
+						</Signout>
 					</div>
 				</div>
 			}

@@ -39,6 +39,7 @@ const endpoints = {
 		changePassword: '/api/user/change-password',
 		captchaValidate: '/api/captcha/validate',
 		secondFactorEnable: '/api/user/second-factor/enable',
+		signout: '/api/user/logout',
 	},
 	aliases: {
 		coinId: '{coinId}',
