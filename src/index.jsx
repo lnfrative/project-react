@@ -13,6 +13,7 @@ import {
 	ProvideContextCurrency,
 	ApplicationStart,
 	HandleBackendErrors,
+	HandleSignout,
 } from 'components'
 
 // utilities
@@ -43,19 +44,21 @@ const App = (
 						<ProvideContextCaptcha>
 							<ApplicationStart>
 								<HandleBackendErrors>
-									<Router>
-										<Suspense fallback={null}>
-											<Switch>
-												<Route exact path={setting.route.path} component={Setting} />
-												<Route exact path={register.base} component={Signup} />
-												<Route exact path={coin.route.path} component={Coin} />
-												<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
-												<Route exact path={recover.route.path} component={Recover} />
-												<Route exact path={resetPassword.route.path} component={ResetPassword} />
-												<Route exact path={home.route.path} component={Home} />
-											</Switch>
-										</Suspense>
-									</Router>
+									<HandleSignout>
+										<Router>
+											<Suspense fallback={null}>
+												<Switch>
+													<Route exact path={setting.route.path} component={Setting} />
+													<Route exact path={register.base} component={Signup} />
+													<Route exact path={coin.route.path} component={Coin} />
+													<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
+													<Route exact path={recover.route.path} component={Recover} />
+													<Route exact path={resetPassword.route.path} component={ResetPassword} />
+													<Route exact path={home.route.path} component={Home} />
+												</Switch>
+											</Suspense>
+										</Router>
+									</HandleSignout>
 								</HandleBackendErrors>
 							</ApplicationStart>
 						</ProvideContextCaptcha>
