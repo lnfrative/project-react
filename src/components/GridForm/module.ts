@@ -25,6 +25,12 @@ function nestStyles() {
 		colOne: styles.colOne,
 		colTwo: classNames(styles.colTwo, styles.containerForm),
 		colThree: styles.colThree,
+		gradientTop: styles.gradientTop,
+		gradientBottom: styles.gradientBottom,
+		gradientLeft: styles.gradientLeft,
+		lineBottom: styles.lineBottom,
+		gradientRight: styles.gradientRight,
+		lineHorizontal: styles.lineHorizontal,
 	}
 }
 
