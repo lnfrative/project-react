@@ -1,8 +1,14 @@
 // region import
-import React from 'react'
+import React, { useContext } from 'react'
+
+// interfaces
+import { BackendBalance } from 'interfaces'
+
+// contexts
+import { Backend } from 'contexts'
 
 // utilities
-import { message } from 'utilities'
+import { message, resources } from 'utilities'
 
 // components
 import { GroupSelectValueDecimal, GroupValueDecimal, GroupSelectValueVariation } from 'components'
@@ -23,19 +29,28 @@ const testTimeOptions = [
 ]
 
 function GroupCoinValues() {
+	const backend = useContext(Backend)
+	const balance: BackendBalance = backend.response({
+		endpoint: resources.endpoints.get.userBalance,
+		method: 'get',
+	})?.data
 	return (
 		<div className={styles.container}>
-			<GroupValueDecimal design="top" title={message({ id: 'BALANCE' })} value={238.0000012} />
+			<GroupValueDecimal
+				design="top"
+				title={message({ id: 'BALANCE' })}
+				value={balance.balance_main_currency}
+			/>
 			<div className={styles.containerSelectValues}>
 				<div className={styles.space}>
 					<GroupSelectValueDecimal
-						valueDecimal={0.4568036}
+						valueDecimal={balance.balance_secondary_currency}
 						titleSelect="Worth in"
 						optionsSelect={testOptions}
 					/>
 				</div>
 				<GroupSelectValueVariation
-					valueVariation={12.5}
+					valueVariation={balance.change}
 					titleSelect="Last"
 					optionsSelect={testTimeOptions}
 				/>

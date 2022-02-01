@@ -37,14 +37,27 @@ const paginationObjects: Array<PaginationObject> = [
 ]
 
 function Dashboard() {
-	const { request, response } = useContext(Backend)
-	const wallets = response({ endpoint: resources.endpoints.get.wallets, method: 'get' })
+	const backend = useContext(Backend)
+	const wallets = backend.response({ endpoint: resources.endpoints.get.wallets, method: 'get' })
+	const balances = backend.response({
+		endpoint: resources.endpoints.get.userBalance,
+		method: 'get',
+	})
 
 	useEffect(() => {
-		request({ endpoint: resources.endpoints.get.wallets, label: 'LOADING_WALLLETS', method: 'get' })
+		backend.request({
+			endpoint: resources.endpoints.get.wallets,
+			label: 'LOADING_WALLLETS',
+			method: 'get',
+		})
+		backend.request({
+			endpoint: resources.endpoints.get.userBalance,
+			method: 'get',
+			label: 'GETTING_BALANCES',
+		})
 	}, [])
 
-	if (!wallets?.success) return <PreloadPage />
+	if (!wallets?.success || !balances?.success) return <PreloadPage />
 	return (
 		<HeaderDashboard>
 			<div className={styles.balance}>

@@ -193,6 +193,9 @@ const messages: Record<string, Record<string, string>> = {
 	DEACTIVATE_TWO_FACTOR: {
 		en: 'For security reasons, you cannot manually disable two-factor verification.',
 	},
+	GETTING_BALANCES: {
+		en: 'Getting balances.',
+	},
 }
 
 export default messages

@@ -30,6 +30,7 @@ const endpoints = {
 		emailVerify: '/api/email/verify/{user_id}/{hash}/',
 		captchaKey: '/api/captcha/key',
 		twoFactorQR: '/api/user/second-factor/qr',
+		userBalance: '/api/user/balance',
 	},
 	post: {
 		userCreateAccessToken: '/api/user/create/access-token',
