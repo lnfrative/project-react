@@ -1,5 +1,5 @@
 interface SelectOption {
-	id: number | string
+	id: string
 	value?: string
 	main?: boolean
 }
