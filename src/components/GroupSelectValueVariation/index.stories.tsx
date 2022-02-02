@@ -18,7 +18,7 @@ Test.args = {
 	titleSelect: 'Title',
 	valueVariation: 4.56,
 	optionsSelect: [
-		{ id: 1, value: 'option test', main: true },
-		{ id: 2, value: 'option test 2' },
+		{ id: '1', value: 'option test', main: true },
+		{ id: '2', value: 'option test 2' },
 	],
 }
