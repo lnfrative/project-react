@@ -13,7 +13,10 @@ function ValueDecimal(props: ValueDecimalProps) {
 	const styles = nestStyles(props)
 	return (
 		<div>
-			<span className={styles.integer}>{integer}</span>
+			<span className={styles.integer}>
+				{props.sign}
+				{integer}
+			</span>
 			<span className={styles.decimal}>
 				<span>.</span>
 				{!!decimal && <span>{decimal}</span>}
