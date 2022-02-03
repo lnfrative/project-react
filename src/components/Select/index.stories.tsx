@@ -1,7 +1,8 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
 import { SelectProps } from 'interfaces'
-import { Select } from 'components'
+import { ImgCoin, Select } from 'components'
+import { resources } from 'utilities'
 
 export default {
 	title: 'Select',
@@ -17,7 +18,19 @@ Test.args = {
 	design: 'filled',
 	onSelect: () => {},
 	options: [
-		{ id: 'a', value: 'test a', main: true },
-		{ id: 'b', value: 'test b', main: false },
+		{
+			id: 'a',
+			value: 'StakeCubeCoin',
+			main: true,
+			secondaryValue: 'SCC',
+			element: <ImgCoin size="small" src={resources.coin.stakecube.logo} />,
+		},
+		{
+			id: 'b',
+			value: 'test b',
+			main: false,
+			secondaryValue: 'Secondary value',
+			element: <ImgCoin size="small" src={resources.coin.stakecube.logo} />,
+		},
 	],
 }

@@ -29,6 +29,16 @@ function nestStyles(arg: SelectProps) {
 		groupOptions: styles.groupOptions,
 		title: styles[`${arg.design}Title`],
 		valueSelected: styles.valueSelected,
+		optionValue: classNames(styles.optionValue, {
+			[styles.orange]: arg.design !== 'outlined',
+			[styles.purple]: arg.design === 'outlined',
+		}),
+		optionElement: styles.optionElement,
+		optionSecondaryValue: styles.optionSecondaryValue,
+		arrowIcon: classNames(styles.arrow, {
+			[styles.left]: arg.design === 'outlined',
+			[styles.right]: arg.design !== 'outlined',
+		}),
 	}
 }
 
