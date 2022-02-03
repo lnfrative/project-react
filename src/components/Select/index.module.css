@@ -17,6 +17,13 @@
 	padding: 0 var(--space-sm);
 }
 
+.outlinedSelected {
+	background-color: none;
+	border: solid 1px var(--color-passive-pager);
+	border-radius: 4px;
+	padding: var(--space-xxxs) var(--space-md);
+}
+
 .commonOption:hover {
 	opacity: var(--opacity-selecting);
 }
@@ -66,6 +73,49 @@
 }
 
 .valueSelected {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 0 var(--space-sm) 0 var(--space-sm);
+}
+
+.left {
+	left: calc(var(--space-md) * -1);
+}
+
+.right {
+	right: calc(var(--space-md) * -1);
+}
+
+.arrow {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.optionElement {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: var(--space-xs);
+}
+
+.optionValue {
+	margin-right: var(--space-xs);
+}
+
+.optionSecondaryValue {
+	color: var(--color-variety-main-shadow);
+}
+
+.orange {
 	color: var(--color-active-main);
-	margin: 0 var(--space-sm) 0 var(--space-xxs);
+}
+
+.purple {
+	color: var(--color-active-secundary);
 }

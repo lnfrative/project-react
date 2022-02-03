@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 // components
-import { SVGIconTriangleDown } from 'components'
+import { SVGIconTriangleDown, SVGIconArrowDown } from 'components'
 
 // hooks
 import { useStage, useStrictEffect } from 'hooks'
@@ -25,7 +25,7 @@ function Select(props: SelectProps) {
 			optionSelected,
 		})
 		if (props.onSelect) {
-			props.onSelect({ option: optionSelected })
+			props.onSelect({ option: optionSelected, assemble: true })
 		}
 	}, [])
 
@@ -47,8 +47,29 @@ function Select(props: SelectProps) {
 			{stage.state.optionSelected !== undefined && (
 				<div role="button" tabIndex={0} onClick={onOpen(stage)} className={styles.optionSelected}>
 					<span className={styles.title}>{props.title}</span>
-					<span className={styles.valueSelected}>{stage.state.optionSelected.value}</span>
-					<SVGIconTriangleDown />
+					<span className={styles.valueSelected}>
+						{stage.state.optionSelected.element && (
+							<div className={styles.optionElement}>{stage.state.optionSelected.element}</div>
+						)}
+						{stage.state.optionSelected.value && (
+							<div className={styles.optionValue}>{stage.state.optionSelected.value}</div>
+						)}
+						{stage.state.optionSelected.secondaryValue && (
+							<div className={styles.optionSecondaryValue}>
+								{stage.state.optionSelected.secondaryValue}
+							</div>
+						)}
+						{props.design !== 'outlined' && (
+							<div className={styles.arrowIcon}>
+								<SVGIconTriangleDown />
+							</div>
+						)}
+						{props.design === 'outlined' && (
+							<div className={styles.arrowIcon}>
+								<SVGIconArrowDown />
+							</div>
+						)}
+					</span>
 				</div>
 			)}
 			{stage.state.status === 'open' && (
