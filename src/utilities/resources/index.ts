@@ -78,9 +78,20 @@ function filterCoin(
 	return undefined
 }
 
+function parseParams(params?: Record<string, string>) {
+	const paramsCloned = { ...params }
+	Object.keys(paramsCloned).forEach(key => {
+		if (!paramsCloned[key]) {
+			delete paramsCloned[key]
+		}
+	})
+	return paramsCloned
+}
+
 const utils = {
 	normaliceCoinName,
 	filterCoin,
+	parseParams,
 }
 
 export default {
