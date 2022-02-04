@@ -1,8 +1,12 @@
 @import './variables.css';
 
+html {
+	background-color: var(--color-passive-main);
+}
+
 body {
 	font-family: var(--font-primary);
-	background-color: #0e0e11;
+	background: linear-gradient(to bottom, var(--color-passive-secundary), var(--color-passive-main));
 	margin: 0;
 	letter-spacing: 2px;
 }
