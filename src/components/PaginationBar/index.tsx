@@ -24,7 +24,7 @@ function PaginationBar(props: PaginationBarProps) {
 
 	useEffect(() => {
 		const [paginationObjectCurrent] = props.paginationObjects.filter(paginationObject => {
-			const id = pathname.split('/').reverse()[0]
+			const id = pathname === '/' ? pathname : pathname.split('/').reverse()[0]
 			return (id === props.pathParamId && paginationObject.main) || id === paginationObject.id
 		})
 		stage.commitState({ paginationObjectMatch: paginationObjectCurrent })
