@@ -1,5 +1,18 @@
 @import url('../../css/variables.css');
 
+.container {
+	display: flex;
+}
+
+.mainGroup {
+	flex: 3;
+}
+
+.secundaryGroup {
+	flex: 2;
+	margin-left: var(--space-lg);
+}
+
 .group {
 	background-color: var(--color-primary);
 	margin-bottom: var(--space-lg);
@@ -38,4 +51,52 @@
 
 .headerTitle {
 	color: var(--color-variety-main-shadow);
+}
+
+.movements {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center;
+	justify-content: space-between; */
+	padding: var(--space-lg) var(--space-xl);
+}
+
+.movement {
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+	margin-bottom: var(--space-md);
+}
+
+.movementImg {
+	height: 42px;
+	width: 42px;
+	background-color: gray;
+	border-radius: 100%;
+	margin-right: var(--space-sm);
+}
+
+.movementData {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.movementGroupData {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--color-variety-main-shadow);
+}
+
+.movementPriceUp {
+	color: var(--color-variety-upstream);
+}
+
+.allMovements {
+	color: var(--color-variety-main-shadow);
+	text-align: center;
+	padding: var(--space-lg) 0;
+	border-top: solid 1px var(--color-variety-main-tiny-shadow);
 }
