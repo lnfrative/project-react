@@ -33,6 +33,7 @@ const paginationObjects: Array<PaginationObject> = [
 		content: <Overview />,
 	},
 	{ id: 'income', title: 'Income', content: <div>Giftcar</div> },
+	{ id: 'transactions', title: 'Transactions', content: <div>transactions</div> },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <div>Movement</div> },
 	{ id: 'subscriptions', title: 'Subscriptions', content: <div>About</div> },
 ]

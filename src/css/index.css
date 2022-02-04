@@ -2,6 +2,7 @@
 
 html {
 	background-color: var(--color-passive-main);
+	overflow-y: scroll;
 }
 
 body {
