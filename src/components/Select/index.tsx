@@ -25,7 +25,7 @@ function Select(props: SelectProps) {
 			optionSelected,
 		})
 		if (props.onSelect) {
-			props.onSelect({ option: optionSelected })
+			props.onSelect({ option: optionSelected, assemble: true })
 		}
 	}, [])
 

@@ -22,7 +22,7 @@ function GroupSelectValueDecimal(props: GroupSelectValueDecimalProps) {
 	return (
 		<div className={styles.container}>
 			<Select
-				onSelect={genOnSelect(stage)}
+				onSelect={genOnSelect(props, stage)}
 				design="simple"
 				title={props.titleSelect}
 				options={props.optionsSelect}
