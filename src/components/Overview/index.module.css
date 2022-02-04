@@ -30,10 +30,10 @@
 .assetsTableRow {
 	display: grid;
 	overflow: auto;
-	grid-template-columns: minmax(175px, 350px) 135px 200px 135px;
-	gap: var(--space-sm);
+	grid-template-columns: minmax(175px, 200px) auto 125px 135px;
+	gap: var(--space-xxl);
 
-	padding: var(--space-md);
+	padding: var(--space-md) 0;
 }
 
 .headerTitle {

@@ -1,5 +1,8 @@
 // region import
-import React from 'react'
+import React, { useContext } from 'react'
+
+// contexts
+import { Backend } from 'contexts'
 
 // components
 import { ValueDecimal, ValueCoin, ValuePrice, SVGValueVariation } from 'components'
@@ -12,6 +15,8 @@ import styles from './index.module.css'
 // endregion
 
 function Overview() {
+	const backend = useContext(Backend)
+	const coins = backend.response({ method: 'get', endpoint: resources.endpoints.get.coins })
 	return (
 		<div>
 			<div className={styles.group}>
@@ -56,17 +61,21 @@ function Overview() {
 							<ValuePrice value={25} />
 							<SVGValueVariation
 								variation={25}
-								coordsValueVariation={[
-									[0, 20],
-									[1, 20],
-									[2, 20],
-									[3, 20],
-									[4, 20],
-									[5, 20],
-									[6, 20],
-									[7, 20],
-									[8, 20],
-								]}
+								coordsValueVariation={coins?.data[0].market_data.chart_24h}
+							/>
+							<ValuePrice value={25} />
+						</div>
+						<div className={styles.assetsTableRow}>
+							<ValueCoin
+								srcImageCoin={resources.coin.dogecash.logo}
+								value={0}
+								name="DogeCash"
+								shortname="DOGEC"
+							/>
+							<ValuePrice value={25} />
+							<SVGValueVariation
+								variation={25}
+								coordsValueVariation={coins?.data[0].market_data.chart_24h}
 							/>
 							<ValuePrice value={25} />
 						</div>
