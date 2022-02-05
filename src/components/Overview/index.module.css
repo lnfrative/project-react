@@ -96,7 +96,11 @@
 
 .allMovements {
 	color: var(--color-variety-main-shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 	padding: var(--space-lg) 0;
 	border-top: solid 1px var(--color-variety-main-tiny-shadow);
+	text-decoration: none;
 }

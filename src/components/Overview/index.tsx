@@ -1,11 +1,12 @@
 // region import
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 // contexts
 import { Backend } from 'contexts'
 
 // components
-import { ValueDecimal, ValueCoin, ValuePrice, SVGValueVariation } from 'components'
+import { ValueDecimal, ValueCoin, ValuePrice, SVGValueVariation, Transaction } from 'components'
 
 // utilities
 import { resources } from 'utilities'
@@ -88,49 +89,26 @@ function Overview() {
 				<div className={styles.group}>
 					<div className={styles.groupTitle}>Last movements</div>
 					<div className={styles.movements}>
-						<div className={styles.movement}>
-							<div className={styles.movementImg} />
-							<div className={styles.movementData}>
-								<div className={styles.movementGroupData}>
-									<div className={styles.movementPriceUp}>+0.1288</div>
-									<div>09.31.20</div>
-								</div>
-								<div className={styles.movementGroupData}>
-									<div>0.123 USD</div>
-									<div>Staking earnings</div>
-								</div>
-							</div>
-						</div>
-
-						<div className={styles.movement}>
-							<div className={styles.movementImg} />
-							<div className={styles.movementData}>
-								<div className={styles.movementGroupData}>
-									<div className={styles.movementPriceUp}>+0.1288</div>
-									<div>09.31.20</div>
-								</div>
-								<div className={styles.movementGroupData}>
-									<div>0.123 USD</div>
-									<div>Staking earnings</div>
-								</div>
-							</div>
-						</div>
-
-						<div className={styles.movement}>
-							<div className={styles.movementImg} />
-							<div className={styles.movementData}>
-								<div className={styles.movementGroupData}>
-									<div className={styles.movementPriceUp}>+0.1288</div>
-									<div>09.31.20</div>
-								</div>
-								<div className={styles.movementGroupData}>
-									<div>0.123 USD</div>
-									<div>Staking earnings</div>
-								</div>
-							</div>
-						</div>
+						<Transaction
+							data={{
+								type: 1,
+								accountable: true,
+								status: 5,
+								account_id: 1,
+								coin_id: 1,
+								value: 0.2657,
+								concept: 'Netflix subscription',
+								txid: 'algo',
+								address: 'defefjemfoiefjoefjoepfjeo',
+								balance: 0.458,
+								created_at: 1644028859517,
+								updated_at: 1644028859517,
+							}}
+						/>
 					</div>
-					<div className={styles.allMovements}>All movements</div>
+					<Link to="/transactions" className={styles.allMovements}>
+						All movements
+					</Link>
 				</div>
 			</div>
 		</div>

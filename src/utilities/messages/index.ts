@@ -196,6 +196,21 @@ const messages: Record<string, Record<string, string>> = {
 	GETTING_BALANCES: {
 		en: 'Getting balances.',
 	},
+	CREATED: {
+		en: 'Created',
+	},
+	VALIDATED: {
+		en: 'Validated',
+	},
+	CONFIRMED: {
+		en: 'Confirmed',
+	},
+	APPROVED: {
+		en: 'Approved',
+	},
+	COMPLETED: {
+		en: 'Completed',
+	},
 }
 
 export default messages
