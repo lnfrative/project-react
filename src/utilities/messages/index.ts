@@ -211,6 +211,15 @@ const messages: Record<string, Record<string, string>> = {
 	COMPLETED: {
 		en: 'Completed',
 	},
+	LAST_MOVEMENTS: {
+		en: 'Last movements',
+	},
+	EMPTY_TRANSACTIONS_HISTORY: {
+		en: 'Empty transaction history.',
+	},
+	ALL_MOVEMENTS: {
+		en: 'All movements',
+	},
 }
 
 export default messages

@@ -4,6 +4,9 @@ import React, { useContext } from 'react'
 // contexts
 import { Backend } from 'contexts'
 
+// components
+import { SVGIconIncoming, SVGIconOutgoing } from 'components'
+
 // interfaces
 import { BackendCoin, TransactionProps } from 'interfaces'
 
@@ -16,7 +19,7 @@ import styles from './index.module.css'
 
 function Transaction(props: TransactionProps) {
 	const backend = useContext(Backend)
-	const date = new Date(props.data.created_at).toISOString().split('T')[0]
+	const date = new Date(props.data.timestamp).toISOString().split('T')[0]
 	const coins: Array<BackendCoin> = backend.response({
 		endpoint: resources.endpoints.get.coins,
 		method: 'get',
@@ -24,14 +27,20 @@ function Transaction(props: TransactionProps) {
 	const [coin] = coins.filter(el => props.data.coin_id === el.id)
 	return (
 		<div className={styles.movement}>
-			<div className={styles.movementImg} />
+			<div className={styles.movementImg}>
+				{props.data.value >= 0 && <SVGIconIncoming />}
+				{props.data.value < 0 && <SVGIconOutgoing />}
+			</div>
+
 			<div className={styles.movementData}>
 				<div className={styles.movementGroupData}>
 					<div className={styles.price}>
-						<div className={styles.movementPriceUp}>
-							{props.data.type === 4 ? '-' : '+'}
-							{props.data.value}
-						</div>
+						{props.data.value >= 0 && (
+							<div className={styles.movementPriceUp}>{props.data.value}</div>
+						)}
+						{props.data.value < 0 && (
+							<div className={styles.movementPriceDown}>{props.data.value}</div>
+						)}
 						<div className={styles.coin}>{coin.asset}</div>
 					</div>
 					<div>{date}</div>

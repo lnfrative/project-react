@@ -1,16 +1,17 @@
 interface BackendTransaction {
-	type: 1 | 2 | 3 | 4
+	id: number
+	coin_id: number
+	account_id: number
 	accountable: boolean
 	status: 1 | 2 | 3 | 4 | 5
-	account_id: number
-	coin_id: number
 	value: number
+	type: 1 | 2 | 3 | 4
+	account_from?: string
+	internal_transaction_id?: number
 	concept: string
-	txid: string
-	address: string
-	balance: number
-	created_at: number
-	updated_at: number
+	txid?: string
+	address?: string
+	timestamp: number
 }
 
 export default BackendTransaction

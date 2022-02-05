@@ -104,3 +104,12 @@
 	border-top: solid 1px var(--color-variety-main-tiny-shadow);
 	text-decoration: none;
 }
+
+.transactionsFeedback {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	color: var(--color-variety-main-shadow);
+}

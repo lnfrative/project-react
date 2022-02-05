@@ -1,6 +1,10 @@
 // region import
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { CircularProgress } from '@mui/material'
+
+// interfaces
+import { BackendTransaction } from 'interfaces'
 
 // contexts
 import { Backend } from 'contexts'
@@ -9,7 +13,7 @@ import { Backend } from 'contexts'
 import { ValueDecimal, ValueCoin, ValuePrice, SVGValueVariation, Transaction } from 'components'
 
 // utilities
-import { resources } from 'utilities'
+import { resources, message } from 'utilities'
 
 // styles
 import styles from './index.module.css'
@@ -18,6 +22,15 @@ import styles from './index.module.css'
 function Overview() {
 	const backend = useContext(Backend)
 	const coins = backend.response({ method: 'get', endpoint: resources.endpoints.get.coins })
+	const transactions: Array<BackendTransaction> | undefined = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.transactions,
+	})?.data
+
+	useEffect(() => {
+		backend.request({ endpoint: resources.endpoints.get.transactions, method: 'get' })
+	}, [])
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.mainGroup}>
@@ -87,27 +100,18 @@ function Overview() {
 			</div>
 			<div className={styles.secundaryGroup}>
 				<div className={styles.group}>
-					<div className={styles.groupTitle}>Last movements</div>
+					<div className={styles.groupTitle}>{message({ id: 'LAST_MOVEMENTS' })}</div>
 					<div className={styles.movements}>
-						<Transaction
-							data={{
-								type: 1,
-								accountable: true,
-								status: 5,
-								account_id: 1,
-								coin_id: 1,
-								value: 0.2657,
-								concept: 'Netflix subscription',
-								txid: 'algo',
-								address: 'defefjemfoiefjoefjoepfjeo',
-								balance: 0.458,
-								created_at: 1644028859517,
-								updated_at: 1644028859517,
-							}}
-						/>
+						{transactions?.map(transaction => (
+							<Transaction key={transaction.id} data={transaction} />
+						))}
+						<div className={styles.transactionsFeedback}>
+							{!transactions && <CircularProgress color="inherit" />}
+							{transactions?.length === 0 && message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
+						</div>
 					</div>
 					<Link to="/transactions" className={styles.allMovements}>
-						All movements
+						{message({ id: 'ALL_MOVEMENTS' })}
 					</Link>
 				</div>
 			</div>
