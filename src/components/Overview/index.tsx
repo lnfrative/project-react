@@ -91,7 +91,7 @@ function Overview() {
 					<div className={styles.groupTitle}>{message({ id: 'ASSETS_SUMMARY' })}</div>
 					<div className={styles.groupValues}>
 						<div className={styles.assetsTable}>
-							{wallets && coins && (
+							{wallets.length !== 0 && coins && (
 								<div className={styles.assetsTableRow}>
 									<div />
 									<div className={styles.headerTitle}>{message({ id: 'PRICE' })}</div>
