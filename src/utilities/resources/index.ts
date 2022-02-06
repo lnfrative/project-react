@@ -32,6 +32,7 @@ const endpoints = {
 		twoFactorQR: '/api/user/second-factor/qr',
 		userBalance: '/api/user/balance',
 		transactions: '/api/user/transactions',
+		summary: '/api/user/summary',
 	},
 	post: {
 		userCreateAccessToken: '/api/user/create/access-token',

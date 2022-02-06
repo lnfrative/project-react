@@ -40,11 +40,15 @@
 	margin-top: var(--space-xxxs);
 }
 
+.assetsTable {
+	width: 100%;
+}
+
 .assetsTableRow {
 	display: grid;
 	overflow: auto;
 	grid-template-columns: minmax(175px, 200px) auto 125px 135px;
-	gap: var(--space-xxl);
+	justify-content: space-between;
 
 	padding: var(--space-md) 0;
 }
@@ -105,7 +109,7 @@
 	text-decoration: none;
 }
 
-.transactionsFeedback {
+.containerFeedback {
 	display: flex;
 	align-items: center;
 	justify-content: center;
