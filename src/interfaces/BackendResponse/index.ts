@@ -1,7 +1,7 @@
 interface BackendResponse {
 	success?: boolean
 	error?: string | { second_factor: boolean }
-	data?: any
+	data?: any | undefined
 	status: number
 }
 

@@ -18,6 +18,7 @@ import {
 	PreloadPage,
 	GroupCoinValues,
 	PaginationBar,
+	Overview,
 } from 'components'
 
 // styles
@@ -29,9 +30,10 @@ const paginationObjects: Array<PaginationObject> = [
 		id: 'overview',
 		title: 'Overview',
 		main: true,
-		content: <div>content</div>,
+		content: <Overview />,
 	},
-	{ id: 'income', title: 'Income', content: <div>Giftcard</div> },
+	{ id: 'income', title: 'Income', content: <div>Giftcar</div> },
+	{ id: 'transactions', title: 'Transactions', content: <div>transactions</div> },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <div>Movement</div> },
 	{ id: 'subscriptions', title: 'Subscriptions', content: <div>About</div> },
 ]

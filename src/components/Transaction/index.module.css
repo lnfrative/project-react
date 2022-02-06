@@ -1,0 +1,51 @@
+@import url('../../css/variables.css');
+
+.movement {
+	display: flex;
+	align-items: flex-start;
+
+	width: 100%;
+	margin-bottom: var(--space-md);
+}
+
+.movementImg {
+	height: 42px;
+	width: 42px;
+	border-radius: 100%;
+	margin-right: var(--space-sm);
+	border: solid 1px var(--color-variety-main-tiny-shadow);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.movementData {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.movementGroupData {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	color: var(--color-variety-main-shadow);
+}
+
+.movementPriceUp {
+	color: var(--color-variety-upstream);
+}
+
+.movementPriceDown {
+	color: var(--color-variety-downstream);
+}
+
+.coin {
+	margin-left: var(--space-xs);
+}
+
+.price {
+	display: flex;
+	align-items: center;
+}
