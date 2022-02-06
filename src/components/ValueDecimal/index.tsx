@@ -19,8 +19,8 @@ function ValueDecimal(props: ValueDecimalProps) {
 			</span>
 			<span className={styles.decimal}>
 				<span>.</span>
-				{!!decimal && <span>{decimal}</span>}
-				{!decimal && <span>00000000</span>}
+				{!!decimal && <span>{decimal.slice(0, props.decimals)}</span>}
+				{!decimal && <span>{'00000000'.slice(0, props.decimals)}</span>}
 			</span>
 		</div>
 	)

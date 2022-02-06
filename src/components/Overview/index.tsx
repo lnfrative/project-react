@@ -62,19 +62,19 @@ function Overview() {
 						{summary && (
 							<>
 								<div className={styles.value}>
-									<ValueDecimal value={summary.received} sise="large" sign="$" />
+									<ValueDecimal decimals={2} value={summary.received} sise="large" sign="$" />
 									<div className={styles.valueTitle}>{message({ id: 'RECEIVED' })}</div>
 								</div>
 								<div className={styles.value}>
-									<ValueDecimal value={summary.spent} sise="large" sign="$" />
+									<ValueDecimal decimals={2} value={summary.spent} sise="large" sign="$" />
 									<div className={styles.valueTitle}>{message({ id: 'SPENT' })}</div>
 								</div>
 								<div className={styles.value}>
-									<ValueDecimal value={summary.spent} sise="large" sign="$" />
+									<ValueDecimal decimals={2} value={summary.spent} sise="large" sign="$" />
 									<div className={styles.valueTitle}>{message({ id: 'EARNED' })}</div>
 								</div>
 								<div className={styles.value}>
-									<ValueDecimal value={summary.net} sise="large" sign="$" />
+									<ValueDecimal decimals={2} value={summary.net} sise="large" sign="$" />
 									<div className={styles.valueTitle}>{message({ id: 'NET_INCOME' })}</div>
 								</div>
 							</>
