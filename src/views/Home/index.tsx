@@ -19,6 +19,7 @@ import {
 	GroupCoinValues,
 	PaginationBar,
 	SendAndReceive,
+	Overview,
 } from 'components'
 
 // styles
@@ -30,7 +31,7 @@ const paginationObjects: Array<PaginationObject> = [
 		id: 'overview',
 		title: 'Overview',
 		main: true,
-		content: <div>content</div>,
+		content: <Overview />,
 	},
 	{ id: 'income', title: 'Income', content: <div>Giftcard</div> },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <SendAndReceive /> },
@@ -39,7 +40,6 @@ const paginationObjects: Array<PaginationObject> = [
 
 function Dashboard() {
 	const backend = useContext(Backend)
-	const wallets = backend.response({ endpoint: resources.endpoints.get.wallets, method: 'get' })
 	const balances = backend.response({
 		endpoint: resources.endpoints.get.userBalance,
 		method: 'get',
@@ -47,18 +47,13 @@ function Dashboard() {
 
 	useEffect(() => {
 		backend.request({
-			endpoint: resources.endpoints.get.wallets,
-			label: 'LOADING_WALLLETS',
-			method: 'get',
-		})
-		backend.request({
 			endpoint: resources.endpoints.get.userBalance,
 			method: 'get',
 			label: 'GETTING_BALANCES',
 		})
 	}, [])
 
-	if (!wallets?.success || !balances?.success) return <PreloadPage />
+	if (!balances?.success) return <PreloadPage />
 	return (
 		<HeaderDashboard>
 			<div className={styles.balance}>

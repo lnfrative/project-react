@@ -7,11 +7,3 @@ services:
     volumes:
       - ../:/usr/src/app
     command: sh -c "yarn install && yarn build"
-  serve:
-    image: nginx:1.21.3
-    container_name: dogec-web-nginx
-    ports:
-      - '3000:80'
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ../build:/var/www/code

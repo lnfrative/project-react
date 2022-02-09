@@ -45,19 +45,27 @@ const timeOptions = [
 function GroupCoinValues() {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
-	const balance: BackendBalance = backend.response({
-		endpoint: resources.endpoints.get.userBalance,
-		method: 'get',
-	})?.data
 
-	const params = {
+	const params = resources.utils.parseParams({
 		main_currency: stage.state.currency?.id ?? '',
 		secondary_currency: stage.state.coin?.id ?? '',
 		time: stage.state.variation?.id ?? '',
-	}
+	})
+
+	const balance: BackendBalance = backend.response({
+		endpoint: resources.endpoints.get.userBalance,
+		method: 'get',
+		params,
+	})?.data
 
 	const loading =
 		backend.loading?.id === requestId('get', resources.endpoints.get.userBalance, params)
+
+	useEffect(() => {
+		if (balance) {
+			stage.commitState({ backendBalance: balance })
+		}
+	}, [balance])
 
 	useEffect(() => {
 		const { variation, coin, currency } = stage.state
@@ -75,19 +83,20 @@ function GroupCoinValues() {
 			<GroupValueDecimal
 				design="top"
 				title={message({ id: 'BALANCE' })}
-				value={balance.balance_main_currency}
+				value={stage.state.backendBalance?.balance_main_currency ?? 0}
+				sign="$"
 			/>
 			<div className={styles.containerSelectValues}>
 				<div className={styles.space}>
 					<GroupSelectValueDecimal
-						valueDecimal={balance.balance_secondary_currency}
+						valueDecimal={stage.state.backendBalance?.balance_secondary_currency ?? 0}
 						titleSelect="Worth in"
 						optionsSelect={coinOptions}
 						onSelect={selectCoin(stage)}
 					/>
 				</div>
 				<GroupSelectValueVariation
-					valueVariation={balance.change}
+					valueVariation={stage.state.backendBalance?.change ?? 0}
 					titleSelect="Last"
 					optionsSelect={timeOptions}
 					onSelect={selectTime(stage)}

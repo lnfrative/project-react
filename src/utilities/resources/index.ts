@@ -7,16 +7,16 @@ interface ResourceCoin {
 
 const coin: Record<string, ResourceCoin> = {
 	dogecash: {
-		logo: 'https://dev-api.account.dogecash.org/assets/coins/DogeCash/logo.svg',
+		logo: `https://dev-api-account.dogecash.org/assets/coins/DogeCash/logo.svg`,
 	},
 	bitcoin: {
-		logo: 'https://dev-api.account.dogecash.org/assets/coins/Bitcoin/logo.svg',
+		logo: `https://dev-api-account.dogecash.org/assets/coins/Bitcoin/logo.svg`,
 	},
 	stakecube: {
-		logo: 'https://dev-api.account.dogecash.org/assets/coins/Stakecube/logo.png',
+		logo: `https://dev-api-account.dogecash.org/assets/coins/Stakecube/logo.png`,
 	},
 	litecoin: {
-		logo: 'https://dev-api.account.dogecash.org/assets/coins/Litecoin/logo.svg',
+		logo: `https://dev-api-account.dogecash.org/assets/coins/Litecoin/logo.svg`,
 	},
 }
 
@@ -31,6 +31,8 @@ const endpoints = {
 		captchaKey: '/api/captcha/key',
 		twoFactorQR: '/api/user/second-factor/qr',
 		userBalance: '/api/user/balance',
+		transactions: '/api/user/transactions',
+		summary: '/api/user/summary',
 	},
 	post: {
 		userCreateAccessToken: '/api/user/create/access-token',
@@ -78,9 +80,20 @@ function filterCoin(
 	return undefined
 }
 
+function parseParams(params?: Record<string, string>) {
+	const paramsCloned = { ...params }
+	Object.keys(paramsCloned).forEach(key => {
+		if (!paramsCloned[key]) {
+			delete paramsCloned[key]
+		}
+	})
+	return paramsCloned
+}
+
 const utils = {
 	normaliceCoinName,
 	filterCoin,
+	parseParams,
 }
 
 export default {

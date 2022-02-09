@@ -1,4 +1,4 @@
-import { Stage, SelectOption } from 'interfaces'
+import { Stage, SelectOption, GroupSelectValueDecimalProps } from 'interfaces'
 import { OnSelect } from 'types'
 
 interface State {
@@ -9,9 +9,12 @@ const initialState: State = {
 	optionSelected: undefined,
 }
 
-function genOnSelect(stage: Stage<State>): OnSelect {
-	return ({ option }) => {
+function genOnSelect(props: GroupSelectValueDecimalProps, stage: Stage<State>): OnSelect {
+	return ({ option, assemble }) => {
 		stage.commitState({ optionSelected: option })
+		if (props.onSelect && !assemble) {
+			props.onSelect({ option })
+		}
 	}
 }
 

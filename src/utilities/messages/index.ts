@@ -196,6 +196,54 @@ const messages: Record<string, Record<string, string>> = {
 	GETTING_BALANCES: {
 		en: 'Getting balances.',
 	},
+	CREATED: {
+		en: 'Created',
+	},
+	VALIDATED: {
+		en: 'Validated',
+	},
+	CONFIRMED: {
+		en: 'Confirmed',
+	},
+	APPROVED: {
+		en: 'Approved',
+	},
+	COMPLETED: {
+		en: 'Completed',
+	},
+	LAST_MOVEMENTS: {
+		en: 'Last movements',
+	},
+	EMPTY_TRANSACTIONS_HISTORY: {
+		en: 'Empty transaction history.',
+	},
+	ALL_MOVEMENTS: {
+		en: 'All movements',
+	},
+	RECEIVED: {
+		en: 'Received',
+	},
+	SPENT: {
+		en: 'Spent',
+	},
+	EARNED: {
+		en: 'Earned',
+	},
+	NET_INCOME: {
+		en: 'Net income',
+	},
+	ASSETS_SUMMARY: {
+		en: 'Assets summary',
+	},
+	PRICE: {
+		en: 'Price',
+	},
+	CHANGE_30D: {
+		en: 'Change (30d)',
+	},
+	HOLDING_VALUE: {
+		en: 'Holding value',
+	},
 }
 
 export default messages
