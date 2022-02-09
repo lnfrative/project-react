@@ -7,16 +7,16 @@ interface ResourceCoin {
 
 const coin: Record<string, ResourceCoin> = {
 	dogecash: {
-		logo: `${process.env.REACT_APP_API}/assets/coins/DogeCash/logo.svg`,
+		logo: `https://dev-api-account.dogecash.org/assets/coins/DogeCash/logo.svg`,
 	},
 	bitcoin: {
-		logo: `${process.env.REACT_APP_API}/assets/coins/Bitcoin/logo.svg`,
+		logo: `https://dev-api-account.dogecash.org/assets/coins/Bitcoin/logo.svg`,
 	},
 	stakecube: {
-		logo: `${process.env.REACT_APP_API}/assets/coins/Stakecube/logo.png`,
+		logo: `https://dev-api-account.dogecash.org/assets/coins/Stakecube/logo.png`,
 	},
 	litecoin: {
-		logo: `${process.env.REACT_APP_API}/assets/coins/Litecoin/logo.svg`,
+		logo: `https://dev-api-account.dogecash.org/assets/coins/Litecoin/logo.svg`,
 	},
 }
 
