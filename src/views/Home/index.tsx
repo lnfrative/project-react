@@ -18,6 +18,7 @@ import {
 	PreloadPage,
 	GroupCoinValues,
 	PaginationBar,
+	SendAndReceive,
 } from 'components'
 
 // styles
@@ -32,7 +33,7 @@ const paginationObjects: Array<PaginationObject> = [
 		content: <div>content</div>,
 	},
 	{ id: 'income', title: 'Income', content: <div>Giftcard</div> },
-	{ id: 'send_and_receive', title: 'Send & Receive', content: <div>Movement</div> },
+	{ id: 'send_and_receive', title: 'Send & Receive', content: <SendAndReceive /> },
 	{ id: 'subscriptions', title: 'Subscriptions', content: <div>About</div> },
 ]
 
