@@ -73,7 +73,10 @@ function SendAndReceive() {
 			endnewaddress.replace(
 				resources.endpoints.aliases.coinId,
 				stage.state.optionSelected?.id ?? ''
-			)
+			),
+			{
+				captcha_hash: captcha.state.hash ?? '',
+			}
 		)
 
 	const loadingAddresses =
@@ -128,7 +131,7 @@ function SendAndReceive() {
 								<div className={styles.icon}>
 									<SVGIconCreditCard />
 								</div>
-								{address && (
+								{address && !loadingAddresses && (
 									<span
 										role="button"
 										tabIndex={0}
@@ -192,6 +195,7 @@ function SendAndReceive() {
 					</div>
 				</div>
 			</div>
+
 			<div className={styles.secundaryGroup}>
 				<div className={styles.group}>
 					<div className={styles.groupTitle}>Send</div>
