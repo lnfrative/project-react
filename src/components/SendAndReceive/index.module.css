@@ -83,6 +83,30 @@
 	margin-top: var(--space-md);
 }
 
+.icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: var(--space-xs);
+	user-select: none;
+}
+
+.groupReceiveButtons {
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	margin-top: var(--space-lg);
+}
+
+.loader {
+	color: var(--color-variety-main-shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
 @media screen and (max-width: 1350px) {
 	.container {
 		flex-direction: column;

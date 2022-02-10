@@ -1,37 +1,51 @@
 // region import
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
+import { CircularProgress } from '@mui/material'
 
 // hooks
 import { useStage } from 'hooks'
 
 // contexts
-import { Backend, Currency } from 'contexts'
+import { Backend, Currency, Captcha } from 'contexts'
 
 // interfaces
-import { BackendCoin, BackendWallet, BackendAddress } from 'interfaces'
+import { BackendCoin, BackendWallet } from 'interfaces'
 
 // components
-import { Select, ImgCoin } from 'components'
+import {
+	Select,
+	ImgCoin,
+	SVGIconCreditCard,
+	Button,
+	SVGIconRestartAlt,
+	SVGIconClipboard,
+	BackdropLoader,
+	Form,
+} from 'components'
 
 // utilities
-import { resources } from 'utilities'
+import { resources, requestId, message } from 'utilities'
 
 // styles
 import styles from './index.module.css'
 
 // modules
-import { initialState, selectReceive } from './module'
+import { initialState, selectReceive, generateAddress, copyAddressIntoClipboard } from './module'
 // endregion
 
+const endnewaddress = resources.endpoints.get.newaddress
 const endaddresses = resources.endpoints.get.addresses
 const endcoins = resources.endpoints.get.coins
 const endwallets = resources.endpoints.get.wallets
 
 function SendAndReceive() {
+	const addressRef = useRef<HTMLSpanElement>(null)
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
 	const currency = useContext(Currency)
-	const address: BackendAddress | undefined = backend.response({
+	const captcha = useContext(Captcha)
+
+	const address = backend.response({
 		method: 'get',
 		endpoint: endaddresses.replace(
 			resources.endpoints.aliases.coinId,
@@ -51,6 +65,35 @@ function SendAndReceive() {
 		value => value.coin_id.toString() === stage.state.optionSelected?.id
 	)[0]
 	const coin = coins?.filter(value => value.id.toString() === stage.state.optionSelected?.id)[0]
+
+	const loadingNewAddress =
+		backend.loading?.id ===
+		requestId(
+			'get',
+			endnewaddress.replace(
+				resources.endpoints.aliases.coinId,
+				stage.state.optionSelected?.id ?? ''
+			)
+		)
+
+	const loadingAddresses =
+		backend.loading?.id ===
+		requestId(
+			'get',
+			endaddresses.replace(resources.endpoints.aliases.coinId, stage.state.optionSelected?.id ?? '')
+		)
+
+	useEffect(() => {
+		if (stage.state.optionSelected) {
+			backend.request({
+				method: 'get',
+				endpoint: endaddresses.replace(
+					resources.endpoints.aliases.coinId,
+					stage.state.optionSelected.id
+				),
+			})
+		}
+	}, [stage.state.optionSelected])
 
 	return (
 		<div className={styles.container}>
@@ -82,9 +125,26 @@ function SendAndReceive() {
 								{stage.state.optionSelected?.secondaryValue} Wallet Address
 							</div>
 							<div className={styles.receiveAddress}>
-								{address?.already_generated && <span>{address.address}</span>}
-								{!address?.already_generated && (
-									<span className={styles.noAddress}>You dont have a generated address</span>
+								<div className={styles.icon}>
+									<SVGIconCreditCard />
+								</div>
+								{address && (
+									<span
+										role="button"
+										tabIndex={0}
+										onClick={copyAddressIntoClipboard(address, addressRef)}
+										ref={addressRef}
+									>
+										{address}
+									</span>
+								)}
+								{!address && !loadingAddresses && (
+									<span className={styles.noAddress}>{message({ id: 'EMPTY_ADDRESS' })}</span>
+								)}
+								{loadingAddresses && (
+									<div className={styles.loader}>
+										<CircularProgress size="1rem" color="inherit" />
+									</div>
 								)}
 							</div>
 							<div className={styles.receiveData}>
@@ -96,6 +156,39 @@ function SendAndReceive() {
 								{currency.state.id?.toUpperCase()}
 							</div>
 						</div>
+
+						<div className={styles.groupReceiveButtons}>
+							<Form
+								captcha
+								formHTMLAttributes={{
+									onSubmit: generateAddress(stage, backend, captcha),
+								}}
+							>
+								<Button
+									buttonHTMLAttributes={{
+										type: 'submit',
+									}}
+									design="minimal"
+									title="Generate new address"
+								>
+									<div className={styles.icon}>
+										<SVGIconRestartAlt />
+									</div>
+								</Button>
+							</Form>
+							<Button
+								buttonHTMLAttributes={{
+									type: 'button',
+									onClick: copyAddressIntoClipboard(address, addressRef),
+								}}
+								design="minimal"
+								title="Copy to clipboard"
+							>
+								<div className={styles.icon}>
+									<SVGIconClipboard />
+								</div>
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -105,6 +198,7 @@ function SendAndReceive() {
 					<div className={styles.groupValues}>values</div>
 				</div>
 			</div>
+			<BackdropLoader open={loadingNewAddress} />
 		</div>
 	)
 }
