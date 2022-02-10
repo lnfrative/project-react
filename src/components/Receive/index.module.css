@@ -1,0 +1,129 @@
+@import url('../../css/variables.css');
+
+.container {
+	display: flex;
+}
+
+.mainGroup {
+	flex: 1;
+}
+
+.secundaryGroup {
+	flex: 1;
+	margin-left: var(--space-lg);
+}
+
+.group {
+	background-color: var(--color-primary);
+	margin-bottom: var(--space-lg);
+}
+
+.groupTitle {
+	color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-sm);
+	letter-spacing: 3.7px;
+	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	padding: var(--space-lg) var(--space-xl);
+}
+
+.groupValues {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: var(--space-lg) var(--space-xl);
+}
+
+.valueTitle {
+	color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-sm);
+	letter-spacing: 3.7px;
+	margin-top: var(--space-xxxs);
+}
+
+.containerReceiveAddress {
+	margin-top: var(--space-lg);
+	width: 100%;
+}
+
+.receiveAddress {
+	min-height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: solid 1px var(--color-passive-pager);
+	background-color: var(--color-passive-main);
+	color: var(--color-variety-main);
+	padding: 0 var(--space-md);
+}
+
+.containerFeedback {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	color: var(--color-variety-main-shadow);
+}
+
+.receiveWalletAddress {
+	font-size: var(--font-size-xxs);
+	color: var(--color-variety-main-shadow);
+	margin-bottom: var(--space-xs);
+}
+
+.noAddress {
+	font-size: var(--font-size-xxs);
+	color: var(--color-variety-main-shadow);
+}
+
+.receiveData {
+	display: flex;
+	justify-content: center;
+	font-size: var(--font-size-xxs);
+	color: var(--color-variety-main-shadow);
+	margin-top: var(--space-md);
+}
+
+.icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: var(--space-xs);
+	user-select: none;
+}
+
+.groupReceiveButtons {
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	margin-top: var(--space-lg);
+}
+
+.loader {
+	color: var(--color-variety-main-shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+@media screen and (max-width: 1350px) {
+	.container {
+		flex-direction: column;
+	}
+
+	.secundaryGroup {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.groupValues {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.value {
+		margin-bottom: var(--space-lg);
+	}
+}
