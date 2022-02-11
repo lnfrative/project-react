@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { Receive } from 'components'
+import { Receive, Send } from 'components'
 
 // styles
 import styles from './index.module.css'
@@ -12,12 +12,7 @@ function SendAndReceive() {
 	return (
 		<div className={styles.container}>
 			<Receive />
-			<div className={styles.secundaryGroup}>
-				<div className={styles.group}>
-					<div className={styles.groupTitle}>Send</div>
-					<div className={styles.groupValues}>values</div>
-				</div>
-			</div>
+			<Send />
 		</div>
 	)
 }

@@ -3,32 +3,3 @@
 .container {
 	display: flex;
 }
-
-.mainGroup {
-	flex: 1;
-}
-
-.secundaryGroup {
-	flex: 1;
-	margin-left: var(--space-lg);
-}
-
-.group {
-	background-color: var(--color-primary);
-	margin-bottom: var(--space-lg);
-}
-
-.groupTitle {
-	color: var(--color-variety-main-shadow);
-	font-size: var(--font-size-sm);
-	letter-spacing: 3.7px;
-	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
-	padding: var(--space-lg) var(--space-xl);
-}
-
-.groupValues {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: var(--space-lg) var(--space-xl);
-}

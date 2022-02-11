@@ -22,9 +22,24 @@ function handleSubmit(stage: Stage<{}>) {
 		}
 }
 
+function bindInput(stage: Stage<Record<string, any>>) {
+	return (values: { name: string }) => (element: HTMLInputElement) => {
+		const listener = () => {
+			stage.commitState({ [values.name]: element.value ?? '' })
+		}
+		if (element) {
+			if (!element.getAttribute('listen')) {
+				element.addEventListener('input', listener)
+				element.setAttribute('listen', 'true')
+			}
+		}
+	}
+}
+
 function useForm() {
 	const stage = useStage({})
 	return {
+		bind: bindInput(stage),
 		register: changeState(stage),
 		watch: parseState(stage),
 		handleSubmit: handleSubmit(stage),
