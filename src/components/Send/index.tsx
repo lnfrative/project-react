@@ -11,10 +11,18 @@ import { Backend, Captcha, Currency } from 'contexts'
 import { useStage, useForm } from 'hooks'
 
 // utilities
-import { resources } from 'utilities'
+import { requestId, resources } from 'utilities'
 
 // components
-import { Select, ImgCoin, SVGIconCreditCard, Form, TwoFactor, Button } from 'components'
+import {
+	Select,
+	ImgCoin,
+	SVGIconCreditCard,
+	Form,
+	TwoFactor,
+	Button,
+	BackdropLoader,
+} from 'components'
 
 // styles
 import styles from './index.module.css'
@@ -64,6 +72,8 @@ function Send() {
 		concept: '',
 		captcha_hash: captcha.state.hash ?? '',
 	}
+
+	const loadingSendTransaction = backend.loading?.id === requestId('post', endtransaction, params)
 
 	return (
 		<div className={styles.secundaryGroup}>
@@ -159,6 +169,7 @@ function Send() {
 					</TwoFactor>
 				</div>
 			</div>
+			<BackdropLoader open={loadingSendTransaction} />
 		</div>
 	)
 }
