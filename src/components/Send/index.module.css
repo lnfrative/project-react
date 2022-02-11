@@ -1,0 +1,95 @@
+@import url('../../css/variables.css');
+
+.secundaryGroup {
+	flex: 1;
+	margin-left: var(--space-lg);
+}
+
+.group {
+	background-color: var(--color-primary);
+	margin-bottom: var(--space-lg);
+}
+
+.groupTitle {
+	color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-sm);
+	letter-spacing: 3.7px;
+	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
+	padding: var(--space-lg) var(--space-xl);
+}
+
+.groupValues {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: var(--space-lg) var(--space-xl);
+}
+
+.containerInput {
+	display: flex;
+	align-items: center;
+	height: 50px;
+	border-bottom: solid 1px var(--color-passive-pager);
+}
+
+.input {
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	color: var(--color-active-secundary);
+	font-size: var(--font-size-xs);
+}
+
+.assetAmount {
+	color: var(--color-variety-main-shadow);
+	margin-right: var(--space-xs);
+}
+
+.groupAmount {
+	margin-top: var(--space-lg);
+	width: 100%;
+}
+
+.conversionAmount {
+	margin: var(--space-md) 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	font-size: var(--font-size-xxs);
+	color: var(--color-variety-main-shadow);
+}
+
+.iconAddress {
+	margin-right: var(--space-xs);
+}
+
+.groupAddress {
+	width: 100%;
+}
+
+.balance {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: var(--space-md);
+	color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-xxs);
+}
+
+.form {
+	width: 100%;
+}
+
+.buttonSend {
+	display: flex;
+	justify-content: center;
+	margin-top: var(--space-lg);
+}
+
+.label {
+	margin-bottom: var(--space-xs);
+	font-size: var(--font-size-xxs);
+	color: var(--color-variety-main-shadow);
+}

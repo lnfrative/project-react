@@ -1,5 +1,5 @@
 // region import
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 // utilities
 import { ButtonProps } from 'interfaces'
@@ -8,10 +8,11 @@ import { ButtonProps } from 'interfaces'
 import { createStyles } from './module'
 // endregion
 
-function Button(props: ButtonProps) {
+function Button(props: PropsWithChildren<ButtonProps>) {
 	const styles = createStyles(props)
 	return (
 		<button {...props.buttonHTMLAttributes} className={styles.button}>
+			{props.children}
 			{props.title}
 		</button>
 	)

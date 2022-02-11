@@ -26,6 +26,7 @@ const endpoints = {
 		user: '/api/user',
 		wallets: '/api/user/wallets',
 		coins: '/api/coins',
+		addresses: '/api/user/wallets/{coinId}/addresses',
 		newaddress: '/api/user/wallets/{coinId}/newaddress',
 		emailVerify: '/api/email/verify/{user_id}/{hash}/',
 		captchaKey: '/api/captcha/key',
@@ -43,6 +44,7 @@ const endpoints = {
 		captchaValidate: '/api/captcha/validate',
 		secondFactorEnable: '/api/user/second-factor/enable',
 		signout: '/api/user/logout',
+		transactions: '/api/user/transactions',
 	},
 	aliases: {
 		coinId: '{coinId}',

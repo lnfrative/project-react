@@ -1,9 +1,12 @@
 @import url('../../css/variables.css');
 
 .inherit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	font-family: var(--font-primary);
 	cursor: pointer;
-	font-size: var(--font-size-sm);
 }
 
 .inherit:hover {
@@ -24,6 +27,7 @@
 
 	background-color: var(--color-secondary);
 	border: solid 1px var(--color-fortuary);
+	font-size: var(--font-size-sm);
 }
 
 .simple {
@@ -33,6 +37,14 @@
 	background-color: var(--color-variety-main-tiny-shadow);
 	border: none;
 	color: var(--color-variety-main-shadow);
+	font-size: var(--font-size-sm);
 
 	padding: 0 var(--space-md);
+}
+
+.minimal {
+	font-size: var(--font-size-xxs);
+	border: none;
+	color: var(--color-active-secundary);
+	background-color: transparent;
 }
