@@ -93,6 +93,7 @@ function Send() {
 							}}
 						>
 							<div className={styles.groupAmount}>
+								<div className={styles.label}>Amount</div>
 								<div className={styles.containerInput}>
 									<div className={styles.assetAmount}>
 										{stage.state.optionSelected?.secondaryValue}
@@ -112,6 +113,7 @@ function Send() {
 							</div>
 
 							<div className={styles.groupAddress}>
+								<div className={styles.label}>Recipient address or email</div>
 								<div className={styles.containerInput}>
 									<div className={styles.iconAddress}>
 										<SVGIconCreditCard />
