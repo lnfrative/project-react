@@ -1,5 +1,6 @@
-import { SelectOption, Stage } from 'interfaces'
+import { ContextBackend, SelectOption, Stage } from 'interfaces'
 import { OnSelect } from 'types'
+import { resources } from 'utilities'
 
 interface State {
 	optionSelected?: SelectOption
@@ -15,4 +16,15 @@ function selectSend(stage: Stage<State>): OnSelect {
 	}
 }
 
-export { initialState, selectSend }
+function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+	return () => {
+		backend.request({
+			method: 'post',
+			endpoint: resources.endpoints.post.transactions,
+			params,
+			updateCache: true,
+		})
+	}
+}
+
+export { initialState, selectSend, onSubmit }

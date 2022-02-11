@@ -5,7 +5,7 @@ import React, { useContext } from 'react'
 import { BackendCoin, BackendWallet } from 'interfaces'
 
 // contexts
-import { Backend, Currency } from 'contexts'
+import { Backend, Captcha, Currency } from 'contexts'
 
 // hooks
 import { useStage, useForm } from 'hooks'
@@ -20,19 +20,21 @@ import { Select, ImgCoin, SVGIconCreditCard, Form, TwoFactor, Button } from 'com
 import styles from './index.module.css'
 
 // modules
-import { initialState, selectSend } from './module'
+import { initialState, selectSend, onSubmit } from './module'
 // endregion
 
 // const endnewaddress = resources.endpoints.get.newaddress
 // const endaddresses = resources.endpoints.get.addresses
+const endtransaction = resources.endpoints.post.transactions
 const endcoins = resources.endpoints.get.coins
 const endwallets = resources.endpoints.get.wallets
 
 function Send() {
-	const { bind, watch } = useForm()
+	const { bind, watch, handleSubmit, clearInputs } = useForm()
 	const stage = useStage(initialState)
 	const currency = useContext(Currency)
 	const backend = useContext(Backend)
+	const captcha = useContext(Captcha)
 	const { amount, address } = watch
 
 	const wallets: Array<BackendWallet> | undefined = backend.response({
@@ -58,8 +60,9 @@ function Send() {
 		address: `${address}`,
 		coin_id: stage.state.optionSelected?.id ?? '',
 		value: (amount * 10 ** 8).toString(),
-		type: '',
+		type: '4',
 		concept: '',
+		captcha_hash: captcha.state.hash ?? '',
 	}
 
 	return (
@@ -85,11 +88,17 @@ function Send() {
 							}))}
 						/>
 					)}
-					<TwoFactor onSuccess={console.log} method="post" endpoint="" params={params}>
+					<TwoFactor
+						onSuccess={clearInputs}
+						method="post"
+						endpoint={endtransaction}
+						params={params}
+					>
 						<Form
 							captcha
 							formHTMLAttributes={{
 								className: styles.form,
+								onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
 							}}
 						>
 							<div className={styles.groupAmount}>

@@ -44,6 +44,7 @@ const endpoints = {
 		captchaValidate: '/api/captcha/validate',
 		secondFactorEnable: '/api/user/second-factor/enable',
 		signout: '/api/user/logout',
+		transactions: '/api/user/transactions',
 	},
 	aliases: {
 		coinId: '{coinId}',

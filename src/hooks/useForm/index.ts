@@ -1,4 +1,4 @@
-import { FormEventHandler } from 'react'
+import { FormEventHandler, useState } from 'react'
 import { useStage } from 'hooks'
 import { Stage } from 'interfaces'
 
@@ -22,7 +22,7 @@ function handleSubmit(stage: Stage<{}>) {
 		}
 }
 
-function bindInput(stage: Stage<Record<string, any>>) {
+function bindInput(stage: Stage<Record<string, any>>, elements: HTMLInputElement[]) {
 	return (values: { name: string }) => (element: HTMLInputElement) => {
 		const listener = () => {
 			stage.commitState({ [values.name]: element.value ?? '' })
@@ -31,18 +31,31 @@ function bindInput(stage: Stage<Record<string, any>>) {
 			if (!element.getAttribute('listen')) {
 				element.addEventListener('input', listener)
 				element.setAttribute('listen', 'true')
+				elements.push(element)
 			}
 		}
 	}
 }
 
+function clear(elements: HTMLInputElement[]) {
+	return () => {
+		elements.forEach(element => {
+			const el = element
+			el.value = ''
+		})
+	}
+}
+
 function useForm() {
+	const [elements] = useState<HTMLInputElement[]>([])
 	const stage = useStage({})
+
 	return {
-		bind: bindInput(stage),
+		bind: bindInput(stage, elements),
 		register: changeState(stage),
 		watch: parseState(stage),
 		handleSubmit: handleSubmit(stage),
+		clearInputs: clear(elements),
 	}
 }
 
