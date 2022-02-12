@@ -69,7 +69,7 @@ function Send() {
 		coin_id: stage.state.optionSelected?.id ?? '',
 		value: (amount * 10 ** 8).toString(),
 		type: '4',
-		concept: '',
+		concept: 'Transaction',
 		captcha_hash: captcha.state.hash ?? '',
 	}
 

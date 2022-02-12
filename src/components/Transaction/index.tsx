@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // contexts
-import { Backend } from 'contexts'
+import { Backend, Currency } from 'contexts'
 
 // components
 import { SVGIconIncoming, SVGIconOutgoing } from 'components'
@@ -19,12 +19,18 @@ import styles from './index.module.css'
 
 function Transaction(props: TransactionProps) {
 	const backend = useContext(Backend)
-	const date = new Date(props.data.timestamp).toISOString().split('T')[0]
+	const currency = useContext(Currency)
+	const date = new Date(props.data.timestamp).toISOString().split('T')[0].replace(/-/g, '.')
 	const coins: Array<BackendCoin> = backend.response({
 		endpoint: resources.endpoints.get.coins,
 		method: 'get',
 	})?.data
 	const [coin] = coins.filter(el => props.data.coin_id === el.id)
+
+	const currencyPrice =
+		(coin.market_data.prices[currency.state.id ?? 'usd'] * props.data.value) / 10 ** 8
+	const [currencyPriceInteger, currencyPriceDecimal] = currencyPrice.toString().split('.')
+
 	return (
 		<div className={styles.movement}>
 			<div className={styles.movementImg}>
@@ -35,24 +41,28 @@ function Transaction(props: TransactionProps) {
 			<div className={styles.movementData}>
 				<div className={styles.movementGroupData}>
 					<div className={styles.price}>
-						{props.data.value >= 0 && (
-							<div className={styles.movementPriceUp}>{props.data.value}</div>
-						)}
-						{props.data.value < 0 && (
-							<div className={styles.movementPriceDown}>{props.data.value}</div>
-						)}
-						<div className={styles.coin}>{coin.asset}</div>
+						{props.data.concept}
+						{' ('}
+						{!!props.data.accountable && <div>{message({ id: 'COMPLETED' })}</div>}
+						{!props.data.accountable && <div>{message({ id: 'PENDING' })}</div>})
 					</div>
-					<div>{date}</div>
+					{props.data.value >= 0 && (
+						<div className={styles.movementPriceUp}>
+							{currencyPriceInteger}.{currencyPriceDecimal.slice(0, 2)}{' '}
+							{currency.state.id?.toUpperCase()}
+						</div>
+					)}
+					{props.data.value < 0 && (
+						<div className={styles.movementPriceDown}>
+							{currencyPriceInteger}.{currencyPriceDecimal.slice(0, 2)}{' '}
+							{currency.state.id?.toUpperCase()}
+						</div>
+					)}
 				</div>
 				<div className={styles.movementGroupData}>
-					<div>{props.data.concept}</div>
-					<div>
-						{props.data.status === 1 && message({ id: 'CREATED' })}
-						{props.data.status === 2 && message({ id: 'VALIDATED' })}
-						{props.data.status === 3 && message({ id: 'CONFIRMED' })}
-						{props.data.status === 4 && message({ id: 'APPROVED' })}
-						{props.data.status === 5 && message({ id: 'COMPLETED' })}
+					<div className={styles.secondRow}>{date}</div>
+					<div className={styles.secondRow}>
+						{props.data.value / 10 ** 8} {coin.asset}
 					</div>
 				</div>
 			</div>

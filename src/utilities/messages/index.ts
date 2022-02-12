@@ -247,6 +247,9 @@ const messages: Record<string, Record<string, string>> = {
 	EMPTY_ADDRESS: {
 		en: 'You dont have a generated address.',
 	},
+	PENDING: {
+		en: 'Pending',
+	},
 }
 
 export default messages
