@@ -7,6 +7,7 @@ function createStyles(props: ButtonProps) {
 		button: classNames(styles.inherit, {
 			[styles.normal]: props.design === 'normal',
 			[styles.simple]: props.design === 'simple',
+			[styles.minimal]: props.design === 'minimal',
 		}),
 	}
 }
