@@ -120,7 +120,7 @@ function Overview() {
 												srcImageCoin={
 													resources.coin[resources.utils.normaliceCoinName(coin.name)].logo
 												}
-												value={wallet.balance}
+												value={wallet.balance / 10 ** 8}
 												name="DogeCash"
 												shortname="DOGEC"
 											/>
@@ -129,7 +129,7 @@ function Overview() {
 												variation={coin.market_data.price_change_30d}
 												coordsValueVariation={coin.market_data.chart_24h}
 											/>
-											<ValuePrice value={price * wallet.balance} />
+											<ValuePrice value={price * (wallet.balance / 10 ** 8)} />
 										</div>
 									)
 								})}
