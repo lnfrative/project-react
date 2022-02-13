@@ -27,9 +27,12 @@ function Transaction(props: TransactionProps) {
 	})?.data
 	const [coin] = coins.filter(el => props.data.coin_id === el.id)
 
-	const currencyPrice =
-		(coin.market_data.prices[currency.state.id ?? 'usd'] * props.data.value) / 10 ** 8
-	const [currencyPriceInteger, currencyPriceDecimal] = currencyPrice.toString().split('.')
+	const currencyPrice = resources.utils.splitFloat(
+		resources.utils.satsToBTC(
+			coin.market_data.prices[currency.state.id ?? 'usd'] * props.data.value
+		),
+		2
+	)
 
 	return (
 		<div className={styles.movement}>
@@ -48,13 +51,12 @@ function Transaction(props: TransactionProps) {
 					</div>
 					{props.data.value >= 0 && (
 						<div className={styles.movementPriceUp}>
-							{currencyPriceInteger}.{currencyPriceDecimal.slice(0, 2)}{' '}
-							{currency.state.id?.toUpperCase()}
+							{currencyPrice.integer}.{currencyPrice.decimal} {currency.state.id?.toUpperCase()}
 						</div>
 					)}
 					{props.data.value < 0 && (
 						<div className={styles.movementPriceDown}>
-							{currencyPriceInteger}.{currencyPriceDecimal.slice(0, 2)}{' '}
+							{currencyPrice.integer}.{currencyPrice.decimal}
 							{currency.state.id?.toUpperCase()}
 						</div>
 					)}
@@ -62,7 +64,7 @@ function Transaction(props: TransactionProps) {
 				<div className={styles.movementGroupData}>
 					<div className={styles.secondRow}>{date}</div>
 					<div className={styles.secondRow}>
-						{props.data.value / 10 ** 8} {coin.asset}
+						{resources.utils.satsToBTC(props.data.value)} {coin.asset}
 					</div>
 				</div>
 			</div>

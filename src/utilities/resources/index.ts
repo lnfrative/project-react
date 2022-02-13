@@ -92,10 +92,24 @@ function parseParams(params?: Record<string, string>) {
 	return paramsCloned
 }
 
+function splitFloat(value: number, decimalLength?: number) {
+	const floatSegments: Array<string | undefined> = value.toString().split('.')
+	return {
+		integer: floatSegments[0] ?? '0',
+		decimal: (floatSegments[1] ?? '0').slice(0, decimalLength),
+	}
+}
+
+function satsToBTC(sats: number) {
+	return sats / 10 ** 8
+}
+
 const utils = {
 	normaliceCoinName,
 	filterCoin,
 	parseParams,
+	splitFloat,
+	satsToBTC,
 }
 
 export default {
