@@ -5,7 +5,7 @@ import React, { useContext } from 'react'
 import { Backend } from 'contexts'
 
 // components
-import { Banner } from 'components'
+import { BannerConfirmEmail } from 'components'
 
 // utilities
 import { resources } from 'utilities'
@@ -25,13 +25,7 @@ function Banners() {
 
 	return (
 		<div className={styles.container}>
-			{user && !user.email_verified_at && (
-				<Banner>
-					<span>
-						A verification email has been sent to <b>{user.email}</b>.
-					</span>
-				</Banner>
-			)}
+			{user && !user.email_verified_at && <BannerConfirmEmail />}
 		</div>
 	)
 }

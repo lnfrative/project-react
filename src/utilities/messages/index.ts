@@ -253,6 +253,9 @@ const messages: Record<string, Record<string, any>> = {
 	LAST_30_DAYS: {
 		en: 'Last 30 days',
 	},
+	RESENDING_EMAIL: {
+		en: 'Resending the verification email, do not reload the page.',
+	},
 }
 
 export default messages

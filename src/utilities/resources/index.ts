@@ -34,6 +34,7 @@ const endpoints = {
 		userBalance: '/api/user/balance',
 		transactions: '/api/user/transactions',
 		summary: '/api/user/summary',
+		resendEmailConfirmation: '/api/user/email/verify/resend',
 	},
 	post: {
 		userCreateAccessToken: '/api/auth/login',
