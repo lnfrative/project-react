@@ -85,6 +85,7 @@ function GroupCoinValues() {
 				title={message({ id: 'BALANCE' })}
 				value={stage.state.backendBalance?.balance_main_currency ?? 0}
 				sign="$"
+				decimals={2}
 			/>
 			<div className={styles.containerSelectValues}>
 				<div className={styles.space}>
