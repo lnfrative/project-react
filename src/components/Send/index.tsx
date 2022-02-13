@@ -61,8 +61,10 @@ function Send() {
 	const coin = coins?.filter(value => value.id.toString() === stage.state.optionSelected?.id)[0]
 
 	const price = coin?.market_data.prices[currency.state.id ?? ''] ?? 0
-	const balancePrice = price * (wallet?.balance ?? 0)
+	const balancePrice = price * resources.utils.satsToBTC(wallet?.balance ?? 0)
 	const amountPrice = price * (amount ?? 0)
+	const amountPriceSplit = resources.utils.splitFloat(amountPrice, 2)
+	const remainingBalance = resources.utils.splitFloat(balancePrice - amountPrice, 2)
 
 	const params = {
 		address: `${address}`,
@@ -128,7 +130,7 @@ function Send() {
 							<div className={styles.conversionAmount}>
 								{amount || 0} {stage.state.optionSelected?.secondaryValue}
 								{' ≈ '}
-								{amountPrice} {currency.state.id?.toUpperCase()}
+								{amountPriceSplit.value} {currency.state.id?.toUpperCase()}
 							</div>
 
 							<div className={styles.groupAddress}>
@@ -147,10 +149,12 @@ function Send() {
 
 							<div className={styles.balance}>
 								{'Your balance after withdrawal : '}
-								{(wallet?.balance ?? 0) - (amount || 0)}{' '}
+								{resources.utils.removeUnnecessaryCryptoDecimals(
+									resources.utils.satsToBTC(wallet?.balance ?? 0) - (amount || 0)
+								)}{' '}
 								{stage.state.optionSelected?.secondaryValue}
 								{' ≈ '}
-								{balancePrice - amountPrice} {currency.state.id?.toUpperCase()}
+								{remainingBalance.value} {currency.state.id?.toUpperCase()}
 							</div>
 
 							<div className={styles.buttonSend}>

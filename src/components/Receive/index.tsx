@@ -86,6 +86,12 @@ function Receive() {
 			endaddresses.replace(resources.endpoints.aliases.coinId, stage.state.optionSelected?.id ?? '')
 		)
 
+	const price = coin?.market_data.prices[currency.state.id ?? ''] ?? 0
+	const currencyPriceSplit = resources.utils.splitFloat(
+		price * resources.utils.satsToBTC(wallet?.balance ?? 0),
+		2
+	)
+
 	useEffect(() => {
 		if (stage.state.optionSelected) {
 			backend.request({
@@ -151,11 +157,10 @@ function Receive() {
 						</div>
 						<div className={styles.receiveData}>
 							{'Balance : '}
-							{wallet?.balance ?? 0} {stage.state.optionSelected?.secondaryValue}
+							{resources.utils.satsToBTC(wallet?.balance ?? 0)}{' '}
+							{stage.state.optionSelected?.secondaryValue}
 							{' ≈ '}
-							{(coin?.market_data.prices[currency.state.id ?? ''] ?? 0) *
-								(wallet?.balance ?? 0)}{' '}
-							{currency.state.id?.toUpperCase()}
+							{currencyPriceSplit.value} {currency.state.id?.toUpperCase()}
 						</div>
 					</div>
 

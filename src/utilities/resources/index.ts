@@ -95,14 +95,21 @@ function parseParams(params?: Record<string, any>) {
 
 function splitFloat(value: number, decimalLength?: number) {
 	const floatSegments: Array<string | undefined> = value.toString().split('.')
+	const integer = floatSegments[0] ?? '0'
+	const decimal = (floatSegments[1] ?? '00').slice(0, decimalLength)
 	return {
-		integer: floatSegments[0] ?? '0',
-		decimal: (floatSegments[1] ?? '00').slice(0, decimalLength),
+		integer,
+		decimal,
+		value: `${integer}.${decimal}`,
 	}
 }
 
 function satsToBTC(sats: number) {
 	return sats / 10 ** 8
+}
+
+function removeUnnecessaryCryptoDecimals(crypto: number) {
+	return Math.floor(crypto * 10 ** 8) / 10 ** 8
 }
 
 const utils = {
@@ -111,6 +118,7 @@ const utils = {
 	parseParams,
 	splitFloat,
 	satsToBTC,
+	removeUnnecessaryCryptoDecimals,
 }
 
 export default {

@@ -1,18 +1,35 @@
 // region import
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+
+// contexts
+import { Backend } from 'contexts'
 
 // components
-import { Receive, Send } from 'components'
+import { Receive, Send, BackdropLoader } from 'components'
+
+// utiltiies
+import { requestId, resources } from 'utilities'
 
 // styles
 import styles from './index.module.css'
 // endregion
 
 function SendAndReceive() {
+	const backend = useContext(Backend)
+	const loading = backend.loading?.id === requestId('get', resources.endpoints.get.wallets)
+
+	useEffect(() => {
+		backend.request({
+			method: 'get',
+			endpoint: resources.endpoints.get.wallets,
+		})
+	}, [])
+
 	return (
 		<div className={styles.container}>
 			<Receive />
 			<Send />
+			<BackdropLoader open={loading} />
 		</div>
 	)
 }
