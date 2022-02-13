@@ -18,6 +18,9 @@ function ConfirmEmail() {
 
 	const params = new URLSearchParams(location.search)
 	const verifyURL = decodeURIComponent(params.get('verify_url') ?? '')
+	const endpointSSL = verifyURL
+		.replace(/http:\/\//g, 'https://')
+		.split(`${process.env.REACT_APP_API}`)[1]
 	const endpoint = verifyURL.split(`${process.env.REACT_APP_API}`)[1]
 	const emailVerify = backend.response({ endpoint, method: 'get' })
 	const loading = backend.loading?.id === requestId('get', endpoint)
@@ -26,8 +29,11 @@ function ConfirmEmail() {
 		if (endpoint) {
 			backend.request({ endpoint, method: 'get' })
 			backend.request({ endpoint: resources.endpoints.get.user, updateCache: true, method: 'get' })
+		} else if (endpointSSL) {
+			backend.request({ endpoint: endpointSSL, method: 'get' })
+			backend.request({ endpoint: resources.endpoints.get.user, updateCache: true, method: 'get' })
 		}
-	}, [endpoint])
+	}, [])
 
 	if (!verifyURL) {
 		return <Redirect to={resources.routes.home.base} />
