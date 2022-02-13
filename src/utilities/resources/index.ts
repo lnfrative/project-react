@@ -112,6 +112,13 @@ function removeUnnecessaryCryptoDecimals(crypto: number) {
 	return Math.floor(crypto * 10 ** 8) / 10 ** 8
 }
 
+function parseTimestamp(timestamp: number, format: 'yyyy.mm.dd') {
+	if (format === 'yyyy.mm.dd') {
+		return new Date(timestamp).toISOString().split('T')[0].replace(/-/g, '.')
+	}
+	return new Date(timestamp)
+}
+
 const utils = {
 	normaliceCoinName,
 	filterCoin,
@@ -119,6 +126,7 @@ const utils = {
 	splitFloat,
 	satsToBTC,
 	removeUnnecessaryCryptoDecimals,
+	parseTimestamp,
 }
 
 export default {

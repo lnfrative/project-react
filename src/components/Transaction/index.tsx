@@ -20,7 +20,7 @@ import styles from './index.module.css'
 function Transaction(props: TransactionProps) {
 	const backend = useContext(Backend)
 	const currency = useContext(Currency)
-	const date = new Date(props.data.timestamp).toISOString().split('T')[0].replace(/-/g, '.')
+	const date = resources.utils.parseTimestamp(props.data.timestamp * 1000, 'yyyy.mm.dd')
 	const coins: Array<BackendCoin> = backend.response({
 		endpoint: resources.endpoints.get.coins,
 		method: 'get',
