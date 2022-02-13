@@ -250,6 +250,9 @@ const messages: Record<string, Record<string, any>> = {
 	PENDING: {
 		en: 'Pending',
 	},
+	LAST_30_DAYS: {
+		en: 'Last 30 days',
+	},
 }
 
 export default messages

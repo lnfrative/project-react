@@ -39,8 +39,6 @@ function Overview() {
 		endpoint: resources.endpoints.get.summary,
 	})?.data
 
-	const date = new Date().toUTCString().split(' ').slice(2, 4).join(' ')
-
 	useEffect(() => {
 		backend.request({ endpoint: resources.endpoints.get.transactions, method: 'get' })
 		backend.request({
@@ -57,7 +55,7 @@ function Overview() {
 		<div className={styles.container}>
 			<div className={styles.mainGroup}>
 				<div className={styles.group}>
-					<div className={styles.groupTitle}>{date}</div>
+					<div className={styles.groupTitle}>{message({ id: 'LAST_30_DAYS' })}</div>
 					<div className={styles.groupValues}>
 						{summary && (
 							<>
@@ -70,7 +68,7 @@ function Overview() {
 									<div className={styles.valueTitle}>{message({ id: 'SPENT' })}</div>
 								</div>
 								<div className={styles.value}>
-									<ValueDecimal decimals={2} value={summary.spent} sise="large" sign="$" />
+									<ValueDecimal decimals={2} value={summary.earned} sise="large" sign="$" />
 									<div className={styles.valueTitle}>{message({ id: 'EARNED' })}</div>
 								</div>
 								<div className={styles.value}>
