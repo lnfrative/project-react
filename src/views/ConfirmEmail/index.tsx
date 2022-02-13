@@ -29,7 +29,7 @@ function ConfirmEmail() {
 		if (endpoint) {
 			backend.request({ endpoint, method: 'get' })
 			backend.request({ endpoint: resources.endpoints.get.user, updateCache: true, method: 'get' })
-		} else if (endpointSSL) {
+		} else if (endpointSSL && !endpoint) {
 			backend.request({ endpoint: endpointSSL, method: 'get' })
 			backend.request({ endpoint: resources.endpoints.get.user, updateCache: true, method: 'get' })
 		}
