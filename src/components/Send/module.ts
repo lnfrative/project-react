@@ -16,7 +16,7 @@ function selectSend(stage: Stage<State>): OnSelect {
 	}
 }
 
-function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+function onSubmit(backend: ContextBackend, params: Record<string, any>) {
 	return () => {
 		backend.request({
 			method: 'post',

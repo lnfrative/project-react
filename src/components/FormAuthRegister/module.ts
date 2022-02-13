@@ -11,7 +11,7 @@ function onCheckTerms(stage: Stage<InitialState>) {
 	}
 }
 
-function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+function onSubmit(backend: ContextBackend, params: Record<string, any>) {
 	return () => {
 		backend.request({
 			endpoint: resources.endpoints.post.user,

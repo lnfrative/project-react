@@ -1,4 +1,4 @@
-const messages: Record<string, Record<string, string>> = {
+const messages: Record<string, Record<string, any>> = {
 	AGREE_WITH_THE: {
 		en: 'I agree with the',
 		es: 'Estoy de acuerdo con los',

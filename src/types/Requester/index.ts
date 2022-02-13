@@ -2,7 +2,7 @@ import { BackendRequestMethodsAllowed } from 'types'
 
 interface RequesterArgs {
 	endpoint: string
-	params?: Record<string, string>
+	params?: Record<string, any>
 	updateCache?: boolean
 	label?: string
 	method: BackendRequestMethodsAllowed

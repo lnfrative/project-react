@@ -1,7 +1,7 @@
 import { ContextBackend } from 'interfaces'
 import { resources } from 'utilities'
 
-function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+function onSubmit(backend: ContextBackend, params: Record<string, any>) {
 	return () => {
 		backend.request({
 			endpoint: resources.endpoints.post.resetPassword,

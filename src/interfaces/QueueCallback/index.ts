@@ -5,7 +5,7 @@ interface QueueCallback {
 	callback: () => Promise<Response>
 	method: BackendRequestMethodsAllowed
 	endpoint: string
-	params?: Record<string, string>
+	params?: Record<string, any>
 	label?: string
 }
 

@@ -3,7 +3,7 @@ import { resources } from 'utilities'
 
 const endrecoverpassword = resources.endpoints.post.recoverPassword
 
-function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+function onSubmit(backend: ContextBackend, params: Record<string, any>) {
 	return () => {
 		backend.request({
 			endpoint: endrecoverpassword,

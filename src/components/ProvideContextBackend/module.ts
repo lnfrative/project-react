@@ -21,7 +21,7 @@ const initialState: State = {
 function requestCallback(
 	path: string,
 	method: BackendRequestMethodsAllowed,
-	params?: Record<string, string>
+	params?: Record<string, any>
 ) {
 	return () => {
 		const options: RequestInit = {}

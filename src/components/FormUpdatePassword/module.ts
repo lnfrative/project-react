@@ -3,7 +3,7 @@ import { resources } from 'utilities'
 
 const endchangepassword = resources.endpoints.post.changePassword
 
-function onSubmit(backend: ContextBackend, params: Record<string, string>) {
+function onSubmit(backend: ContextBackend, params: Record<string, any>) {
 	return (args: { currentPassword: any; repeatPassword: any; newPassword: any }) => {
 		if (args.currentPassword?.hasError) return
 		if (args.repeatPassword?.hasError) return

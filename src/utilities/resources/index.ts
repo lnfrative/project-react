@@ -83,7 +83,7 @@ function filterCoin(
 	return undefined
 }
 
-function parseParams(params?: Record<string, string>) {
+function parseParams(params?: Record<string, any>) {
 	const paramsCloned = { ...params }
 	Object.keys(paramsCloned).forEach(key => {
 		if (!paramsCloned[key]) {

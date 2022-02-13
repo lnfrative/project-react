@@ -5,9 +5,9 @@ interface Route {
 	middlewares: Array<UserRequirement>
 	route: {
 		path: string
-		params: Record<string, string>
+		params: Record<string, any>
 	}
-	aliases: Record<string, { path: string; alias: Record<string, string> }>
+	aliases: Record<string, { path: string; alias: Record<string, any> }>
 }
 
 export default Route
