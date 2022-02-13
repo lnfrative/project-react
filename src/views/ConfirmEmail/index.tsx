@@ -27,7 +27,7 @@ function ConfirmEmail() {
 			backend.request({ endpoint, method: 'get' })
 			backend.request({ endpoint: resources.endpoints.get.user, updateCache: true, method: 'get' })
 		}
-	}, [])
+	}, [endpoint])
 
 	if (!verifyURL) {
 		return <Redirect to={resources.routes.home.base} />
