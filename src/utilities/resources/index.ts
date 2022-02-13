@@ -45,6 +45,7 @@ const endpoints = {
 		secondFactorEnable: '/api/user/second-factor/enable',
 		signout: '/api/user/logout',
 		transactions: '/api/user/transactions',
+		confirmTransaction: '/api/transaction-confirmation',
 	},
 	aliases: {
 		coinId: '{coinId}',

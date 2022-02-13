@@ -1,0 +1,22 @@
+@import url('../../css/variables.css');
+
+.container {
+	max-width: 350px;
+	padding: var(--space-sm);
+}
+
+.info {
+	color: var(--color-active-secundary);
+	word-break: break-all;
+	margin-bottom: var(--space-sm);
+	line-height: 1.5;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+.confirmButton {
+	margin-bottom: var(--space-sm);
+}

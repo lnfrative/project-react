@@ -31,9 +31,11 @@ const Setting = lazy(() => import('views/Setting'))
 const ConfirmEmail = lazy(() => import('views/ConfirmEmail'))
 const Recover = lazy(() => import('views/Recover'))
 const ResetPassword = lazy(() => import('views/ResetPassword'))
+const ConfirmTransaction = lazy(() => import('views/ConfirmTransaction'))
 // endregion
 
-const { home, register, coin, setting, confirmEmail, recover, resetPassword } = resources.routes
+const { home, register, coin, setting, confirmEmail, recover, resetPassword, confirmTransaction } =
+	resources.routes
 
 const App = (
 	<ProvideContextBackend>
@@ -52,6 +54,11 @@ const App = (
 													<Route exact path={register.base} component={Signup} />
 													<Route exact path={coin.route.path} component={Coin} />
 													<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
+													<Route
+														exact
+														path={confirmTransaction.route.path}
+														component={ConfirmTransaction}
+													/>
 													<Route exact path={recover.route.path} component={Recover} />
 													<Route exact path={resetPassword.route.path} component={ResetPassword} />
 													<Route exact path={home.route.path} component={Home} />

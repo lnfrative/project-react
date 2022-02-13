@@ -6,6 +6,7 @@ import register from './register'
 import setting from './setting'
 import recover from './recover'
 import resetPassword from './resetPassword'
+import confirmTransaction from './confirmTransaction'
 
 const path = {
 	coin,
@@ -16,6 +17,7 @@ const path = {
 	confirmEmail,
 	recover,
 	resetPassword,
+	confirmTransaction,
 }
 
 export default path
