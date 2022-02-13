@@ -69,7 +69,7 @@ function Send() {
 	const params = {
 		address: `${address}`,
 		coin_id: stage.state.optionSelected?.id ?? '',
-		value: amount * 10 ** 8,
+		value: Math.floor(amount * 10 ** 8),
 		type: '4',
 		concept: 'Transaction',
 		captcha_hash: captcha.state.hash ?? '',
