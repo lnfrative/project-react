@@ -142,6 +142,7 @@ function Receive() {
 									tabIndex={0}
 									onClick={copyAddressIntoClipboard(address, addressRef)}
 									ref={addressRef}
+									className={styles.address}
 								>
 									{address}
 								</span>

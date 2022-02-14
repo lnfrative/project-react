@@ -99,6 +99,10 @@
 	margin-top: var(--space-lg);
 }
 
+.address {
+	word-break: break-all;
+}
+
 .loader {
 	color: var(--color-variety-main-shadow);
 	display: flex;

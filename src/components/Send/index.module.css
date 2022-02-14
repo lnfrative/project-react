@@ -1,8 +1,7 @@
 @import url('../../css/variables.css');
 
-.secundaryGroup {
+.container {
 	flex: 1;
-	margin-left: var(--space-lg);
 }
 
 .group {

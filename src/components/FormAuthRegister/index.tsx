@@ -105,7 +105,7 @@ function FormAuthRegister() {
 					linkName={message({ id: 'LOG_IN' })}
 				/>
 			</FormAuth>
-			<BackdropLoader open={loading} />
+			<BackdropLoader open={loading} message={message({ id: 'LONG_TIME_ACTION' })} />
 		</Form>
 	)
 }

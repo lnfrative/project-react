@@ -26,7 +26,9 @@ function GroupUserMenu() {
 	const letter = user?.email.slice(0, 1).toUpperCase() ?? ''
 	return (
 		<div className={styles.container}>
-			<SVGIconNotifications />
+			<div className={styles.notifications}>
+				<SVGIconNotifications />
+			</div>
 			<div className={styles.menu}>
 				<MenuOptionsUser character={letter} />
 			</div>

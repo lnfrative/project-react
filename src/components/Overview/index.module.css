@@ -61,7 +61,7 @@
 .movements {
 	display: flex;
 	flex-direction: column;
-	padding: var(--space-lg) var(--space-xl);
+	padding: var(--space-xl);
 }
 
 .movement {
@@ -69,7 +69,7 @@
 	align-items: center;
 
 	width: 100%;
-	margin-bottom: var(--space-md);
+	margin-bottom: var(--space-xl);
 }
 
 .movementImg {

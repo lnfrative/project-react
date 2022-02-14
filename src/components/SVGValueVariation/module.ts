@@ -13,7 +13,7 @@ function drawPolyline(ref: RefObject<SVGPolylineElement>, props: CanvasValueVari
 	if (!ref.current) return
 	const svgPolyline = ref.current
 
-	const coords = [...props.coordsValueVariation].reverse().slice(0, 25).reverse()
+	const coords = [...props.coordsValueVariation]
 	const prices = coords.map(coord => coord[1])
 	const priceMin = Math.min(...prices)
 	const priceMax = Math.max(...prices)
@@ -21,7 +21,7 @@ function drawPolyline(ref: RefObject<SVGPolylineElement>, props: CanvasValueVari
 	const factor = 45 / priceInterval
 
 	const points = prices.reduce((accum, price, index) => {
-		const x = (125 / 24) * index
+		const x = (125 / prices.length) * index
 		const y = (priceMax - price) * factor
 		if (accum) {
 			return `${accum} ${x},${y}`
@@ -32,7 +32,9 @@ function drawPolyline(ref: RefObject<SVGPolylineElement>, props: CanvasValueVari
 	svgPolyline.setAttribute('points', points)
 	svgPolyline.setAttribute(
 		'stroke',
-		props.variation > 0 ? resources.colors.variety_upstream : resources.colors.variety_dowsntream
+		prices[0] < prices[prices.length - 1]
+			? resources.colors.variety_upstream
+			: resources.colors.variety_dowsntream
 	)
 }
 
