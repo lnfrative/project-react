@@ -77,7 +77,7 @@ function Send() {
 	const loadingSendTransaction = backend.loading?.id === requestId('post', endtransaction, params)
 
 	return (
-		<div className={styles.secundaryGroup}>
+		<div className={styles.container}>
 			<div className={styles.group}>
 				<div className={styles.groupTitle}>Send</div>
 				<div className={styles.groupValues}>
