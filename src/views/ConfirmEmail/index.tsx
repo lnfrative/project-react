@@ -22,8 +22,11 @@ function ConfirmEmail() {
 		.replace(/http:\/\//g, 'https://')
 		.split(`${process.env.REACT_APP_API}`)[1]
 	const endpoint = verifyURL.split(`${process.env.REACT_APP_API}`)[1]
-	const emailVerify = backend.response({ endpoint, method: 'get' })
-	const loading = backend.loading?.id === requestId('get', endpoint)
+	const emailVerify = backend.response({
+		endpoint: endpoint ?? endpointSSL,
+		method: 'get',
+	})
+	const loading = backend.loading?.id === requestId('get', endpoint ?? endpointSSL)
 
 	useEffect(() => {
 		if (endpoint) {
