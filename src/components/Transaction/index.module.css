@@ -32,6 +32,14 @@
 	color: var(--color-variety-main-shadow);
 }
 
+.movementGroupDataBelow {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	color: var(--color-variety-main-shadow);
+	margin-top: var(--space-xxs);
+}
+
 .movementPriceUp {
 	color: var(--color-variety-upstream);
 }

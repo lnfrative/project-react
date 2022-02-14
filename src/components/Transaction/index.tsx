@@ -61,7 +61,7 @@ function Transaction(props: TransactionProps) {
 						</div>
 					)}
 				</div>
-				<div className={styles.movementGroupData}>
+				<div className={styles.movementGroupDataBelow}>
 					<div className={styles.secondRow}>{date}</div>
 					<div className={styles.secondRow}>
 						{resources.utils.satsToBTC(props.data.value)} {coin.asset}
