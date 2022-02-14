@@ -139,8 +139,16 @@ function Overview() {
 				<div className={styles.group}>
 					<div className={styles.groupTitle}>{message({ id: 'LAST_MOVEMENTS' })}</div>
 					<div className={styles.movements}>
-						{transactions?.map(transaction => (
-							<Transaction key={transaction.id} data={transaction} />
+						{transactions?.map((transaction, index) => (
+							<div
+								key={transaction.id}
+								className={styles.movement}
+								style={{
+									margin: index === transactions.length - 1 ? 0 : '',
+								}}
+							>
+								<Transaction data={transaction} />
+							</div>
 						))}
 						<div className={styles.containerFeedback}>
 							{!transactions && <CircularProgress color="inherit" />}
