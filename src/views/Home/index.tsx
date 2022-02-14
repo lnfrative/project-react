@@ -35,6 +35,7 @@ const paginationObjects: Array<PaginationObject> = [
 	},
 	{ id: 'income', title: 'Income', disabled: true, content: null },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <SendAndReceive /> },
+	{ id: 'transactions', title: 'Transactions', disabled: true, content: null },
 	{ id: 'subscriptions', title: 'Subscriptions', disabled: true, content: null },
 ]
 
