@@ -15,6 +15,7 @@
 
 .tabActive {
 	border-bottom: solid 2px var(--color-active-main);
+	color: var(--color-active-main);
 }
 
 .tab:hover {
