@@ -113,7 +113,7 @@ function Receive() {
 						<Select
 							onSelect={selectReceive(stage)}
 							design="outlined"
-							options={coins.map(value => ({
+							options={coins.map((value, index) => ({
 								id: value.id.toString(),
 								value: value.name,
 								secondaryValue: value.asset,
@@ -123,7 +123,7 @@ function Receive() {
 										src={resources.coin[resources.utils.normaliceCoinName(value.name)].logo}
 									/>
 								),
-								main: value.id === 1,
+								main: index === 0,
 							}))}
 						/>
 					)}

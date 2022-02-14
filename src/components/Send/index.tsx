@@ -85,7 +85,7 @@ function Send() {
 						<Select
 							onSelect={selectSend(stage)}
 							design="outlined"
-							options={coins.map(value => ({
+							options={coins.map((value, index) => ({
 								id: value.id.toString(),
 								value: value.name,
 								secondaryValue: value.asset,
@@ -95,7 +95,7 @@ function Send() {
 										src={resources.coin[resources.utils.normaliceCoinName(value.name)].logo}
 									/>
 								),
-								main: value.id === 1,
+								main: index === 0,
 							}))}
 						/>
 					)}
