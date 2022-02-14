@@ -121,6 +121,7 @@ function Overview() {
 												value={resources.utils.satsToBTC(wallet.balance)}
 												name={coin.name}
 												shortname={coin.asset}
+												decimals={8}
 											/>
 											<ValuePrice value={price} />
 											<SVGValueVariation

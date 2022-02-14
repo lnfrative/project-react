@@ -16,7 +16,7 @@ function ValueCoin(props: ValueCoinProps) {
 		<div className={styles.container}>
 			<ImgCoin size="medium" src={props.srcImageCoin} />
 			<div className={styles.values}>
-				<ValueDecimal sise="small" value={props.value} />
+				<ValueDecimal decimals={props.decimals} sise="small" value={props.value} />
 				<div className={styles.containerName}>
 					<span>{props.name}</span>
 					<span className={styles.separator}>-</span>
