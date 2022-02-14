@@ -9,6 +9,10 @@
 	height: 100%;
 }
 
+.disabled {
+	cursor: not-allowed;
+}
+
 .tabActive {
 	border-bottom: solid 2px var(--color-active-main);
 }

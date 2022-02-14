@@ -26,13 +26,14 @@ function nestStyles(props: PaginationTabProps) {
 	return {
 		tab: classNames(styles.tab, {
 			[styles.tabActive]: isCurrent,
+			[styles.disabled]: props.paginationObject.disabled,
 		}),
 	}
 }
 
 function onClick(props: PaginationTabProps): MouseEventHandler<HTMLAnchorElement> {
 	return e => {
-		if (props.pathname === getPath(props)) {
+		if (props.pathname === getPath(props) || props.paginationObject.disabled) {
 			e.preventDefault()
 		}
 	}

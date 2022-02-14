@@ -33,9 +33,9 @@ const paginationObjects: Array<PaginationObject> = [
 		main: true,
 		content: <Overview />,
 	},
-	{ id: 'income', title: 'Income', content: <div>Giftcard</div> },
+	{ id: 'income', title: 'Income', disabled: true, content: null },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <SendAndReceive /> },
-	{ id: 'subscriptions', title: 'Subscriptions', content: <div>About</div> },
+	{ id: 'subscriptions', title: 'Subscriptions', disabled: true, content: null },
 ]
 
 function Dashboard() {
