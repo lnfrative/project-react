@@ -27,8 +27,12 @@ function SendAndReceive() {
 
 	return (
 		<div className={styles.container}>
-			<Receive />
-			<Send />
+			<div className={styles.containerReceive}>
+				<Receive />
+			</div>
+			<div className={styles.containerSend}>
+				<Send />
+			</div>
 			<BackdropLoader open={loading} />
 		</div>
 	)

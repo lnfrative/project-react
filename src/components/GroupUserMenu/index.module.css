@@ -8,3 +8,7 @@
 .menu {
 	margin-left: var(--space-lg);
 }
+
+.notifications {
+	cursor: not-allowed;
+}

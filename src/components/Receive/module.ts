@@ -41,6 +41,12 @@ function generateAddress(
 
 			backend.request({
 				method: 'get',
+				endpoint: resources.endpoints.get.wallets,
+				updateCache: true,
+			})
+
+			backend.request({
+				method: 'get',
 				endpoint: endaddresses.replace(
 					resources.endpoints.aliases.coinId,
 					stage.state.optionSelected.id
