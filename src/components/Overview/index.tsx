@@ -119,8 +119,8 @@ function Overview() {
 													resources.coin[resources.utils.normaliceCoinName(coin.name)].logo
 												}
 												value={resources.utils.satsToBTC(wallet.balance)}
-												name="DogeCash"
-												shortname="DOGEC"
+												name={coin.name}
+												shortname={coin.asset}
 											/>
 											<ValuePrice value={price} />
 											<SVGValueVariation
