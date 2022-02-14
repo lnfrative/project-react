@@ -16,7 +16,7 @@ function SVGValueVariation(props: CanvasValueVariationProps) {
 	}, [])
 
 	return (
-		<svg viewBox="0 0 125 45">
+		<svg width={125} height={45} viewBox="0 0 125 45">
 			<polyline ref={refPoline} fill="none" strokeWidth={1} />
 		</svg>
 	)
