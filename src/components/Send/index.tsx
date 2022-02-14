@@ -22,17 +22,16 @@ import {
 	TwoFactor,
 	Button,
 	BackdropLoader,
+	DialogNotification,
 } from 'components'
 
 // styles
 import styles from './index.module.css'
 
 // modules
-import { initialState, selectSend, onSubmit } from './module'
+import { initialState, selectSend, onSubmit, resetStatus, success } from './module'
 // endregion
 
-// const endnewaddress = resources.endpoints.get.newaddress
-// const endaddresses = resources.endpoints.get.addresses
 const endtransaction = resources.endpoints.post.transactions
 const endcoins = resources.endpoints.get.coins
 const endwallets = resources.endpoints.get.wallets
@@ -101,7 +100,7 @@ function Send() {
 						/>
 					)}
 					<TwoFactor
-						onSuccess={clearInputs}
+						onSuccess={success(stage, clearInputs)}
 						method="post"
 						endpoint={endtransaction}
 						params={params}
@@ -174,6 +173,12 @@ function Send() {
 				</div>
 			</div>
 			<BackdropLoader open={loadingSendTransaction} />
+			<DialogNotification
+				title="Transaction created"
+				message="An email will be sent to confirm the transaction."
+				onClose={resetStatus(stage)}
+				open={stage.state.status === 'completed'}
+			/>
 		</div>
 	)
 }
