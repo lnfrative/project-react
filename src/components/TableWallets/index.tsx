@@ -88,7 +88,7 @@ function Wallet(props: WalletProps) {
 			<ValuePool valueDecimal={coin.poolbalance ?? 0} valuePercentage={0} />
 			<SVGValueVariation
 				variation={coin.market_data.price_change_24h}
-				coordsValueVariation={coin.market_data.chart_24h}
+				coordsValueVariation={coin.market_data.chart_1d}
 			/>
 			<WalletActions />
 		</Link>

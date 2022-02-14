@@ -125,7 +125,7 @@ function Overview() {
 											<ValuePrice value={price} />
 											<SVGValueVariation
 												variation={coin.market_data.price_change_30d}
-												coordsValueVariation={coin.market_data.chart_24h}
+												coordsValueVariation={coin.market_data.chart_1d}
 											/>
 											<ValuePrice value={price * resources.utils.satsToBTC(wallet.balance)} />
 										</div>

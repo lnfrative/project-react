@@ -1,5 +1,5 @@
 interface BackendMarketData {
-	chart_24h: Array<[number, number]>
+	chart_1d: Array<[number, number]>
 	market_cap: Record<string, number>
 	prices: Record<string, number>
 	price_change_1y: number
