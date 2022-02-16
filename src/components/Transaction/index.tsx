@@ -5,7 +5,7 @@ import React, { useContext } from 'react'
 import { Backend, Currency } from 'contexts'
 
 // components
-import { SVGIconIncoming, SVGIconOutgoing } from 'components'
+import { SVGIconIncoming, SVGIconOutgoing, SVGIconReward } from 'components'
 
 // interfaces
 import { BackendCoin, TransactionProps } from 'interfaces'
@@ -37,8 +37,9 @@ function Transaction(props: TransactionProps) {
 	return (
 		<div className={styles.movement}>
 			<div className={styles.movementImg}>
-				{props.data.value >= 0 && <SVGIconIncoming />}
-				{props.data.value < 0 && <SVGIconOutgoing />}
+				{props.data.type === 1 && <SVGIconIncoming />}
+				{props.data.type === 4 && <SVGIconOutgoing />}
+				{props.data.type === 2 || (props.data.type === 5 && <SVGIconReward />)}
 			</div>
 
 			<div className={styles.movementData}>
@@ -46,8 +47,11 @@ function Transaction(props: TransactionProps) {
 					<div className={styles.price}>
 						{props.data.concept}
 						{' ('}
-						{!!props.data.accountable && <div>{message({ id: 'COMPLETED' })}</div>}
-						{!props.data.accountable && <div>{message({ id: 'PENDING' })}</div>})
+						{props.data.status === 5 && <div>{message({ id: 'COMPLETED' })}</div>}
+						{(!props.data.accountable || props.data.status !== 5) && (
+							<div>{message({ id: 'PENDING' })}</div>
+						)}
+						)
 					</div>
 					{props.data.value >= 0 && (
 						<div className={styles.movementPriceUp}>

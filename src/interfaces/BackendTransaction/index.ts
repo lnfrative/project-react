@@ -5,7 +5,7 @@ interface BackendTransaction {
 	accountable: boolean
 	status: 1 | 2 | 3 | 4 | 5
 	value: number
-	type: 1 | 2 | 3 | 4
+	type: 1 | 2 | 3 | 4 | 5
 	account_from?: string
 	internal_transaction_id?: number
 	concept: string

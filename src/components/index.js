@@ -116,3 +116,4 @@ export { default as ModalBoxConfirmTransaction } from './ModalBoxConfirmTransact
 export { default as BannerConfirmEmail } from './BannerConfirmEmail'
 export { default as SVGIconSuccess } from './SVGIconSuccess'
 export { default as DialogNotification } from './DialogNotification'
+export { default as SVGIconReward } from './SVGIconReward'
