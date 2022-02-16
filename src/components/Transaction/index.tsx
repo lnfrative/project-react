@@ -39,7 +39,8 @@ function Transaction(props: TransactionProps) {
 			<div className={styles.movementImg}>
 				{props.data.type === 1 && <SVGIconIncoming />}
 				{props.data.type === 4 && <SVGIconOutgoing />}
-				{props.data.type === 2 || (props.data.type === 5 && <SVGIconReward />)}
+				{props.data.type === 2 && <SVGIconReward />}
+				{props.data.type === 5 && <SVGIconReward />}
 			</div>
 
 			<div className={styles.movementData}>
