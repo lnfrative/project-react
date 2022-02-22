@@ -1,5 +1,6 @@
 // region import
 import React, { lazy, Suspense } from 'react'
+import { ThemeProvider } from 'styled-components'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -17,7 +18,7 @@ import {
 } from 'components'
 
 // utilities
-import { resources } from 'utilities'
+import { resources, theme } from 'utilities'
 
 // // styles
 import 'css/fonts/Aileron/index.css'
@@ -38,42 +39,48 @@ const { home, register, coin, setting, confirmEmail, recover, resetPassword, con
 	resources.routes
 
 const App = (
-	<ProvideContextBackend>
-		<ProvideContextModal>
-			<ProvideContextView>
-				<ProvideContextCoin>
-					<ProvideContextCurrency>
-						<ProvideContextCaptcha>
-							<ApplicationStart>
-								<HandleBackendErrors>
-									<HandleSignout>
-										<Router>
-											<Suspense fallback={null}>
-												<Switch>
-													<Route exact path={setting.route.path} component={Setting} />
-													<Route exact path={register.base} component={Signup} />
-													<Route exact path={coin.route.path} component={Coin} />
-													<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
-													<Route
-														exact
-														path={confirmTransaction.route.path}
-														component={ConfirmTransaction}
-													/>
-													<Route exact path={recover.route.path} component={Recover} />
-													<Route exact path={resetPassword.route.path} component={ResetPassword} />
-													<Route exact path={home.route.path} component={Home} />
-												</Switch>
-											</Suspense>
-										</Router>
-									</HandleSignout>
-								</HandleBackendErrors>
-							</ApplicationStart>
-						</ProvideContextCaptcha>
-					</ProvideContextCurrency>
-				</ProvideContextCoin>
-			</ProvideContextView>
-		</ProvideContextModal>
-	</ProvideContextBackend>
+	<ThemeProvider theme={theme}>
+		<ProvideContextBackend>
+			<ProvideContextModal>
+				<ProvideContextView>
+					<ProvideContextCoin>
+						<ProvideContextCurrency>
+							<ProvideContextCaptcha>
+								<ApplicationStart>
+									<HandleBackendErrors>
+										<HandleSignout>
+											<Router>
+												<Suspense fallback={null}>
+													<Switch>
+														<Route exact path={setting.route.path} component={Setting} />
+														<Route exact path={register.base} component={Signup} />
+														<Route exact path={coin.route.path} component={Coin} />
+														<Route exact path={confirmEmail.route.path} component={ConfirmEmail} />
+														<Route
+															exact
+															path={confirmTransaction.route.path}
+															component={ConfirmTransaction}
+														/>
+														<Route exact path={recover.route.path} component={Recover} />
+														<Route
+															exact
+															path={resetPassword.route.path}
+															component={ResetPassword}
+														/>
+														<Route exact path={home.route.path} component={Home} />
+													</Switch>
+												</Suspense>
+											</Router>
+										</HandleSignout>
+									</HandleBackendErrors>
+								</ApplicationStart>
+							</ProvideContextCaptcha>
+						</ProvideContextCurrency>
+					</ProvideContextCoin>
+				</ProvideContextView>
+			</ProvideContextModal>
+		</ProvideContextBackend>
+	</ThemeProvider>
 )
 
 // eslint-disable-next-line no-undef
