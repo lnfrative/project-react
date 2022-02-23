@@ -1,15 +1,13 @@
-import { Theme } from 'interfaces'
-
 const spaceUnit = '1rem'
 const colorPreference: 'dark' | 'light' = 'dark'
 
 const lightColor = {
-	passiveMain: '#18171d',
-	passiveSecundary: '#0e0e11',
+	passiveMain: 'red',
+	passiveSecondary: '#0e0e11',
 	passivePager: '#27262d',
 	activeMain: '#ffb677',
 	activeMainShadow: 'rgba(255, 182, 119, 0.7)',
-	activeSecundary: '#b0a9e6',
+	activeSecondary: '#b0a9e6',
 	varietyMain: '#d0cbe6',
 	varietyMainShadow: 'rgba(208, 203, 230, 0.5)',
 	varietyMainTinyShadow: 'rgba(208, 203, 230, 0.05)',
@@ -21,11 +19,11 @@ const lightColor = {
 
 const darkColor = {
 	passiveMain: '#18171d',
-	passiveSecundary: '#0e0e11',
+	passiveSecondary: '#0e0e11',
 	passivePager: '#27262d',
 	activeMain: '#ffb677',
 	activeMainShadow: 'rgba(255, 182, 119, 0.7)',
-	activeSecundary: '#b0a9e6',
+	activeSecondary: '#b0a9e6',
 	varietyMain: '#d0cbe6',
 	varietyMainShadow: 'rgba(208, 203, 230, 0.5)',
 	varietyMainTinyShadow: 'rgba(208, 203, 230, 0.05)',
@@ -67,21 +65,13 @@ const mediaQuery = {
 	xl: `@media screen and (min-width: 1440px)`,
 }
 
-const fn = {
-	switchColorPreference(theme: Theme): Theme {
-		return {
-			...theme,
-			color: theme.colorPreference === 'light' ? darkColor : lightColor,
-		}
-	},
-}
-
-export const theme: Theme = {
+export const theme = {
+	darkColor,
+	lightColor,
 	color,
 	colorPreference,
 	mediaQuery,
 	space,
 	opacity,
 	spaceUnit,
-	fn,
 }

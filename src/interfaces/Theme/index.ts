@@ -1,17 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { DefaultTheme as StyledDefaultTheme } from 'styled-components'
-
 interface Theme {
 	spaceUnit: string
 	colorPreference: 'dark' | 'light'
 
 	color: {
 		passiveMain: string
-		passiveSecundary: string
+		passiveSecondary: string
 		passivePager: string
 		activeMain: string
 		activeMainShadow: string
-		activeSecundary: string
+		activeSecondary: string
 		varietyMain: string
 		varietyMainShadow: string
 		varietyMainTinyShadow: string
@@ -48,12 +45,6 @@ interface Theme {
 		selected: string
 		hover: string
 	}
-
-	fn: {
-		switchColorPreference: (theme: Theme) => void
-	}
 }
 
-declare module 'styled-components' {
-	export interface DefaultTheme extends Theme {}
-}
+export default Theme

@@ -1,6 +1,5 @@
 // region import
 import React, { lazy, Suspense } from 'react'
-import { ThemeProvider } from 'styled-components'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -15,10 +14,11 @@ import {
 	ApplicationStart,
 	HandleBackendErrors,
 	HandleSignout,
+	ProvideTheme,
 } from 'components'
 
 // utilities
-import { resources, theme } from 'utilities'
+import { resources } from 'utilities'
 
 // // styles
 import 'css/fonts/Aileron/index.css'
@@ -39,7 +39,7 @@ const { home, register, coin, setting, confirmEmail, recover, resetPassword, con
 	resources.routes
 
 const App = (
-	<ThemeProvider theme={theme}>
+	<ProvideTheme>
 		<ProvideContextBackend>
 			<ProvideContextModal>
 				<ProvideContextView>
@@ -80,7 +80,7 @@ const App = (
 				</ProvideContextView>
 			</ProvideContextModal>
 		</ProvideContextBackend>
-	</ThemeProvider>
+	</ProvideTheme>
 )
 
 // eslint-disable-next-line no-undef
