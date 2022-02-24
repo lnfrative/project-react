@@ -20,6 +20,7 @@ import {
 	PaginationBar,
 	SendAndReceive,
 	Overview,
+	Income,
 } from 'components'
 
 // styles
@@ -33,10 +34,10 @@ const paginationObjects: Array<PaginationObject> = [
 		main: true,
 		content: <Overview />,
 	},
+	{ id: 'income', title: 'Income', content: <Income /> },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <SendAndReceive /> },
 	{ id: 'transactions', title: 'Transactions', disabled: true, content: null },
 	{ id: 'subscriptions', title: 'Subscriptions', disabled: true, content: null },
-	{ id: 'income', title: 'Income', disabled: true, content: null },
 ]
 
 function Dashboard() {
