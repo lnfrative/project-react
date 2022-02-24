@@ -52,7 +52,7 @@ function SettingPaginationSecurity() {
 						title={message({ id: 'ENABLE' })}
 					/>
 				)}
-				{user.two_factor_verified && (
+				{!!user.two_factor_verified && (
 					<div className={styles.containerButton}>
 						<Tooltip title={message({ id: 'DEACTIVATE_TWO_FACTOR' })}>
 							<div>
