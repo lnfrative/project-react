@@ -1,7 +1,8 @@
 import { Theme, Stage } from 'interfaces'
 import { theme } from 'utilities'
 
-const { spaceUnit, darkColor, colorPreference, space, mediaQuery, opacity, lightColor } = theme
+const { spaceUnit, darkColor, colorPreference, space, mediaQuery, opacity, lightColor, size } =
+	theme
 
 const initialState: Theme = {
 	colorPreference,
@@ -10,6 +11,7 @@ const initialState: Theme = {
 	mediaQuery,
 	opacity,
 	spaceUnit,
+	size,
 }
 
 function switchColorPreference(stage: Stage<Theme>) {

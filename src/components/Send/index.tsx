@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // interfaces
-import { BackendCoin, BackendWallet } from 'interfaces'
+import { BackendCoin, BackendWallet, BackendUser } from 'interfaces'
 
 // contexts
 import { Backend, Captcha, Currency } from 'contexts'
@@ -30,6 +30,16 @@ import styles from './index.module.css'
 
 // modules
 import { initialState, selectSend, onSubmit, resetStatus, success } from './module'
+
+// styles
+import {
+	GroupInput,
+	Input,
+	GroupInputLabel,
+	GroupInputWrap,
+	GroupInputWrapIcon,
+	ErrorMessage,
+} from './style'
 // endregion
 
 const endtransaction = resources.endpoints.post.transactions
@@ -44,10 +54,16 @@ function Send() {
 	const captcha = useContext(Captcha)
 	const { amount, address } = watch
 
+	const user: BackendUser = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.user,
+	})?.data
+
 	const wallets: Array<BackendWallet> | undefined = backend.response({
 		method: 'get',
 		endpoint: endwallets,
 	})?.data
+
 	const coins: Array<BackendCoin> | undefined = backend.response({
 		method: 'get',
 		endpoint: endcoins,
@@ -64,6 +80,11 @@ function Send() {
 	const amountPrice = price * (amount ?? 0)
 	const amountPriceSplit = resources.utils.splitFloat(amountPrice, 2)
 	const remainingBalance = resources.utils.splitFloat(balancePrice - amountPrice, 2)
+
+	const insufficientFunds = parseInt(remainingBalance.value, 10) < 0
+	const invalidAmount = Number.isNaN(price * amount) && !!amount
+	const emptyAddress = !address
+	const emptyAmount = !amount
 
 	const params = {
 		address: `${address}`,
@@ -112,19 +133,25 @@ function Send() {
 								onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
 							}}
 						>
-							<div className={styles.groupAmount}>
-								<div className={styles.label}>Amount</div>
-								<div className={styles.containerInput}>
-									<div className={styles.assetAmount}>
+							<GroupInput>
+								<GroupInputLabel>Amount</GroupInputLabel>
+								<GroupInputWrap error={insufficientFunds || invalidAmount}>
+									<GroupInputWrapIcon>
 										{stage.state.optionSelected?.secondaryValue}
-									</div>
-									<input
+									</GroupInputWrapIcon>
+									<Input
 										placeholder="0.00000000"
 										ref={bind({ name: 'amount' })}
 										className={styles.input}
 									/>
-								</div>
-							</div>
+								</GroupInputWrap>
+								{insufficientFunds && <ErrorMessage>Insufficient funds.</ErrorMessage>}
+								{invalidAmount && (
+									<ErrorMessage>
+										The amount must be a numerical value less than or equal to your funds.
+									</ErrorMessage>
+								)}
+							</GroupInput>
 
 							<div className={styles.conversionAmount}>
 								{amount || 0} {stage.state.optionSelected?.secondaryValue}
@@ -132,19 +159,18 @@ function Send() {
 								{amountPriceSplit.value} {currency.state.id?.toUpperCase()}
 							</div>
 
-							<div className={styles.groupAddress}>
-								<div className={styles.label}>Recipient address or email</div>
-								<div className={styles.containerInput}>
-									<div className={styles.iconAddress}>
+							<GroupInput>
+								<GroupInputLabel>Recipient address or email</GroupInputLabel>
+								<GroupInputWrap>
+									<GroupInputWrapIcon>
 										<SVGIconCreditCard />
-									</div>
-									<input
+									</GroupInputWrapIcon>
+									<Input
 										placeholder="sYBLt1MpLXLC6pCGAfSQwYHh5Jj5Sgks4"
 										ref={bind({ name: 'address' })}
-										className={styles.input}
 									/>
-								</div>
-							</div>
+								</GroupInputWrap>
+							</GroupInput>
 
 							<div className={styles.balance}>
 								{'Your balance after withdrawal : '}
@@ -156,10 +182,22 @@ function Send() {
 								{remainingBalance.value} {currency.state.id?.toUpperCase()}
 							</div>
 
+							{!user.two_factor_verified && (
+								<ErrorMessage style={{ textAlign: 'center' }}>
+									You need to have 2FA activated to enable send.
+								</ErrorMessage>
+							)}
+
 							<div className={styles.buttonSend}>
 								<Button
 									title="Send"
 									buttonHTMLAttributes={{
+										disabled:
+											!user.two_factor_verified ||
+											insufficientFunds ||
+											invalidAmount ||
+											emptyAddress ||
+											emptyAmount,
 										type: 'submit',
 										style: {
 											maxWidth: 300,

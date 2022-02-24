@@ -31,6 +31,18 @@ interface Theme {
 		xxxl: string
 	}
 
+	size: {
+		huge: string
+		xxl: string
+		xl: string
+		lg: string
+		md: string
+		sm: string
+		xs: string
+		xxs: string
+		xxxs: string
+	}
+
 	mediaQuery: {
 		xxs: string
 		xs: string

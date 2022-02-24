@@ -43,17 +43,29 @@ const opacity = {
 	hover: '0.75',
 }
 
+const size = {
+	huge: '65px',
+	xxl: '35px',
+	xl: '30px',
+	lg: '24px',
+	md: '20px',
+	sm: '18px',
+	xs: '16px',
+	xxs: '14px',
+	xxxs: '12px',
+}
+
 const space = {
-	xxxxs: `calc(0.125 * var(${spaceUnit}))`,
-	xxxs: `calc(0.25 * var(${spaceUnit}))`,
-	xxs: `calc(0.375 * var(${spaceUnit}))`,
-	xs: `calc(0.5 * var(${spaceUnit}))`,
-	sm: `calc(0.75 * var(${spaceUnit}))`,
-	md: `calc(1.25 * var(${spaceUnit}))`,
-	lg: `calc(2 * var(${spaceUnit}))`,
-	xl: `calc(3.25 * var(${spaceUnit}))`,
-	xxl: `calc(5.25 * var(${spaceUnit}))`,
-	xxxl: `calc(8.5 * var(${spaceUnit}))`,
+	xxxxs: `calc(0.125 * ${spaceUnit})`,
+	xxxs: `calc(0.25 * ${spaceUnit})`,
+	xxs: `calc(0.375 * ${spaceUnit})`,
+	xs: `calc(0.5 * ${spaceUnit})`,
+	sm: `calc(0.75 * ${spaceUnit})`,
+	md: `calc(1.25 * ${spaceUnit})`,
+	lg: `calc(2 * ${spaceUnit})`,
+	xl: `calc(3.25 * ${spaceUnit})`,
+	xxl: `calc(5.25 * ${spaceUnit})`,
+	xxxl: `calc(8.5 * ${spaceUnit})`,
 }
 
 const mediaQuery = {
@@ -74,4 +86,5 @@ export const theme = {
 	space,
 	opacity,
 	spaceUnit,
+	size,
 }
