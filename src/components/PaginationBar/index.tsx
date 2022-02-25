@@ -1,5 +1,5 @@
 // region import
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 // hooks
@@ -19,34 +19,33 @@ import styles from './index.module.css'
 // endregion
 
 function PaginationBar(props: PaginationBarProps) {
-	const containerBarRef = useRef<HTMLDivElement>(null)
 	const stage = useStage(initialState)
 	const { pathname } = useLocation()
 
-	useEffect(() => {
-		const resizeObserver = new ResizeObserver(entries => {
-			// const { target } = entries[0]
-			// const children = Array.prototype.slice.call(target.children)
-			//
-			// let tabsWidth = 0
-			// children.forEach(el => {
-			// 	tabsWidth += el.clientWidth
-			// })
-			// TODO: Continue with the Pagination Bar responsive with submenu implementation.
-			// console.log('tabsWidth', tabsWidth, 'width', target.clientWidth)
-		})
-
-		if (containerBarRef.current) {
-			resizeObserver.observe(containerBarRef.current)
-			stage.commitState({
-				resizeObserver,
-			})
-		}
-
-		return () => {
-			resizeObserver.disconnect()
-		}
-	}, [])
+	// TODO: See if the dynamic responsive menu will be needed on another site.
+	// useEffect(() => {
+	// 	const resizeObserver = new ResizeObserver(entries => {
+	// 		// const { target } = entries[0]
+	// 		// const children = Array.prototype.slice.call(target.children)
+	// 		//
+	// 		// let tabsWidth = 0
+	// 		// children.forEach(el => {
+	// 		// 	tabsWidth += el.clientWidth
+	// 		// })
+	// 		// console.log('tabsWidth', tabsWidth, 'width', target.clientWidth)
+	// 	})
+	//
+	// 	if (containerBarRef.current) {
+	// 		resizeObserver.observe(containerBarRef.current)
+	// 		stage.commitState({
+	// 			resizeObserver,
+	// 		})
+	// 	}
+	//
+	// 	return () => {
+	// 		resizeObserver.disconnect()
+	// 	}
+	// }, [])
 
 	useEffect(() => {
 		const [paginationObjectCurrent] = props.paginationObjects.filter(paginationObject => {
@@ -58,7 +57,7 @@ function PaginationBar(props: PaginationBarProps) {
 
 	return (
 		<div className={styles.container}>
-			<div ref={containerBarRef} className={styles.containerBar}>
+			<div className={styles.containerBar}>
 				{props.paginationObjects.map(paginationObject => (
 					<div key={paginationObject.id} className={styles.tab}>
 						<PaginationTab
