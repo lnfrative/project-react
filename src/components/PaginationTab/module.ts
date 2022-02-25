@@ -1,12 +1,8 @@
 // region import
 import { MouseEventHandler } from 'react'
-import classNames from 'classnames'
 
 // utilities
 import { PaginationTabProps } from 'interfaces'
-
-// styles
-import styles from './index.module.css'
 // endregion
 
 function getPath(props: PaginationTabProps) {
@@ -21,16 +17,6 @@ function getPath(props: PaginationTabProps) {
 	return `${props.pathnameBase}/${id}`
 }
 
-function nestStyles(props: PaginationTabProps) {
-	const isCurrent = props.pathname === getPath(props)
-	return {
-		tab: classNames(styles.tab, {
-			[styles.tabActive]: isCurrent,
-			[styles.disabled]: props.paginationObject.disabled,
-		}),
-	}
-}
-
 function onClick(props: PaginationTabProps): MouseEventHandler<HTMLAnchorElement> {
 	return e => {
 		if (props.pathname === getPath(props) || props.paginationObject.disabled) {
@@ -39,4 +25,4 @@ function onClick(props: PaginationTabProps): MouseEventHandler<HTMLAnchorElement
 	}
 }
 
-export { nestStyles, getPath, onClick }
+export { getPath, onClick }

@@ -1,0 +1,39 @@
+import styled from 'styled-components'
+import { Link as RouterLink } from 'react-router-dom'
+import { PaginationTabProps } from 'interfaces'
+import { getPath } from './module'
+
+export const Link = styled(RouterLink)<{
+	componentProps: PaginationTabProps
+}>`
+	display: flex;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: var(--font-size-sm);
+	color: ${props => props.theme.color.varietyMainShadow};
+	height: 100%;
+	white-space: pre;
+
+	&:hover {
+		opacity: var(--opacity-selecting);
+	}
+
+	&:active {
+		opacity: var(--opacity-selected);
+	}
+
+	${props => {
+		if (props.componentProps.pathname !== getPath(props.componentProps)) return ''
+		return `
+            border-bottom: solid 2px var(--color-active-main);
+            color: var(--color-active-main);
+        `
+	}}
+
+	${props => {
+		if (props.componentProps.paginationObject.disabled) return ''
+		return `
+            cursor: not-allowed;
+        `
+	}}
+`
