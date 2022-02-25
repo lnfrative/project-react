@@ -1,6 +1,10 @@
 // region import
 import React, { PropsWithChildren } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { ThemeProvider as MUIThemeProvider } from '@mui/material'
+
+// contexts
+import { Theme } from 'contexts'
 
 // hooks
 import { useStage } from 'hooks'
@@ -12,14 +16,16 @@ import { initialState, switchColorPreference } from './module'
 function ProvideTheme(props: PropsWithChildren<{}>) {
 	const stage = useStage(initialState)
 	return (
-		<ThemeProvider
-			theme={{
-				...stage.state,
-				switchColorPreference: switchColorPreference(stage),
-			}}
-		>
-			{props.children}
-		</ThemeProvider>
+		<MUIThemeProvider theme={Theme}>
+			<ThemeProvider
+				theme={{
+					...stage.state,
+					switchColorPreference: switchColorPreference(stage),
+				}}
+			>
+				{props.children}
+			</ThemeProvider>
+		</MUIThemeProvider>
 	)
 }
 
