@@ -25,12 +25,19 @@ function PaginationBar(props: PaginationBarProps) {
 
 	useEffect(() => {
 		const resizeObserver = new ResizeObserver(entries => {
-			// console.log(entries)
+			// const { target } = entries[0]
+			// const children = Array.prototype.slice.call(target.children)
+			//
+			// let tabsWidth = 0
+			// children.forEach(el => {
+			// 	tabsWidth += el.clientWidth
+			// })
+			// TODO: Continue with the Pagination Bar responsive with submenu implementation.
+			// console.log('tabsWidth', tabsWidth, 'width', target.clientWidth)
 		})
 
 		if (containerBarRef.current) {
 			resizeObserver.observe(containerBarRef.current)
-
 			stage.commitState({
 				resizeObserver,
 			})

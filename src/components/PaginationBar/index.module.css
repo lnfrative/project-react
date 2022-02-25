@@ -16,5 +16,5 @@
 }
 
 .tab {
-	margin-right: var(--space-lg);
+	padding-right: var(--space-lg);
 }

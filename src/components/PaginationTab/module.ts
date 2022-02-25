@@ -5,7 +5,7 @@ import { MouseEventHandler } from 'react'
 import { PaginationTabProps } from 'interfaces'
 // endregion
 
-function getPath(props: PaginationTabProps) {
+export function getPath(props: PaginationTabProps) {
 	const { pathnameBase } = props
 	const { id, main } = props.paginationObject
 	if (main) {
@@ -17,12 +17,10 @@ function getPath(props: PaginationTabProps) {
 	return `${props.pathnameBase}/${id}`
 }
 
-function onClick(props: PaginationTabProps): MouseEventHandler<HTMLAnchorElement> {
+export function onClick(props: PaginationTabProps): MouseEventHandler<HTMLAnchorElement> {
 	return e => {
 		if (props.pathname === getPath(props) || props.paginationObject.disabled) {
 			e.preventDefault()
 		}
 	}
 }
-
-export { getPath, onClick }
