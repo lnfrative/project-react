@@ -8,14 +8,14 @@ import { PaginationTabProps } from 'interfaces'
 import { getPath, onClick } from './module'
 
 // styles
-import { Link } from './style'
+import { Content, StyledLink } from './style'
 // endregion
 
 function PaginationTab(props: PaginationTabProps) {
 	return (
-		<Link componentProps={props} onClick={onClick(props)} to={getPath(props)}>
-			{props.paginationObject.title}
-		</Link>
+		<StyledLink onClick={onClick(props)} to={getPath(props)}>
+			<Content componentProps={props}>{props.paginationObject.title}</Content>
+		</StyledLink>
 	)
 }
 

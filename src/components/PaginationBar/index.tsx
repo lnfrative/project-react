@@ -1,5 +1,5 @@
 // region import
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
 // hooks
@@ -19,8 +19,27 @@ import styles from './index.module.css'
 // endregion
 
 function PaginationBar(props: PaginationBarProps) {
+	const containerBarRef = useRef<HTMLDivElement>(null)
 	const stage = useStage(initialState)
 	const { pathname } = useLocation()
+
+	useEffect(() => {
+		const resizeObserver = new ResizeObserver(entries => {
+			// console.log(entries)
+		})
+
+		if (containerBarRef.current) {
+			resizeObserver.observe(containerBarRef.current)
+
+			stage.commitState({
+				resizeObserver,
+			})
+		}
+
+		return () => {
+			resizeObserver.disconnect()
+		}
+	}, [])
 
 	useEffect(() => {
 		const [paginationObjectCurrent] = props.paginationObjects.filter(paginationObject => {
@@ -32,7 +51,7 @@ function PaginationBar(props: PaginationBarProps) {
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.containerBar}>
+			<div ref={containerBarRef} className={styles.containerBar}>
 				{props.paginationObjects.map(paginationObject => (
 					<div key={paginationObject.id} className={styles.tab}>
 						<PaginationTab

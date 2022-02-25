@@ -1,9 +1,13 @@
 import styled from 'styled-components'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { PaginationTabProps } from 'interfaces'
 import { getPath } from './module'
 
-export const Link = styled(RouterLink)<{
+export const StyledLink = styled(Link)`
+	text-decoration: none;
+`
+
+export const Content = styled('div')<{
 	componentProps: PaginationTabProps
 }>`
 	display: flex;
@@ -31,7 +35,7 @@ export const Link = styled(RouterLink)<{
 	}}
 
 	${props => {
-		if (props.componentProps.paginationObject.disabled) return ''
+		if (!props.componentProps.paginationObject.disabled) return ''
 		return `
             cursor: not-allowed;
         `
