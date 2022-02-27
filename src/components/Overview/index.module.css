@@ -13,24 +13,10 @@
 	margin-left: var(--space-lg);
 }
 
-.group {
-	background-color: var(--color-primary);
-	margin-bottom: var(--space-lg);
-}
-
-.groupTitle {
-	color: var(--color-variety-main-shadow);
-	font-size: var(--font-size-sm);
-	letter-spacing: 3.7px;
-	border-bottom: solid 1px var(--color-variety-main-tiny-shadow);
-	padding: var(--space-lg) var(--space-xl);
-}
-
 .groupValues {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: var(--space-lg) var(--space-xl);
 }
 
 .valueTitle {
@@ -61,7 +47,7 @@
 .movements {
 	display: flex;
 	flex-direction: column;
-	padding: var(--space-lg) var(--space-xl);
+	padding-bottom: var(--space-lg);
 }
 
 .movement {

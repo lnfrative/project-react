@@ -7,7 +7,7 @@ import { PanelProps } from 'interfaces'
 // endregion
 
 const Container = styled('div')`
-	background-color: ${props => props.theme.color.activeMain};
+	background-color: ${props => props.theme.color.passiveMain};
 `
 
 const Content = styled('div')`
@@ -18,11 +18,11 @@ const Content = styled('div')`
 `
 
 const Title = styled('div')`
+	letter-spacing: 3.7px;
 	${props =>
 		`
         color: ${props.theme.color.varietyMainShadow};
         font-size: ${props.theme.size.sm};
-        letter-spacing: 3.7px;
         border-bottom: solid 1px ${props.theme.color.varietyMainTinyShadow};
         padding: ${props.theme.space.lg} ${props.theme.space.xl};
       `}
