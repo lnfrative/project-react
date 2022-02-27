@@ -4,5 +4,5 @@
 	border-radius: var(--border-radius-standard);
 	padding: var(--space-md);
 
-	background-color: var(--color-passive-pager);
+	background-color: var(--color-passive-main);
 }
