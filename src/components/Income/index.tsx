@@ -2,7 +2,14 @@
 import React from 'react'
 
 // components
-import { Panel, ChartCurve, ValueDecimalLabel, LoadLineLabel, ValueDecimal } from 'components'
+import {
+	Panel,
+	ChartCurve,
+	ValueDecimalLabel,
+	LoadLineLabel,
+	ValueDecimal,
+	ReturningAsset,
+} from 'components'
 
 // utilities
 import { message } from 'utilities'
@@ -20,7 +27,7 @@ import {
 } from './style'
 // endregion
 
-const weight = [600.0, 600.2, 610, 601.4, 509.9, 600.2, 509.8, 508.6, 509.6, 509.2, 602, 600]
+const weight = [600.0, 605.2, 610, 615.4, 610.9, 610.2, 610.8, 620.6, 626.6, 610.2, 612, 620]
 
 const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -64,13 +71,16 @@ function Income() {
 
 						<StatsHead>Collateral assets</StatsHead>
 						<ContainerValue>
-							<ValueDecimal decimals={2} sign="$" sise="large" value={12521.64} />
+							<ValueDecimal decimals={2} sign="$" sise="large" value={541.64} />
 						</ContainerValue>
 
 						<StatsHead>ROI</StatsHead>
 						<ContainerValue>
 							<ValueDecimal decimals={0} sign="%" signPosition="right" sise="large" value={246} />
 						</ContainerValue>
+
+						<StatsHead>Top returning assets</StatsHead>
+						<ReturningAsset />
 					</Panel>
 				</StyledPanel>
 			</SecondaryContent>
