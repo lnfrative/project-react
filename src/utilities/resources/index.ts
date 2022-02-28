@@ -94,9 +94,22 @@ function parseParams(params?: Record<string, any>) {
 	return paramsCloned
 }
 
+function addCommasIntegers(integer: string) {
+	const { length } = integer
+	if (length < 3) {
+		return length
+	}
+	if (length < 6) {
+		return `${integer.slice(0, length - 3)},${integer.slice(length - 3)}`
+	}
+	return `${integer.slice(0, length - 6)}\`${integer.slice(length - 6, length - 3)},${integer.slice(
+		length - 3
+	)}`
+}
+
 function splitFloat(value: number, decimalLength?: number) {
 	const floatSegments: Array<string | undefined> = value.toString().split('.')
-	const integer = floatSegments[0] ?? '0'
+	const integer = addCommasIntegers(floatSegments[0] ?? '0')
 	const decimal = (floatSegments[1] ?? '00000000').slice(0, decimalLength)
 	return {
 		integer,
@@ -128,6 +141,7 @@ const utils = {
 	satsToBTC,
 	removeUnnecessaryCryptoDecimals,
 	parseTimestamp,
+	addCommasIntegers,
 }
 
 export default {
