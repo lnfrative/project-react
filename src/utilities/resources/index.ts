@@ -96,10 +96,10 @@ function parseParams(params?: Record<string, any>) {
 
 function addCommasIntegers(integer: string) {
 	const { length } = integer
-	if (length < 3) {
+	if (length < 4) {
 		return integer
 	}
-	if (length < 6) {
+	if (length < 7) {
 		return `${integer.slice(0, length - 3)},${integer.slice(length - 3)}`
 	}
 	return `${integer.slice(0, length - 6)}\`${integer.slice(length - 6, length - 3)},${integer.slice(
