@@ -256,6 +256,12 @@ const messages: Record<string, Record<string, any>> = {
 	RESENDING_EMAIL: {
 		en: 'Resending the verification email, do not reload the page.',
 	},
+	REVENUE_SUMMARY: {
+		en: 'Revenue summary',
+	},
+	REVENUE_PER_MONTH: {
+		en: 'Revenue per month',
+	},
 }
 
 export default messages

@@ -11,12 +11,12 @@ import { Backend, Currency } from 'contexts'
 
 // components
 import {
-	ValueDecimal,
 	ValueCoin,
 	ValuePrice,
 	SVGValueVariation,
 	Transaction,
 	Panel,
+	ValueDecimalLabel,
 } from 'components'
 
 // utilities
@@ -67,22 +67,34 @@ function Overview() {
 						<div className={styles.groupValues}>
 							{summary && (
 								<>
-									<div className={styles.value}>
-										<ValueDecimal decimals={2} value={summary.received} sise="large" sign="$" />
-										<div className={styles.valueTitle}>{message({ id: 'RECEIVED' })}</div>
-									</div>
-									<div className={styles.value}>
-										<ValueDecimal decimals={2} value={summary.spent} sise="large" sign="$" />
-										<div className={styles.valueTitle}>{message({ id: 'SPENT' })}</div>
-									</div>
-									<div className={styles.value}>
-										<ValueDecimal decimals={2} value={summary.earned} sise="large" sign="$" />
-										<div className={styles.valueTitle}>{message({ id: 'EARNED' })}</div>
-									</div>
-									<div className={styles.value}>
-										<ValueDecimal decimals={2} value={summary.net} sise="large" sign="$" />
-										<div className={styles.valueTitle}>{message({ id: 'NET_INCOME' })}</div>
-									</div>
+									<ValueDecimalLabel
+										decimals={2}
+										value={summary.received}
+										sise="large"
+										sign="$"
+										title={message({ id: 'RECEIVED' })}
+									/>
+									<ValueDecimalLabel
+										decimals={2}
+										value={summary.spent}
+										sise="large"
+										sign="$"
+										title={message({ id: 'SPENT' })}
+									/>
+									<ValueDecimalLabel
+										decimals={2}
+										value={summary.earned}
+										sise="large"
+										sign="$"
+										title={message({ id: 'EARNED' })}
+									/>
+									<ValueDecimalLabel
+										decimals={2}
+										value={summary.net}
+										sise="large"
+										sign="$"
+										title={message({ id: 'NET_INCOME' })}
+									/>
 								</>
 							)}
 							{!summary && (
