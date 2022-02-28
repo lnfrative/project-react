@@ -14,6 +14,7 @@ const lightColor = {
 	varietyUpstream: '#c8fca3',
 	varietyDownstream: '#ff8c8c',
 	disableMainShadow: 'rgba(0, 0, 0, 0.5)',
+	activeLoad: '#6346EA',
 	white: 'white',
 }
 
@@ -30,6 +31,7 @@ const darkColor = {
 	varietyUpstream: '#c8fca3',
 	varietyDownstream: '#ff8c8c',
 	disableMainShadow: 'rgba(0, 0, 0, 0.5)',
+	activeLoad: '#6346EA',
 	white: 'white',
 }
 

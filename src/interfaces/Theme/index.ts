@@ -15,6 +15,7 @@ interface Theme {
 		varietyUpstream: string
 		varietyDownstream: string
 		disableMainShadow: string
+		activeLoad: string
 		white: string
 	}
 

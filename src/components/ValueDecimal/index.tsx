@@ -17,13 +17,15 @@ function ValueDecimal(props: ValueDecimalProps) {
 	return (
 		<div>
 			<span className={styles.integer}>
-				{props.sign}
+				{!props.signPosition && props.sign}
+				{props.signPosition === 'left' && props.sign}
 				{value.integer}
 			</span>
 			<span className={styles.decimal}>
-				<span>.</span>
+				{props.decimals !== 0 && <span>.</span>}
 				{value.decimal}
 			</span>
+			{props.signPosition === 'right' && <span className={styles.integer}>{props.sign}</span>}
 		</div>
 	)
 }
