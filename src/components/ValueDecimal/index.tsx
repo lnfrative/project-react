@@ -7,26 +7,25 @@ import { ValueDecimalProps } from 'interfaces'
 // utilities
 import { resources } from 'utilities'
 
-// modules
-import { nestStyles } from './module'
+// styles
+import { Container, Integer, Decimal } from './style'
 // endregion
 
 function ValueDecimal(props: ValueDecimalProps) {
 	const value = resources.utils.splitFloat(props.value, props.decimals)
-	const styles = nestStyles(props)
 	return (
-		<div>
-			<span className={styles.integer}>
+		<Container>
+			<Integer {...props}>
 				{!props.signPosition && props.sign}
 				{props.signPosition === 'left' && props.sign}
 				{value.integer}
-			</span>
-			<span className={styles.decimal}>
+			</Integer>
+			<Decimal {...props}>
 				{props.decimals !== 0 && <span>.</span>}
 				{value.decimal}
-			</span>
-			{props.signPosition === 'right' && <span className={styles.integer}>{props.sign}</span>}
-		</div>
+			</Decimal>
+			{props.signPosition === 'right' && <Integer {...props}>{props.sign}</Integer>}
+		</Container>
 	)
 }
 

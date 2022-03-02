@@ -14,7 +14,7 @@ import { Label } from './style'
 function ValueDecimalLabel(props: ValueDecimalLabelProps) {
 	return (
 		<div>
-			<ValueDecimal {...props} />
+			<ValueDecimal {...props} sameSize />
 			<Label>{props.title}</Label>
 		</div>
 	)
