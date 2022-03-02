@@ -37,6 +37,8 @@ const endpoints = {
 		resendEmailConfirmation: '/api/user/email/verify/resend',
 		revenueSummary: '/api/user/income/revenueSummary',
 		revenueChart: '/api/user/income/revenuePerMonthChart',
+		incomeOrigin: '/api/user/income/incomeOrigin',
+		collateralAssetsAndROI: '/api/user/income/collateralAssetsAndROI',
 	},
 	post: {
 		userCreateAccessToken: '/api/auth/login',

@@ -57,6 +57,11 @@ function ChartCurve(props: ChartCurveProps) {
 						],
 					},
 					options: {
+						scales: {
+							yAxes: {
+								beginAtZero: true,
+							},
+						},
 						plugins: {
 							legend: {
 								display: false,

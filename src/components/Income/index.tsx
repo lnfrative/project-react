@@ -6,7 +6,12 @@ import { CircularProgress } from '@mui/material'
 import { Backend, Currency } from 'contexts'
 
 // interfaces
-import { BackendRevenueSummary, BackendRevenueChart } from 'interfaces'
+import {
+	BackendRevenueSummary,
+	BackendRevenueChart,
+	BackendIncomeOrigin,
+	BackendCollateralAssetsAndROI,
+} from 'interfaces'
 
 // components
 import {
@@ -39,6 +44,10 @@ function Income() {
 	const backend = useContext(Backend)
 	const currency = useContext(Currency)
 
+	const incomeOriginParams = {
+		year: '2022',
+	}
+
 	const revenueSummaryParams = {
 		currency: currency.state.id,
 		year: '2022',
@@ -48,6 +57,23 @@ function Income() {
 		currency: currency.state.id,
 		year: '2022',
 	}
+
+	const collateralAssetsAndROIParams = {
+		currency: currency.state.id,
+		year: '2022',
+	}
+
+	const collateralAssetsAndROI: BackendCollateralAssetsAndROI | undefined = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.collateralAssetsAndROI,
+		params: collateralAssetsAndROIParams,
+	})?.data
+
+	const incomeOrigin: BackendIncomeOrigin | undefined = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.incomeOrigin,
+		params: incomeOriginParams,
+	})?.data
 
 	const revenueSummary: BackendRevenueSummary | undefined = backend.response({
 		method: 'get',
@@ -72,6 +98,18 @@ function Income() {
 			endpoint: resources.endpoints.get.revenueChart,
 			method: 'get',
 			params: revenueChartParams,
+		})
+
+		backend.request({
+			endpoint: resources.endpoints.get.incomeOrigin,
+			method: 'get',
+			params: incomeOriginParams,
+		})
+
+		backend.request({
+			endpoint: resources.endpoints.get.collateralAssetsAndROI,
+			method: 'get',
+			params: collateralAssetsAndROIParams,
 		})
 	}, [])
 
@@ -135,28 +173,53 @@ function Income() {
 				<StyledPanel>
 					<Panel title="Income stats">
 						<StatsHead>Origin</StatsHead>
-						<StyledLoadLineLabel>
-							<LoadLineLabel title="PoS/MN Pool" value={50} />
-						</StyledLoadLineLabel>
-						<StyledLoadLineLabel>
-							<LoadLineLabel title="Interest" value={25} />
-						</StyledLoadLineLabel>
-						<StyledLoadLineLabel>
-							<LoadLineLabel title="Mining" value={12.5} />
-						</StyledLoadLineLabel>
-						<StyledLoadLineLabel>
-							<LoadLineLabel title="Referrals" value={12.5} />
-						</StyledLoadLineLabel>
+						{incomeOrigin &&
+							Object.keys(incomeOrigin).map(io => (
+								<StyledLoadLineLabel key={io}>
+									<LoadLineLabel title={io} value={incomeOrigin[io]} />
+								</StyledLoadLineLabel>
+							))}
+						{!incomeOrigin && (
+							<LoaderContainer>
+								<CircularProgress color="info" />
+							</LoaderContainer>
+						)}
 
 						<StatsHead>Collateral assets</StatsHead>
-						<ContainerValue>
-							<ValueDecimal decimals={2} sign="$" sise="large" value={541.64} />
-						</ContainerValue>
+						{collateralAssetsAndROI && (
+							<ContainerValue>
+								<ValueDecimal
+									sameSize
+									decimals={2}
+									sign="$"
+									sise="large"
+									value={collateralAssetsAndROI.collateral}
+								/>
+							</ContainerValue>
+						)}
+						{!collateralAssetsAndROI && (
+							<LoaderContainer>
+								<CircularProgress color="info" />
+							</LoaderContainer>
+						)}
 
 						<StatsHead>ROI</StatsHead>
-						<ContainerValue>
-							<ValueDecimal decimals={0} sign="%" signPosition="right" sise="large" value={246} />
-						</ContainerValue>
+						{collateralAssetsAndROI && (
+							<ContainerValue>
+								<ValueDecimal
+									decimals={0}
+									sign="%"
+									signPosition="right"
+									sise="large"
+									value={collateralAssetsAndROI.ROI}
+								/>
+							</ContainerValue>
+						)}
+						{!collateralAssetsAndROI && (
+							<LoaderContainer>
+								<CircularProgress color="info" />
+							</LoaderContainer>
+						)}
 
 						<StatsHead>Top returning assets</StatsHead>
 						<ReturningAsset />

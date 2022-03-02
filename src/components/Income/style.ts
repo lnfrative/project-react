@@ -35,11 +35,12 @@ export const StatsHead = styled('div')`
         font-size: ${props.theme.size.sm};
         color: ${props.theme.color.varietyMainShadow};
         margin-bottom: ${props.theme.space.lg};
+				margin-top: ${props.theme.space.lg};
       `}
 `
 
 export const ContainerValue = styled('div')`
-	margin-bottom: ${props => props.theme.space.lg};
+	/* empty */
 `
 
 export const LoaderContainer = styled('div')`
