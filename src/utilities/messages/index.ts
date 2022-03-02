@@ -262,6 +262,18 @@ const messages: Record<string, Record<string, any>> = {
 	REVENUE_PER_MONTH: {
 		en: 'Revenue per month',
 	},
+	MINING: {
+		en: 'Mining',
+	},
+	STAKING: {
+		en: 'PoS/MN',
+	},
+	GENERATED: {
+		en: 'Generated',
+	},
+	ROI: {
+		en: 'ROI',
+	},
 }
 
 export default messages

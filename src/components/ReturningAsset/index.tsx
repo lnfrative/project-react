@@ -1,31 +1,60 @@
 // region import
-import React from 'react'
+import React, { useContext } from 'react'
+
+// contexts
+import { Backend } from 'contexts'
+
+// interfaces
+import { BackendReturningAsset, BackendCoin } from 'interfaces'
 
 // components
-import { ImgCoin } from 'components'
+import { ImgCoin, ValueDecimal } from 'components'
+
+// utilities
+import { resources, message } from 'utilities'
 
 // styles
 import { Container, Group, PrimaryTitle, SecondaryTitle } from './style'
 // endregion
 
-function ReturningAsset() {
+function ReturningAsset(props: BackendReturningAsset) {
+	const backend = useContext(Backend)
+
+	const coins: Array<BackendCoin> = backend.response({
+		endpoint: resources.endpoints.get.coins,
+		method: 'get',
+	})?.data
+
+	const [coin] = coins.filter(({ id }) => id === props.coin_id)
+
 	return (
 		<Container>
 			<ImgCoin
 				size="medium"
-				src="https://dev-api-account.dogecash.org/assets/coins/Bitcoin/logo.svg"
+				src={resources.coin[resources.utils.normaliceCoinName(coin.name)].logo}
 			/>
 			<Group>
-				<PrimaryTitle>BTC</PrimaryTitle>
-				<SecondaryTitle>Mining</SecondaryTitle>
+				<PrimaryTitle>{coin.asset}</PrimaryTitle>
+				<SecondaryTitle>{message({ id: coin.staking ? 'STAKING' : 'MINING' })}</SecondaryTitle>
 			</Group>
 			<Group>
-				<PrimaryTitle>$13,700</PrimaryTitle>
-				<SecondaryTitle>Generated</SecondaryTitle>
+				<PrimaryTitle>
+					<ValueDecimal sameSize decimals={0} sign="$" value={props.generated} sise="small" />
+				</PrimaryTitle>
+				<SecondaryTitle>{message({ id: 'GENERATED' })}</SecondaryTitle>
 			</Group>
 			<Group>
-				<PrimaryTitle>167%</PrimaryTitle>
-				<SecondaryTitle>ROI</SecondaryTitle>
+				<PrimaryTitle>
+					<ValueDecimal
+						sameSize
+						decimals={0}
+						sign="%"
+						signPosition="right"
+						value={props.ROI}
+						sise="small"
+					/>
+				</PrimaryTitle>
+				<SecondaryTitle>{message({ id: 'ROI' })}</SecondaryTitle>
 			</Group>
 		</Container>
 	)

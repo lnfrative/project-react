@@ -11,6 +11,7 @@ import {
 	BackendRevenueChart,
 	BackendIncomeOrigin,
 	BackendCollateralAssetsAndROI,
+	BackendReturningAsset,
 } from 'interfaces'
 
 // components
@@ -63,6 +64,17 @@ function Income() {
 		year: '2022',
 	}
 
+	const returningAssetsParams = {
+		currency: currency.state.id,
+		year: '2022',
+	}
+
+	const returningAssets: Array<BackendReturningAsset> | undefined = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.returningAssets,
+		params: returningAssetsParams,
+	})?.data
+
 	const collateralAssetsAndROI: BackendCollateralAssetsAndROI | undefined = backend.response({
 		method: 'get',
 		endpoint: resources.endpoints.get.collateralAssetsAndROI,
@@ -110,6 +122,12 @@ function Income() {
 			endpoint: resources.endpoints.get.collateralAssetsAndROI,
 			method: 'get',
 			params: collateralAssetsAndROIParams,
+		})
+
+		backend.request({
+			endpoint: resources.endpoints.get.returningAssets,
+			method: 'get',
+			params: returningAssetsParams,
 		})
 	}, [])
 
@@ -222,7 +240,15 @@ function Income() {
 						)}
 
 						<StatsHead>Top returning assets</StatsHead>
-						<ReturningAsset />
+						{returningAssets &&
+							returningAssets.map(returningAsset => (
+								<ReturningAsset key={returningAsset.coin_id} {...returningAsset} />
+							))}
+						{!returningAssets && (
+							<LoaderContainer>
+								<CircularProgress color="info" />
+							</LoaderContainer>
+						)}
 					</Panel>
 				</StyledPanel>
 			</SecondaryContent>

@@ -39,6 +39,7 @@ const endpoints = {
 		revenueChart: '/api/user/income/revenuePerMonthChart',
 		incomeOrigin: '/api/user/income/incomeOrigin',
 		collateralAssetsAndROI: '/api/user/income/collateralAssetsAndROI',
+		returningAssets: '/api/user/income/topReturningAssets',
 	},
 	post: {
 		userCreateAccessToken: '/api/auth/login',
