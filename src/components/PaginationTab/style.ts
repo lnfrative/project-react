@@ -18,6 +18,8 @@ export const Content = styled('div')<{
 	height: 100%;
 	white-space: pre;
 
+	box-sizing: border-box;
+
 	&:hover {
 		opacity: var(--opacity-selecting);
 	}
