@@ -1,5 +1,12 @@
 // region import
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { CircularProgress } from '@mui/material'
+
+// contexts
+import { Backend, Currency } from 'contexts'
+
+// interfaces
+import { BackendRevenueSummary, BackendRevenueChart } from 'interfaces'
 
 // components
 import {
@@ -12,7 +19,7 @@ import {
 } from 'components'
 
 // utilities
-import { message } from 'utilities'
+import { message, resources } from 'utilities'
 
 // styles
 import {
@@ -24,31 +31,103 @@ import {
 	StyledLoadLineLabel,
 	StatsHead,
 	ContainerValue,
+	LoaderContainer,
 } from './style'
 // endregion
 
-const weight = [600.0, 605.2, 610, 615.4, 610.9, 610.2, 610.8, 620.6, 626.6, 610.2, 612, 620]
-
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
 function Income() {
+	const backend = useContext(Backend)
+	const currency = useContext(Currency)
+
+	const revenueSummaryParams = {
+		currency: currency.state.id,
+		year: '2022',
+	}
+
+	const revenueChartParams = {
+		currency: currency.state.id,
+		year: '2022',
+	}
+
+	const revenueSummary: BackendRevenueSummary | undefined = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.revenueSummary,
+		params: revenueSummaryParams,
+	})?.data
+
+	const revenueChart: BackendRevenueChart | undefined = backend.response({
+		method: 'get',
+		endpoint: resources.endpoints.get.revenueChart,
+		params: revenueChartParams,
+	})?.data
+
+	useEffect(() => {
+		backend.request({
+			endpoint: resources.endpoints.get.revenueSummary,
+			method: 'get',
+			params: revenueSummaryParams,
+		})
+
+		backend.request({
+			endpoint: resources.endpoints.get.revenueChart,
+			method: 'get',
+			params: revenueChartParams,
+		})
+	}, [])
+
 	return (
 		<Container>
 			<PrimaryContent>
 				<StyledPanel>
 					<Panel title={message({ id: 'REVENUE_SUMMARY' })}>
-						<Revenues>
-							<ValueDecimalLabel value={0} decimals={2} title="Today" sign="$" sise="large" />
-							<ValueDecimalLabel value={0} decimals={2} title="This week" sign="$" sise="large" />
-							<ValueDecimalLabel value={0} decimals={2} title="This month" sign="$" sise="large" />
-							<ValueDecimalLabel value={0} decimals={2} title="This year" sign="$" sise="large" />
-						</Revenues>
+						{revenueSummary && (
+							<Revenues>
+								<ValueDecimalLabel
+									value={revenueSummary.today}
+									decimals={2}
+									title="Today"
+									sign="$"
+									sise="large"
+								/>
+								<ValueDecimalLabel
+									value={revenueSummary.thisWeek}
+									decimals={2}
+									title="This week"
+									sign="$"
+									sise="large"
+								/>
+								<ValueDecimalLabel
+									value={revenueSummary.thisMonth}
+									decimals={2}
+									title="This month"
+									sign="$"
+									sise="large"
+								/>
+								<ValueDecimalLabel
+									value={revenueSummary.thisYear}
+									decimals={2}
+									title="This year"
+									sign="$"
+									sise="large"
+								/>
+							</Revenues>
+						)}
+						{!revenueSummary && (
+							<LoaderContainer>
+								<CircularProgress color="info" />
+							</LoaderContainer>
+						)}
 					</Panel>
 				</StyledPanel>
 
 				<StyledPanel>
 					<Panel title={message({ id: 'REVENUE_PER_MONTH' })}>
-						<ChartCurve data={weight} labels={labels} />
+						{revenueChart && <ChartCurve data={revenueChart.data} labels={revenueChart.months} />}
+						{!revenueChart && (
+							<LoaderContainer>
+								<CircularProgress color="info" />
+							</LoaderContainer>
+						)}
 					</Panel>
 				</StyledPanel>
 			</PrimaryContent>

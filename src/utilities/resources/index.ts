@@ -35,6 +35,8 @@ const endpoints = {
 		transactions: '/api/user/transactions',
 		summary: '/api/user/summary',
 		resendEmailConfirmation: '/api/user/email/verify/resend',
+		revenueSummary: '/api/user/income/revenueSummary',
+		revenueChart: '/api/user/income/revenuePerMonthChart',
 	},
 	post: {
 		userCreateAccessToken: '/api/auth/login',

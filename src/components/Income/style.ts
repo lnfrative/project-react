@@ -41,3 +41,9 @@ export const StatsHead = styled('div')`
 export const ContainerValue = styled('div')`
 	margin-bottom: ${props => props.theme.space.lg};
 `
+
+export const LoaderContainer = styled('div')`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`

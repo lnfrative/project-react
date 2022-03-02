@@ -1,7 +1,7 @@
 import { ContextCurrencyState } from 'interfaces'
 
 const initialState: ContextCurrencyState = {
-	id: undefined,
+	id: 'usd',
 }
 
 export { initialState }
