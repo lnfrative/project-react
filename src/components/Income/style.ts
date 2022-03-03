@@ -26,14 +26,15 @@ export const Revenues = styled('div')`
 `
 
 export const PrimaryContent = styled('div')`
-	flex: 2;
+	${props => props.theme.mediaQuery.xl} {
+		width: 70%;
+	}
 `
 
 export const SecondaryContent = styled('div')`
-	flex: 1;
-
 	${props => props.theme.mediaQuery.xl} {
 		margin-left: ${props => props.theme.space.lg};
+		width: 30%;
 	}
 `
 
