@@ -2,6 +2,7 @@
 
 .container {
 	position: relative;
+	padding: var(--space-sm) var(--space-lg);
 }
 
 .simpleSelected {
@@ -56,6 +57,7 @@
 }
 
 .groupOptions {
+	left: 0;
 	top: 0;
 	width: 100%;
 	position: absolute;

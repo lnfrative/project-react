@@ -2,6 +2,9 @@
 import React, { useContext, useEffect } from 'react'
 import { CircularProgress } from '@mui/material'
 
+// hooks
+import { useStage } from 'hooks'
+
 // contexts
 import { Backend, Currency } from 'contexts'
 
@@ -22,6 +25,7 @@ import {
 	LoadLineLabel,
 	ValueDecimal,
 	ReturningAsset,
+	Select,
 } from 'components'
 
 // utilities
@@ -38,47 +42,46 @@ import {
 	StatsHead,
 	ContainerValue,
 	LoaderContainer,
+	ContainerSwitch,
 } from './style'
+
+// modules
+import { initialState, options, onSelectTimeChart, onSelectTimeOrigin } from './module'
 // endregion
 
 function Income() {
+	const stage = useStage(initialState)
 	const backend = useContext(Backend)
 	const currency = useContext(Currency)
 
-	const incomeOriginParams = {
-		year: '2022',
-	}
-
 	const revenueSummaryParams = {
 		currency: currency.state.id,
+		time: 'year',
 		year: '2022',
 	}
 
 	const revenueChartParams = {
 		currency: currency.state.id,
+		time: stage.state.optionSelectedRevenueChart?.id,
 		year: '2022',
 	}
 
-	const collateralAssetsAndROIParams = {
+	const incomeOriginParams = {
 		currency: currency.state.id,
-		year: '2022',
-	}
-
-	const returningAssetsParams = {
-		currency: currency.state.id,
+		time: stage.state.optionSelectedIncomOrigin?.id,
 		year: '2022',
 	}
 
 	const returningAssets: Array<BackendReturningAsset> | undefined = backend.response({
 		method: 'get',
 		endpoint: resources.endpoints.get.returningAssets,
-		params: returningAssetsParams,
+		params: incomeOriginParams,
 	})?.data
 
 	const collateralAssetsAndROI: BackendCollateralAssetsAndROI | undefined = backend.response({
 		method: 'get',
 		endpoint: resources.endpoints.get.collateralAssetsAndROI,
-		params: collateralAssetsAndROIParams,
+		params: incomeOriginParams,
 	})?.data
 
 	const incomeOrigin: BackendIncomeOrigin | undefined = backend.response({
@@ -121,15 +124,15 @@ function Income() {
 		backend.request({
 			endpoint: resources.endpoints.get.collateralAssetsAndROI,
 			method: 'get',
-			params: collateralAssetsAndROIParams,
+			params: incomeOriginParams,
 		})
 
 		backend.request({
 			endpoint: resources.endpoints.get.returningAssets,
 			method: 'get',
-			params: returningAssetsParams,
+			params: incomeOriginParams,
 		})
-	}, [])
+	}, [revenueSummaryParams, incomeOriginParams, revenueChartParams])
 
 	return (
 		<Container>
@@ -178,6 +181,16 @@ function Income() {
 
 				<StyledPanel>
 					<Panel title={message({ id: 'REVENUE_PER_MONTH' })}>
+						<ContainerSwitch>
+							<Select
+								design="simple"
+								onSelect={onSelectTimeChart(stage)}
+								options={options.map(option => ({
+									...option,
+									main: option.id === stage.state.optionSelectedRevenueChart?.id,
+								}))}
+							/>
+						</ContainerSwitch>
 						{revenueChart && <ChartCurve data={revenueChart.data} labels={revenueChart.months} />}
 						{!revenueChart && (
 							<LoaderContainer>
@@ -190,6 +203,16 @@ function Income() {
 			<SecondaryContent>
 				<StyledPanel>
 					<Panel title="Income stats">
+						<ContainerSwitch>
+							<Select
+								design="simple"
+								onSelect={onSelectTimeOrigin(stage)}
+								options={options.map(option => ({
+									...option,
+									main: option.id === stage.state.optionSelectedIncomOrigin?.id,
+								}))}
+							/>
+						</ContainerSwitch>
 						<StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
 						{incomeOrigin &&
 							Object.keys(incomeOrigin).map(io => (
