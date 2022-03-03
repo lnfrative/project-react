@@ -57,6 +57,7 @@ function ChartCurve(props: ChartCurveProps) {
 						],
 					},
 					options: {
+						responsive: true,
 						scales: {
 							yAxes: {
 								beginAtZero: true,

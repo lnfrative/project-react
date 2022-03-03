@@ -190,7 +190,7 @@ function Income() {
 			<SecondaryContent>
 				<StyledPanel>
 					<Panel title="Income stats">
-						<StatsHead>Origin</StatsHead>
+						<StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
 						{incomeOrigin &&
 							Object.keys(incomeOrigin).map(io => (
 								<StyledLoadLineLabel key={io}>
@@ -244,6 +244,11 @@ function Income() {
 							returningAssets.map(returningAsset => (
 								<ReturningAsset key={returningAsset.coin_id} {...returningAsset} />
 							))}
+						{returningAssets?.length === 0 && (
+							<LoaderContainer>
+								<span>Nothing to show.</span>
+							</LoaderContainer>
+						)}
 						{!returningAssets && (
 							<LoaderContainer>
 								<CircularProgress color="info" />

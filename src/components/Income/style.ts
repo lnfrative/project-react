@@ -2,6 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled('div')`
 	display: flex;
+	flex-direction: column;
+
+	${props => props.theme.mediaQuery.xl} {
+		flex-direction: row;
+	}
 `
 
 export const StyledPanel = styled('div')`
@@ -9,18 +14,27 @@ export const StyledPanel = styled('div')`
 `
 
 export const Revenues = styled('div')`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: grid;
+	gap: ${props => props.theme.space.xl};
+
+	${props => props.theme.mediaQuery.lg} {
+		display: flex;
+		gap: none;
+		justify-content: space-between;
+		align-items: center;
+	}
 `
 
 export const PrimaryContent = styled('div')`
-	flex: 5;
+	flex: 2;
 `
 
 export const SecondaryContent = styled('div')`
-	flex: 2;
-	margin-left: ${props => props.theme.space.lg};
+	flex: 1;
+
+	${props => props.theme.mediaQuery.xl} {
+		margin-left: ${props => props.theme.space.lg};
+	}
 `
 
 export const StyledLoadLineLabel = styled('div')`
@@ -34,8 +48,7 @@ export const StatsHead = styled('div')`
 		`
         font-size: ${props.theme.size.sm};
         color: ${props.theme.color.varietyMainShadow};
-        margin-bottom: ${props.theme.space.lg};
-				margin-top: ${props.theme.space.lg};
+        margin: ${props.theme.space.xl} 0;
       `}
 `
 
@@ -47,4 +60,6 @@ export const LoaderContainer = styled('div')`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	color: ${props => props.theme.color.varietyMainShadow};
 `
