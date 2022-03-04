@@ -6,6 +6,9 @@ import { CircularProgress } from '@mui/material'
 // interfaces
 import { BackendTransaction, BackendSummary, BackendWallet, BackendCoin } from 'interfaces'
 
+// hooks
+import { useStage } from 'hooks'
+
 // contexts
 import { Backend, Currency } from 'contexts'
 
@@ -23,42 +26,61 @@ import {
 // utilities
 import { resources, message } from 'utilities'
 
+// modules
+import { initialState, switchExcludeRewardMovements } from './module'
+
 // styles
 import { StyledPanel, ContainerCheckbox, StyledCheckbox } from './style'
 import styles from './index.module.css'
 // endregion
 
 function Overview() {
+	const stage = useStage(initialState)
 	const currency = useContext(Currency)
 	const backend = useContext(Backend)
+
+	const transactionsParams = {
+		types: stage.state.excludeRewardMovements ? '1,3,4' : '1,2,3,4,5',
+	}
+
 	const wallets: Array<BackendWallet> | undefined = backend.response({
 		endpoint: resources.endpoints.get.wallets,
 		method: 'get',
 	})?.data
+
 	const coins: Array<BackendCoin> | undefined = backend.response({
 		method: 'get',
 		endpoint: resources.endpoints.get.coins,
 	})?.data
+
 	const transactions: Array<BackendTransaction> | undefined = backend.response({
 		method: 'get',
 		endpoint: resources.endpoints.get.transactions,
+		params: transactionsParams,
 	})?.data
+
 	const summary: BackendSummary | undefined = backend.response({
 		method: 'get',
 		endpoint: resources.endpoints.get.summary,
 	})?.data
 
 	useEffect(() => {
-		backend.request({ endpoint: resources.endpoints.get.transactions, method: 'get' })
+		backend.request({
+			endpoint: resources.endpoints.get.transactions,
+			method: 'get',
+			params: transactionsParams,
+		})
+
 		backend.request({
 			endpoint: resources.endpoints.get.summary,
 			method: 'get',
 		})
+
 		backend.request({
 			endpoint: resources.endpoints.get.wallets,
 			method: 'get',
 		})
-	}, [])
+	}, [transactionsParams])
 
 	return (
 		<div className={styles.container}>
@@ -164,7 +186,11 @@ function Overview() {
 					<Panel title={message({ id: 'LAST_MOVEMENTS' })}>
 						<ContainerCheckbox>
 							<StyledCheckbox>
-								<Checkbox checked checkCallback={() => {}} design="standard" />
+								<Checkbox
+									checked={stage.state.excludeRewardMovements}
+									checkCallback={switchExcludeRewardMovements(stage)}
+									design="standard"
+								/>
 							</StyledCheckbox>
 							<div>{message({ id: 'EXCLUDE_REWARDS' })}</div>
 						</ContainerCheckbox>
