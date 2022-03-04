@@ -274,6 +274,9 @@ const messages: Record<string, Record<string, any>> = {
 	ROI: {
 		en: 'ROI',
 	},
+	EXCLUDE_REWARDS: {
+		en: 'Exclude rewards',
+	},
 }
 
 export default messages

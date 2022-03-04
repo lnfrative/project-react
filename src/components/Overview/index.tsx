@@ -24,7 +24,7 @@ import {
 import { resources, message } from 'utilities'
 
 // styles
-import { StyledPanel } from './style'
+import { StyledPanel, ContainerCheckbox, StyledCheckbox } from './style'
 import styles from './index.module.css'
 // endregion
 
@@ -162,7 +162,12 @@ function Overview() {
 			<div className={styles.secundaryGroup}>
 				<StyledPanel>
 					<Panel title={message({ id: 'LAST_MOVEMENTS' })}>
-						<Checkbox checkCallback={() => {}} design="standard" />
+						<ContainerCheckbox>
+							<StyledCheckbox>
+								<Checkbox checked checkCallback={() => {}} design="standard" />
+							</StyledCheckbox>
+							<div>{message({ id: 'EXCLUDE_REWARDS' })}</div>
+						</ContainerCheckbox>
 						<div className={styles.movements}>
 							{transactions?.map((transaction, index) => (
 								<div
