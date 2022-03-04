@@ -17,6 +17,7 @@ import {
 	Transaction,
 	Panel,
 	ValueDecimalLabel,
+	Checkbox,
 } from 'components'
 
 // utilities
@@ -161,6 +162,7 @@ function Overview() {
 			<div className={styles.secundaryGroup}>
 				<StyledPanel>
 					<Panel title={message({ id: 'LAST_MOVEMENTS' })}>
+						<Checkbox checkCallback={() => {}} design="standard" />
 						<div className={styles.movements}>
 							{transactions?.map((transaction, index) => (
 								<div
