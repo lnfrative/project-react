@@ -56,20 +56,17 @@ function Income() {
 
 	const revenueSummaryParams = {
 		currency: currency.state.id,
-		time: 'year',
-		year: '2022',
+		period: 'year',
 	}
 
 	const revenueChartParams = {
 		currency: currency.state.id,
-		time: stage.state.optionSelectedRevenueChart?.id,
-		year: '2022',
+		period: stage.state.optionSelectedRevenueChart?.id,
 	}
 
 	const incomeOriginParams = {
 		currency: currency.state.id,
-		time: stage.state.optionSelectedIncomOrigin?.id,
-		year: '2022',
+		period: stage.state.optionSelectedIncomOrigin?.id,
 	}
 
 	const returningAssets: Array<BackendReturningAsset> | undefined = backend.response({

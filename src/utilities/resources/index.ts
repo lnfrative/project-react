@@ -36,7 +36,7 @@ const endpoints = {
 		summary: '/api/user/summary',
 		resendEmailConfirmation: '/api/user/email/verify/resend',
 		revenueSummary: '/api/user/income/revenueSummary',
-		revenueChart: '/api/user/income/revenuePerMonthChart',
+		revenueChart: '/api/user/income/revenueChart',
 		incomeOrigin: '/api/user/income/incomeOrigin',
 		collateralAssetsAndROI: '/api/user/income/collateralAssetsAndROI',
 		returningAssets: '/api/user/income/topReturningAssets',
