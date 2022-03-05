@@ -2,7 +2,6 @@
 
 .container {
 	position: relative;
-	padding: var(--space-sm) var(--space-lg);
 }
 
 .simpleSelected {
@@ -38,13 +37,15 @@
 	display: flex;
 	align-items: center;
 
+	padding-right: var(--space-sm);
+
 	height: 40px;
 }
 
 .option {
 	justify-content: flex-end;
 	color: var(--color-variety-main);
-	padding: 0 var(--space-sm);
+	padding: 0 var(--space-md);
 }
 
 .option:hover {
@@ -59,7 +60,7 @@
 .groupOptions {
 	left: 0;
 	top: 0;
-	width: 100%;
+	min-width: 100%;
 	position: absolute;
 	background-color: var(--color-passive-pager);
 	border-radius: var(--border-radius-standard);
