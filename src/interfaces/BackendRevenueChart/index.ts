@@ -1,5 +1,5 @@
 interface BackendRevenueChart {
-	months: string[]
+	labels: string[]
 	data: number[]
 }
 

@@ -188,7 +188,7 @@ function Income() {
 								}))}
 							/>
 						</ContainerSwitch>
-						{revenueChart && <ChartCurve data={revenueChart.data} labels={revenueChart.months} />}
+						{revenueChart && <ChartCurve data={revenueChart.data} labels={revenueChart.labels} />}
 						{!revenueChart && (
 							<LoaderContainer>
 								<CircularProgress color="info" />

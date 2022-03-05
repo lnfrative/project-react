@@ -13,15 +13,15 @@ export const options: SelectOption[] = [
 	},
 	{
 		id: 'week',
-		value: 'Week',
+		value: 'This week',
 	},
 	{
 		id: 'month',
-		value: 'Month',
+		value: 'This month',
 	},
 	{
 		id: 'year',
-		value: 'Year',
+		value: 'This year',
 	},
 	{
 		id: 'all',
