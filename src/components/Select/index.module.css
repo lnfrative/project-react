@@ -43,6 +43,7 @@
 }
 
 .option {
+	white-space: pre;
 	justify-content: flex-end;
 	color: var(--color-variety-main);
 	padding: 0 var(--space-md);
