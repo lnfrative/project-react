@@ -64,6 +64,7 @@ export const LoaderContainer = styled('div')`
 
 	color: ${props => props.theme.color.varietyMainShadow};
 `
+
 export const ContainerSwitch = styled('div')`
 	display: flex;
 	justify-content: flex-end;
