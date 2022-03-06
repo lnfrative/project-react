@@ -73,7 +73,7 @@ function ChartCurve(props: ChartCurveProps) {
 			}
 		}
 		return () => chart?.destroy()
-	}, [])
+	}, [props.data, props.labels])
 
 	return <canvas aria-label="chart-curve" ref={refContainer} />
 }
