@@ -41,6 +41,7 @@ function Overview() {
 
 	const transactionsParams = {
 		types: stage.state.excludeRewardMovements ? '1,3,4' : '1,2,3,4,5',
+		perPage: 5,
 	}
 
 	const wallets: Array<BackendWallet> | undefined = backend.response({
