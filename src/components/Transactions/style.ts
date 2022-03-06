@@ -41,3 +41,24 @@ export const LoaderContainer = styled('div')`
 
 	color: ${props => props.theme.color.varietyMainShadow};
 `
+
+export const ContainerCheckbox = styled.div`
+	display: flex;
+	margin-bottom: ${props => props.theme.space.sm};
+	color: ${props => props.theme.color.varietyMainShadow};
+`
+
+export const StyledCheckbox = styled.div`
+	margin-right: ${props => props.theme.space.lg};
+`
+
+export const StatsHead = styled('div')`
+	letter-spacing: 4.1px;
+	font-weight: bold;
+	${props =>
+		`
+        font-size: ${props.theme.size.sm};
+        color: ${props.theme.color.varietyMainShadow};
+        margin: ${props.theme.space.lg} 0;
+      `}
+`

@@ -1,4 +1,5 @@
 @import './variables.css';
+@import url('./react-date-range.css');
 
 html {
 	background-color: var(--color-passive-main);

@@ -24,6 +24,9 @@ import { resources } from 'utilities'
 import 'css/fonts/Aileron/index.css'
 import 'css/index.css'
 
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
+
 // views
 const Home = lazy(() => import('views/Home'))
 const Signup = lazy(() => import('views/Signup'))

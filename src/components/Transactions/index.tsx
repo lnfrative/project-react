@@ -1,6 +1,10 @@
 // region import
 import React, { useContext, useEffect } from 'react'
+import { DateRange } from 'react-date-range'
 import { CircularProgress } from '@mui/material'
+
+// hooks
+import { useStage } from 'hooks'
 
 // interfaces
 import { BackendTransaction } from 'interfaces'
@@ -9,10 +13,13 @@ import { BackendTransaction } from 'interfaces'
 import { Backend } from 'contexts'
 
 // components
-import { Panel, Transaction } from 'components'
+import { Panel, Transaction, Checkbox } from 'components'
 
 // utilities
 import { resources } from 'utilities'
+
+// modules
+import { initialState, handleRanges, updateTypes } from './module'
 
 // styles
 import {
@@ -21,24 +28,42 @@ import {
   SecondaryContent,
   StyledPanel,
   ContainerTransaction,
-  LoaderContainer
+  LoaderContainer,
+  ContainerCheckbox,
+  StyledCheckbox,
+  StatsHead,
 } from './style'
 // endregion
 
 function Transactions() {
+  const stage = useStage(initialState)
   const backend = useContext(Backend)
+
+  const range = [
+    new Date(stage.state.range.startDate).getTime(),
+    new Date(stage.state.range.endDate).getTime(),
+  ]
+
+  const params = {
+    types: stage.state.types.join(','),
+    ...(range[0] === range[1] ? {} : {
+      range: range.join(',')
+    })
+  }
 
   const transactions: BackendTransaction[] | undefined = backend.response({
     endpoint: resources.endpoints.get.transactions,
     method: 'get',
+    params,
   })?.data
 
   useEffect(() => {
     backend.request({
       endpoint: resources.endpoints.get.transactions,
-      method: 'get'
+      method: 'get',
+      params,
     })
-  }, [])
+  }, [stage.state.range, stage.state.types])
 
   return (
     <Container>
@@ -63,7 +88,53 @@ function Transactions() {
       <SecondaryContent>
         <StyledPanel>
           <Panel title="Filters">
-            Filters
+            <StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
+            <ContainerCheckbox>
+              <StyledCheckbox>
+                <Checkbox
+                  checked={stage.state.types.includes(1)}
+                  checkCallback={updateTypes(stage, 1)}
+                  design="standard"
+                />
+              </StyledCheckbox>
+              <div>Deposits</div>
+            </ContainerCheckbox>
+            <ContainerCheckbox>
+              <StyledCheckbox>
+                <Checkbox
+                  checked={stage.state.types.includes(4)}
+                  checkCallback={updateTypes(stage, 4)}
+                  design="standard"
+                />
+              </StyledCheckbox>
+              <div>Withdrawals</div>
+            </ContainerCheckbox>
+            <ContainerCheckbox>
+              <StyledCheckbox>
+                <Checkbox
+                  checked={stage.state.types.includes(2)}
+                  checkCallback={updateTypes(stage, 2)}
+                  design="standard"
+                />
+              </StyledCheckbox>
+              <div>Staking rewards</div>
+            </ContainerCheckbox>
+            <ContainerCheckbox>
+              <StyledCheckbox>
+                <Checkbox
+                  checked={stage.state.types.includes(5)}
+                  checkCallback={updateTypes(stage, 5)}
+                  design="standard"
+                />
+              </StyledCheckbox>
+              <div>Masternodes rewards</div>
+            </ContainerCheckbox>
+            <StatsHead>Date range</StatsHead>
+            <DateRange
+              ranges={[stage.state.range]}
+              showDateDisplay={false}
+              onChange={handleRanges(stage)}
+            />
           </Panel>
         </StyledPanel>
       </SecondaryContent>

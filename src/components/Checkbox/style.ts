@@ -26,6 +26,8 @@ export const CheckMark = styled.span<CheckboxProps>`
 	height: 15px;
 	width: 15px;
 
+	border-radius: 5px;
+
 	border: solid 2px
 		${props => {
 			if (props.design === 'rhomboid') return props.theme.color.activeMain

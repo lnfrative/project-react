@@ -1,0 +1,19 @@
+.rdrCalendarWrapper {
+	background-color: var(--color-passive-main) !important;
+}
+
+.rdrDayNumber span {
+	color: var(--color-variety-main) !important;
+}
+
+.rdrNextPrevButton {
+	background-color: var(--color-active-load) !important;
+}
+
+.rdrPprevButton i {
+	border-color: transparent var(--color-white) transparent transparent !important;
+}
+
+.rdrNextButton i {
+	border-color: transparent transparent transparent var(--color-white) !important;
+}

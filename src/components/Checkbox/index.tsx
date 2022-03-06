@@ -1,5 +1,8 @@
 // region import
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
+// hooks
+import { useStrictEffect } from 'hooks'
 
 // interfaces
 import { CheckboxProps } from 'interfaces'
@@ -11,7 +14,7 @@ import { Input, Label, CheckMark } from './style'
 function Checkbox(props: CheckboxProps) {
 	const [checked, setChecked] = useState(!!props.checked)
 
-	useEffect(() => {
+	useStrictEffect(() => {
 		props.checkCallback(checked)
 	}, [checked])
 
