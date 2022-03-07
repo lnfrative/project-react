@@ -42,14 +42,14 @@ function ChartCurve(props: ChartCurveProps) {
 				chart = new Chart(context, {
 					type: 'line',
 					data: {
-						labels: props.labels,
+						labels: props.labels.length === 1 ? ['', props.labels[0], ''] : props.labels,
 						datasets: [
 							{
 								fill: true,
 								backgroundColor: gradient,
 								pointBackgroundColor: colors.purple.default,
 								borderColor: colors.purple.default,
-								data: props.data,
+								data: props.data.length === 1 ? [NaN, props.data[0], NaN] : props.data,
 								borderWidth: 2,
 								pointRadius: 3,
 								tension: 0.3,
