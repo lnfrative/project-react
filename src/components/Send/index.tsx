@@ -160,7 +160,7 @@ function Send() {
 							</div>
 
 							<GroupInput>
-								<GroupInputLabel>Recipient address or email</GroupInputLabel>
+								<GroupInputLabel>Address</GroupInputLabel>
 								<GroupInputWrap>
 									<GroupInputWrapIcon>
 										<SVGIconCreditCard />
