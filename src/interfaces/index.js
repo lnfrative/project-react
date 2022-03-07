@@ -88,3 +88,4 @@ export { default as BackendCollateralAssetsAndROI } from './BackendCollateralAss
 export { default as BackendReturningAsset } from './BackendReturningAsset'
 export { default as ReturningAssetProps } from './ReturningAssetProps'
 export { default as CheckboxProps } from './CheckboxProps'
+export { default as EndScrollParams } from './EndScrollParams'

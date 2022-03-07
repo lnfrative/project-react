@@ -4,7 +4,7 @@ import { DateRange } from 'react-date-range'
 import { CircularProgress } from '@mui/material'
 
 // hooks
-import { useStage } from 'hooks'
+import { useStage, useEndScroll, useStrictEffect } from 'hooks'
 
 // interfaces
 import { BackendTransaction, BackendCoin } from 'interfaces'
@@ -38,6 +38,7 @@ import {
 function Transactions() {
   const stage = useStage(initialState)
   const backend = useContext(Backend)
+  const { endScroll } = useEndScroll({ ep: 0 })
 
   const range = [
     new Date(stage.state.range.startDate).getTime(),
@@ -53,7 +54,9 @@ function Transactions() {
     }),
     ...(stage.state.coinSelected.id === 'all' ? {} : {
       coin: stage.state.coinSelected.id
-    })
+    }),
+
+    page: stage.state.pages[stage.state.pages.length - 1]
   }
 
   const coins: BackendCoin[] = backend.response({
@@ -68,35 +71,88 @@ function Transactions() {
   })?.data
 
   useEffect(() => {
-    backend.request({
-      endpoint: resources.endpoints.get.transactions,
-      method: 'get',
-      params,
+    stage.commitState({
+      ...stage.state,
+      pages: [1]
     })
   }, [stage.state.range, stage.state.types, stage.state.coinSelected])
+
+  useEffect(() => {
+    // TODO: Pull this logic out of here.
+    const request = stage.state.pages.reduce((previousValue, page) => {
+      if (previousValue) return previousValue
+      if (stage.state.pages.length === 1) return true
+
+      const response = !!backend.response({
+        method: 'get',
+        endpoint: resources.endpoints.get.transactions,
+        params: {
+          ...params,
+          page,
+        }
+      })?.data
+
+      return response
+      
+    }, false)
+
+    if (request) {
+      backend.request({
+        endpoint: resources.endpoints.get.transactions,
+        method: 'get',
+        params,
+      })
+    }
+
+  }, [stage.state.range, stage.state.types, stage.state.coinSelected, stage.state.pages])
+
+  useStrictEffect(() => {
+    if (endScroll && transactions && transactions.length !== 0) {
+      stage.commitState({
+        ...stage.state,
+        pages: [...stage.state.pages, stage.state.pages.length + 1]
+      })
+    }
+  }, [endScroll])
 
   return (
     <Container>
       <PrimaryContent>
         <StyledPanel>
           <Panel title="Transactions">
-            {transactions && transactions.map((transaction, index) => (
-              <ContainerTransaction
-                key={transaction.id}
-              >
-                <Transaction data={transaction} />
-              </ContainerTransaction>
-            ))}
+            {stage.state.pages.map(page => {
+              const transactionsPage: BackendTransaction[] | undefined = backend.response({
+                method: 'get',
+                endpoint: resources.endpoints.get.transactions,
+                params: {
+                  ...params,
+                  page,
+                }
+              })?.data
+
+              if (!transactionsPage) return null
+              return transactionsPage.map(t => (
+                <ContainerTransaction>
+                  <Transaction data={t} />
+                </ContainerTransaction>
+              ))
+            })}
             {!transactions && (
               <ContainerFeedback>
                 <CircularProgress color="inherit" />
               </ContainerFeedback>
             )}
-            {transactions?.length === 0 && (
+            {transactions?.length === 0 && stage.state.pages.length === 1 && (
               <ContainerFeedback>
                 {message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
               </ContainerFeedback>
             )}
+            {transactions?.length === 0 && stage.state.pages.length !== 1 && (
+              <ContainerFeedback>
+                {message({ id: 'NO_MORE_TX_TO_SHOW' })}
+              </ContainerFeedback>
+            )}
+            
           </Panel>
         </StyledPanel>
       </PrimaryContent>

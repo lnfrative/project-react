@@ -10,6 +10,7 @@ interface State {
     key: string,
   }
   coinSelected: SelectOption,
+  pages: number[]
 }
 
 export const initialState: State = {
@@ -19,7 +20,8 @@ export const initialState: State = {
     endDate: new Date(),
     key: 'selection'
   },
-  coinSelected: { id: 'all', value: 'All coins' }
+  coinSelected: { id: 'all', value: 'All coins' },
+  pages: [1],
 }
 
 export function handleSelect(stage: Stage<State>): OnSelect {
