@@ -7,19 +7,19 @@ import { CircularProgress } from '@mui/material'
 import { useStage } from 'hooks'
 
 // interfaces
-import { BackendTransaction } from 'interfaces'
+import { BackendTransaction, BackendCoin } from 'interfaces'
 
 // contexts
 import { Backend } from 'contexts'
 
 // components
-import { Panel, Transaction, Checkbox } from 'components'
+import { Panel, Transaction, Checkbox, Select, ImgCoin } from 'components'
 
 // utilities
 import { resources, message } from 'utilities'
 
 // modules
-import { initialState, handleRanges, updateTypes } from './module'
+import { initialState, handleRanges, updateTypes, handleSelect } from './module'
 
 // styles
 import {
@@ -48,8 +48,16 @@ function Transactions() {
     types: stage.state.types.join(','),
     ...(range[0] === range[1] ? {} : {
       range: range.join(',')
+    }),
+    ...(stage.state.coinSelected.id === 'all' ? {} : {
+      coin: stage.state.coinSelected.id
     })
   }
+
+  const coins: BackendCoin[] = backend.response({
+    endpoint: resources.endpoints.get.coins,
+    method: 'get',
+  })?.data
 
   const transactions: BackendTransaction[] | undefined = backend.response({
     endpoint: resources.endpoints.get.transactions,
@@ -63,7 +71,7 @@ function Transactions() {
       method: 'get',
       params,
     })
-  }, [stage.state.range, stage.state.types])
+  }, [stage.state.range, stage.state.types, stage.state.coinSelected])
 
   return (
     <Container>
@@ -134,6 +142,23 @@ function Transactions() {
               </StyledCheckbox>
               <div>Masternodes rewards</div>
             </ContainerCheckbox>
+            <StatsHead>Coins</StatsHead>
+            <Select
+              design="outlined"
+              onSelect={handleSelect(stage)}
+              options={[
+                { id: 'all', value: 'All coins', main: stage.state.coinSelected.id === 'all' },
+                ...coins.map(coin => ({
+                  id: coin.id.toString(),
+                  value: coin.name,
+                  element: <ImgCoin size="small" src={resources.coin[
+                    resources.utils.normaliceCoinName(coin.name)
+                  ].logo}/>,
+                  secondaryValue: coin.asset,
+                  main: stage.state.coinSelected.id === coin.id.toString()
+                }))
+              ]}
+            />
             <StatsHead>Date range</StatsHead>
             <DateRange
               ranges={[stage.state.range]}

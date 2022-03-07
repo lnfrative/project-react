@@ -1,5 +1,6 @@
-import { Stage } from 'interfaces'
+import { Stage, SelectOption } from 'interfaces'
 import { RangeKeyDict } from 'react-date-range'
+import { OnSelect } from 'types'
 
 interface State {
   types: number[]
@@ -8,6 +9,7 @@ interface State {
     endDate: Date,
     key: string,
   }
+  coinSelected: SelectOption,
 }
 
 export const initialState: State = {
@@ -16,6 +18,18 @@ export const initialState: State = {
     startDate: new Date(),
     endDate: new Date(),
     key: 'selection'
+  },
+  coinSelected: { id: 'all', value: 'All coins' }
+}
+
+export function handleSelect(stage: Stage<State>): OnSelect {
+  return (values) => {
+    if (!values.assemble) {
+      stage.commitState({
+        ...stage.state,
+        coinSelected: values.option
+      })
+    }
   }
 }
 
