@@ -16,7 +16,7 @@ import { Backend } from 'contexts'
 import { Panel, Transaction, Checkbox } from 'components'
 
 // utilities
-import { resources } from 'utilities'
+import { resources, message } from 'utilities'
 
 // modules
 import { initialState, handleRanges, updateTypes } from './module'
@@ -28,7 +28,7 @@ import {
   SecondaryContent,
   StyledPanel,
   ContainerTransaction,
-  LoaderContainer,
+  ContainerFeedback,
   ContainerCheckbox,
   StyledCheckbox,
   StatsHead,
@@ -78,9 +78,14 @@ function Transactions() {
               </ContainerTransaction>
             ))}
             {!transactions && (
-              <LoaderContainer>
+              <ContainerFeedback>
                 <CircularProgress color="inherit" />
-              </LoaderContainer>
+              </ContainerFeedback>
+            )}
+            {transactions?.length === 0 && (
+              <ContainerFeedback>
+                {message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
+              </ContainerFeedback>
             )}
           </Panel>
         </StyledPanel>

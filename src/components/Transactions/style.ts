@@ -34,7 +34,7 @@ export const ContainerTransaction = styled.div`
 		margin-bottom: ${props => props.theme.space.lg};
 `
 
-export const LoaderContainer = styled('div')`
+export const ContainerFeedback = styled('div')`
 	display: flex;
 	justify-content: center;
 	align-items: center;
