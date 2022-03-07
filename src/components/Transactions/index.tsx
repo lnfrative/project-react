@@ -132,7 +132,7 @@ function Transactions() {
 
               if (!transactionsPage) return null
               return transactionsPage.map(t => (
-                <ContainerTransaction>
+                <ContainerTransaction key={t.id}>
                   <Transaction data={t} />
                 </ContainerTransaction>
               ))
