@@ -45,7 +45,9 @@ function Transactions() {
   ]
 
   const params = {
-    types: stage.state.types.join(','),
+    ...(stage.state.types.length === 0 ? {} : {
+      types: stage.state.types.join(',')
+    }),
     ...(range[0] === range[1] ? {} : {
       range: range.join(',')
     }),
