@@ -22,6 +22,7 @@ import {
 	Overview,
 	Income,
 	Transactions,
+	Subscriptions
 } from 'components'
 
 // styles
@@ -38,7 +39,7 @@ const paginationObjects: Array<PaginationObject> = [
 	{ id: 'income', title: 'Income', content: <Income /> },
 	{ id: 'send_and_receive', title: 'Send & Receive', content: <SendAndReceive /> },
 	{ id: 'transactions', title: 'Transactions', content: <Transactions /> },
-	{ id: 'subscriptions', title: 'Subscriptions', disabled: true, content: null },
+	{ id: 'subscriptions', title: 'Subscriptions', content: <Subscriptions /> },
 ]
 
 function Dashboard() {

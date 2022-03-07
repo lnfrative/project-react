@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Input = styled.input`
 	height: 100%;
@@ -41,4 +42,10 @@ export const ErrorMessage = styled.div`
 	font-size: ${props => props.theme.size.xxs};
 	color: ${props => props.theme.color.varietyDownstream};
 	margin-top: ${props => props.theme.space.sm};
+`
+
+export const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: inherit;
+	font-weight: 800;
 `

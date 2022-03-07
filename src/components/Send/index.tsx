@@ -39,6 +39,7 @@ import {
 	GroupInputWrap,
 	GroupInputWrapIcon,
 	ErrorMessage,
+	StyledLink
 } from './style'
 // endregion
 
@@ -166,7 +167,7 @@ function Send() {
 										<SVGIconCreditCard />
 									</GroupInputWrapIcon>
 									<Input
-										placeholder="sYBLt1MpLXLC6pCGAfSQwYHh5Jj5Sgks4"
+										placeholder="Enter your address"
 										ref={bind({ name: 'address' })}
 									/>
 								</GroupInputWrap>
@@ -184,7 +185,13 @@ function Send() {
 
 							{!user.two_factor_verified && (
 								<ErrorMessage style={{ textAlign: 'center' }}>
-									You need to have 2FA activated to enable send.
+									<StyledLink to="/setting/security">
+										Enable 2FA
+									</StyledLink>
+									{' '}
+									<span>
+									 to start sending!
+									</span>
 								</ErrorMessage>
 							)}
 

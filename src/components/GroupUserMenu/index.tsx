@@ -83,7 +83,7 @@ function GroupUserMenu() {
 							<SVGIconNotifications />
 						</NotificationsElements>
 						<NotificationsElements>Hang tight!</NotificationsElements>
-						<NotificationsElements style={{ margin: 0 }}>Notifications will start showing up coming soon.</NotificationsElements>
+						<NotificationsElements style={{ margin: 0 }}>Notifications will start showing up soon.</NotificationsElements>
 					</NotificationsContent>
 				</ContainerNotifications>
 			</Menu>

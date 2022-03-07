@@ -279,6 +279,9 @@ const messages: Record<string, Record<string, any>> = {
 	},
 	NO_MORE_TX_TO_SHOW: {
 		en: 'There are no more transactions to show.'
+	},
+	SUPPORT: {
+		en: 'Support'
 	}
 }
 
