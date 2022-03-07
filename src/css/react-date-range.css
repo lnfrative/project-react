@@ -17,3 +17,15 @@
 .rdrNextButton i {
 	border-color: transparent transparent transparent var(--color-white) !important;
 }
+
+.rdrSelected, .rdrInRange, .rdrStartEdge, .rdrEndEdge {
+	background-color: var(--color-active-load) !important;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+	display: none !important;
+}
+
+.rdrDay .rdrDayHovered {
+	border: none !important;
+}
