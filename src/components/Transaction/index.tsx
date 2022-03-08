@@ -56,13 +56,12 @@ function Transaction(props: TransactionProps) {
 					</div>
 					{props.data.value >= 0 && (
 						<div className={styles.movementPriceUp}>
-							{currencyPrice.integer}.{currencyPrice.decimal} {currency.state.id?.toUpperCase()}
+							{currencyPrice.value} {currency.state.id?.toUpperCase()}
 						</div>
 					)}
 					{props.data.value < 0 && (
 						<div className={styles.movementPriceDown}>
-							{currencyPrice.integer}.{currencyPrice.decimal}
-							{currency.state.id?.toUpperCase()}
+							{currencyPrice.value} {currency.state.id?.toUpperCase()}
 						</div>
 					)}
 				</div>

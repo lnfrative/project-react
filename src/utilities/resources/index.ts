@@ -121,7 +121,7 @@ function splitFloat(value: number, decimalLength?: number) {
 	return {
 		integer,
 		decimal,
-		value: `${integer}.${decimal}`,
+		value: `${integer}.${decimal}` === '0.00' ? '<0.01' : `${integer}.${decimal}`,
 	}
 }
 
