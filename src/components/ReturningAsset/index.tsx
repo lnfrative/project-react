@@ -39,7 +39,7 @@ function ReturningAsset(props: BackendReturningAsset) {
 			</Group>
 			<Group>
 				<PrimaryTitle>
-					<ValueDecimal sameSize decimals={0} sign="$" value={props.generated} sise="small" />
+					<ValueDecimal sameSize decimals={2} sign="$" value={props.generated} sise="small" />
 				</PrimaryTitle>
 				<SecondaryTitle>{message({ id: 'GENERATED' })}</SecondaryTitle>
 			</Group>
@@ -47,7 +47,7 @@ function ReturningAsset(props: BackendReturningAsset) {
 				<PrimaryTitle>
 					<ValueDecimal
 						sameSize
-						decimals={0}
+						decimals={2}
 						sign="%"
 						signPosition="right"
 						value={props.ROI}
