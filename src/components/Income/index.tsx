@@ -245,7 +245,7 @@ function Income() {
 						{collateralAssetsAndROI && (
 							<ContainerValue>
 								<ValueDecimal
-									decimals={0}
+									decimals={2}
 									sign="%"
 									signPosition="right"
 									sise="large"
