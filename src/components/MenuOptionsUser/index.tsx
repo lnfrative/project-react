@@ -1,6 +1,10 @@
 // region import
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Menu } from '@mui/material'
+
+// hooks
+import { useStage } from 'hooks'
 
 // utilities
 import { message, resources } from 'utilities'
@@ -8,7 +12,7 @@ import { MenuOptionsUserProps } from 'interfaces'
 
 // components
 import {
-	Menu,
+	// Menu,
 	SVGIconSettings,
 	// SVGIconCheck,
 	// SVGIconBook,
@@ -16,14 +20,41 @@ import {
 	Signout,
 } from 'components'
 
+// modules
+import { initialState, handleClose, handleOpen } from './module'
+
 // styles
 import styles from './index.module.css'
 // endregion
 
 function MenuOptionsUser(props: MenuOptionsUserProps) {
+	const stage = useStage(initialState)
+	const open = Boolean(stage.state.anchor)
 	return (
-		<Menu
-			content={
+		<div>
+			<div
+				role="button"
+				aria-controls="basic-menu"
+				tabIndex={0}
+				onClick={handleOpen(stage)}
+				className={styles.container}
+			>{props.character}</div>
+			<Menu
+				open={open}
+				anchorEl={stage.state.anchor}
+				MenuListProps={{
+					"aria-labelledby": "basic-menu"
+				}}
+				onClose={handleClose(stage)}
+				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+
+				PaperProps={{
+					sx: {
+						background: 'transparent',
+					}
+				}}
+			>
 				<div className={styles.menuContent}>
 					<div className={styles.group}>
 						<Link to={resources.routes.setting.base} className={styles.containerOption}>
@@ -55,10 +86,8 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
 						</div>
 					</Signout>
 				</div>
-			}
-		>
-			<div className={styles.container}>{props.character}</div>
-		</Menu>
+			</Menu>
+		</div>
 	)
 }
 
