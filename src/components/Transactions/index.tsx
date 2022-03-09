@@ -131,11 +131,15 @@ function Transactions() {
               })?.data
 
               if (!transactionsPage) return null
-              return transactionsPage.map(t => (
-                <ContainerTransaction key={t.id}>
-                  <Transaction data={t} />
-                </ContainerTransaction>
-              ))
+              return transactionsPage.map(t => {
+                const [coin] = coins.filter(value => value.id === t.coin_id)
+                const txURL = resources.coin[resources.utils.normaliceCoinName(coin.name)].tx
+                return (
+                  <ContainerTransaction href={txURL + t.txid} target="_blank" key={t.id}>
+                    <Transaction data={t} />
+                  </ContainerTransaction>
+                )
+              })
             })}
             {!transactions && (
               <ContainerFeedback>

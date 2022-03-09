@@ -3,20 +3,17 @@ import routes from './routes'
 
 interface ResourceCoin {
 	logo: string
+	tx: string
 }
 
 const coin: Record<string, ResourceCoin> = {
 	dogecash: {
 		logo: `https://dev-api-account.dogecash.org/assets/coins/DogeCash/logo.svg`,
+		tx: 'https://explorer.dogecash.org/tx/'
 	},
 	bitcoin: {
 		logo: `https://dev-api-account.dogecash.org/assets/coins/Bitcoin/logo.svg`,
-	},
-	stakecube: {
-		logo: `https://dev-api-account.dogecash.org/assets/coins/Stakecube/logo.png`,
-	},
-	litecoin: {
-		logo: `https://dev-api-account.dogecash.org/assets/coins/Litecoin/logo.svg`,
+		tx: 'https://live.blockcypher.com/btc/tx/'
 	},
 }
 
