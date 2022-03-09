@@ -52,6 +52,7 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
 				PaperProps={{
 					sx: {
 						background: 'transparent',
+						boxShadow: 'none'
 					}
 				}}
 			>
