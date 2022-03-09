@@ -38,7 +38,7 @@ import {
 function Transactions() {
   const stage = useStage(initialState)
   const backend = useContext(Backend)
-  const { endScroll } = useEndScroll({ ep: 0 })
+  const { endScroll } = useEndScroll({ ep: 100 })
 
   const range = [
     new Date(stage.state.range.startDate).getTime(),
