@@ -2,22 +2,22 @@ import classNames from 'classnames'
 import { Stage, SelectOption, SelectProps } from 'interfaces'
 import styles from './index.module.css'
 
-interface InitialState {
+interface State {
 	status?: 'open' | 'close'
 	optionSelected?: SelectOption | undefined
 }
 
-const initialState: InitialState = {
+const initialState: State = {
 	status: 'close',
 	optionSelected: undefined,
 }
 
-function onSelect(stage: Stage<InitialState>, optionSelected: SelectOption, props: SelectProps) {
+function onSelect(stage: Stage<State>, optionSelected: SelectOption, props: SelectProps) {
 	return () => {
-		stage.commitState({ optionSelected })
-
-		if (!props.onSelect) return
-		props.onSelect({ option: optionSelected })
+		stage.commitState({ optionSelected, status: 'close' })
+		if (props.onSelect) {
+			props.onSelect({ option: optionSelected })
+		}
 	}
 }
 
@@ -42,7 +42,7 @@ function nestStyles(arg: SelectProps) {
 	}
 }
 
-function onOpen(stage: Stage<InitialState>) {
+function onOpen(stage: Stage<State>) {
 	return () => stage.commitState({ status: 'open' })
 }
 

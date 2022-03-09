@@ -1,11 +1,11 @@
 // region import
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 // components
 import { SVGIconTriangleDown, SVGIconArrowDown } from 'components'
 
 // hooks
-import { useStage, useStrictEffect } from 'hooks'
+import { useStage } from 'hooks'
 
 // utilities
 import { SelectProps } from 'interfaces'
@@ -15,7 +15,7 @@ import { initialState, onOpen, nestStyles, onSelect } from './module'
 // endregion
 
 function Select(props: SelectProps) {
-	const [closeId, setCloseId] = useState<number>(0)
+	const ref = useRef<HTMLDivElement>(null)
 	const stage = useStage(initialState)
 	const styles = nestStyles(props)
 
@@ -30,20 +30,23 @@ function Select(props: SelectProps) {
 	}, [])
 
 	useEffect(() => {
-		if (stage.state.status !== 'open') return () => {}
-		function close() {
-			setCloseId(Math.random())
+		const close = (e: MouseEvent) => {
+			if (ref.current && e.target instanceof Node) {
+				if (!ref.current.contains(e.target)) {
+					stage.commitState({
+						status: 'close'
+					})
+				}
+			}
 		}
-		window.addEventListener('click', close)
+		if (stage.state.status === 'open') {
+			window.addEventListener('click', close)
+		}
 		return () => window.removeEventListener('click', close)
 	}, [stage.state.status])
 
-	useStrictEffect(() => {
-		stage.commitState({ status: 'close' })
-	}, [closeId])
-
 	return (
-		<div className={styles.container}>
+		<div ref={ref} className={styles.container}>
 			{stage.state.optionSelected !== undefined && (
 				<div role="button" tabIndex={0} onClick={onOpen(stage)} className={styles.optionSelected}>
 					<span className={styles.title}>{props.title}</span>
