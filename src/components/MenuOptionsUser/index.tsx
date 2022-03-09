@@ -48,16 +48,6 @@ function MenuOptionsUser(props: MenuOptionsUserProps) {
 							<span className={styles.label}>{message({ id: 'SUPPORT' })}</span>
 						</a>
 					</div>
-					{/* <div className={styles.group}>
-						<div className={styles.containerOption}>
-							<SVGIconCheck />
-							<span className={styles.label}>{message({ id: 'MOVEMENT_HISTORY' })}</span>
-						</div>
-						<div className={styles.containerOption}>
-							<SVGIconBook />
-							<span className={styles.label}>{message({ id: 'ADDRESS_BOOK' })}</span>
-						</div>
-					</div> */}
 					<Signout>
 						<div className={styles.containerOption}>
 							<SVGIconLogout />

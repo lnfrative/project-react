@@ -11,6 +11,7 @@ body {
 	background: linear-gradient(to bottom, var(--color-passive-secundary), var(--color-passive-main));
 	margin: 0;
 	letter-spacing: 2px;
+	width: 100%;
 }
 
 button {
