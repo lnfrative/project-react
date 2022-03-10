@@ -15,8 +15,6 @@ function useEndScroll(params: EndScrollParams) {
   const stage = useStage(initialState)
 
   useEffect(() => {
-    // TODO: Remove this log.
-    console.debug(`[DEBUG] End scroll: ${stage.state.endScroll}`)
 		window.addEventListener('scroll', handleScroll(params, stage))
 		return () => {
 			window.removeEventListener('scroll', handleScroll(params, stage))
