@@ -8,11 +8,11 @@ interface ResourceCoin {
 
 const coin: Record<string, ResourceCoin> = {
 	dogecash: {
-		logo: `https://dev-api-account.dogecash.org/assets/coins/DogeCash/logo.svg`,
+		logo: `/images/logos/dogecash.svg`,
 		tx: 'https://explorer.dogecash.org/tx/'
 	},
 	bitcoin: {
-		logo: `https://dev-api-account.dogecash.org/assets/coins/Bitcoin/logo.svg`,
+		logo: `/images/logos/bitcoin.png`,
 		tx: 'https://live.blockcypher.com/btc/tx/'
 	},
 }
