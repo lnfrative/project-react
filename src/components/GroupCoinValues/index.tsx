@@ -26,6 +26,7 @@ import { selectCoin, selectTime, initialState } from './module'
 
 // styles
 import styles from './index.module.css'
+import { SelectValues, SelectSpacing, StyledGroupValueDecimal } from './style'
 // endregion
 
 const coinOptions = [
@@ -80,29 +81,31 @@ function GroupCoinValues() {
 
 	return (
 		<div className={styles.container}>
-			<GroupValueDecimal
-				design="top"
-				title={message({ id: 'BALANCE' })}
-				value={stage.state.backendBalance?.balance_main_currency ?? 0}
-				sign="$"
-				decimals={2}
-			/>
-			<div className={styles.containerSelectValues}>
-				<div className={styles.space}>
+			<StyledGroupValueDecimal>
+				<GroupValueDecimal
+					design="top"
+					title={message({ id: 'BALANCE' })}
+					value={stage.state.backendBalance?.balance_main_currency ?? 0}
+					sign="$"
+					decimals={2}
+				/>
+			</StyledGroupValueDecimal>
+			<SelectValues>
+				<SelectSpacing>
 					<GroupSelectValueDecimal
 						valueDecimal={stage.state.backendBalance?.balance_secondary_currency ?? 0}
 						titleSelect="Worth in"
 						optionsSelect={coinOptions}
 						onSelect={selectCoin(stage)}
 					/>
-				</div>
+				</SelectSpacing>
 				<GroupSelectValueVariation
 					valueVariation={stage.state.backendBalance?.change ?? 0}
 					titleSelect="Last"
 					optionsSelect={timeOptions}
 					onSelect={selectTime(stage)}
 				/>
-			</div>
+			</SelectValues>
 			<BackdropLoader open={loading} />
 		</div>
 	)
