@@ -21,3 +21,15 @@ export const StyledCheckbox = styled.div`
 	height: 44px;
 	width: 44px;
 `
+
+export const Values = styled('div')`
+	display: grid;
+	gap: ${props => props.theme.space.xl};
+
+	${props => props.theme.mediaQuery.lg} {
+		display: flex;
+		gap: none;
+		justify-content: space-between;
+		align-items: center;
+	}
+`

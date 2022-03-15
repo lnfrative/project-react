@@ -30,7 +30,7 @@ import { resources, message } from 'utilities'
 import { initialState, switchExcludeRewardMovements } from './module'
 
 // styles
-import { StyledPanel, ContainerCheckbox, StyledCheckbox } from './style'
+import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values } from './style'
 import styles from './index.module.css'
 // endregion
 
@@ -88,7 +88,7 @@ function Overview() {
 			<div className={styles.mainGroup}>
 				<StyledPanel>
 					<Panel title={message({ id: 'LAST_30_DAYS' })}>
-						<div className={styles.groupValues}>
+						<Values>
 							{summary && (
 								<>
 									<ValueDecimalLabel
@@ -126,7 +126,7 @@ function Overview() {
 									<CircularProgress color="inherit" />
 								</div>
 							)}
-						</div>
+						</Values>
 					</Panel>
 				</StyledPanel>
 
