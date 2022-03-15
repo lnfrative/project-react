@@ -1,14 +1,25 @@
+@import url('../../css/variables.css');
+
 .medium {
 	height: 40px;
 	width: 40px;
+
+	border-radius: 100%;
+	border: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .small {
 	width: 24px;
 	height: 24px;
+
+	border-radius: 100%;
+	border: solid 1px var(--color-variety-main-tiny-shadow);
 }
 
 .large {
 	height: 125px;
 	width: 125px;
+
+	border-radius: 100%;
+	border: solid 1px var(--color-variety-main-tiny-shadow);
 }

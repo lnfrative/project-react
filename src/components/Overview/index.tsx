@@ -21,6 +21,7 @@ import {
 	Panel,
 	ValueDecimalLabel,
 	Checkbox,
+	CoinAsset
 } from 'components'
 
 // utilities
@@ -30,7 +31,7 @@ import { resources, message } from 'utilities'
 import { initialState, switchExcludeRewardMovements } from './module'
 
 // styles
-import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values } from './style'
+import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values, TableAssets, CoinAssets, StyledCoinAsset } from './style'
 import styles from './index.module.css'
 // endregion
 
@@ -133,7 +134,12 @@ function Overview() {
 				<StyledPanel>
 					<Panel title={message({ id: 'ASSETS_SUMMARY' })}>
 						<div className={styles.groupValues}>
-							<div className={styles.assetsTable}>
+							{!wallets && (
+								<div className={styles.containerFeedback}>
+									<CircularProgress color="inherit" />
+								</div>
+							)}
+							<TableAssets>
 								{wallets && wallets.length !== 0 && coins && (
 									<div className={styles.assetsTableRow}>
 										<div />
@@ -145,11 +151,6 @@ function Overview() {
 								{wallets?.length === 0 && (
 									<div className={styles.containerFeedback}>
 										{message({ id: 'NO_WALLETS_CREATED' })}
-									</div>
-								)}
-								{!wallets && (
-									<div className={styles.containerFeedback}>
-										<CircularProgress color="inherit" />
 									</div>
 								)}
 								{wallets &&
@@ -177,7 +178,16 @@ function Overview() {
 											</div>
 										)
 									})}
-							</div>
+							</TableAssets>
+							<CoinAssets>
+								{wallets &&
+									coins &&
+									wallets.map(wallet => (
+										<StyledCoinAsset  key={wallet.coin_id}>
+											<CoinAsset wallet={wallet} />
+										</StyledCoinAsset>
+									))}
+							</CoinAssets>
 						</div>
 					</Panel>
 				</StyledPanel>

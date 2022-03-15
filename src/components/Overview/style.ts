@@ -33,3 +33,32 @@ export const Values = styled('div')`
 		align-items: center;
 	}
 `
+
+export const TableAssets = styled.div`
+	width: 100%;
+	display: none;
+
+	${props => props.theme.mediaQuery.md} {
+		display: block;
+	}
+`
+
+export const CoinAssets = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	${props => props.theme.mediaQuery.sm} {
+		flex-direction: row;
+	}
+
+	${props => props.theme.mediaQuery.md} {
+		display: none;
+	}
+`
+
+export const StyledCoinAsset = styled.div`
+	margin-bottom: ${props => props.theme.space.xl};
+`
