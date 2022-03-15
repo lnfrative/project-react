@@ -26,7 +26,7 @@ import {
 } from 'components'
 
 // styles
-import styles from './index.module.css'
+import { Content } from './style'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [
@@ -60,9 +60,9 @@ function Dashboard() {
 	if (!balances?.success) return <PreloadPage />
 	return (
 		<HeaderDashboard>
-			<div className={styles.balance}>
+			<Content>
 				<GroupCoinValues />
-			</div>
+			</Content>
 			<PaginationBar
 				pathnameBase={resources.routes.home.base}
 				pathParamId={resources.routes.home.base}

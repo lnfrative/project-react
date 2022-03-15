@@ -17,7 +17,6 @@ export const ContentHeader = styled.div`
 
 export const Page = styled.div`
 	flex: 1;
-	padding: 0 ${props => props.theme.space.xs};
 
 	display: flex;
 	justify-content: center;
@@ -25,4 +24,23 @@ export const Page = styled.div`
   ${props => props.theme.mediaQuery.md} {
     padding: 0 ${props => props.theme.space.xl};
   }
+`
+
+export const Logo = styled.div`
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	cursor: pointer;
+	user-select: none;
+
+	&:active {
+		opacity: ${props => props.theme.opacity.selecting};
+	}
+
+	${props => props.theme.mediaQuery.md} {
+		display: block;
+	}
 `

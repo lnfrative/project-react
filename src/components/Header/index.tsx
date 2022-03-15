@@ -9,7 +9,7 @@ import { Banners, SVGLogo } from 'components'
 
 // styles
 import styles from './index.module.css'
-import { ContentHeader, Page } from './style'
+import { ContentHeader, Page, Logo } from './style'
 // endregion
 
 function Header(props: HeaderProps) {
@@ -18,9 +18,9 @@ function Header(props: HeaderProps) {
 			<Banners />
 			<div className={styles.container}>
 				<div className={styles.header}>
-					<div className={styles.logo}>
-						<SVGLogo />
-					</div>
+				<Logo>
+					<SVGLogo />
+				</Logo>
 					<ContentHeader>
 						{props.contentHeader}
 					</ContentHeader>

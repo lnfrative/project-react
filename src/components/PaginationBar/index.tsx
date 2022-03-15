@@ -16,6 +16,7 @@ import { initialState } from './module'
 
 // styles
 import styles from './index.module.css'
+import { ContainerBar } from './style'
 // endregion
 
 function PaginationBar(props: PaginationBarProps) {
@@ -57,7 +58,7 @@ function PaginationBar(props: PaginationBarProps) {
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.containerBar}>
+			<ContainerBar>
 				{props.paginationObjects.map(paginationObject => (
 					<div key={paginationObject.id} className={styles.tab}>
 						<PaginationTab
@@ -67,7 +68,7 @@ function PaginationBar(props: PaginationBarProps) {
 						/>
 					</div>
 				))}
-			</div>
+			</ContainerBar>
 			{stage.state.paginationObjectMatch?.content}
 		</div>
 	)
