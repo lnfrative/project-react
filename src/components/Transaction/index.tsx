@@ -15,6 +15,7 @@ import { resources, message } from 'utilities'
 
 // styles
 import styles from './index.module.css'
+import { MovementGroupData, MovementGroupDataBelow, Data } from './style'
 // endregion
 
 function Transaction(props: TransactionProps) {
@@ -45,15 +46,18 @@ function Transaction(props: TransactionProps) {
 
 			<div className={styles.movementData}>
 				<div className={styles.movementGroupData}>
-					<div className={styles.price}>
-						{props.data.concept}
-						{' ('}
-						{props.data.status === 5 && <div>{message({ id: 'COMPLETED' })}</div>}
-						{(!props.data.accountable || props.data.status !== 5) && (
-							<div>{message({ id: 'PENDING' })}</div>
-						)}
-						)
-					</div>
+				<MovementGroupData>	
+					<Data>
+						<div className={styles.price}>
+							{props.data.concept}
+							{' ('}
+							{props.data.status === 5 && <div>{message({ id: 'COMPLETED' })}</div>}
+							{(!props.data.accountable || props.data.status !== 5) && (
+								<div>{message({ id: 'PENDING' })}</div>
+							)}
+							)
+						</div>
+					</Data>
 					{props.data.value >= 0 && (
 						<div className={styles.movementPriceUp}>
 							{currencyPrice.value} {currency.state.id?.toUpperCase()}
@@ -64,13 +68,18 @@ function Transaction(props: TransactionProps) {
 							{currencyPrice.value} {currency.state.id?.toUpperCase()}
 						</div>
 					)}
+				</MovementGroupData>
 				</div>
-				<div className={styles.movementGroupDataBelow}>
-					<div className={styles.secondRow}>{date}</div>
-					<div className={styles.secondRow}>
-						{resources.utils.satsToBTC(props.data.value)} {coin.asset}
-					</div>
-				</div>
+				<MovementGroupDataBelow>
+					<Data>
+						<div className={styles.secondRow}>{date}</div>
+					</Data>
+					<Data>
+						<div className={styles.secondRow}>
+							{resources.utils.satsToBTC(props.data.value)} {coin.asset}
+						</div>
+					</Data>
+				</MovementGroupDataBelow>
 			</div>
 		</div>
 	)

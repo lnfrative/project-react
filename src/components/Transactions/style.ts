@@ -47,6 +47,7 @@ export const ContainerFeedback = styled('div')`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 
 	color: ${props => props.theme.color.varietyMainShadow};
 `
