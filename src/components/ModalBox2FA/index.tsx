@@ -25,6 +25,7 @@ function ModalBox2FA(props: ModalBox2FAProps) {
 				<div className={styles.input}>
 					<Input
 						InputHTMLAttributes={{
+							autoFocus: true,
 							style: { textAlign: 'center' },
 							type: 'text',
 							onChange: onChange(props),
