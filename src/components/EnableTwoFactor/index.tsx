@@ -1,11 +1,14 @@
 // region import
 import React, { useContext, useEffect } from 'react'
 
+// interfaces
+import { EnableTwoFactorProps } from 'interfaces'
+
 // hooks
 import { useStage } from 'hooks'
 
 // contexts
-import { Backend, Modal } from 'contexts'
+import { Backend } from 'contexts'
 
 // components
 import { Input, BackdropLoader } from 'components'
@@ -22,10 +25,9 @@ import styles from './index.module.css'
 
 const endenable2fa = resources.endpoints.post.secondFactorEnable
 
-function EnableTwoFactor() {
+function EnableTwoFactor(props: EnableTwoFactorProps) {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
-	const modal = useContext(Modal)
 
 	const params = {
 		second_factor: stage.state.code ?? '',
@@ -52,22 +54,21 @@ function EnableTwoFactor() {
 	useEffect(() => {
 		if (response?.success) {
 			backend.request({ endpoint: resources.endpoints.get.user, method: 'get', updateCache: true })
-			modal.commitState({ id: undefined, status: 'close' })
+			props.onClose()
 		}
 	}, [response?.success])
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.label}>{message({ id: 'ENTER_OTP' })}</div>
-			<div className={styles.input}>
-				<Input
-					InputHTMLAttributes={{
-						type: 'text',
-						style: { textAlign: 'center' },
-						onChange: onChange(stage),
-					}}
-				/>
-			</div>
+			<Input
+				InputHTMLAttributes={{
+					autoFocus: true,
+					type: 'text',
+					style: { textAlign: 'center', padding: 0 },
+					onChange: onChange(stage),
+				}}
+			/>
 			<BackdropLoader open={loading} />
 		</div>
 	)

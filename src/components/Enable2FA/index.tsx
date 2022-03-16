@@ -1,14 +1,17 @@
 // region import
 import React, { useContext, useEffect } from 'react'
 
+// interfaces
+import { Enable2FAProps } from 'interfaces'
+
 // contexts
 import { Backend } from 'contexts'
 
 // components
-import { ModalBox, BackdropLoader, EnableTwoFactor } from 'components'
+import { BackdropLoader, EnableTwoFactor, DialogNotification } from 'components'
 
 // utilities
-import { message, resources, requestId } from 'utilities'
+import { resources, requestId } from 'utilities'
 
 // styles
 import styles from './index.module.css'
@@ -16,7 +19,7 @@ import styles from './index.module.css'
 
 const endtwofactorqr = resources.endpoints.get.twoFactorQR
 
-function ModalBoxEnable2FA() {
+function Enable2FA(props: Enable2FAProps) {
 	const backend = useContext(Backend)
 	const id = requestId('get', endtwofactorqr)
 	const response = backend.response({ id })
@@ -33,20 +36,25 @@ function ModalBoxEnable2FA() {
 
 	if (loading || !response) return <BackdropLoader open />
 	return (
-		<ModalBox title={message({ id: 'ENABLE_TWO_FACTOR' })}>
-			<div className={styles.container}>
-				<div className={styles.info}>{message({ id: 'ENABLE_TWO_FACTOR_INFO' })}</div>
+		<DialogNotification
+			title="2FA Authentication"
+			message="Scan this code with your 2FA app."
+			Content={(
 				<img
 					className={styles.image}
 					src={`data:image/svg+xml;utf8,${encodeURIComponent(response?.data)}`}
 					alt="QR Code"
 				/>
+			)}
+			ContentAfterMessage={(
 				<div className={styles.enable}>
-					<EnableTwoFactor />
+					<EnableTwoFactor onClose={props.onClose} />
 				</div>
-			</div>
-		</ModalBox>
+			)}
+			open={props.open}
+			onClose={props.onClose}
+		/>
 	)
 }
 
-export default ModalBoxEnable2FA
+export default Enable2FA

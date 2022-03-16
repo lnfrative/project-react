@@ -6,10 +6,6 @@
 	align-items: center;
 }
 
-.input {
-	max-width: 100px;
-}
-
 .label {
 	color: var(--color-variety-main);
 	margin-bottom: var(--space-xs);

@@ -23,6 +23,7 @@ import {
 	Button,
 	BackdropLoader,
 	DialogNotification,
+	SVGIconSuccess
 } from 'components'
 
 // styles
@@ -219,6 +220,7 @@ function Send() {
 			</div>
 			<BackdropLoader open={loadingSendTransaction} />
 			<DialogNotification
+				Icon={<SVGIconSuccess />}
 				title="Transaction created"
 				message="An email will be sent to confirm the transaction."
 				onClose={resetStatus(stage)}

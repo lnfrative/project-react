@@ -22,5 +22,4 @@
 .enable {
 	display: flex;
 	justify-content: center;
-	margin-top: var(--space-sm);
 }

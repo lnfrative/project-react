@@ -6,19 +6,19 @@ import { Tooltip } from '@mui/material'
 import { useStage } from 'hooks'
 
 // contexts
-import { Modal, Backend } from 'contexts'
+import { Backend } from 'contexts'
 
 // interfaces
 import { BackendUser } from 'interfaces'
 
 // components
-import { SettingPagination, Button, ModalBoxEnable2FA, BackdropLoader } from 'components'
+import { SettingPagination, Button, BackdropLoader, Enable2FA } from 'components'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
 
 // modules
-import { initialState, enableTwoFactor } from './module'
+import { initialState, enableTwoFactor, closeEnable2FA } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -29,7 +29,6 @@ const enduser = resources.endpoints.get.user
 function SettingPaginationSecurity() {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
-	const modal = useContext(Modal)
 
 	const updatingUser = backend.loading?.id === requestId('get', enduser)
 
@@ -45,7 +44,7 @@ function SettingPaginationSecurity() {
 				{!user.two_factor_verified && (
 					<Button
 						buttonHTMLAttributes={{
-							onClick: enableTwoFactor(stage, modal),
+							onClick: enableTwoFactor(stage),
 							type: 'button',
 						}}
 						design="simple"
@@ -67,8 +66,11 @@ function SettingPaginationSecurity() {
 						</Tooltip>
 					</div>
 				)}
-				{stage.state.id === modal.state.id && modal.state.status === 'open' && (
-					<ModalBoxEnable2FA />
+				{stage.state.enable2FA && (
+					<Enable2FA
+						open
+						onClose={closeEnable2FA(stage)}
+					/>
 				)}
 			</div>
 			<BackdropLoader open={updatingUser} />

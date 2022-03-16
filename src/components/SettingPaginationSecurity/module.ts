@@ -1,19 +1,25 @@
-import { Stage, ContextModalState } from 'interfaces'
+import { Stage } from 'interfaces'
 
 interface State {
-	id?: number
+	enable2FA: boolean
 }
 
-const initialState: State = {
-	id: undefined,
+export const initialState: State = {
+	enable2FA: false,
 }
 
-function enableTwoFactor(stage: Stage<State>, modal: Stage<ContextModalState>) {
+export function enableTwoFactor(stage: Stage<State>) {
 	return () => {
-		const id = Math.random()
-		stage.commitState({ id })
-		modal.commitState({ id, status: 'open' })
+		stage.commitState({
+			enable2FA: true
+		})
 	}
 }
 
-export { initialState, enableTwoFactor }
+export function closeEnable2FA(stage: Stage<State>) {
+	return () => {
+		stage.commitState({
+			enable2FA: false
+		})
+	}
+}

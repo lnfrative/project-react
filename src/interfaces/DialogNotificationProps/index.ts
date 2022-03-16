@@ -3,6 +3,9 @@ interface DialogNotificationProps {
 	title: string
 	message: string
 	onClose?: () => void
+	Icon?: any,
+	Content?: any,
+	ContentAfterMessage?: any
 }
 
 export default DialogNotificationProps
