@@ -23,7 +23,8 @@ import {
 	Button,
 	BackdropLoader,
 	DialogNotification,
-	SVGIconSuccess
+	SVGIconSuccess,
+	Panel,
 } from 'components'
 
 // styles
@@ -40,7 +41,8 @@ import {
 	GroupInputWrap,
 	GroupInputWrapIcon,
 	ErrorMessage,
-	StyledLink
+	StyledLink,
+	Values,
 } from './style'
 // endregion
 
@@ -102,8 +104,8 @@ function Send() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.group}>
-				<div className={styles.groupTitle}>Send</div>
-				<div className={styles.groupValues}>
+			<Panel title="Send">
+				<Values>
 					{coins && (
 						<Select
 							onSelect={selectSend(stage)}
@@ -216,7 +218,8 @@ function Send() {
 							</div>
 						</Form>
 					</TwoFactor>
-				</div>
+				</Values>
+			</Panel>
 			</div>
 			<BackdropLoader open={loadingSendTransaction} />
 			<DialogNotification

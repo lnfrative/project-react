@@ -49,3 +49,8 @@ export const StyledLink = styled(Link)`
 	color: inherit;
 	font-weight: 800;
 `
+
+export const Values = styled('div')`
+	background-color: var(--color-primary);
+	margin-bottom: var(--space-lg);
+`

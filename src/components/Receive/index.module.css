@@ -53,6 +53,8 @@
 	background-color: var(--color-passive-main);
 	color: var(--color-variety-main);
 	padding: 0 var(--space-md);
+
+	overflow: auto;
 }
 
 .containerFeedback {
@@ -101,6 +103,7 @@
 
 .address {
 	word-break: break-all;
+	white-space: pre;
 }
 
 .loader {

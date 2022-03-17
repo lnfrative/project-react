@@ -21,6 +21,7 @@ import {
 	SVGIconClipboard,
 	BackdropLoader,
 	Form,
+	Panel,
 } from 'components'
 
 // utilities
@@ -28,6 +29,7 @@ import { resources, requestId, message } from 'utilities'
 
 // styles
 import styles from './index.module.css'
+import { Values, GroupReceiveButtons, StyledReceiveButton } from './style'
 
 // modules
 import { initialState, selectReceive, generateAddress, copyAddressIntoClipboard } from './module'
@@ -106,9 +108,8 @@ function Receive() {
 
 	return (
 		<div className={styles.mainGroup}>
-			<div className={styles.group}>
-				<div className={styles.groupTitle}>Receive</div>
-				<div className={styles.groupValues}>
+			<Panel title="Receive">
+				<Values>
 					{coins && (
 						<Select
 							onSelect={selectReceive(stage)}
@@ -165,40 +166,44 @@ function Receive() {
 						</div>
 					</div>
 
-					<div className={styles.groupReceiveButtons}>
-						<Form
-							captcha
-							formHTMLAttributes={{
-								onSubmit: generateAddress(stage, backend, captcha),
-							}}
-						>
+					<GroupReceiveButtons>
+						<StyledReceiveButton>
+							<Form
+								captcha
+								formHTMLAttributes={{
+									onSubmit: generateAddress(stage, backend, captcha),
+								}}
+							>
+								<Button
+									buttonHTMLAttributes={{
+										type: 'submit',
+									}}
+									design="minimal"
+									title="Generate new address"
+								>
+									<div className={styles.icon}>
+										<SVGIconRestartAlt />
+									</div>
+								</Button>
+							</Form>
+						</StyledReceiveButton>
+						<StyledReceiveButton>
 							<Button
 								buttonHTMLAttributes={{
-									type: 'submit',
+									type: 'button',
+									onClick: copyAddressIntoClipboard(address, addressRef),
 								}}
 								design="minimal"
-								title="Generate new address"
+								title="Copy to clipboard"
 							>
 								<div className={styles.icon}>
-									<SVGIconRestartAlt />
+									<SVGIconClipboard />
 								</div>
 							</Button>
-						</Form>
-						<Button
-							buttonHTMLAttributes={{
-								type: 'button',
-								onClick: copyAddressIntoClipboard(address, addressRef),
-							}}
-							design="minimal"
-							title="Copy to clipboard"
-						>
-							<div className={styles.icon}>
-								<SVGIconClipboard />
-							</div>
-						</Button>
-					</div>
-				</div>
-			</div>
+						</StyledReceiveButton>
+					</GroupReceiveButtons>
+				</Values>
+			</Panel>
 			<BackdropLoader open={loadingNewAddress} />
 		</div>
 	)
