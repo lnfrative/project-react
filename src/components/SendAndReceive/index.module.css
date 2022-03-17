@@ -19,6 +19,6 @@
 	}
 
 	.containerSend {
-		margin: 0;
+		margin: var(--space-lg) 0 0 0;
 	}
 }
