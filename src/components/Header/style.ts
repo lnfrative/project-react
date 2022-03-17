@@ -8,7 +8,7 @@ export const ContentHeader = styled.div`
 	justify-content: space-between;
 	flex: 1;
 
-	padding: 0 ${props => props.theme.space.xs};
+	padding: 0 ${props => props.theme.space.md};
 
   ${props => props.theme.mediaQuery.md} {
     padding: 0 ${props => props.theme.space.xl};

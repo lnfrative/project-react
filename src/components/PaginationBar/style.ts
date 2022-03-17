@@ -13,7 +13,7 @@ export const ContainerBar = styled.div`
 	  width: 0;
   }
 
-  padding: 0 ${props => props.theme.space.xs};
+  padding: 0 ${props => props.theme.space.md};
 
   ${props => props.theme.mediaQuery.md} {
     padding: 0;

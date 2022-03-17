@@ -13,7 +13,7 @@ const Container = styled('div')`
 const Content = styled('div')`
 	${props =>
 		`
-        padding: ${props.theme.space.lg} ${props.theme.space.xs};
+        padding: ${props.theme.space.lg} ${props.theme.space.md};
       `}
 	
 	${props => props.theme.mediaQuery.md} {
@@ -28,7 +28,7 @@ const Title = styled('div')`
         color: ${props.theme.color.varietyMainShadow};
         font-size: ${props.theme.size.sm};
         border-bottom: solid 1px ${props.theme.color.varietyMainTinyShadow};
-        padding: ${props.theme.space.lg} ${props.theme.space.xs};
+        padding: ${props.theme.space.lg} ${props.theme.space.md};
       `}
 
 	${props => props.theme.mediaQuery.md} {
