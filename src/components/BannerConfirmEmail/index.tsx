@@ -14,7 +14,7 @@ import { Banner, Button, BackdropLoader } from 'components'
 import { requestId, resources, message } from 'utilities'
 
 // styles
-import styles from './index.module.css'
+import { Container, ConfirmEmail } from './style'
 
 // modules
 import { resend } from './module'
@@ -31,18 +31,20 @@ function BannerConfirmEmail() {
 
 	return (
 		<Banner>
-			<div className={styles.confirmEmail}>
-				A verification email has been sent to <b>{user.email}</b>.
-			</div>
-			<Button
-				buttonHTMLAttributes={{
-					type: 'button',
-					onClick: resend(backend),
-				}}
-				design="minimal"
-				title="Resend email"
-			/>
-			<BackdropLoader message={message({ id: 'RESENDING_EMAIL' })} open={loading} />
+			<Container>
+				<ConfirmEmail>
+					A verification email has been sent to <b>{user.email}</b>.
+				</ConfirmEmail>
+				<Button
+					buttonHTMLAttributes={{
+						type: 'button',
+						onClick: resend(backend),
+					}}
+					design="minimal"
+					title="Resend email"
+				/>
+				<BackdropLoader message={message({ id: 'RESENDING_EMAIL' })} open={loading} />
+			</Container>
 		</Banner>
 	)
 }
