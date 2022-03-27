@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { Header, GroupBrand, GroupUserMenu, LinkBackDashboard } from 'components'
+import { Header, GroupBrand, GroupUserMenu } from 'components'
 
 // utilities
 import { HeaderSegmentationProps } from 'interfaces'
@@ -26,9 +26,6 @@ function HeaderSegmentation(props: HeaderSegmentationProps) {
 				</div>
 			}
 		>
-			<div className={styles.grid}>
-				<LinkBackDashboard />
-			</div>
 			<div className={styles.grid}>
 				{props.primaryContent}
 				{props.secondaryContent}

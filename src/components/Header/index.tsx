@@ -7,6 +7,9 @@ import { HeaderProps } from 'interfaces'
 // components
 import { Banners, SVGLogo } from 'components'
 
+// utilities
+import { resources } from 'utilities'
+
 // styles
 import styles from './index.module.css'
 import { ContentHeader, Page, Logo } from './style'
@@ -18,7 +21,7 @@ function Header(props: HeaderProps) {
 			<Banners />
 			<div className={styles.container}>
 				<div className={styles.header}>
-				<Logo>
+				<Logo to={resources.routes.home.base}>
 					<SVGLogo />
 				</Logo>
 					<ContentHeader>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const ContentHeader = styled.div`
   min-height: inherit;
@@ -26,7 +27,8 @@ export const Page = styled.div`
   }
 `
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
+	text-decoration: none;
 	display: none;
 	position: absolute;
 	top: 50%;

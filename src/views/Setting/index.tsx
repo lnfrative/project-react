@@ -22,9 +22,6 @@ import {
 
 // modules
 import { onChangePagination, initialState } from './module'
-
-// styles
-import styles from './index.module.css'
 // endregion
 
 const paginationObjects: Array<PaginationObject> = [
@@ -49,15 +46,13 @@ function Account() {
 		<Middleware requirements={resources.routes.setting.middlewares}>
 			<HeaderSegmentation
 				primaryContent={
-					<div className={styles.paginator}>
-						<PaginationMenu
-							onChange={onChangePagination(stage)}
-							pathnameBase={resources.routes.setting.base}
-							pathParamId={resources.routes.setting.base.slice(1)}
-							paginationObjects={paginationObjects}
-							title="Account Settings"
-						/>
-					</div>
+					<PaginationMenu
+						onChange={onChangePagination(stage)}
+						pathnameBase={resources.routes.setting.base}
+						pathParamId={resources.routes.setting.base.slice(1)}
+						paginationObjects={paginationObjects}
+						title="Account Settings"
+					/>
 				}
 				secondaryContent={stage.state.paginationObjectSelected?.content}
 			/>
