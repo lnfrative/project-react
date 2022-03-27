@@ -19,7 +19,7 @@ import styles from './index.module.css'
 
 const endtwofactorqr = resources.endpoints.get.twoFactorQR
 
-function Enable2FA(props: Enable2FAProps) {
+function DialogNotificationEnable2FA(props: Enable2FAProps) {
 	const backend = useContext(Backend)
 	const id = requestId('get', endtwofactorqr)
 	const response = backend.response({ id })
@@ -57,4 +57,4 @@ function Enable2FA(props: Enable2FAProps) {
 	)
 }
 
-export default Enable2FA
+export default DialogNotificationEnable2FA

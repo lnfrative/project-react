@@ -12,7 +12,7 @@ import { Backend } from 'contexts'
 import { BackendUser } from 'interfaces'
 
 // components
-import { SettingPagination, Button, BackdropLoader, Enable2FA } from 'components'
+import { SettingPagination, Button, BackdropLoader, DialogNotificationEnable2FA } from 'components'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
@@ -67,7 +67,7 @@ function SettingPaginationSecurity() {
 					</div>
 				)}
 				{stage.state.enable2FA && (
-					<Enable2FA
+					<DialogNotificationEnable2FA
 						open
 						onClose={closeEnable2FA(stage)}
 					/>
