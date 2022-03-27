@@ -6,10 +6,10 @@ import { useLocation } from 'react-router-dom'
 import { Backend } from 'contexts'
 
 // region import
-import { ModalBox, Button, BackdropLoader } from 'components'
+import { Button, BackdropLoader, DialogNotification } from 'components'
 
 // styles
-import { requestId, resources } from 'utilities'
+import { requestId, resources, message } from 'utilities'
 
 // styles
 import styles from './index.module.css'
@@ -20,7 +20,7 @@ import { confirmTransaction, cancel } from './module'
 
 const endconfirmtransaction = resources.endpoints.post.confirmTransaction
 
-function ModalBoxConfirmTransaction() {
+function DialogNotificationConfirmTransaction() {
 	const backend = useContext(Backend)
 	const location = useLocation()
 	const searchParams = new URLSearchParams(location.search)
@@ -45,35 +45,37 @@ function ModalBoxConfirmTransaction() {
 	}, [response?.success])
 
 	return (
-		<ModalBox title="Confirm transaction">
-			<div className={styles.container}>
-				<div className={styles.info}>
-					<span>You confirm the transaction:</span> <span>{searchParams.get('hash')}</span>
-				</div>
-				<div className={styles.buttons}>
-					<div className={styles.confirmButton}>
+		<>	
+			<DialogNotification
+				open
+				title={message({ id: 'CONFIRM_TRANSACTION' })}
+				message={message({ id: 'CONFIRM_TRANSACTION_REQUIRED' })}
+				ContentAfterMessage={
+					<div className={styles.buttons}>
+						<div className={styles.confirmButton}>
+							<Button
+								buttonHTMLAttributes={{
+									type: 'button',
+									onClick: confirmTransaction(backend, params),
+								}}
+								design="normal"
+								title="Confirm"
+							/>
+						</div>
 						<Button
 							buttonHTMLAttributes={{
 								type: 'button',
-								onClick: confirmTransaction(backend, params),
+								onClick: cancel,
 							}}
-							design="normal"
-							title="Confirm"
+							design="simple"
+							title="Cancel"
 						/>
 					</div>
-					<Button
-						buttonHTMLAttributes={{
-							type: 'button',
-							onClick: cancel,
-						}}
-						design="simple"
-						title="Cancel"
-					/>
-				</div>
-			</div>
+				}
+			/>
 			<BackdropLoader open={loading} />
-		</ModalBox>
+		</>
 	)
 }
 
-export default ModalBoxConfirmTransaction
+export default DialogNotificationConfirmTransaction

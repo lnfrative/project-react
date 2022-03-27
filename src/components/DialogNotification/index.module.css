@@ -36,6 +36,7 @@
 
 .contentAfterMessage {
 	margin-top: var(--space-lg);
+	width: 100%;
 }
 
 .content {

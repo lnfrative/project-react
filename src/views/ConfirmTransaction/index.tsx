@@ -2,15 +2,11 @@
 import React from 'react'
 
 // components
-import { ModalBoxConfirmTransaction } from 'components'
+import { DialogNotificationConfirmTransaction } from 'components'
 // endregion
 
 function ConfirmTransaction() {
-	return (
-		<div>
-			<ModalBoxConfirmTransaction />
-		</div>
-	)
+	return <DialogNotificationConfirmTransaction />
 }
 
 export default ConfirmTransaction

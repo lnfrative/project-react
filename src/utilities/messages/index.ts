@@ -282,7 +282,13 @@ const messages: Record<string, Record<string, any>> = {
 	},
 	SUPPORT: {
 		en: 'Support'
-	}
+	},
+	CONFIRM_TRANSACTION: {
+		en: 'Confirm transaction',
+	},
+	CONFIRM_TRANSACTION_REQUIRED: {
+		en: 'The transaction needs to be confirmed to be valid.',
+	},
 }
 
 export default messages
