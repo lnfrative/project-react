@@ -11,7 +11,7 @@ import { Backend, Modal } from 'contexts'
 import { TwoFactorProps } from 'interfaces'
 
 // components
-import { ModalBox2FA, BackdropLoader } from 'components'
+import { DialogNotification2FA, BackdropLoader } from 'components'
 
 // utilities
 import { requestId } from 'utilities'
@@ -75,9 +75,10 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 
 	return (
 		<>
-			{modal.state.id === stage.state.id && modal.state.status === 'open' && (
-				<ModalBox2FA onCode={onCode(stage, modal)} />
-			)}
+			<DialogNotification2FA
+				open={modal.state.id === stage.state.id && modal.state.status === 'open'}
+				onCode={onCode(stage, modal)}
+			/>
 			<BackdropLoader open={loading} />
 			{props.children}
 		</>

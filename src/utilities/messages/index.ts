@@ -289,6 +289,9 @@ const messages: Record<string, Record<string, any>> = {
 	CONFIRM_TRANSACTION_REQUIRED: {
 		en: 'The transaction needs to be confirmed to be valid.',
 	},
+	ENTER_2FA_CODE: {
+		en: 'Enter your second factor authentication code.',
+	}
 }
 
 export default messages
