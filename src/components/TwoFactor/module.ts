@@ -1,21 +1,24 @@
-import { Stage, ContextModalState } from 'interfaces'
+import { Stage } from 'interfaces'
 
 interface State {
-	id?: number
+	dialog?: 'open' | 'close'
 	code?: string
 }
 
-const initialState: State = {
-	id: undefined,
+export const initialState: State = {
+	dialog: 'close'
 }
 
-function onCode(stage: Stage<State>, modal: Stage<ContextModalState>) {
+export function onCode(stage: Stage<State>) {
 	return (code: string) => {
 		if (code.length === 6) {
-			stage.commitState({ code, id: undefined })
-			modal.commitState({ status: 'close', id: undefined })
+			stage.commitState({ code, dialog: 'close' })
 		}
 	}
 }
 
-export { initialState, onCode }
+export function handleClose(stage: Stage<State>) {
+	return () => {
+		stage.commitState({ dialog: 'close' })
+	}
+}

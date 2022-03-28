@@ -5,7 +5,7 @@ import React, { PropsWithChildren, useContext, useEffect } from 'react'
 import { useStage } from 'hooks'
 
 // contexts
-import { Backend, Modal } from 'contexts'
+import { Backend } from 'contexts'
 
 // interfaces
 import { TwoFactorProps } from 'interfaces'
@@ -17,12 +17,11 @@ import { DialogNotification2FA, BackdropLoader } from 'components'
 import { requestId } from 'utilities'
 
 // modules
-import { initialState, onCode } from './module'
+import { initialState, onCode, handleClose } from './module'
 // endregion
 
 function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	const backend = useContext(Backend)
-	const modal = useContext(Modal)
 	const stage = useStage(initialState)
 	const response = backend.response({
 		method: props.method,
@@ -57,9 +56,7 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	useEffect(() => {
 		if (typeof response?.error === 'object' && response.error) {
 			if (response.error.second_factor) {
-				const id = Math.random()
-				stage.commitState({ id })
-				modal.commitState({ id, status: 'open' })
+				stage.commitState({ dialog: 'open' })
 			}
 		}
 	}, [response?.error])
@@ -76,8 +73,9 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	return (
 		<>
 			<DialogNotification2FA
-				open={modal.state.id === stage.state.id && modal.state.status === 'open'}
-				onCode={onCode(stage, modal)}
+				open={stage.state.dialog === 'open'}
+				onCode={onCode(stage)}
+				onClose={handleClose(stage)}
 			/>
 			<BackdropLoader open={loading} />
 			{props.children}
