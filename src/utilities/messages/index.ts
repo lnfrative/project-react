@@ -293,7 +293,7 @@ const messages: Record<string, Record<string, any>> = {
 		en: 'Enter your second factor authentication code.',
 	},
 	VERIFY_CAPTCHA_MESSAGE: {
-		en: 'Verify that this action is not being automated.',
+		en: 'Please, verify you\'re not a robot.',
 	},
 	CAPTCHA_VERIFICATION: {
 		en: 'Captcha verification',
