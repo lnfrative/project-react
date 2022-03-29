@@ -1,0 +1,7 @@
+@import url('../../css/variables.css');
+
+.captcha {
+	display: flex;
+	justify-content: center;
+	min-height: 80px;
+}

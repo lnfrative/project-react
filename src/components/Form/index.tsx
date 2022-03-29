@@ -1,8 +1,5 @@
 // region import
-import React, { PropsWithChildren, useContext, useEffect } from 'react'
-
-// contexts
-import { Modal } from 'contexts'
+import React, { PropsWithChildren, useEffect } from 'react'
 
 // hooks
 import { useStage, useForm } from 'hooks'
@@ -11,14 +8,13 @@ import { useStage, useForm } from 'hooks'
 import { FormProps } from 'interfaces'
 
 // components
-import { ModalBoxCaptcha } from 'components'
+import { DialogNotificationCaptcha } from 'components'
 
 // modules
-import { openCaptcha, initialState, successCaptcha, submit } from './module'
+import { openCaptcha, initialState, successCaptcha, submit, handleClose } from './module'
 // endregion
 
 function Form(props: PropsWithChildren<FormProps>) {
-	const modal = useContext(Modal)
 	const stage = useStage(initialState)
 	const { handleSubmit } = useForm()
 
@@ -34,13 +30,15 @@ function Form(props: PropsWithChildren<FormProps>) {
 		<form
 			{...props.formHTMLAttributes}
 			{...(props.captcha
-				? { onSubmit: handleSubmit({ onSubmit: openCaptcha(modal, stage) }) }
+				? { onSubmit: handleSubmit({ onSubmit: openCaptcha(stage) }) }
 				: { onSubmit: props.formHTMLAttributes.onSubmit })}
 		>
 			{props.children}
-			{stage.state.id === modal.state.id && modal.state.status === 'open' && (
-				<ModalBoxCaptcha onSuccess={successCaptcha(modal, stage)} />
-			)}
+			<DialogNotificationCaptcha
+				open={stage.state.dialog === 'open'}
+				onClose={handleClose(stage)}
+				onSuccess={successCaptcha(stage)}
+			/>
 		</form>
 	)
 }

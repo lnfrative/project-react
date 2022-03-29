@@ -1,32 +1,32 @@
-import { ContextModalState, Stage } from 'interfaces'
+import { Stage } from 'interfaces'
 
 interface State {
-	id?: number
+	dialog?: 'open' | 'close'
 	captchaSolved?: boolean
 }
 
-const initialState: State = {
-	id: undefined,
+export const initialState: State = {
 	captchaSolved: false,
 }
 
-function openCaptcha(modal: Stage<ContextModalState>, stage: Stage<State>) {
+export function openCaptcha(stage: Stage<State>) {
 	return () => {
-		const id = Math.random()
-		stage.commitState({ id })
-		modal.commitState({ id, status: 'open' })
+		stage.commitState({ dialog: 'open' })
 	}
 }
 
-function successCaptcha(modal: Stage<ContextModalState>, stage: Stage<State>) {
+export function handleClose(stage: Stage<State>) {
 	return () => {
-		modal.commitState({ id: undefined, status: 'close' })
-		stage.commitState({ id: undefined, captchaSolved: true })
+		stage.commitState({ dialog: 'close' })
 	}
 }
 
-function submit(onSubmit: Function) {
+export function successCaptcha(stage: Stage<State>) {
+	return () => {
+		stage.commitState({ dialog: 'close', captchaSolved: true })
+	}
+}
+
+export function submit(onSubmit: Function) {
 	onSubmit()
 }
-
-export { openCaptcha, initialState, successCaptcha, submit }

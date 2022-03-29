@@ -291,7 +291,13 @@ const messages: Record<string, Record<string, any>> = {
 	},
 	ENTER_2FA_CODE: {
 		en: 'Enter your second factor authentication code.',
-	}
+	},
+	VERIFY_CAPTCHA_MESSAGE: {
+		en: 'Verify that this action is not being automated.',
+	},
+	CAPTCHA_VERIFICATION: {
+		en: 'Captcha verification',
+	},
 }
 
 export default messages
