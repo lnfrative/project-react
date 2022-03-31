@@ -7,9 +7,10 @@ import { TransitionProps } from '@mui/material/transitions'
 import { DialogNotificationProps } from 'interfaces'
 
 // components
+import { SVGIconEquis } from 'components'
 
 // styles
-import styles from './index.module.css'
+import { Container, Title, ContentAfterMessage, ContainerMessage, Content, Close } from './style'
 // endregion
 
 const Transition = React.forwardRef(
@@ -24,25 +25,28 @@ const Transition = React.forwardRef(
 function DialogNotification(props: DialogNotificationProps) {
 	return (
 		<Dialog TransitionComponent={Transition} open={props.open} onClose={props.onClose}>
-			<div className={styles.container}>
+			<Container>
+				<Close onClick={props.onClose}>
+					<SVGIconEquis />
+				</Close>
 				{props.Icon}
-				<div style={{
+				<Title style={{
 					marginTop: props.Icon ? '' : '0'
-				}} className={styles.title}>{props.title}</div>
+				}}>{props.title}</Title>
 				{!!props.Content && (
-					<div className={styles.content}>
+					<Content>
 						{props.Content}
-					</div>
+					</Content>
 				)}
-				<div className={styles.containerMessage}>
+				<ContainerMessage>
 					<span>{props.message}</span>
-				</div>
+				</ContainerMessage>
 				{!!props.ContentAfterMessage && (
-					<div className={styles.contentAfterMessage}>
+					<ContentAfterMessage>
 						{props.ContentAfterMessage}
-					</div>
+					</ContentAfterMessage>
 				)}
-			</div>
+			</Container>
 		</Dialog>
 	)
 }
