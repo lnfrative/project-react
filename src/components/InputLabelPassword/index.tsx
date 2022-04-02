@@ -24,7 +24,6 @@ function InputLabelPassword(props: InputLabelPasswordProps) {
 				InputHTMLAttributes: {
 					type: 'password',
 					name: 'password',
-					autoComplete: 'new-password',
 					onChange: onChange(stage, props),
 				},
 			}}
