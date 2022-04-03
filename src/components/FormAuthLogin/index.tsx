@@ -6,7 +6,7 @@ import { Typography, Box } from '@mui/material'
 import { useForm } from 'hooks'
 
 // contexts
-import { Backend, Captcha } from 'contexts'
+import { Backend, Captcha, Modal } from 'contexts'
 
 // components
 import {
@@ -35,6 +35,7 @@ const endlogin = resources.endpoints.post.userCreateAccessToken
 function FormAuthLogin() {
 	const backend = useContext(Backend)
 	const captcha = useContext(Captcha)
+	const modal = useContext(Modal)
 	const { handleSubmit, watch, bind } = useForm()
 	const { email, password } = watch
 	const params = {
@@ -60,7 +61,7 @@ function FormAuthLogin() {
 			<Form
 				captcha
 				formHTMLAttributes={{
-					onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+					onSubmit: handleSubmit({ onSubmit: onSubmit(backend, modal, params) }),
 				}}
 			>
 				<FormAuth title={message({ id: 'LOG_IN' })}>
@@ -74,7 +75,7 @@ function FormAuthLogin() {
 					<Input
 						bind={bind({ name: 'email' })}
 						attributes={{
-							disabled: loading,
+							disabled: loading || modal.state.status === 'open',
 							type: 'email',
 							name: 'email',
 							autoComplete: 'email',
@@ -92,7 +93,7 @@ function FormAuthLogin() {
 					<Input
 						bind={bind({ name: 'password' })}
 						attributes={{
-							disabled: loading,
+							disabled: loading || modal.state.status === 'open',
 							type: 'password',
 							name: 'password',
 							autoComplete: 'password',
