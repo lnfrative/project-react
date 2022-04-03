@@ -1,11 +1,6 @@
 import { FormEventHandler, useState } from 'react'
 import { useStage } from 'hooks'
-import { Stage } from 'interfaces'
-
-interface FormRecordBinded {
-	value: String
-	input: HTMLInputElement | null
-}
+import { Stage, FormRecordBinded } from 'interfaces'
 
 type State = Record<string, FormRecordBinded>
 

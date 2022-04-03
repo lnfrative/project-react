@@ -24,7 +24,7 @@ import {
 import { message, resources, requestId } from 'utilities'
 
 // modules
-import { onSubmit, reload } from './module'
+import { onSubmit, reload, reactivateInput } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -72,16 +72,20 @@ function FormAuthLogin() {
 					>
 						{message({ id: 'EMAIL' })}
 					</Typography>
-					<Input
-						bind={bind({ name: 'email' })}
-						attributes={{
-							disabled: loading || modal.state.status === 'open',
-							type: 'email',
-							name: 'email',
-							autoComplete: 'email',
-							autoCorrect: 'off',
-						}}
-					/>
+					<Box
+						onClick={reactivateInput(modal, email)}
+					>
+						<Input
+							bind={bind({ name: 'email' })}
+							attributes={{
+								disabled: loading || modal.state.status === 'open',
+								type: 'email',
+								name: 'email',
+								autoComplete: 'email',
+								autoCorrect: 'off',
+							}}
+						/>
+					</Box>
 					<Typography
 						sx={{
 							marginBottom: 1,
@@ -90,16 +94,20 @@ function FormAuthLogin() {
 					>
 						{message({ id: 'PASSWORD' })}
 					</Typography>
-					<Input
-						bind={bind({ name: 'password' })}
-						attributes={{
-							disabled: loading || modal.state.status === 'open',
-							type: 'password',
-							name: 'password',
-							autoComplete: 'password',
-							autoCorrect: 'off',
-						}}
-					/>
+					<Box
+						onClick={reactivateInput(modal, password)}
+					>		
+						<Input
+							bind={bind({ name: 'password' })}
+							attributes={{
+								disabled: loading || modal.state.status === 'open',
+								type: 'password',
+								name: 'password',
+								autoComplete: 'password',
+								autoCorrect: 'off',
+							}}
+						/>
+					</Box>
 					<Box
 						sx={{
 							marginTop: 3,

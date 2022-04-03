@@ -10,6 +10,10 @@ export const StyledInput = styled.input<{ componentProps: InputProps }>`
 	color: ${props => props.theme.color.activeSecondary};
 	font-size: var(--font-size-xs);
 	padding-left: ${props => props.componentProps.Icon ? 0 : 'var(--space-sm)'};
+
+	&:disabled {
+		cursor: text;
+	}
 `
 
 export const GroupInputWrapIcon = styled.div`
