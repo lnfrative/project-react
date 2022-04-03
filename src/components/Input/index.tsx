@@ -16,7 +16,7 @@ function Input(props: InputProps) {
 					{props.Icon}
 				</GroupInputWrapIcon>
 			)}
-			<StyledInput componentProps={props} ref={props.bind} {...props.attributes} />
+			<StyledInput data-lpignore="true" componentProps={props} ref={props.bind} {...props.attributes} />
 		</GroupInputWrap>
 	)
 }
