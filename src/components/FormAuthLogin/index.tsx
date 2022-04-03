@@ -74,6 +74,7 @@ function FormAuthLogin() {
 					<Input
 						bind={bind({ name: 'email' })}
 						attributes={{
+							disabled: loading,
 							type: 'email',
 							name: 'email',
 							autoComplete: 'email',
@@ -91,6 +92,7 @@ function FormAuthLogin() {
 					<Input
 						bind={bind({ name: 'password' })}
 						attributes={{
+							disabled: loading,
 							type: 'password',
 							name: 'password',
 							autoComplete: 'password',
