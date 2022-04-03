@@ -20,6 +20,7 @@ function handleSubmit(stage: Stage<State>) {
 		e => {
 			if (e) {
 				e.preventDefault()
+				e.stopPropagation()
 			}
 			args.onSubmit(stage.state)
 		}
