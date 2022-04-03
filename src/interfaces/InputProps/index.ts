@@ -1,9 +1,9 @@
-import { InputHTMLAttributes } from 'react'
-import { Error } from 'interfaces'
+import { InputHTMLAttributes, RefObject } from 'react'
 
 interface InputProps {
-	error?: Error
-	InputHTMLAttributes: InputHTMLAttributes<HTMLInputElement>
+	attributes?:	InputHTMLAttributes<HTMLInputElement>
+	bind?: ((instance: HTMLInputElement | null) => void) | RefObject<HTMLInputElement> | null | undefined
+	Icon?: any,
 }
 
 export default InputProps

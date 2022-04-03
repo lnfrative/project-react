@@ -1,5 +1,6 @@
 // region import
 import React, { useContext } from 'react'
+import { Typography, Box } from '@mui/material'
 
 // contexts
 import { Backend, Captcha } from 'contexts'
@@ -8,7 +9,7 @@ import { Backend, Captcha } from 'contexts'
 import { useForm } from 'hooks'
 
 // components
-import { FormAuth, InputLabelEmail, Button, BackdropLoader, Form } from 'components'
+import { FormAuth, Button, BackdropLoader, Form, Input } from 'components'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
@@ -25,7 +26,7 @@ const endrecoverpassword = resources.endpoints.post.recoverPassword
 function FormAuthRecoverPassword() {
 	const backend = useContext(Backend)
 	const captcha = useContext(Captcha)
-	const { register, handleSubmit, watch } = useForm()
+	const { handleSubmit, watch, bind } = useForm()
 	const { email } = watch
 	const params = {
 		email: email?.value,
@@ -46,16 +47,35 @@ function FormAuthRecoverPassword() {
 			}}
 		>
 			<FormAuth title={message({ id: 'RECOVER_PASSWORD' })}>
-				<div className={styles.space}>
-					<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
-				</div>
-				<Button
-					design="normal"
-					buttonHTMLAttributes={{
-						type: 'submit',
+				<Typography
+					sx={{
+						marginBottom: 1
 					}}
-					title={message({ id: 'SEND' })}
+				>
+					{message({ id: 'EMAIL' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'email' })}
+					attributes={{
+						type: 'email',
+						name: 'email',
+						autoCorrect: 'off',
+						autoComplete: 'email',
+					}}
 				/>
+				<Box
+					sx={{
+						marginTop: 4
+					}}
+				>
+					<Button
+						design="normal"
+						buttonHTMLAttributes={{
+							type: 'submit',
+						}}
+						title={message({ id: 'SEND' })}
+					/>
+				</Box>
 			</FormAuth>
 			<BackdropLoader open={loading} />
 		</Form>

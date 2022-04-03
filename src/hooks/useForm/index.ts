@@ -2,17 +2,20 @@ import { FormEventHandler, useState } from 'react'
 import { useStage } from 'hooks'
 import { Stage } from 'interfaces'
 
-function changeState(stage: Stage<{}>) {
-	return (arg: { name: string }) => (value: string, hasError: boolean) => {
-		stage.commitState({ [arg.name]: { value, hasError } })
-	}
+interface FormRecordBinded {
+	value: String
+	input: HTMLInputElement | null
 }
 
-function parseState(stage: Stage<{}>) {
+type State = Record<string, FormRecordBinded>
+
+const initialState: State = {}
+
+function parseState(stage: Stage<State>) {
 	return Object.assign(stage.state)
 }
 
-function handleSubmit(stage: Stage<{}>) {
+function handleSubmit(stage: Stage<State>) {
 	return (args: { onSubmit: Function }): FormEventHandler<HTMLFormElement> =>
 		e => {
 			if (e) {
@@ -22,16 +25,21 @@ function handleSubmit(stage: Stage<{}>) {
 		}
 }
 
-function bindInput(stage: Stage<Record<string, any>>, elements: HTMLInputElement[]) {
-	return (values: { name: string }) => (element: HTMLInputElement) => {
+function bindInput(stage: Stage<State>, elements: HTMLInputElement[]) {
+	return (values: { name: string }) => (instance: HTMLInputElement | null) => {
 		const listener = () => {
-			stage.commitState({ [values.name]: element.value ?? '' })
+			stage.commitState({
+				[values.name]: {
+					value: instance?.value ?? '',
+					input: instance,
+				},
+			})
 		}
-		if (element) {
-			if (!element.getAttribute('listen')) {
-				element.addEventListener('input', listener)
-				element.setAttribute('listen', 'true')
-				elements.push(element)
+		if (instance) {
+			if (!instance.getAttribute('listen')) {
+				instance.addEventListener('input', listener)
+				instance.setAttribute('listen', 'true')
+				elements.push(instance)
 			}
 		}
 	}
@@ -48,11 +56,10 @@ function clear(elements: HTMLInputElement[]) {
 
 function useForm() {
 	const [elements] = useState<HTMLInputElement[]>([])
-	const stage = useStage({})
+	const stage = useStage(initialState)
 
 	return {
 		bind: bindInput(stage, elements),
-		register: changeState(stage),
 		watch: parseState(stage),
 		handleSubmit: handleSubmit(stage),
 		clearInputs: clear(elements),

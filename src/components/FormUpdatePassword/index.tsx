@@ -1,8 +1,9 @@
 // region import
 import React, { useContext, useEffect } from 'react'
+import { Typography } from '@mui/material'
 
 // components
-import { InputLabelPassword, Button, ForgotPassword, BackdropLoader } from 'components'
+import { Button, ForgotPassword, BackdropLoader, Input } from 'components'
 
 // contexts
 import { Backend } from 'contexts'
@@ -24,7 +25,7 @@ const endchangepassword = resources.endpoints.post.changePassword
 
 function FormUpdatePassword() {
 	const backend = useContext(Backend)
-	const { handleSubmit, register, watch } = useForm()
+	const { handleSubmit, watch, bind } = useForm()
 
 	const params = {
 		password: watch.currentPassword?.value,
@@ -47,22 +48,57 @@ function FormUpdatePassword() {
 	return (
 		<form onSubmit={handleSubmit({ onSubmit: onSubmit(backend, params) })}>
 			<div className={styles.input}>
-				<InputLabelPassword
-					registerInput={register({ name: 'currentPassword' })}
-					title={message({ id: 'CURRENT_PASSWORD' })}
+				<Typography
+					sx={{
+						marginBottom: 1
+					}}
+				>
+					{message({ id: 'CURRENT_PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'currentPassword' })}
+					attributes={{
+						type: 'password',
+						name: 'password',
+						autoComplete: 'current-password',
+						autoCorrect: 'off',
+					}}
 				/>
 			</div>
 			<div className={styles.input}>
-				<InputLabelPassword
-					registerInput={register({ name: 'newPassword' })}
-					title={message({ id: 'NEW_PASSWORD' })}
+				<Typography
+					sx={{
+						marginBottom: 1
+					}}
+				>
+					{message({ id: 'NEW_PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'newPassword' })}
+					attributes={{
+						type: 'password',
+						name: 'new-password',
+						autoComplete: 'new-password',
+						autoCorrect: 'off',
+					}}
 				/>
 			</div>
 			<div className={styles.input}>
-				<InputLabelPassword
-					registerInput={register({ name: 'repeatPassword' })}
-					title={message({ id: 'REPEAT_PASSWORD' })}
-					confirm={params.password}
+				<Typography
+					sx={{
+						marginBottom: 1
+					}}
+				>
+					{message({ id: 'REPEAT_PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'REPEAT_PASSWORD' })}
+					attributes={{
+						type: 'password',
+						name: 'repeat-password',
+						autoComplete: 'repeat-password',
+						autoCorrect: 'off',
+					}}
 				/>
 			</div>
 			<div className={styles.groupButton}>

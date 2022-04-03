@@ -3,6 +3,7 @@
 .input {
 	max-width: 400px;
 	margin: var(--space-lg) 0;
+	color: var(--color-variety-main);
 }
 
 .groupButton {

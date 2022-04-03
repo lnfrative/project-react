@@ -23,7 +23,7 @@ function DialogNotification2FA(props: DialogNotification2FAProps) {
 			message={message({ id: 'ENTER_2FA_CODE' })}
 			ContentAfterMessage={
 				<Input
-					InputHTMLAttributes={{
+					attributes={{
 						autoFocus: true,
 						style: { textAlign: 'center' },
 						type: 'text',

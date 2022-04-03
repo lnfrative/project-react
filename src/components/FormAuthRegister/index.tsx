@@ -1,5 +1,6 @@
 // region import
 import React, { useContext, useEffect } from 'react'
+import { Typography } from '@mui/material'
 
 // contexts
 import { Backend, Captcha } from 'contexts'
@@ -15,12 +16,10 @@ import {
 	FormAuth,
 	Button,
 	CheckboxRhomboidTerms,
-	InputLabelEmail,
-	InputLabelPassword,
-	InputLabelPRepeat,
 	LinkForm,
 	BackdropLoader,
 	Form,
+	Input,
 } from 'components'
 
 // module
@@ -37,7 +36,7 @@ function FormAuthRegister() {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
 	const captcha = useContext(Captcha)
-	const { register, watch, handleSubmit } = useForm()
+	const { watch, handleSubmit, bind } = useForm()
 	const { password, email, repeatedPassword } = watch
 	const params = {
 		email: email?.value,
@@ -66,18 +65,56 @@ function FormAuthRegister() {
 			}}
 		>
 			<FormAuth title={message({ id: 'CREATE_AN_ACCOUNT' })}>
-				<div className={styles.space}>
-					<InputLabelEmail registerInput={register({ name: 'email' })} />
-				</div>
-				<div className={styles.space}>
-					<InputLabelPassword registerInput={register({ name: 'password' })} />
-				</div>
-				<div className={styles.space}>
-					<InputLabelPRepeat
-						registerInput={register({ name: 'repeatedPassword' })}
-						password={password?.value}
-					/>
-				</div>
+				<Typography
+					sx={{
+						marginBottom: 1
+					}}
+				>
+					{message({ id: 'EMAIL' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'email' })}
+					attributes={{
+						type: 'email',
+						name: 'email',
+						autoComplete: 'email',
+						autoCorrect: 'off',
+					}}
+				/>
+				<Typography
+					sx={{
+						marginBottom: 1,
+						marginTop: 3
+					}}
+				>
+					{message({ id: 'PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'password' })}
+					attributes={{
+						type: 'password',
+						name: 'new-password',
+						autoComplete: 'new-password',
+						autoCorrect: 'off',
+					}}
+				/>
+				<Typography
+					sx={{
+						marginBottom: 1,
+						marginTop: 3
+					}}
+				>
+					{message({ id: 'REPEAT_PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'repeatedPassword' })}
+					attributes={{
+						type: 'password',
+						name: 'current-password',
+						autoComplete: 'current-password',
+						autoCorrect: 'off',
+					}}
+				/>
 				<div className={styles.space}>
 					<CheckboxRhomboidTerms
 						checkboxRhomboidProps={{
@@ -99,11 +136,13 @@ function FormAuthRegister() {
 						}}
 					/>
 				</div>
-				<LinkForm
-					path={resources.routes.login.base}
-					message={message({ id: 'ALREADY_HAVE_ACCUONT' })}
-					linkName={message({ id: 'LOG_IN' })}
-				/>
+				<div className={styles.space}>
+					<LinkForm
+						path={resources.routes.login.base}
+						message={message({ id: 'ALREADY_HAVE_ACCUONT' })}
+						linkName={message({ id: 'LOG_IN' })}
+					/>
+				</div>
 			</FormAuth>
 			<BackdropLoader open={loading} message={message({ id: 'LONG_TIME_ACTION' })} />
 		</Form>

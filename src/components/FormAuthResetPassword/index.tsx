@@ -1,6 +1,7 @@
 // region import
 import React, { useContext } from 'react'
 import { useLocation, Redirect } from 'react-router-dom'
+import { Typography, Box } from '@mui/material'
 
 // hooks
 import { useForm } from 'hooks'
@@ -11,11 +12,10 @@ import { Backend, Captcha } from 'contexts'
 // components
 import {
 	FormAuth,
-	InputLabelPassword,
-	InputLabelPRepeat,
 	Button,
 	BackdropLoader,
 	Form,
+	Input,
 } from 'components'
 
 // utilities
@@ -23,9 +23,6 @@ import { message, requestId, resources } from 'utilities'
 
 // modules
 import { onSubmit } from './module'
-
-// styles
-import styles from './index.module.css'
 // endregion
 
 const endresetpassword = resources.endpoints.post.resetPassword
@@ -33,7 +30,7 @@ const endresetpassword = resources.endpoints.post.resetPassword
 function FormAuthResetPassword() {
 	const backend = useContext(Backend)
 	const captcha = useContext(Captcha)
-	const { register, handleSubmit, watch } = useForm()
+	const { handleSubmit, watch, bind } = useForm()
 
 	const { search } = useLocation()
 	const urlSearchParams = new URLSearchParams(search)
@@ -62,22 +59,52 @@ function FormAuthResetPassword() {
 			}}
 		>
 			<FormAuth title="Reset Password">
-				<div className={styles.space}>
-					<InputLabelPassword registerInput={register({ name: 'password' })} />
-				</div>
-				<div className={styles.space}>
-					<InputLabelPRepeat
-						password={password}
-						registerInput={register({ name: 'passwordRepeat' })}
-					/>
-				</div>
-				<Button
-					design="normal"
-					buttonHTMLAttributes={{
-						type: 'submit',
+				<Typography
+					sx={{
+						marginBottom: 1
 					}}
-					title={message({ id: 'SEND' })}
+				>
+					{message({ id: 'PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'password' })}
+					attributes={{
+						type: 'password',
+						name: 'new-password',
+						autoComplete: 'new-password',
+						autoCorrect: 'off',
+					}}
 				/>
+				<Typography
+					sx={{
+						marginBottom: 1,
+						marginTop: 3
+					}}
+				>
+					{message({ id: 'REPEAT_PASSWORD' })}
+				</Typography>
+				<Input
+					bind={bind({ name: 'passwordRepeat' })}
+					attributes={{
+						type: 'password',
+						name: 'current-password',
+						autoComplete: 'current-password',
+						autoCorrect: 'off',
+					}}
+				/>
+				<Box
+					sx={{
+						marginTop: 4
+					}}
+				>
+					<Button
+						design="normal"
+						buttonHTMLAttributes={{
+							type: 'submit',
+						}}
+						title={message({ id: 'SEND' })}
+					/>
+				</Box>
 			</FormAuth>
 			<BackdropLoader open={loading} />
 		</Form>

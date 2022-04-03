@@ -62,7 +62,7 @@ function EnableTwoFactor(props: EnableTwoFactorProps) {
 		<div className={styles.container}>
 			<div className={styles.label}>{message({ id: 'ENTER_OTP' })}</div>
 			<Input
-				InputHTMLAttributes={{
+				attributes={{
 					autoFocus: true,
 					type: 'text',
 					style: { textAlign: 'center', padding: 0 },

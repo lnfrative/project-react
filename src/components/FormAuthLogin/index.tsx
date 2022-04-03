@@ -1,5 +1,6 @@
 // region import
 import React, { useContext, useEffect } from 'react'
+import { Typography, Box } from '@mui/material'
 
 // hooks
 import { useForm } from 'hooks'
@@ -10,14 +11,13 @@ import { Backend, Captcha } from 'contexts'
 // components
 import {
 	FormAuth,
-	InputLabelEmail,
-	InputLabelPassword,
 	Button,
 	LinkForm,
 	BackdropLoader,
 	ForgotPassword,
 	Form,
 	TwoFactor,
+	Input
 } from 'components'
 
 // utilties
@@ -35,7 +35,7 @@ const endlogin = resources.endpoints.post.userCreateAccessToken
 function FormAuthLogin() {
 	const backend = useContext(Backend)
 	const captcha = useContext(Captcha)
-	const { register, handleSubmit, watch } = useForm()
+	const { handleSubmit, watch, bind } = useForm()
 	const { email, password } = watch
 	const params = {
 		email: email?.value,
@@ -64,13 +64,47 @@ function FormAuthLogin() {
 				}}
 			>
 				<FormAuth title={message({ id: 'LOG_IN' })}>
-					<div className={styles.space}>
-						<InputLabelEmail disableError registerInput={register({ name: 'email' })} />
-					</div>
-					<div className={styles.space}>
-						<InputLabelPassword disableError registerInput={register({ name: 'password' })} />
-					</div>
-					<ForgotPassword />
+					<Typography
+						sx={{
+							marginBottom: 1
+						}}
+					>
+						{message({ id: 'EMAIL' })}
+					</Typography>
+					<Input
+						bind={bind({ name: 'email' })}
+						attributes={{
+							type: 'email',
+							name: 'email',
+							autoComplete: 'email',
+							autoCorrect: 'off',
+						}}
+					/>
+					<Typography
+						sx={{
+							marginBottom: 1,
+							marginTop: 3
+						}}
+					>
+						{message({ id: 'PASSWORD' })}
+					</Typography>
+					<Input
+						bind={bind({ name: 'password' })}
+						attributes={{
+							type: 'password',
+							name: 'password',
+							autoComplete: 'password',
+							autoCorrect: 'off',
+						}}
+					/>
+					<Box
+						sx={{
+							marginTop: 3,
+							marginBottom: 3,
+						}}
+					>
+						<ForgotPassword />
+					</Box>
 					<div className={styles.space}>
 						<Button
 							design="normal"

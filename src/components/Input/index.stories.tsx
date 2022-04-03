@@ -13,6 +13,5 @@ const Template: ComponentStory<typeof Input> = (props: InputProps) => <Input {..
 export const Test = Template.bind({})
 
 Test.args = {
-	error: { sign: '!', data: { message: 'Message.' } },
-	InputHTMLAttributes: {},
+	attributes: {},
 }
