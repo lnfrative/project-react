@@ -56,7 +56,9 @@ function Send() {
 	const currency = useContext(Currency)
 	const backend = useContext(Backend)
 	const captcha = useContext(Captcha)
-	const { amount, address } = watch
+
+	const amount = parseInt(watch.amount?.value, 10)
+	const address = watch.address?.value
 
 	const user: BackendUser = backend.response({
 		method: 'get',

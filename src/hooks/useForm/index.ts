@@ -6,7 +6,7 @@ type State = Record<string, FormRecordBinded>
 
 const initialState: State = {}
 
-function parseState(stage: Stage<State>) {
+function parseState(stage: Stage<State>): State {
 	return Object.assign(stage.state)
 }
 

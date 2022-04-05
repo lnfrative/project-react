@@ -127,11 +127,7 @@ function FormAuthRegister() {
 						design="normal"
 						title={message({ id: 'SIGN_UP' })}
 						buttonHTMLAttributes={{
-							disabled:
-								!stage.state.termsAccepted ||
-								password?.hasError ||
-								email?.hasError ||
-								repeatedPassword?.hasError,
+							disabled: !stage.state.termsAccepted || !repeatedPassword || !email || !password,
 							type: 'submit',
 						}}
 					/>

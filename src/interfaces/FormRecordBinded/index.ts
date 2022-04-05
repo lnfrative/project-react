@@ -1,5 +1,5 @@
 interface FormRecordBinded {
-	value: String
+	value: string
 	input: HTMLInputElement | null
 }
 
