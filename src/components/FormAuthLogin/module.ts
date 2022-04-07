@@ -16,9 +16,11 @@ export function onSubmit(backend: ContextBackend, modal: Stage<ContextModalState
 export function reactivateInput(modal: Stage<ContextModalState>, formRecord: FormRecordBinded) {
 	return () => {
 		modal.commitState({ id: undefined, status: 'close' })
-		setTimeout(() => {
-			formRecord.input?.focus()
-		}, 100)
+		if (formRecord) {
+			setTimeout(() => {
+				formRecord.input?.focus()
+			}, 0)
+		}
 	}
 }
 

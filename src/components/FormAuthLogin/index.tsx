@@ -71,7 +71,7 @@ function FormAuthLogin() {
 						}}
 					>
 						{message({ id: 'EMAIL' })}
-					</Typography>
+					</Typography> 
 					<Box
 						onClick={reactivateInput(modal, email)}
 					>
