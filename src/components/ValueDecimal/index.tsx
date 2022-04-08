@@ -8,7 +8,7 @@ import { ValueDecimalProps } from 'interfaces'
 import { resources } from 'utilities'
 
 // styles
-import { Container, Integer, Decimal } from './style'
+import { Container, Integer, Decimal, SignRight } from './style'
 // endregion
 
 function ValueDecimal(props: ValueDecimalProps) {
@@ -24,7 +24,7 @@ function ValueDecimal(props: ValueDecimalProps) {
 				{props.decimals !== 0 && <span>.</span>}
 				{value.decimal}
 			</Decimal>
-			{props.signPosition === 'right' && <Integer {...props}>{props.sign}</Integer>}
+			{props.signPosition === 'right' && <SignRight {...props}>{props.sign}</SignRight>}
 		</Container>
 	)
 }

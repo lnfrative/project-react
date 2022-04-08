@@ -19,6 +19,22 @@ export const Integer = styled('span')<ValueDecimalProps>`
 	}};
 `
 
+export const SignRight = styled('span')<ValueDecimalProps>`
+	color: ${props => props.theme.color.varietyMainShadow};
+	font-size: ${props => {
+		if (props.sise === 'small') {
+			return props.theme.size.xs
+		}
+		if (props.sise === 'medium') {
+			return props.theme.size.xl
+		}
+		if (props.sise === 'large') {
+			return props.theme.size.xxl
+		}
+		return props.theme.size.huge
+	}};
+`
+
 export const Decimal = styled('span')<ValueDecimalProps>`
 	color: ${props => props.theme.color.varietyMainShadow};
 	font-size: ${props => {
