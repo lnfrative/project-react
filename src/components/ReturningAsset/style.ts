@@ -6,7 +6,11 @@ export const Container = styled('div')`
 	max-width: 310px;
 `
 
-export const Group = styled('div')``
+export const Group = styled('div')`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 
 export const PrimaryTitle = styled('div')`
 	${props =>
