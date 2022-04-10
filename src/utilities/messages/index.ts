@@ -298,6 +298,36 @@ const messages: Record<string, Record<string, any>> = {
 	CAPTCHA_VERIFICATION: {
 		en: 'Captcha verification',
 	},
+	CANCELED: {
+		en: 'Canceled'
+	},
+	TX_WAIT_USER_VERIFICATION: {
+		en: 'The transaction was created correctly and is waiting to be validated by the user.'
+	},
+	TX_SUCCESSFULLY_VALIDATED: {
+		en: 'The transaction was successfully validated.',
+	},
+	TX_WAITING_POOL_APPROVAL: {
+		en: 'For security, this transaction is waiting to be approved by a pool agent.',
+	},
+	TX_WAITING_PROCESSED: {
+		en: 'The transaction was validated by both the pool and the user and is waiting to be processed.',
+	},
+	TX_SUCCESSFULLY_PROCESSED: {
+		en: 'The transaction was successfully processed.',
+	},
+	TX_CANCELED_BY_EMAIL_EXPIRED: {
+		en: 'The transaction was not processed due to lack of email confirmation and expiration.',
+	},
+	TX_CANCELED_BY_2FA: {
+		en: 'Transaction canceled due to a problem with the authenticity of the 2FA code.',
+	},
+	TX_CANCELED_BY_BALANCES: {
+		en: 'Transaction canceled due to the set of user balances do not match.',
+	},
+	TX_CANCELED_BY_UNKNOWN_REASONS: {
+		en: 'Transaction canceled for unknown reasons.',
+	},
 }
 
 export default messages

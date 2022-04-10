@@ -1,5 +1,6 @@
 // region import
 import React, { useContext } from 'react'
+import { Tooltip } from '@mui/material'
 
 // contexts
 import { Backend, Currency } from 'contexts'
@@ -12,6 +13,9 @@ import { BackendCoin, TransactionProps } from 'interfaces'
 
 // utilities
 import { resources, message } from 'utilities'
+
+// modules
+import { statusMessage } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -51,9 +55,20 @@ function Transaction(props: TransactionProps) {
 						<div className={styles.price}>
 							{props.data.concept}
 							{' ('}
-							{props.data.status === 5 && <div>{message({ id: 'COMPLETED' })}</div>}
-							{(!props.data.accountable || props.data.status !== 5) && (
-								<div>{message({ id: 'PENDING' })}</div>
+							{(!!props.data.accountable &&  props.data.status === 5) && (
+								<Tooltip title={statusMessage(message, props.data.status)}>
+									<div>{message({ id: 'COMPLETED' })}</div>
+								</Tooltip>
+							)}
+							{(!!props.data.accountable && props.data.status !== 5) && (
+								<Tooltip title={statusMessage(message, props.data.status)}>
+									<div>{message({ id: 'PENDING' })}</div>
+								</Tooltip>
+							)}
+							{!props.data.accountable && (
+								<Tooltip title={statusMessage(message, props.data.status)}>
+									<div>{message({ id: 'CANCELED' })}</div>
+								</Tooltip>
 							)}
 							)
 						</div>
