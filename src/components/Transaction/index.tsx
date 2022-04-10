@@ -56,17 +56,17 @@ function Transaction(props: TransactionProps) {
 							{props.data.concept}
 							{' ('}
 							{(!!props.data.accountable &&  props.data.status === 5) && (
-								<Tooltip title={statusMessage(message, props.data.status)}>
+								<Tooltip arrow title={statusMessage(message, props.data.status)}>
 									<div>{message({ id: 'COMPLETED' })}</div>
 								</Tooltip>
 							)}
 							{(!!props.data.accountable && props.data.status !== 5) && (
-								<Tooltip title={statusMessage(message, props.data.status)}>
+								<Tooltip arrow title={statusMessage(message, props.data.status)}>
 									<div>{message({ id: 'PENDING' })}</div>
 								</Tooltip>
 							)}
 							{!props.data.accountable && (
-								<Tooltip title={statusMessage(message, props.data.status)}>
+								<Tooltip arrow title={statusMessage(message, props.data.status)}>
 									<div>{message({ id: 'CANCELED' })}</div>
 								</Tooltip>
 							)}

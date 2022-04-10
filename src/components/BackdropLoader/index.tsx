@@ -13,7 +13,7 @@ function BackdropLoader(props: BackdropLoaderProps) {
 	return (
 		<Backdrop open={props.open} sx={{ zIndex: 10000 }}>
 			<div className={styles.loader}>
-				<CircularProgress />
+				<CircularProgress color="info" />
 				{props.message && <div className={styles.loaderMessage}>{props.message}</div>}
 			</div>
 		</Backdrop>
