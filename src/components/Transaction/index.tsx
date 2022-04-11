@@ -25,7 +25,7 @@ import { MovementGroupData, MovementGroupDataBelow, Data } from './style'
 function Transaction(props: TransactionProps) {
 	const backend = useContext(Backend)
 	const currency = useContext(Currency)
-	const date = resources.utils.parseTimestamp(props.data.timestamp * 1000, 'yyyy.mm.dd')
+	const date = resources.utils.parseTimestamp(props.data.timestamp * 1000, 'yyy-mm-dd hh:mm:ss')
 	const coins: Array<BackendCoin> = backend.response({
 		endpoint: resources.endpoints.get.coins,
 		method: 'get',
