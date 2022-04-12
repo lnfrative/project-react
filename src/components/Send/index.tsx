@@ -128,6 +128,8 @@ function Send() {
 					>
 						<Form
 							captcha
+							onSuccess={success(stage, clearInputs)}
+							requestId={requestId('post', endtransaction, params)}
 							formHTMLAttributes={{
 								className: styles.form,
 								onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
