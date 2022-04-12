@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // interfaces
-import { BackendCoin, BackendWallet, BackendUser } from 'interfaces'
+import { BackendCoin, BackendWallet } from 'interfaces'
 
 // contexts
 import { Backend, Captcha, Currency } from 'contexts'
@@ -41,7 +41,6 @@ import {
 	GroupInputWrap,
 	GroupInputWrapIcon,
 	ErrorMessage,
-	StyledLink,
 	Values,
 } from './style'
 // endregion
@@ -59,11 +58,6 @@ function Send() {
 
 	const amount = parseFloat(watch.amount?.value || '0')
 	const address = watch.address?.value
-
-	const user: BackendUser = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.user,
-	})?.data
 
 	const wallets: Array<BackendWallet> | undefined = backend.response({
 		method: 'get',
@@ -188,24 +182,11 @@ function Send() {
 								{remainingBalance.value} {currency.state.id?.toUpperCase()}
 							</div>
 
-							{!user.two_factor_verified && (
-								<ErrorMessage style={{ textAlign: 'center' }}>
-									<StyledLink to="/setting/security">
-										Enable 2FA
-									</StyledLink>
-									{' '}
-									<span>
-									 to start sending!
-									</span>
-								</ErrorMessage>
-							)}
-
 							<div className={styles.buttonSend}>
 								<Button
 									title="Send"
 									buttonHTMLAttributes={{
 										disabled:
-											!user.two_factor_verified ||
 											insufficientFunds ||
 											invalidAmount ||
 											emptyAddress ||

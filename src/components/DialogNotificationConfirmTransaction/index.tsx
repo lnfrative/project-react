@@ -5,6 +5,9 @@ import { useLocation } from 'react-router-dom'
 // contexts
 import { Backend } from 'contexts'
 
+// interfaces
+import { DialogNotificationConfirmTransactionProps } from 'interfaces'
+
 // region import
 import { Button, BackdropLoader, DialogNotification } from 'components'
 
@@ -20,7 +23,7 @@ import { confirmTransaction, cancel } from './module'
 
 const endconfirmtransaction = resources.endpoints.post.confirmTransaction
 
-function DialogNotificationConfirmTransaction() {
+function DialogNotificationConfirmTransaction(props: DialogNotificationConfirmTransactionProps) {
 	const backend = useContext(Backend)
 	const location = useLocation()
 	const searchParams = new URLSearchParams(location.search)
@@ -47,7 +50,7 @@ function DialogNotificationConfirmTransaction() {
 	return (
 		<>	
 			<DialogNotification
-				open
+				open={props.open}
 				title={message({ id: 'CONFIRM_TRANSACTION' })}
 				message={message({ id: 'CONFIRM_TRANSACTION_REQUIRED' })}
 				ContentAfterMessage={
