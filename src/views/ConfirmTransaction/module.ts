@@ -12,6 +12,10 @@ export const initialState: State = {
 
 export function handleVerificationSuccess(stage: Stage<State>) {
   return () => {
-
+    stage.commitState({ status: 'verified' })
   }
+}
+
+export function toHome() {
+  window.location.href = '/'
 }

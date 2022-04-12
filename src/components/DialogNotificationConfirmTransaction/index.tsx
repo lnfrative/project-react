@@ -43,7 +43,7 @@ function DialogNotificationConfirmTransaction(props: DialogNotificationConfirmTr
 
 	useEffect(() => {
 		if (response?.success) {
-			window.location.href = '/'
+			props.onSuccess()
 		}
 	}, [response?.success])
 

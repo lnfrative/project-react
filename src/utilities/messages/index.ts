@@ -328,6 +328,12 @@ const messages: Record<string, Record<string, any>> = {
 	TX_CANCELED_BY_UNKNOWN_REASONS: {
 		en: 'Transaction canceled for unknown reasons.',
 	},
+	SUCCESS_CONFIRMATION: {
+		en: 'Successful confirmation'
+	},
+	SUCCESS_CONFIRMATION_TX: {
+		en: 'Your transaction has been successfully verified and will soon be processed by the pool.'
+	}
 }
 
 export default messages
