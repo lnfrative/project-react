@@ -130,12 +130,15 @@ function removeUnnecessaryCryptoDecimals(crypto: number) {
 	return Math.floor(crypto * 10 ** 8) / 10 ** 8
 }
 
-function parseTimestamp(timestamp: number, format: 'yyyy.mm.dd' | 'yyy-mm-dd hh:mm:ss') {
+function parseTimestamp(timestamp: number, format: 'yyyy.mm.dd' | 'yyy-mm-dd hh:mm:ss' | 'normal') {
 	if (format === 'yyyy.mm.dd') {
 		return new Date(timestamp).toISOString().split('T')[0].replace(/-/g, '.')
 	}
 	if (format === 'yyy-mm-dd hh:mm:ss') {
 		return `${new Date(timestamp).toISOString().replace('T', ' ').split('.')[0]} UTC`
+	}
+	if (format === 'normal') {
+		return `${new Date(timestamp)}`.split(' ').slice(0,5).join(' ')
 	}
 	return new Date(timestamp)
 }

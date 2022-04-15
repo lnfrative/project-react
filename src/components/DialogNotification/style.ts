@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 	padding: var(--space-xl) var(--space-md);
+  background-color: var(--color-passive-main);
 
 	display: flex;
 	align-items: center;
