@@ -15,16 +15,16 @@ function ValueDecimal(props: ValueDecimalProps) {
 	const value = resources.utils.splitFloat(props.value, props.decimals)
 	return (
 		<Container>
-			<Integer {...props}>
+			<Integer size={props.sise}>
 				{!props.signPosition && props.sign}
 				{props.signPosition === 'left' && props.sign}
 				{value.integer}
 			</Integer>
-			<Decimal {...props}>
+			<Decimal sameSize={!!props.sameSize} size={props.sise}>
 				{props.decimals !== 0 && <span>.</span>}
 				{value.decimal}
 			</Decimal>
-			{props.signPosition === 'right' && <SignRight {...props}>{props.sign}</SignRight>}
+			{props.signPosition === 'right' && <SignRight size={props.sise}>{props.sign}</SignRight>}
 		</Container>
 	)
 }

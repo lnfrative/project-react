@@ -1,5 +1,6 @@
 // region import
 import React from 'react'
+import { Skeleton } from '@mui/material'
 
 // interfaces
 import { ValueDecimalLabelProps } from 'interfaces'
@@ -14,8 +15,22 @@ import { Label } from './style'
 function ValueDecimalLabel(props: ValueDecimalLabelProps) {
 	return (
 		<div>
-			<ValueDecimal {...props} sameSize />
-			<Label>{props.title}</Label>
+			{!!props.loading && (
+				<>
+					<Skeleton>
+						<ValueDecimal {...props} sameSize />
+					</Skeleton>
+					<Skeleton>
+						<Label>{props.title}</Label>
+					</Skeleton>
+				</>
+			)}
+			{!props.loading && (
+				<>
+					<ValueDecimal {...props} sameSize />
+					<Label>{props.title}</Label>
+				</>
+			)}
 		</div>
 	)
 }

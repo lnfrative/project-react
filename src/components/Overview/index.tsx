@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import { CircularProgress } from '@mui/material'
 
 // interfaces
-import { BackendTransaction, BackendSummary, BackendWallet, BackendCoin } from 'interfaces'
+import { BackendTransaction, BackendWallet, BackendCoin } from 'interfaces'
 
 // hooks
-import { useStage } from 'hooks'
+import { useStage, useSessionStore } from 'hooks'
 
 // contexts
 import { Backend, Currency } from 'contexts'
@@ -28,7 +28,7 @@ import {
 import { resources, message } from 'utilities'
 
 // modules
-import { initialState, switchExcludeRewardMovements } from './module'
+import { initialState, switchExcludeRewardMovements, fetchSummary } from './module'
 
 // styles
 import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values, TableAssets, CoinAssets, StyledCoinAsset } from './style'
@@ -36,6 +36,7 @@ import styles from './index.module.css'
 // endregion
 
 function Overview() {
+	const session = useSessionStore()
 	const stage = useStage(initialState)
 	const currency = useContext(Currency)
 	const backend = useContext(Backend)
@@ -61,26 +62,20 @@ function Overview() {
 		params: transactionsParams,
 	})?.data
 
-	const summary: BackendSummary | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.summary,
-	})?.data
+	useEffect(() => {
+		fetchSummary()
+
+		backend.request({
+			endpoint: resources.endpoints.get.wallets,
+			method: 'get',
+		})
+	}, [])
 
 	useEffect(() => {
 		backend.request({
 			endpoint: resources.endpoints.get.transactions,
 			method: 'get',
 			params: transactionsParams,
-		})
-
-		backend.request({
-			endpoint: resources.endpoints.get.summary,
-			method: 'get',
-		})
-
-		backend.request({
-			endpoint: resources.endpoints.get.wallets,
-			method: 'get',
 		})
 	}, [transactionsParams])
 
@@ -90,43 +85,38 @@ function Overview() {
 				<StyledPanel>
 					<Panel title={message({ id: 'LAST_30_DAYS' })}>
 						<Values>
-							{summary && (
-								<>
-									<ValueDecimalLabel
-										decimals={2}
-										value={summary.received}
-										sise="large"
-										sign="$"
-										title={message({ id: 'RECEIVED' })}
-									/>
-									<ValueDecimalLabel
-										decimals={2}
-										value={summary.spent}
-										sise="large"
-										sign="$"
-										title={message({ id: 'SPENT' })}
-									/>
-									<ValueDecimalLabel
-										decimals={2}
-										value={summary.earned}
-										sise="large"
-										sign="$"
-										title={message({ id: 'EARNED' })}
-									/>
-									<ValueDecimalLabel
-										decimals={2}
-										value={summary.net}
-										sise="large"
-										sign="$"
-										title={message({ id: 'NET_INCOME' })}
-									/>
-								</>
-							)}
-							{!summary && (
-								<div className={styles.containerFeedback}>
-									<CircularProgress color="inherit" />
-								</div>
-							)}
+							<ValueDecimalLabel
+								decimals={2}
+								value={session.summary?.received ?? 0}
+								sise="large"
+								sign="$"
+								title={message({ id: 'RECEIVED' })}
+								loading={!session.summary}
+							/>
+							<ValueDecimalLabel
+								decimals={2}
+								value={session.summary?.spent ?? 0}
+								sise="large"
+								sign="$"
+								title={message({ id: 'SPENT' })}
+								loading={!session.summary}
+							/>
+							<ValueDecimalLabel
+								decimals={2}
+								value={session.summary?.earned ?? 0}
+								sise="large"
+								sign="$"
+								title={message({ id: 'EARNED' })}
+								loading={!session.summary}
+							/>
+							<ValueDecimalLabel
+								decimals={2}
+								value={session.summary?.net ?? 0}
+								sise="large"
+								sign="$"
+								title={message({ id: 'NET_INCOME' })}
+								loading={!session.summary}
+							/>
 						</Values>
 					</Panel>
 				</StyledPanel>

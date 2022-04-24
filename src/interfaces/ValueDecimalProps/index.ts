@@ -5,6 +5,7 @@ interface ValueDecimalProps {
 	sign?: string
 	decimals?: number
 	signPosition?: 'left' | 'right'
+	loading?: boolean
 }
 
 export default ValueDecimalProps

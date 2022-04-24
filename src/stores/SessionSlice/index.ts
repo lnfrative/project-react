@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // interfaces
-import { BackendUser, BackendBalance } from 'interfaces'
+import { BackendUser, BackendBalance, BackendSummary } from 'interfaces'
 // endregion
 
 interface State {
@@ -10,6 +10,7 @@ interface State {
   status: 'loading' | 'authenticated' | 'unauthenticated'
   user: BackendUser | undefined
   balance: BackendBalance | undefined
+  summary: BackendSummary | undefined
 }
 
 const initialState: State = {
@@ -17,6 +18,7 @@ const initialState: State = {
   user: undefined,
   status: 'loading',
   balance: undefined,
+  summary: undefined
 }
 
 const sessionSlice = createSlice({
@@ -38,6 +40,10 @@ const sessionSlice = createSlice({
       ...state,
       balanceId: action.payload,
     }),
+    setSessionSummary: (state, action: PayloadAction<BackendSummary>) => ({
+      ...state,
+      summary: action.payload,
+    }),
   },
   initialState,
 })
@@ -47,6 +53,7 @@ export const {
   setSessionStatus,
   setSessionBalance,
   setSessionBalanceId,
+  setSessionSummary,
 } = sessionSlice.actions
 
 export default sessionSlice.reducer

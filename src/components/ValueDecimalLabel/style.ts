@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Label = styled('div')`
+    white-space: pre;
 	letter-spacing: 3.7px;
 
 	${props =>
