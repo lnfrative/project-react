@@ -1,14 +1,8 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 // hooks
 import { useStage, useSessionStore } from 'hooks'
-
-// interfaces
-import { BackendBalance } from 'interfaces'
-
-// contexts
-import { Backend } from 'contexts'
 
 // utilities
 import { message, resources } from 'utilities'
@@ -18,10 +12,11 @@ import {
 	GroupSelectValueDecimal,
 	GroupValueDecimal,
 	GroupSelectValueVariation,
+	BackdropLoader,
 } from 'components'
 
 // modules
-import { selectCoin, selectTime, initialState } from './module'
+import { selectCoin, selectTime, initialState, fetchBalanceWithParams } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -45,7 +40,6 @@ const timeOptions = [
 function GroupCoinValues() {
 	const session = useSessionStore()
 	const stage = useStage(initialState)
-	const backend = useContext(Backend)
 
 	const params = resources.utils.parseParams({
 		main_currency: stage.state.currency?.id ?? '',
@@ -53,28 +47,18 @@ function GroupCoinValues() {
 		time: stage.state.variation?.id ?? '',
 	})
 
-	const balance: BackendBalance = backend.response({
-		endpoint: resources.endpoints.get.userBalance,
-		method: 'get',
-		params,
-	})?.data
-
 	useEffect(() => {
-		if (balance) {
-			stage.commitState({ backendBalance: balance })
+		if (session.balance) {
+			stage.commitState({ backendBalance: session.balance })
 		}
-	}, [balance])
+	}, [session.balance])
 
 	useEffect(() => {
 		const { variation, coin, currency } = stage.state
 		if (variation?.id || coin?.id || currency?.id) {
-			backend.request({
-				endpoint: resources.endpoints.get.userBalance,
-				method: 'get',
-				params,
-			})
+			fetchBalanceWithParams(stage, params)
 		}
-	}, [stage.state])
+	}, [stage.state.variation, stage.state.coin, stage.state.currency])
 
 	return (
 		<div className={styles.container}>
@@ -106,6 +90,7 @@ function GroupCoinValues() {
 					loading={!session.balance}
 				/>
 			</SelectValues>
+			<BackdropLoader open={!!stage.state.updatingBalanceWithParams} />
 		</div>
 	)
 }
