@@ -6,11 +6,13 @@ import { BackendUser } from 'interfaces'
 // endregion
 
 interface State {
+  status: 'loading' | 'authenticated' | 'unauthenticated'
   user: BackendUser | undefined
 }
 
 const initialState: State = {
-  user: undefined
+  user: undefined,
+  status: 'loading'
 }
 
 const sessionSlice = createSlice({
@@ -20,10 +22,14 @@ const sessionSlice = createSlice({
       ...state,
       user: action.payload,
     }),
+    setSessionStatus: (state, action: PayloadAction<'loading' | 'authenticated' | 'unauthenticated'>) => ({
+      ...state,
+      status: action.payload,
+    }),
   },
   initialState,
 })
 
-export const { setSessionUser } = sessionSlice.actions
+export const { setSessionUser, setSessionStatus } = sessionSlice.actions
 
 export default sessionSlice.reducer

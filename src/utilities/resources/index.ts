@@ -57,6 +57,48 @@ const endpoints = {
 	},
 }
 
+const ep = {
+	api: {
+		get: {
+			userCsrf: `${process.env.REACT_APP_API}/api/user/csrf`,
+			user: `${process.env.REACT_APP_API}/api/user`,
+			wallets: `${process.env.REACT_APP_API}/api/user/wallets`,
+			coins: `${process.env.REACT_APP_API}/api/coins`,
+			addresses: `${process.env.REACT_APP_API}/api/user/wallets/{coinId}/addresses`,
+			newaddress: `${process.env.REACT_APP_API}/api/user/wallets/{coinId}/newaddress`,
+			emailVerify: `${process.env.REACT_APP_API}/api/email/verify/{user_id}/{hash}/`,
+			captchaKey: `${process.env.REACT_APP_API}/api/captcha/key`,
+			twoFactorQR: `${process.env.REACT_APP_API}/api/user/second-factor/qr`,
+			userBalance: `${process.env.REACT_APP_API}/api/user/balance`,
+			transactions: `${process.env.REACT_APP_API}/api/user/transactions`,
+			summary: `${process.env.REACT_APP_API}/api/user/summary`,
+			resendEmailConfirmation: `${process.env.REACT_APP_API}/api/user/email/verify/resend`,
+			revenueSummary: `${process.env.REACT_APP_API}/api/user/income/revenueSummary`,
+			revenueChart: `${process.env.REACT_APP_API}/api/user/income/revenueChart`,
+			incomeOrigin: `${process.env.REACT_APP_API}/api/user/income/incomeOrigin`,
+			collateralAssetsAndROI: `${process.env.REACT_APP_API}/api/user/income/collateralAssetsAndROI`,
+			returningAssets: `${process.env.REACT_APP_API}/api/user/income/topReturningAssets`,
+		},
+		post: {
+			userCreateAccessToken: `${process.env.REACT_APP_API}/api/auth/login`,
+			user: `${process.env.REACT_APP_API}/api/auth/signup`,
+			recoverPassword: `${process.env.REACT_APP_API}/api/auth/recover-password`,
+			resetPassword: `${process.env.REACT_APP_API}/api/auth/update-password`,
+			changePassword: `${process.env.REACT_APP_API}/api/user/change-password`,
+			captchaValidate: `${process.env.REACT_APP_API}/api/captcha/validate`,
+			secondFactorEnable: `${process.env.REACT_APP_API}/api/user/second-factor/enable`,
+			signout: `${process.env.REACT_APP_API}/api/user/logout`,
+			transactions: `${process.env.REACT_APP_API}/api/user/transactions`,
+			confirmTransaction: `${process.env.REACT_APP_API}/api/transaction-confirmation`,
+		},
+		aliases: {
+			coinId: `{coinId}`,
+			userId: `{user_id}`,
+			hash: `{hash}`,
+		},
+	}
+}
+
 const colors = {
 	variety_upstream: '#C8FCA3',
 	variety_dowsntream: '#FF8C8C',
@@ -160,4 +202,5 @@ export default {
 	colors,
 	coin,
 	utils,
+	ep,
 }

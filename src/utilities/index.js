@@ -5,4 +5,6 @@ export { default as regex } from './regex'
 export { default as resources } from './resources'
 export { default as readCookie } from './readCookie'
 export { default as requestId } from './requestId'
+export { default as fetcher } from './fetcher'
+
 export { theme } from './theme'
