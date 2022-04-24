@@ -1,5 +1,6 @@
 // region import
 import React from 'react'
+import { Skeleton } from '@mui/material'
 
 // hooks
 import { useStage } from 'hooks'
@@ -27,10 +28,20 @@ function GroupSelectValueDecimal(props: GroupSelectValueDecimalProps) {
 				title={props.titleSelect}
 				options={props.optionsSelect}
 			/>
-			<div className={styles.containerValues}>
-				<ValueDecimal sise="medium" value={props.valueDecimal} />
-				<span className={styles.optionValue}>{stage.state.optionSelected?.value}</span>
-			</div>
+			{!!props.loading && (
+				<Skeleton>
+					<div className={styles.containerValues}>
+						<ValueDecimal sise="medium" value={props.valueDecimal} />
+						<span className={styles.optionValue}>{stage.state.optionSelected?.value}</span>
+					</div>
+				</Skeleton>
+			)}
+			{!props.loading && (
+				<div className={styles.containerValues}>
+					<ValueDecimal sise="medium" value={props.valueDecimal} />
+					<span className={styles.optionValue}>{stage.state.optionSelected?.value}</span>
+				</div>
+			)}
 		</div>
 	)
 }

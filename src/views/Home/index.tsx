@@ -1,11 +1,11 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 
 // interfaces
 import { PaginationObject } from 'interfaces'
 
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useSessionStore } from 'hooks'
 
 // utilities
 import { resources } from 'utilities'
@@ -15,7 +15,6 @@ import {
 	HeaderDashboard,
 	GridForm,
 	FormAuthLogin,
-	PreloadPage,
 	GroupCoinValues,
 	PaginationBar,
 	SendAndReceive,
@@ -43,21 +42,6 @@ const paginationObjects: Array<PaginationObject> = [
 ]
 
 function Dashboard() {
-	const backend = useContext(Backend)
-	const balances = backend.response({
-		endpoint: resources.endpoints.get.userBalance,
-		method: 'get',
-	})
-
-	useEffect(() => {
-		backend.request({
-			endpoint: resources.endpoints.get.userBalance,
-			method: 'get',
-			label: 'GETTING_BALANCES',
-		})
-	}, [])
-
-	if (!balances?.success) return <PreloadPage />
 	return (
 		<HeaderDashboard>
 			<Content>
@@ -79,9 +63,8 @@ const Login = () => (
 )
 
 function Home() {
-	const { response } = useContext(Backend)
-	const user = response({ endpoint: resources.endpoints.get.user, method: 'get' })
-	if (!user?.success) return <Login />
+	const session = useSessionStore()
+	if (session.status === 'unauthenticated') return <Login />
 	return <Dashboard />
 }
 

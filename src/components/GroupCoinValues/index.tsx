@@ -2,7 +2,7 @@
 import React, { useContext, useEffect } from 'react'
 
 // hooks
-import { useStage } from 'hooks'
+import { useStage, useSessionStore } from 'hooks'
 
 // interfaces
 import { BackendBalance } from 'interfaces'
@@ -11,14 +11,13 @@ import { BackendBalance } from 'interfaces'
 import { Backend } from 'contexts'
 
 // utilities
-import { message, resources, requestId } from 'utilities'
+import { message, resources } from 'utilities'
 
 // components
 import {
 	GroupSelectValueDecimal,
 	GroupValueDecimal,
 	GroupSelectValueVariation,
-	BackdropLoader,
 } from 'components'
 
 // modules
@@ -44,6 +43,7 @@ const timeOptions = [
 ]
 
 function GroupCoinValues() {
+	const session = useSessionStore()
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
 
@@ -58,9 +58,6 @@ function GroupCoinValues() {
 		method: 'get',
 		params,
 	})?.data
-
-	const loading =
-		backend.loading?.id === requestId('get', resources.endpoints.get.userBalance, params)
 
 	useEffect(() => {
 		if (balance) {
@@ -85,28 +82,30 @@ function GroupCoinValues() {
 				<GroupValueDecimal
 					design="top"
 					title={message({ id: 'BALANCE' })}
-					value={stage.state.backendBalance?.balance_main_currency ?? 0}
+					value={session.balance?.balance_main_currency ?? 0}
 					sign="$"
 					decimals={2}
+					loading={!session.balance}
 				/>
 			</StyledGroupValueDecimal>
 			<SelectValues>
 				<SelectSpacing>
 					<GroupSelectValueDecimal
-						valueDecimal={stage.state.backendBalance?.balance_secondary_currency ?? 0}
+						valueDecimal={session.balance?.balance_secondary_currency ?? 0}
 						titleSelect="Worth in"
 						optionsSelect={coinOptions}
 						onSelect={selectCoin(stage)}
+						loading={!session.balance}
 					/>
 				</SelectSpacing>
 				<GroupSelectValueVariation
-					valueVariation={stage.state.backendBalance?.change ?? 0}
+					valueVariation={session.balance?.change ?? 0}
 					titleSelect="Last"
 					optionsSelect={timeOptions}
 					onSelect={selectTime(stage)}
+					loading={!session.balance}
 				/>
 			</SelectValues>
-			<BackdropLoader open={loading} />
 		</div>
 	)
 }

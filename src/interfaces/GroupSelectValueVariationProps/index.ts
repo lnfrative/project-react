@@ -6,6 +6,7 @@ interface GroupSelectValueVariationProps {
 	optionsSelect: Array<SelectOption>
 	valueVariation: number
 	onSelect?: OnSelect
+	loading?: boolean
 }
 
 export default GroupSelectValueVariationProps

@@ -1,5 +1,6 @@
 // region import
 import React from 'react'
+import { Skeleton } from '@mui/material'
 
 // utilities
 import { GroupSelectValueVariationProps } from 'interfaces'
@@ -20,7 +21,14 @@ function GroupSelectValueVariation(props: GroupSelectValueVariationProps) {
 				options={props.optionsSelect}
 				onSelect={props.onSelect}
 			/>
-			<ValueVariation design="medium" value={props.valueVariation} />
+			{!!props.loading && (
+				<Skeleton>
+					<ValueVariation design="medium" value={props.valueVariation} />
+				</Skeleton>
+			)}
+			{!props.loading && (
+				<ValueVariation design="medium" value={props.valueVariation} />
+			)}
 		</div>
 	)
 }

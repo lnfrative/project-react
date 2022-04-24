@@ -1,5 +1,6 @@
 // region import
 import React from 'react'
+import { Skeleton } from '@mui/material'
 
 // utilities
 import { GroupValueDecimalProps } from 'interfaces'
@@ -15,7 +16,14 @@ function GroupValueDecimal(props: GroupValueDecimalProps) {
 	return (
 		<div className={styles.container}>
 			{props.design === 'top' && <div className={styles.title}>{props.title}</div>}
-			<ValueDecimal decimals={props.decimals} sign={props.sign} sise="huge" value={props.value} />
+			{!!props.loading && (
+				<Skeleton>
+					<ValueDecimal decimals={props.decimals} sign={props.sign} sise="huge" value={props.value} />
+				</Skeleton>
+			)}
+			{!props.loading && (
+				<ValueDecimal decimals={props.decimals} sign={props.sign} sise="huge" value={props.value} />
+			)}
 			{props.design === 'bottom' && <div className={styles.title}>{props.title}</div>}
 		</div>
 	)

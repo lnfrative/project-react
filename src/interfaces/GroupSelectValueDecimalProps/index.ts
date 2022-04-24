@@ -6,6 +6,7 @@ interface GroupSelectValueDecimalProps {
 	valueDecimal: number
 	optionsSelect: Array<SelectOption>
 	onSelect?: OnSelect
+	loading?: boolean
 }
 
 export default GroupSelectValueDecimalProps
