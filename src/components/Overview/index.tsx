@@ -1,13 +1,10 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CircularProgress, Skeleton } from '@mui/material'
 
 // hooks
 import { useStage, useSessionStore, useApiStore } from 'hooks'
-
-// contexts
-import { Currency } from 'contexts'
 
 // components
 import {
@@ -36,7 +33,6 @@ function Overview() {
 	const session = useSessionStore()
 	const api = useApiStore()
 	const stage = useStage(initialState)
-	const currency = useContext(Currency)
 
 	useEffect(() => {
 		if (session.user) {
@@ -134,7 +130,7 @@ function Overview() {
 									session.wallets.map(wallet => {
 										if (!api.coins) return null
 										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)
-										const price = coin.market_data.prices[currency.state.id ?? 'usd']
+										const price = coin.market_data.prices[session.currency ?? 'usd']
 										return (
 											<div key={wallet.coin_id} className={styles.assetsTableRow}>
 												<ValueCoin

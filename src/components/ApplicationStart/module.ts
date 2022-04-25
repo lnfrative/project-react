@@ -6,7 +6,7 @@ import { fetcher, resources } from 'utilities'
 
 // actions
 import { setSessionUser, setSessionStatus, setSessionBalance } from 'stores/SessionSlice'
-import { setApiCoins } from 'stores/ApiSlice'
+import { setApiCoins, setApiCaptchaKey } from 'stores/ApiSlice'
 
 async function fetchBalanace() {
   const { data } = await fetcher({
@@ -27,6 +27,17 @@ export async function fetchCoins() {
 
   if (data) {
     store.dispatch(setApiCoins(data))
+  }
+}
+
+export async function fetchCaptchaKey() {
+  const { data } = await fetcher({
+    url: resources.ep.api.get.captchaKey,
+    method: 'get',
+  })
+
+  if (data) {
+    store.dispatch(setApiCaptchaKey(data))
   }
 }
 

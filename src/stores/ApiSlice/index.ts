@@ -7,10 +7,12 @@ import { BackendCoin } from 'interfaces'
 
 interface State {
   coins: BackendCoin[] | undefined
+  captchaKey: string
 }
 
 const initialState: State = {
-  coins: undefined
+  coins: undefined,
+  captchaKey: '',
 }
 
 const apiSlice = createSlice({
@@ -20,12 +22,17 @@ const apiSlice = createSlice({
       ...state,
       coins: action.payload,
     }),
+    setApiCaptchaKey: (state, action: PayloadAction<string>) => ({
+      ...state,
+      captchaKey: action.payload,
+    }),
   },
   initialState,
 })
 
 export const {
   setApiCoins,
+  setApiCaptchaKey,
 } = apiSlice.actions
 
 export default apiSlice.reducer

@@ -1,21 +1,9 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { CircularProgress } from '@mui/material'
 
 // hooks
-import { useStage } from 'hooks'
-
-// contexts
-import { Backend, Currency } from 'contexts'
-
-// interfaces
-import {
-	BackendRevenueSummary,
-	BackendRevenueChart,
-	BackendIncomeOrigin,
-	BackendCollateralAssetsAndROI,
-	BackendReturningAsset,
-} from 'interfaces'
+import { useStage, useSessionStore } from 'hooks'
 
 // components
 import {
@@ -29,7 +17,7 @@ import {
 } from 'components'
 
 // utilities
-import { message, resources } from 'utilities'
+import { message } from 'utilities'
 
 // styles
 import {
@@ -46,133 +34,101 @@ import {
 } from './style'
 
 // modules
-import { initialState, options, onSelectTimeChart, onSelectTimeOrigin } from './module'
+import {
+	initialState,
+	options,
+	onSelectTimeChart,
+	onSelectTimeOrigin,
+	fetchRevenueChart,
+	fetchRevenueSummary,
+	fetchAssetsAndRoi,
+	fetchIncomeOrigin,
+	fetchReturningAssets
+} from './module'
 // endregion
 
+// TODO: Avoid calling fetches if the requested data already exists in the store.
+// TODO: Use skeleton instead of circular loaders
 function Income() {
+	const session = useSessionStore()
 	const stage = useStage(initialState)
-	const backend = useContext(Backend)
-	const currency = useContext(Currency)
-
-	const revenueSummaryParams = {
-		currency: currency.state.id,
-		period: 'year',
-	}
-
-	const revenueChartParams = {
-		currency: currency.state.id,
-		period: stage.state.optionSelectedRevenueChart?.id,
-	}
-
-	const incomeOriginParams = {
-		currency: currency.state.id,
-		period: stage.state.optionSelectedIncomOrigin?.id,
-	}
-
-	const returningAssets: Array<BackendReturningAsset> | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.returningAssets,
-		params: incomeOriginParams,
-	})?.data
-
-	const collateralAssetsAndROI: BackendCollateralAssetsAndROI | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.collateralAssetsAndROI,
-		params: incomeOriginParams,
-	})?.data
-
-	const incomeOrigin: BackendIncomeOrigin | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.incomeOrigin,
-		params: incomeOriginParams,
-	})?.data
-
-	const revenueSummary: BackendRevenueSummary | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.revenueSummary,
-		params: revenueSummaryParams,
-	})?.data
-
-	const revenueChart: BackendRevenueChart | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.revenueChart,
-		params: revenueChartParams,
-	})?.data
 
 	useEffect(() => {
-		backend.request({
-			endpoint: resources.endpoints.get.revenueSummary,
-			method: 'get',
-			params: revenueSummaryParams,
-		})
+		if (session.user) {
+			const params = {
+				currency: session.currency,
+				period: 'year',
+			}
 
-		backend.request({
-			endpoint: resources.endpoints.get.revenueChart,
-			method: 'get',
-			params: revenueChartParams,
-		})
+			fetchRevenueSummary(params)
+		}
+	}, [session.user])
 
-		backend.request({
-			endpoint: resources.endpoints.get.incomeOrigin,
-			method: 'get',
-			params: incomeOriginParams,
-		})
+	useEffect(() => {
+		const { optionSelectedRevenueChart } = stage.state
+		if (session.user && optionSelectedRevenueChart?.id) {
+			const params = {
+				currency: session.currency,
+				period: optionSelectedRevenueChart.id,
+			}
 
-		backend.request({
-			endpoint: resources.endpoints.get.collateralAssetsAndROI,
-			method: 'get',
-			params: incomeOriginParams,
-		})
+			fetchRevenueChart(params)
+		}
+	}, [session.user, stage.state.optionSelectedRevenueChart])
 
-		backend.request({
-			endpoint: resources.endpoints.get.returningAssets,
-			method: 'get',
-			params: incomeOriginParams,
-		})
-	}, [revenueSummaryParams, incomeOriginParams, revenueChartParams])
+	useEffect(() => {
+		const { optionSelectedIncomOrigin } = stage.state
+		if (session.user && optionSelectedIncomOrigin?.id) {
+			const params = {
+				currency: session.currency,
+				period: optionSelectedIncomOrigin.id,
+			}
+
+			fetchAssetsAndRoi(params)
+			fetchIncomeOrigin(params)
+			fetchReturningAssets(params)
+		}
+	}, [session.user, stage.state.optionSelectedIncomOrigin])
 
 	return (
 		<Container>
 			<PrimaryContent>
 				<StyledPanel>
 					<Panel title={message({ id: 'REVENUE_SUMMARY' })}>
-						{revenueSummary && (
 							<Revenues>
 								<ValueDecimalLabel
-									value={revenueSummary.today}
+									value={session.revenueSummary?.today ?? 0}
 									decimals={2}
 									title="Today"
 									sign="$"
 									sise="large"
+									loading={!session.revenueSummary}
 								/>
 								<ValueDecimalLabel
-									value={revenueSummary.thisWeek}
+									value={session.revenueSummary?.thisWeek ?? 0}
 									decimals={2}
 									title="This week"
 									sign="$"
 									sise="large"
+									loading={!session.revenueSummary}
 								/>
 								<ValueDecimalLabel
-									value={revenueSummary.thisMonth}
+									value={session.revenueSummary?.thisMonth ?? 0}
 									decimals={2}
 									title="This month"
 									sign="$"
 									sise="large"
+									loading={!session.revenueSummary}
 								/>
 								<ValueDecimalLabel
-									value={revenueSummary.thisYear}
+									value={session.revenueSummary?.thisYear ?? 0}
 									decimals={2}
 									title="This year"
 									sign="$"
 									sise="large"
+									loading={!session.revenueSummary}
 								/>
 							</Revenues>
-						)}
-						{!revenueSummary && (
-							<LoaderContainer>
-								<CircularProgress color="info" />
-							</LoaderContainer>
-						)}
 					</Panel>
 				</StyledPanel>
 
@@ -188,8 +144,8 @@ function Income() {
 								}))}
 							/>
 						</ContainerSwitch>
-						{revenueChart && <ChartCurve data={revenueChart.data} labels={revenueChart.labels} />}
-						{!revenueChart && (
+						{session.revenueChart && <ChartCurve data={session.revenueChart.data} labels={session.revenueChart.labels} />}
+						{!session.revenueChart && (
 							<LoaderContainer>
 								<CircularProgress color="info" />
 							</LoaderContainer>
@@ -211,38 +167,38 @@ function Income() {
 							/>
 						</ContainerSwitch>
 						<StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
-						{incomeOrigin &&
-							Object.keys(incomeOrigin).map(io => (
+						{session.incomeOrigin &&
+							Object.keys(session.incomeOrigin).map((io) => (
 								<StyledLoadLineLabel key={io}>
-									<LoadLineLabel title={io} value={incomeOrigin[io]} />
+									<LoadLineLabel title={io} value={session.incomeOrigin?.[io] ?? 0} />
 								</StyledLoadLineLabel>
 							))}
-						{!incomeOrigin && (
+						{!session.incomeOrigin && (
 							<LoaderContainer>
 								<CircularProgress color="info" />
 							</LoaderContainer>
 						)}
 
 						<StatsHead>Collateral assets</StatsHead>
-						{collateralAssetsAndROI && (
+						{session.assetsAndRoi && (
 							<ContainerValue>
 								<ValueDecimal
 									sameSize
 									decimals={2}
 									sign="$"
 									sise="large"
-									value={collateralAssetsAndROI.collateral}
+									value={session.assetsAndRoi.collateral}
 								/>
 							</ContainerValue>
 						)}
-						{!collateralAssetsAndROI && (
+						{!session.assetsAndRoi && (
 							<LoaderContainer>
 								<CircularProgress color="info" />
 							</LoaderContainer>
 						)}
 
 						<StatsHead>ROI</StatsHead>
-						{collateralAssetsAndROI && (
+						{session.assetsAndRoi && (
 							<ContainerValue>
 								<ValueDecimal
 									sameSize
@@ -250,27 +206,27 @@ function Income() {
 									sign="%"
 									signPosition="right"
 									sise="large"
-									value={collateralAssetsAndROI.ROI}
+									value={session.assetsAndRoi.ROI}
 								/>
 							</ContainerValue>
 						)}
-						{!collateralAssetsAndROI && (
+						{!session.assetsAndRoi && (
 							<LoaderContainer>
 								<CircularProgress color="info" />
 							</LoaderContainer>
 						)}
 
 						<StatsHead>Top returning assets</StatsHead>
-						{returningAssets &&
-							returningAssets.map(returningAsset => (
+						{session.returningAssets &&
+							session.returningAssets.map(returningAsset => (
 								<ReturningAsset key={returningAsset.coin_id} {...returningAsset} />
 							))}
-						{returningAssets?.length === 0 && (
+						{session.returningAssets?.length === 0 && (
 							<LoaderContainer>
 								<span>Nothing to show.</span>
 							</LoaderContainer>
 						)}
-						{!returningAssets && (
+						{!session.returningAssets && (
 							<LoaderContainer>
 								<CircularProgress color="info" />
 							</LoaderContainer>

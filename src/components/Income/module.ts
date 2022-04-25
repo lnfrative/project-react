@@ -1,5 +1,23 @@
+// interfaces
 import { SelectOption, Stage } from 'interfaces'
+
+// types
 import { OnSelect } from 'types'
+
+// utiltiies
+import { fetcher, resources } from 'utilities'
+
+// stores
+import { store } from 'stores'
+
+// actions
+import {
+	setSessionRevenueSummary,
+	setSessionRevenueChart,
+	setSessionIncomeOrigin,
+	setSessionReturningAssets,
+	setSessionAssetsAndRoi,
+} from 'stores/SessionSlice'
 
 interface State {
 	optionSelectedRevenueChart?: SelectOption
@@ -47,5 +65,71 @@ export function onSelectTimeOrigin(stage: Stage<State>): OnSelect {
 		if (!values.assemble) {
 			stage.commitState({ optionSelectedIncomOrigin: values.option })
 		}
+	}
+}
+
+// TODO: Cancel past promises if new ones are triggered during the flight.
+
+export async function fetchRevenueSummary(params: Record<string, string>) {
+	const { data } = await fetcher({
+		url: resources.ep.api.get.revenueSummary,
+		method: 'get',
+		params,
+	})
+
+	if (data) {
+		store.dispatch(setSessionRevenueSummary(data))
+	}
+}
+
+export async function fetchRevenueChart(params: Record<string, string>) {
+	store.dispatch(setSessionRevenueChart(undefined))
+	const { data } = await fetcher({
+		url: resources.ep.api.get.revenueChart,
+		method: 'get',
+		params,
+	})
+
+	if (data) {
+		store.dispatch(setSessionRevenueChart(data))
+	}
+}
+
+export async function fetchIncomeOrigin(params: Record<string, string>) {
+	store.dispatch(setSessionIncomeOrigin(undefined))
+	const { data } = await fetcher({
+		url: resources.ep.api.get.incomeOrigin,
+		method: 'get',
+		params,
+	})
+
+	if (data) {
+		store.dispatch(setSessionIncomeOrigin(data))
+	}
+}
+
+export async function fetchAssetsAndRoi(params: Record<string, string>) {
+	store.dispatch(setSessionAssetsAndRoi(undefined))
+	const { data } = await fetcher({
+		url: resources.ep.api.get.collateralAssetsAndROI,
+		method: 'get',
+		params,
+	})
+
+	if (data) {
+		store.dispatch(setSessionAssetsAndRoi(data))
+	}
+}
+
+export async function fetchReturningAssets(params: Record<string, string>) {
+	store.dispatch(setSessionReturningAssets(undefined))
+	const { data } = await fetcher({
+		url: resources.ep.api.get.returningAssets,
+		method: 'get',
+		params,
+	})
+
+	if (data) {
+		store.dispatch(setSessionReturningAssets(data))
 	}
 }

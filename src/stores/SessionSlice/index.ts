@@ -8,6 +8,11 @@ import {
   BackendSummary,
   BackendWallet,
   BackendTransaction,
+  BackendRevenueSummary,
+	BackendRevenueChart,
+	BackendIncomeOrigin,
+	BackendCollateralAssetsAndROI,
+	BackendReturningAsset,
 } from 'interfaces'
 // endregion
 
@@ -19,6 +24,13 @@ interface State {
   summary: BackendSummary | undefined
   wallets: BackendWallet[] | undefined
   transactions: BackendTransaction[] | undefined
+  currency: string
+
+  revenueSummary: BackendRevenueSummary | undefined
+	revenueChart: BackendRevenueChart | undefined
+	incomeOrigin: BackendIncomeOrigin | undefined
+	assetsAndRoi: BackendCollateralAssetsAndROI | undefined
+	returningAssets: BackendReturningAsset[] | undefined
 }
 
 const initialState: State = {
@@ -29,6 +41,13 @@ const initialState: State = {
   summary: undefined,
   wallets: undefined,
   transactions: undefined,
+  currency: 'usd',
+
+  revenueSummary: undefined,
+  revenueChart: undefined,
+  incomeOrigin: undefined,
+  assetsAndRoi: undefined,
+  returningAssets: undefined,
 }
 
 const sessionSlice = createSlice({
@@ -62,6 +81,31 @@ const sessionSlice = createSlice({
       ...state,
       transactions: action.payload,
     }),
+    setSessionCurrency: (state, action: PayloadAction<string>) => ({
+      ...state,
+      currency: action.payload,
+    }),
+
+    setSessionRevenueSummary: (state, action: PayloadAction<BackendRevenueSummary>) => ({
+      ...state,
+      revenueSummary: action.payload,
+    }),
+    setSessionRevenueChart: (state, action: PayloadAction<BackendRevenueChart | undefined>) => ({
+      ...state,
+      revenueChart: action.payload,
+    }),
+    setSessionIncomeOrigin: (state, action: PayloadAction<BackendIncomeOrigin | undefined>) => ({
+      ...state,
+      incomeOrigin: action.payload,
+    }),
+    setSessionAssetsAndRoi: (state, action: PayloadAction<BackendCollateralAssetsAndROI | undefined>) => ({
+      ...state,
+      assetsAndRoi: action.payload,
+    }),
+    setSessionReturningAssets: (state, action: PayloadAction<BackendReturningAsset[] | undefined>) => ({
+      ...state,
+      returningAssets: action.payload,
+    }),
   },
   initialState,
 })
@@ -74,6 +118,13 @@ export const {
   setSessionSummary,
   setSessionWallets,
   setSessionTransactions,
+  
+  setSessionAssetsAndRoi,
+  setSessionCurrency,
+  setSessionIncomeOrigin,
+  setSessionReturningAssets,
+  setSessionRevenueChart,
+  setSessionRevenueSummary,
 } = sessionSlice.actions
 
 export default sessionSlice.reducer
