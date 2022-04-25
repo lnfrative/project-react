@@ -4,10 +4,10 @@ import { DateRange } from 'react-date-range'
 import { CircularProgress } from '@mui/material'
 
 // hooks
-import { useStage, useEndScroll, useStrictEffect } from 'hooks'
+import { useStage, useEndScroll, useStrictEffect, useApiStore } from 'hooks'
 
 // interfaces
-import { BackendTransaction, BackendCoin } from 'interfaces'
+import { BackendTransaction } from 'interfaces'
 
 // contexts
 import { Backend } from 'contexts'
@@ -36,6 +36,7 @@ import {
 // endregion
 
 function Transactions() {
+  const api = useApiStore()
   const stage = useStage(initialState)
   const backend = useContext(Backend)
   const { endScroll } = useEndScroll({ ep: 100 })
@@ -58,11 +59,6 @@ function Transactions() {
 
     page: stage.state.pages[stage.state.pages.length - 1]
   }
-
-  const coins: BackendCoin[] = backend.response({
-    endpoint: resources.endpoints.get.coins,
-    method: 'get',
-  })?.data
 
   const transactions: BackendTransaction[] | undefined = backend.response({
     endpoint: resources.endpoints.get.transactions,
@@ -132,7 +128,8 @@ function Transactions() {
 
               if (!transactionsPage) return null
               return transactionsPage.map(t => {
-                const [coin] = coins.filter(value => value.id === t.coin_id)
+                if (!api.coins) return null
+                const [coin] = api.coins.filter(value => value.id === t.coin_id)
                 const txURL = resources.coin[resources.utils.normaliceCoinName(coin.name)].tx
                 return (
                   <ContainerTransaction href={txURL + t.txid} target="_blank" key={t.id}>
@@ -210,7 +207,7 @@ function Transactions() {
               onSelect={handleSelect(stage)}
               options={[
                 { id: 'all', value: 'All coins', main: stage.state.coinSelected.id === 'all' },
-                ...coins.map(coin => ({
+                ...(api.coins || []).map(coin => ({
                   id: coin.id.toString(),
                   value: coin.name,
                   element: <ImgCoin size="small" src={resources.coin[

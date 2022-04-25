@@ -6,8 +6,9 @@ import { fetcher, resources } from 'utilities'
 
 // actions
 import { setSessionUser, setSessionStatus, setSessionBalance } from 'stores/SessionSlice'
+import { setApiCoins } from 'stores/ApiSlice'
 
-export async function fetchBalanace() {
+async function fetchBalanace() {
   const { data } = await fetcher({
     url: resources.ep.api.get.userBalance,
     method: 'get',
@@ -15,6 +16,17 @@ export async function fetchBalanace() {
 
   if (data) {
     store.dispatch(setSessionBalance(data))
+  }
+}
+
+export async function fetchCoins() {
+  const { data } = await fetcher({
+    url: resources.ep.api.get.coins,
+    method: 'get',
+  })
+
+  if (data) {
+    store.dispatch(setApiCoins(data))
   }
 }
 

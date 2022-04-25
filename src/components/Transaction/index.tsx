@@ -3,13 +3,16 @@ import React, { useContext } from 'react'
 import { Tooltip } from '@mui/material'
 
 // contexts
-import { Backend, Currency } from 'contexts'
+import { Currency } from 'contexts'
 
 // components
 import { SVGIconIncoming, SVGIconOutgoing, SVGIconReward } from 'components'
 
 // interfaces
-import { BackendCoin, TransactionProps } from 'interfaces'
+import { TransactionProps } from 'interfaces'
+
+// hooks
+import { useApiStore } from 'hooks'
 
 // utilities
 import { resources, message } from 'utilities'
@@ -23,14 +26,13 @@ import { MovementGroupData, MovementGroupDataBelow, Data } from './style'
 // endregion
 
 function Transaction(props: TransactionProps) {
-	const backend = useContext(Backend)
+	const api = useApiStore()
 	const currency = useContext(Currency)
 	const date = resources.utils.parseTimestamp(props.data.timestamp * 1000, 'normal')
-	const coins: Array<BackendCoin> = backend.response({
-		endpoint: resources.endpoints.get.coins,
-		method: 'get',
-	})?.data
-	const [coin] = coins.filter(el => props.data.coin_id === el.id)
+
+	if (!api.coins) return null
+	
+	const [coin] = api.coins.filter(el => props.data.coin_id === el.id)
 
 	const currencyPrice = resources.utils.splitFloat(
 		resources.utils.satsToBTC(

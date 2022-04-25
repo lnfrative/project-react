@@ -15,7 +15,18 @@ import styles from './index.module.css'
 function GroupValueDecimal(props: GroupValueDecimalProps) {
 	return (
 		<div className={styles.container}>
-			{props.design === 'top' && <div className={styles.title}>{props.title}</div>}
+			{props.design === 'top' && (
+				<>
+					{!!props.loading && (
+						<Skeleton>
+							<div className={styles.title}>{props.title}</div>
+						</Skeleton>
+					)}
+					{!props.loading && (
+						<div className={styles.title}>{props.title}</div>
+					)}
+				</>
+			)}
 			{!!props.loading && (
 				<Skeleton>
 					<ValueDecimal decimals={props.decimals} sign={props.sign} sise="huge" value={props.value} />
@@ -24,7 +35,18 @@ function GroupValueDecimal(props: GroupValueDecimalProps) {
 			{!props.loading && (
 				<ValueDecimal decimals={props.decimals} sign={props.sign} sise="huge" value={props.value} />
 			)}
-			{props.design === 'bottom' && <div className={styles.title}>{props.title}</div>}
+			{props.design === 'bottom' && (
+				<>
+					{!!props.loading && (
+						<Skeleton>
+							<div className={styles.title}>{props.title}</div>
+						</Skeleton>
+					)}
+					{!props.loading && (
+						<div className={styles.title}>{props.title}</div>
+					)}
+				</>
+			)}
 		</div>
 	)
 }

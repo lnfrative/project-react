@@ -5,7 +5,11 @@ import { Stage } from 'interfaces'
 import { store } from 'stores'
 
 // actions
-import { setSessionSummary } from 'stores/SessionSlice'
+import {
+	setSessionSummary,
+	setSessionWallets,
+	setSessionTransactions,
+} from 'stores/SessionSlice'
 
 // utilities
 import { fetcher, resources } from 'utilities'
@@ -34,5 +38,27 @@ export async function fetchSummary() {
 
 	if (data) {
 		store.dispatch(setSessionSummary(data))
+	}
+}
+
+export async function fetchWallets() {
+	const { data } = await fetcher({
+		url: resources.ep.api.get.wallets,
+		method: 'get',
+	})
+
+	if (data) {
+		store.dispatch(setSessionWallets(data))
+	}
+}
+
+export async function fetchTransactions(params: Record<string, any>) {
+	const { data } = await fetcher({
+		url: resources.ep.api.get.transactions,
+		method: 'get',
+	})
+
+	if (data) {
+		store.dispatch(setSessionTransactions(data))
 	}
 }

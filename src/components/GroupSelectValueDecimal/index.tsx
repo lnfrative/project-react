@@ -22,12 +22,24 @@ function GroupSelectValueDecimal(props: GroupSelectValueDecimalProps) {
 	const stage = useStage(initialState)
 	return (
 		<div className={styles.container}>
-			<Select
-				onSelect={genOnSelect(props, stage)}
-				design="simple"
-				title={props.titleSelect}
-				options={props.optionsSelect}
-			/>
+			{!!props.loading && (
+				<Skeleton>
+					<Select
+						onSelect={genOnSelect(props, stage)}
+						design="simple"
+						title={props.titleSelect}
+						options={props.optionsSelect}
+					/>
+				</Skeleton>
+			)}
+			{!props.loading && (
+				<Select
+					onSelect={genOnSelect(props, stage)}
+					design="simple"
+					title={props.titleSelect}
+					options={props.optionsSelect}
+				/>
+			)}
 			{!!props.loading && (
 				<Skeleton>
 					<div className={styles.containerValues}>

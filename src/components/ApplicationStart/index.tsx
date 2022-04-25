@@ -14,7 +14,7 @@ import { PreloadPage } from 'components'
 import { Backend, Currency } from 'contexts'
 
 // modules
-import { fetchSession } from './module'
+import { fetchSession, fetchCoins } from './module'
 // endregion
 
 function ApplicationStart(props: PropsWithChildren<{}>) {
@@ -29,16 +29,23 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
 			label: 'RETRIEVING_CAPTCHA_KEY',
 			method: 'get',
 		})
-		backend.request({
-			endpoint: resources.endpoints.get.coins,
-			label: 'LOADING_COINS',
-			method: 'get',
-		})
 		currency.commitState({ id: 'usd' })
 	}, [])
 
-	if (session.status === 'loading') return <PreloadPage />
-	return props.children
+	useEffect(() => {
+		if (session.user) {
+			fetchCoins()
+		}
+	}, [session.user])
+
+	return (
+		<>
+			{session.status === 'loading' && (
+				<PreloadPage />
+			)}
+			{props.children}
+		</>
+	)
 }
 
 export default ApplicationStart

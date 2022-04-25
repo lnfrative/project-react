@@ -1,11 +1,11 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 
 // contexts
-import { Backend, Currency } from 'contexts'
+import { Currency } from 'contexts'
 
 // interfaces
-import { BackendCoin, CoinAssetProps } from 'interfaces'
+import { CoinAssetProps } from 'interfaces'
 
 // components
 import { ValueCoin, ValuePrice, SVGValueVariation } from 'components'
@@ -18,34 +18,19 @@ import { Container, SubContainer, Label } from './style'
 // endregion
 
 function CoinAsset(props: CoinAssetProps) {
-  const backend = useContext(Backend)
   const currency = useContext(Currency)
-
-  const coins: BackendCoin[] = backend.response({
-    method: 'get',
-    endpoint: resources.endpoints.get.coins,
-  })?.data
-
-  const [coin] = coins.filter(value => props.wallet.coin_id === value.id)
-  const price = coin.market_data.prices[currency.state.id ?? 'usd']
-
-  useEffect(() => {
-    backend.request({
-      method: 'get',
-      endpoint: resources.endpoints.get.coins
-    })
-  }, [])
+  const price = props.coin.market_data.prices[currency.state.id ?? 'usd']
 
   return (
     <Container>
       <SubContainer>
         <ValueCoin
           srcImageCoin={
-            resources.coin[resources.utils.normaliceCoinName(coin.name)].logo
+            resources.coin[resources.utils.normaliceCoinName(props.coin.name)].logo
           }
           value={resources.utils.satsToBTC(props.wallet.balance)}
-          name={coin.name}
-          shortname={coin.asset}
+          name={props.coin.name}
+          shortname={props.coin.asset}
           decimals={8}
         />
       </SubContainer>
@@ -60,8 +45,8 @@ function CoinAsset(props: CoinAssetProps) {
       <SubContainer style={{ marginBottom: 0 }}>
         <Label>{message({ id: 'CHANGE_30D' })}</Label>
         <SVGValueVariation
-          variation={coin.market_data.price_change_30d}
-          coordsValueVariation={coin.market_data.chart_1d}
+          variation={props.coin.market_data.price_change_30d}
+          coordsValueVariation={props.coin.market_data.chart_1d}
         />
       </SubContainer>
     </Container>

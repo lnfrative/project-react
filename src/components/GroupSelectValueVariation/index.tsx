@@ -15,12 +15,24 @@ import styles from './index.module.css'
 function GroupSelectValueVariation(props: GroupSelectValueVariationProps) {
 	return (
 		<div className={styles.container}>
-			<Select
-				design="simple"
-				title={props.titleSelect}
-				options={props.optionsSelect}
-				onSelect={props.onSelect}
-			/>
+			{!!props.loading && (
+				<Skeleton>
+					<Select
+						design="simple"
+						title={props.titleSelect}
+						options={props.optionsSelect}
+						onSelect={props.onSelect}
+					/>
+				</Skeleton>
+			)}
+			{!props.loading && (
+				<Select
+					design="simple"
+					title={props.titleSelect}
+					options={props.optionsSelect}
+					onSelect={props.onSelect}
+				/>
+			)}
 			{!!props.loading && (
 				<Skeleton>
 					<ValueVariation design="medium" value={props.valueVariation} />

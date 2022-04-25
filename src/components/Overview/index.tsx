@@ -1,16 +1,13 @@
 // region import
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CircularProgress } from '@mui/material'
-
-// interfaces
-import { BackendTransaction, BackendWallet, BackendCoin } from 'interfaces'
+import { CircularProgress, Skeleton } from '@mui/material'
 
 // hooks
-import { useStage, useSessionStore } from 'hooks'
+import { useStage, useSessionStore, useApiStore } from 'hooks'
 
 // contexts
-import { Backend, Currency } from 'contexts'
+import { Currency } from 'contexts'
 
 // components
 import {
@@ -28,7 +25,7 @@ import {
 import { resources, message } from 'utilities'
 
 // modules
-import { initialState, switchExcludeRewardMovements, fetchSummary } from './module'
+import { initialState, switchExcludeRewardMovements, fetchSummary, fetchTransactions, fetchWallets } from './module'
 
 // styles
 import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values, TableAssets, CoinAssets, StyledCoinAsset } from './style'
@@ -37,47 +34,25 @@ import styles from './index.module.css'
 
 function Overview() {
 	const session = useSessionStore()
+	const api = useApiStore()
 	const stage = useStage(initialState)
 	const currency = useContext(Currency)
-	const backend = useContext(Backend)
-
-	const transactionsParams = {
-		types: stage.state.excludeRewardMovements ? '1,3,4' : '1,2,3,4,5',
-		perPage: 5,
-	}
-
-	const wallets: Array<BackendWallet> | undefined = backend.response({
-		endpoint: resources.endpoints.get.wallets,
-		method: 'get',
-	})?.data
-
-	const coins: Array<BackendCoin> | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.coins,
-	})?.data
-
-	const transactions: Array<BackendTransaction> | undefined = backend.response({
-		method: 'get',
-		endpoint: resources.endpoints.get.transactions,
-		params: transactionsParams,
-	})?.data
 
 	useEffect(() => {
-		fetchSummary()
-
-		backend.request({
-			endpoint: resources.endpoints.get.wallets,
-			method: 'get',
-		})
-	}, [])
+		if (session.user) {
+			fetchSummary()
+			fetchWallets()
+		}
+	}, [session.user])
 
 	useEffect(() => {
-		backend.request({
-			endpoint: resources.endpoints.get.transactions,
-			method: 'get',
-			params: transactionsParams,
-		})
-	}, [transactionsParams])
+		if (session.user) {
+			fetchTransactions({
+				types: stage.state.excludeRewardMovements ? '1,3,4' : '1,2,3,4,5',
+				perPage: 5,
+			})
+		}
+	}, [session.user, stage.state.excludeRewardMovements])
 
 	return (
 		<div className={styles.container}>
@@ -124,13 +99,24 @@ function Overview() {
 				<StyledPanel>
 					<Panel title={message({ id: 'ASSETS_SUMMARY' })}>
 						<div className={styles.groupValues}>
-							{!wallets && (
-								<div className={styles.containerFeedback}>
-									<CircularProgress color="inherit" />
-								</div>
-							)}
 							<TableAssets>
-								{wallets && wallets.length !== 0 && coins && (
+								{!session.wallets && (
+									<div className={styles.assetsTableRow}>
+										<Skeleton>
+											<div style={{ minWidth: 200 }} />
+										</Skeleton>
+										<Skeleton>
+											<div className={styles.headerTitle}>{message({ id: 'PRICE' })}</div>
+										</Skeleton>
+										<Skeleton>
+											<div className={styles.headerTitle}>{message({ id: 'CHANGE_30D' })}</div>
+										</Skeleton>
+										<Skeleton>
+											<div className={styles.headerTitle}>{message({ id: 'HOLDING_VALUE' })}</div>
+										</Skeleton>
+									</div>
+								)}
+								{session.wallets && session.wallets.length !== 0 && api.coins && (
 									<div className={styles.assetsTableRow}>
 										<div />
 										<div className={styles.headerTitle}>{message({ id: 'PRICE' })}</div>
@@ -138,15 +124,16 @@ function Overview() {
 										<div className={styles.headerTitle}>{message({ id: 'HOLDING_VALUE' })}</div>
 									</div>
 								)}
-								{wallets?.length === 0 && (
+								{session.wallets && session.wallets.length === 0 && (
 									<div className={styles.containerFeedback}>
 										{message({ id: 'NO_WALLETS_CREATED' })}
 									</div>
 								)}
-								{wallets &&
-									coins &&
-									wallets.map(wallet => {
-										const [coin] = coins.filter(value => wallet.coin_id === value.id)
+								{session.wallets &&
+									api.coins &&
+									session.wallets.map(wallet => {
+										if (!api.coins) return null
+										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)
 										const price = coin.market_data.prices[currency.state.id ?? 'usd']
 										return (
 											<div key={wallet.coin_id} className={styles.assetsTableRow}>
@@ -170,13 +157,22 @@ function Overview() {
 									})}
 							</TableAssets>
 							<CoinAssets>
-								{wallets &&
-									coins &&
-									wallets.map(wallet => (
-										<StyledCoinAsset  key={wallet.coin_id}>
-											<CoinAsset wallet={wallet} />
-										</StyledCoinAsset>
-									))}
+								{!session.wallets && (
+									<div className={styles.containerFeedback}>
+										<CircularProgress color="inherit" />
+									</div>
+								)}
+								{session.wallets &&
+									api.coins &&
+									session.wallets.map(wallet => {
+										if (!api.coins) return null
+										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)			
+										return (
+											<StyledCoinAsset  key={wallet.coin_id}>
+												<CoinAsset coin={coin} wallet={wallet} />
+											</StyledCoinAsset>
+										)
+									})}
 							</CoinAssets>
 						</div>
 					</Panel>
@@ -196,20 +192,20 @@ function Overview() {
 							<div>{message({ id: 'EXCLUDE_REWARDS' })}</div>
 						</ContainerCheckbox>
 						<div className={styles.movements}>
-							{transactions?.map((transaction, index) => (
+							{session.transactions && session.transactions.map((tx, index, txs) => (
 								<div
-									key={transaction.id}
+									key={tx.id}
 									className={styles.movement}
 									style={{
-										margin: index === transactions.length - 1 ? 0 : '',
+										margin: index === txs.length - 1 ? 0 : '',
 									}}
 								>
-									<Transaction data={transaction} />
+									<Transaction data={tx} />
 								</div>
 							))}
 							<div className={styles.containerFeedback}>
-								{!transactions && <CircularProgress color="inherit" />}
-								{transactions?.length === 0 && message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
+								{!session.transactions && <CircularProgress color="inherit" />}
+								{session.transactions?.length === 0 && message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
 							</div>
 						</div>
 						<Link to="/transactions" className={styles.allMovements}>
