@@ -1,12 +1,9 @@
 // region import
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { CircularProgress } from '@mui/material'
 
 // hooks
 import { useStage, useSessionStore, useApiStore } from 'hooks'
-
-// contexts
-import { Currency } from 'contexts'
 
 // components
 import {
@@ -38,7 +35,6 @@ function Receive() {
 	const api = useApiStore()
 	const addressRef = useRef<HTMLSpanElement>(null)
 	const stage = useStage(initialState)
-	const currency = useContext(Currency)
 
 	const address = session.addresses[stage.state.optionSelected?.id ?? '']?.data?.[0] ?? ''
 
@@ -51,7 +47,7 @@ function Receive() {
 
 	const loadingAddresses = session.addresses[stage.state.optionSelected?.id ?? '']?.status === 'loading'
 
-	const price = coin?.market_data.prices[currency.state.id ?? ''] ?? 0
+	const price = coin?.market_data.prices[session.currency] ?? 0
 	const currencyPriceSplit = resources.utils.splitFloat(
 		price * resources.utils.satsToBTC(wallet?.balance ?? 0),
 		2
@@ -123,7 +119,7 @@ function Receive() {
 							{resources.utils.satsToBTC(wallet?.balance ?? 0)}{' '}
 							{stage.state.optionSelected?.secondaryValue}
 							{' ≈ '}
-							{currencyPriceSplit.value} {currency.state.id?.toUpperCase()}
+							{currencyPriceSplit.value} {session.currency.toUpperCase()}
 						</div>
 					</div>
 
