@@ -1,20 +1,40 @@
-import { ContextBackend, Stage, ContextCaptchaState } from 'interfaces'
-import { resources } from 'utilities'
+// utilities
+import { resources, fetcher } from 'utilities'
 
-function onChange(backend: ContextBackend, captcha: Stage<ContextCaptchaState>) {
-	return (token: string | null) => {
-		if (token) {
-			captcha.commitState({ 'g-recaptcha-response': token })
-			backend.request({
-				endpoint: resources.endpoints.post.captchaValidate,
-				params: {
-					'g-recaptcha-response': token,
-				},
-				updateCache: true,
-				method: 'post',
-			})
-		}
-	}
+// stores
+import { store } from 'stores'
+
+// actions
+import { setApiCaptchaValidate } from 'stores/ApiSlice'
+import { setCaptchaToken } from 'stores/CaptchaSlice'
+
+export function onChange(token: string | null) {
+	store.dispatch(setCaptchaToken(token ?? ''))
 }
 
-export { onChange }
+export async function fetchCaptchaValidate() {
+	store.dispatch(setApiCaptchaValidate({
+		status: 'loading',
+		data: undefined,
+	}))
+	const state = store.getState()
+	try {
+		const { data } = await fetcher({
+			url: resources.ep.api.post.captchaValidate,
+			method: 'post',
+			params: {
+				'g-recaptcha-response': state.captcha.token,
+			}
+		})
+
+		store.dispatch(setApiCaptchaValidate({
+			status: 'loaded',
+			data,
+		}))
+	} catch (e) {
+		store.dispatch(setApiCaptchaValidate({
+			status: 'loaded',
+			data: undefined
+		}))
+	}
+}

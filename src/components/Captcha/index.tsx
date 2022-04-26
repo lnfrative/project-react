@@ -1,59 +1,44 @@
 // region import
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 // interfaces
 import { CaptchaProps } from 'interfaces'
 
+// hooks
+import { useApiStore, useCaptchaStore } from 'hooks'
+
 // components
 import { BackdropLoader } from 'components'
 
-// contexts
-import { Backend, Captcha as ContextCaptcha } from 'contexts'
-
-// utilities
-import { resources, requestId } from 'utilities'
-
 // modules
-import { onChange } from './module'
+import { onChange, fetchCaptchaValidate } from './module'
 // endregion
 
 function Captcha(props: CaptchaProps) {
-	const backend = useContext(Backend)
-	const captcha = useContext(ContextCaptcha)
+	const api = useApiStore()
+	const captcha = useCaptchaStore()
 	const ref = useRef<ReCAPTCHA>(null)
-	const captchaKey = backend.response({
-		endpoint: resources.endpoints.get.captchaKey,
-		method: 'get',
-	})?.data
-
-	const params = {
-		'g-recaptcha-response': captcha.state['g-recaptcha-response'] ?? '',
-	}
-
-	const captchaValidate = backend.response({
-		endpoint: resources.endpoints.post.captchaValidate,
-		params,
-		method: 'post',
-	})
-
-	const loading =
-		backend.loading?.id === requestId('post', resources.endpoints.post.captchaValidate, params)
 
 	useEffect(() => {
-		if (captchaValidate?.success) {
-			captcha.commitState({ hash: captchaValidate.data })
-			props.onSuccess(captchaValidate.data)
+		if (captcha.token) {
+			fetchCaptchaValidate()
 		}
-		if (captchaValidate?.error && ref.current) {
+	}, [captcha.token])
+
+	useEffect(() => {
+		if (api.captchaValidate.data) {
+			props.onSuccess(api.captchaValidate.data)
+		}
+		if (api.captchaValidate.error && ref.current) {
 			ref.current.reset()
 		}
-	}, [captchaValidate?.success])
+	}, [api.captchaValidate.status])
 
 	return (
 		<>
-			<ReCAPTCHA ref={ref} sitekey={captchaKey} onChange={onChange(backend, captcha)} />
-			<BackdropLoader open={loading} />
+			<ReCAPTCHA ref={ref} sitekey={api.captchaKey} onChange={onChange} />
+			<BackdropLoader open={api.captchaValidate.status === 'loading'} />
 		</>
 	)
 }
