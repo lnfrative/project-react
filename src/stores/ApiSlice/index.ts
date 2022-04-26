@@ -5,14 +5,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { BackendCoin } from 'interfaces'
 // endregion
 
+interface StateResendEmailConfirmation {
+  status: 'loading' | 'loaded',
+  data: any
+}
+
 interface State {
   coins: BackendCoin[] | undefined
   captchaKey: string
+
+  resendEmailConfirmation: StateResendEmailConfirmation,
 }
 
 const initialState: State = {
   coins: undefined,
   captchaKey: '',
+
+  resendEmailConfirmation: {
+    status: 'loaded',
+    data: undefined,
+  }
 }
 
 const apiSlice = createSlice({
@@ -26,6 +38,14 @@ const apiSlice = createSlice({
       ...state,
       captchaKey: action.payload,
     }),
+
+    setApiResendEmailConfirmation: (state, action: PayloadAction<StateResendEmailConfirmation>) => ({
+      ...state,
+      resendEmailConfirmation: {
+        ...state.resendEmailConfirmation,
+        ...action.payload,
+      }
+    }),
   },
   initialState,
 })
@@ -33,6 +53,7 @@ const apiSlice = createSlice({
 export const {
   setApiCoins,
   setApiCaptchaKey,
+  setApiResendEmailConfirmation,
 } = apiSlice.actions
 
 export default apiSlice.reducer

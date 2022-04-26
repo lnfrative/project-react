@@ -1,17 +1,14 @@
 // region import
-import React, { useContext } from 'react'
+import React from 'react'
 
-// interfaces
-import { BackendUser } from 'interfaces'
-
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useSessionStore, useApiStore } from 'hooks'
 
 // components
 import { Banner, Button, BackdropLoader } from 'components'
 
 // utilities
-import { requestId, resources, message } from 'utilities'
+import { message } from 'utilities'
 
 // styles
 import { Container, ConfirmEmail } from './style'
@@ -20,30 +17,27 @@ import { Container, ConfirmEmail } from './style'
 import { resend } from './module'
 // endregion
 
-const enduser = resources.endpoints.get.user
-const endresendemail = resources.endpoints.get.resendEmailConfirmation
-
 function BannerConfirmEmail() {
-	const backend = useContext(Backend)
-	const user: BackendUser = backend.response({ endpoint: enduser, method: 'get' })?.data
+	const session = useSessionStore()
+	const api = useApiStore()
 
-	const loading = backend.loading?.id === requestId('get', endresendemail)
+	if (!session.user) return null
 
 	return (
 		<Banner>
 			<Container>
 				<ConfirmEmail>
-					A verification email has been sent to <b>{user.email}</b>.
+					A verification email has been sent to <b>{session.user.email}</b>.
 				</ConfirmEmail>
 				<Button
 					buttonHTMLAttributes={{
 						type: 'button',
-						onClick: resend(backend),
+						onClick: resend,
 					}}
 					design="minimal"
 					title="Resend email"
 				/>
-				<BackdropLoader message={message({ id: 'RESENDING_EMAIL' })} open={loading} />
+				<BackdropLoader message={message({ id: 'RESENDING_EMAIL' })} open={api.resendEmailConfirmation.status === 'loading'} />
 			</Container>
 		</Banner>
 	)

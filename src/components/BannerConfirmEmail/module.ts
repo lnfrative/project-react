@@ -1,13 +1,33 @@
-import { ContextBackend } from 'interfaces'
-import { resources } from 'utilities'
+// utilities
+import { resources, fetcher } from 'utilities'
 
-function resend(backend: ContextBackend) {
-	return () => {
-		backend.request({
+// stores
+import { store } from 'stores'
+
+// actions
+import { setApiResendEmailConfirmation } from 'stores/ApiSlice'
+
+export async function resend() {
+	store.dispatch(setApiResendEmailConfirmation({
+		status: 'loading',
+		data: undefined
+	}))
+
+	try {
+		const { data } = await fetcher({
+			url: resources.ep.api.get.resendEmailConfirmation,
 			method: 'get',
-			endpoint: resources.endpoints.get.resendEmailConfirmation,
 		})
-	}
-}
 
-export { resend }
+		store.dispatch(setApiResendEmailConfirmation({
+			status: 'loaded',
+			data: data || undefined
+		}))
+	} catch (e) {
+		store.dispatch(setApiResendEmailConfirmation({
+			status: 'loaded',
+			data: undefined
+		}))
+	}
+
+}
