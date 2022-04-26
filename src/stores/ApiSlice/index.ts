@@ -2,23 +2,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // interfaces
-import { BackendCoin } from 'interfaces'
+import { BackendCoin, AsyncResource } from 'interfaces'
 // endregion
-
-type Status = 'loading' | 'loaded'
-
-interface ApiResource<Data> {
-  status: Status,
-  data: Data
-  error?: boolean
-}
 
 interface State {
   coins: BackendCoin[] | undefined
   captchaKey: string
 
-  resendEmailConfirmation: ApiResource<any>
-  captchaValidate: ApiResource<string | undefined>
+  resendEmailConfirmation: AsyncResource<any>
+  captchaValidate: AsyncResource<string | undefined>
 }
 
 const initialState: State = {
@@ -26,12 +18,12 @@ const initialState: State = {
   captchaKey: '',
 
   resendEmailConfirmation: {
-    status: 'loaded',
+    status: 'nonload',
     data: undefined,
   },
 
   captchaValidate: {
-    status: 'loaded',
+    status: 'nonload',
     data: undefined
   }
 }
@@ -48,12 +40,12 @@ const apiSlice = createSlice({
       captchaKey: action.payload,
     }),
 
-    setApiResendEmailConfirmation: (state, action: PayloadAction<ApiResource<any>>) => ({
+    setApiResendEmailConfirmation: (state, action: PayloadAction<AsyncResource<any>>) => ({
       ...state,
       resendEmailConfirmation: action.payload,
     }),
 
-    setApiCaptchaValidate: (state, action: PayloadAction<ApiResource<string | undefined>>) => ({
+    setApiCaptchaValidate: (state, action: PayloadAction<AsyncResource<string | undefined>>) => ({
       ...state,
       captchaValidate: action.payload,
     }),

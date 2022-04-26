@@ -1,29 +1,28 @@
 // region import
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useSessionStore } from 'hooks'
 
 // components
 import { Receive, Send, BackdropLoader } from 'components'
 
 // utiltiies
-import { requestId, resources } from 'utilities'
+import { fetchWallets } from 'utilities/fetcher'
 
 // styles
 import styles from './index.module.css'
 // endregion
 
 function SendAndReceive() {
-	const backend = useContext(Backend)
-	const loading = backend.loading?.id === requestId('get', resources.endpoints.get.wallets)
+	const session = useSessionStore()
+
 
 	useEffect(() => {
-		backend.request({
-			method: 'get',
-			endpoint: resources.endpoints.get.wallets,
-		})
-	}, [])
+		if (session.user && session.wallets.status !== 'loaded') {
+			fetchWallets()
+		}
+	}, [session.user])
 
 	return (
 		<div className={styles.container}>
@@ -33,7 +32,7 @@ function SendAndReceive() {
 			<div className={styles.containerSend}>
 				<Send />
 			</div>
-			<BackdropLoader open={loading} />
+			<BackdropLoader open={session.wallets.status === 'loading'} />
 		</div>
 	)
 }

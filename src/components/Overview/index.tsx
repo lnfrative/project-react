@@ -20,9 +20,10 @@ import {
 
 // utilities
 import { resources, message } from 'utilities'
+import { fetchSummary, fetchTransactions, fetchWallets } from 'utilities/fetcher'
 
 // modules
-import { initialState, switchExcludeRewardMovements, fetchSummary, fetchTransactions, fetchWallets } from './module'
+import { initialState, switchExcludeRewardMovements } from './module'
 
 // styles
 import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values, TableAssets, CoinAssets, StyledCoinAsset } from './style'
@@ -37,7 +38,10 @@ function Overview() {
 	useEffect(() => {
 		if (session.user) {
 			fetchSummary()
-			fetchWallets()
+
+			if (session.wallets.status !== 'loaded') {
+				fetchWallets()
+			}
 		}
 	}, [session.user])
 
@@ -96,7 +100,7 @@ function Overview() {
 					<Panel title={message({ id: 'ASSETS_SUMMARY' })}>
 						<div className={styles.groupValues}>
 							<TableAssets>
-								{!session.wallets && (
+								{session.wallets.status !== 'loaded' && (
 									<div className={styles.assetsTableRow}>
 										<Skeleton>
 											<div style={{ minWidth: 200 }} />
@@ -112,7 +116,10 @@ function Overview() {
 										</Skeleton>
 									</div>
 								)}
-								{session.wallets && session.wallets.length !== 0 && api.coins && (
+								{session.wallets.status === 'loaded' 
+								&& session.wallets.data.length !== 0 
+								&& api.coins
+								&& (
 									<div className={styles.assetsTableRow}>
 										<div />
 										<div className={styles.headerTitle}>{message({ id: 'PRICE' })}</div>
@@ -120,14 +127,16 @@ function Overview() {
 										<div className={styles.headerTitle}>{message({ id: 'HOLDING_VALUE' })}</div>
 									</div>
 								)}
-								{session.wallets && session.wallets.length === 0 && (
+								{session.wallets.status === 'loaded'
+								&& session.wallets.data.length === 0
+								&& (
 									<div className={styles.containerFeedback}>
 										{message({ id: 'NO_WALLETS_CREATED' })}
 									</div>
 								)}
-								{session.wallets &&
+								{session.wallets.status === 'loaded' &&
 									api.coins &&
-									session.wallets.map(wallet => {
+									session.wallets.data.map(wallet => {
 										if (!api.coins) return null
 										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)
 										const price = coin.market_data.prices[session.currency ?? 'usd']
@@ -153,14 +162,14 @@ function Overview() {
 									})}
 							</TableAssets>
 							<CoinAssets>
-								{!session.wallets && (
+								{session.wallets.status !== 'loaded' && (
 									<div className={styles.containerFeedback}>
 										<CircularProgress color="inherit" />
 									</div>
 								)}
-								{session.wallets &&
+								{session.wallets.status === 'loaded' &&
 									api.coins &&
-									session.wallets.map(wallet => {
+									session.wallets.data.map(wallet => {
 										if (!api.coins) return null
 										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)			
 										return (

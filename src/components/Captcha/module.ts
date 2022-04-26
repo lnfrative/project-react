@@ -28,12 +28,12 @@ export async function fetchCaptchaValidate() {
 		})
 
 		store.dispatch(setApiCaptchaValidate({
-			status: 'loaded',
+			status: 'nonload',
 			data,
 		}))
 	} catch (e) {
 		store.dispatch(setApiCaptchaValidate({
-			status: 'loaded',
+			status: 'nonload',
 			data: undefined
 		}))
 	}

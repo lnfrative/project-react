@@ -13,6 +13,8 @@ import {
 	BackendIncomeOrigin,
 	BackendCollateralAssetsAndROI,
 	BackendReturningAsset,
+
+  AsyncResource,
 } from 'interfaces'
 // endregion
 
@@ -22,7 +24,7 @@ interface State {
   user: BackendUser | undefined
   balance: BackendBalance | undefined
   summary: BackendSummary | undefined
-  wallets: BackendWallet[] | undefined
+  wallets: AsyncResource<BackendWallet[]>
   transactions: BackendTransaction[] | undefined
   currency: string
 
@@ -39,7 +41,10 @@ const initialState: State = {
   status: 'loading',
   balance: undefined,
   summary: undefined,
-  wallets: undefined,
+  wallets: {
+    status: 'nonload',
+    data: [],
+  },
   transactions: undefined,
   currency: 'usd',
 
@@ -73,7 +78,7 @@ const sessionSlice = createSlice({
       ...state,
       summary: action.payload,
     }),
-    setSessionWallets: (state, action: PayloadAction<BackendWallet[]>) => ({
+    setSessionWallets: (state, action: PayloadAction<AsyncResource<BackendWallet[]>>) => ({
       ...state,
       wallets: action.payload,
     }),

@@ -20,12 +20,12 @@ export async function resend() {
 		})
 
 		store.dispatch(setApiResendEmailConfirmation({
-			status: 'loaded',
+			status: 'nonload',
 			data: data || undefined
 		}))
 	} catch (e) {
 		store.dispatch(setApiResendEmailConfirmation({
-			status: 'loaded',
+			status: 'nonload',
 			data: undefined
 		}))
 	}
