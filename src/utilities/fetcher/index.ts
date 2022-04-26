@@ -12,7 +12,14 @@ import {
 	setSessionSummary,
 	setSessionWallets,
 	setSessionTransactions,
+  setSessionUser,
+  setSessionStatus,
+  setSessionBalance
 } from 'stores/SessionSlice'
+import {
+  setApiCoins,
+  setApiCaptchaKey
+} from 'stores/ApiSlice'
 
 async function fetcher(props: {
   url: string,
@@ -92,6 +99,55 @@ export async function fetchTransactions(params: Record<string, any>) {
 	if (data) {
 		store.dispatch(setSessionTransactions(data))
 	}
+}
+
+export async function fetchBalanace() {
+  const { data } = await fetcher({
+    url: resources.ep.api.get.userBalance,
+    method: 'get',
+  })
+
+  if (data) {
+    store.dispatch(setSessionBalance(data))
+  }
+}
+
+export async function fetchCoins() {
+  const { data } = await fetcher({
+    url: resources.ep.api.get.coins,
+    method: 'get',
+  })
+
+  if (data) {
+    store.dispatch(setApiCoins(data))
+  }
+}
+
+export async function fetchCaptchaKey() {
+  const { data } = await fetcher({
+    url: resources.ep.api.get.captchaKey,
+    method: 'get',
+  })
+
+  if (data) {
+    store.dispatch(setApiCaptchaKey(data))
+  }
+}
+
+export async function fetchSession() {
+  const { data } = await fetcher({
+    url: resources.ep.api.get.user,
+    method: 'get',
+  })
+  
+  if (data) {
+    store.dispatch(setSessionUser(data))
+    store.dispatch(setSessionStatus('authenticated'))
+
+    fetchBalanace()
+  } else {
+    store.dispatch(setSessionStatus('unauthenticated'))
+  }
 }
 
 export default fetcher

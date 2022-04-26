@@ -7,8 +7,8 @@ import { useSessionStore } from 'hooks'
 // components
 import { PreloadPage } from 'components'
 
-// modules
-import { fetchSession, fetchCoins, fetchCaptchaKey } from './module'
+// utilities
+import { fetchSession, fetchCoins, fetchCaptchaKey } from 'utilities/fetcher'
 // endregion
 
 function ApplicationStart(props: PropsWithChildren<{}>) {
