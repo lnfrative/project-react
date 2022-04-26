@@ -1,63 +1,39 @@
-import { ContextBackend, ContextCaptchaState, SelectOption, Stage } from 'interfaces'
+// region import
 import { RefObject } from 'react'
-import { OnSelect } from 'types'
-import { resources } from 'utilities'
 
-const endnewaddress = resources.endpoints.get.newaddress
-const endaddresses = resources.endpoints.get.addresses
+// interfaces
+import { SelectOption, Stage } from 'interfaces'
+
+// types
+import { OnSelect } from 'types'
+
+// utilities
+import { fetchNewAddress } from 'utilities/fetcher'
+// endregion
 
 interface State {
 	optionSelected?: SelectOption
 }
 
-const initialState: State = {
+export const initialState: State = {
 	optionSelected: undefined,
 }
 
-function selectReceive(stage: Stage<State>): OnSelect {
+export function selectReceive(stage: Stage<State>): OnSelect {
 	return value => {
 		stage.commitState({ optionSelected: value.option })
 	}
 }
 
-function generateAddress(
-	stage: Stage<State>,
-	backend: ContextBackend,
-	captcha: Stage<ContextCaptchaState>
-) {
+export function generateAddress(stage: Stage<State>) {
 	return () => {
 		if (stage.state.optionSelected?.id) {
-			backend.request({
-				method: 'get',
-				endpoint: endnewaddress.replace(
-					resources.endpoints.aliases.coinId,
-					stage.state.optionSelected.id
-				),
-				params: {
-					captcha_hash: captcha.state.hash ?? '',
-				},
-				updateCache: true,
-			})
-
-			backend.request({
-				method: 'get',
-				endpoint: resources.endpoints.get.wallets,
-				updateCache: true,
-			})
-
-			backend.request({
-				method: 'get',
-				endpoint: endaddresses.replace(
-					resources.endpoints.aliases.coinId,
-					stage.state.optionSelected.id
-				),
-				updateCache: true,
-			})
+			fetchNewAddress(stage.state.optionSelected.id)
 		}
 	}
 }
 
-function copyAddressIntoClipboard(address: string, ref: RefObject<HTMLSpanElement>) {
+export function copyAddressIntoClipboard(address: string, ref: RefObject<HTMLSpanElement>) {
 	return () => {
 		if (ref.current) {
 			const range = document.createRange()
@@ -72,5 +48,3 @@ function copyAddressIntoClipboard(address: string, ref: RefObject<HTMLSpanElemen
 		}
 	}
 }
-
-export { initialState, selectReceive, generateAddress, copyAddressIntoClipboard }

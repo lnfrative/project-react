@@ -128,8 +128,7 @@ function Transactions() {
 
               if (!transactionsPage) return null
               return transactionsPage.map(t => {
-                if (!api.coins) return null
-                const [coin] = api.coins.filter(value => value.id === t.coin_id)
+                const [coin] = api.coins.data.filter(value => value.id === t.coin_id)
                 const txURL = resources.coin[resources.utils.normaliceCoinName(coin.name)].tx
                 return (
                   <ContainerTransaction href={txURL + t.txid} target="_blank" key={t.id}>
@@ -207,7 +206,7 @@ function Transactions() {
               onSelect={handleSelect(stage)}
               options={[
                 { id: 'all', value: 'All coins', main: stage.state.coinSelected.id === 'all' },
-                ...(api.coins || []).map(coin => ({
+                ...api.coins.data.map(coin => ({
                   id: coin.id.toString(),
                   value: coin.name,
                   element: <ImgCoin size="small" src={resources.coin[

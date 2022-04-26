@@ -29,10 +29,8 @@ function Transaction(props: TransactionProps) {
 	const api = useApiStore()
 	const currency = useContext(Currency)
 	const date = resources.utils.parseTimestamp(props.data.timestamp * 1000, 'normal')
-
-	if (!api.coins) return null
 	
-	const [coin] = api.coins.filter(el => props.data.coin_id === el.id)
+	const [coin] = api.coins.data.filter(el => props.data.coin_id === el.id)
 
 	const currencyPrice = resources.utils.splitFloat(
 		resources.utils.satsToBTC(

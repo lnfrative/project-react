@@ -3,13 +3,10 @@ import React, { useContext, useEffect, useRef } from 'react'
 import { CircularProgress } from '@mui/material'
 
 // hooks
-import { useStage } from 'hooks'
+import { useStage, useSessionStore, useApiStore } from 'hooks'
 
 // contexts
-import { Backend, Currency, Captcha } from 'contexts'
-
-// interfaces
-import { BackendCoin, BackendWallet } from 'interfaces'
+import { Currency } from 'contexts'
 
 // components
 import {
@@ -25,7 +22,8 @@ import {
 } from 'components'
 
 // utilities
-import { resources, requestId, message } from 'utilities'
+import { resources, message } from 'utilities'
+import { fetchAddresses } from 'utilities/fetcher'
 
 // styles
 import styles from './index.module.css'
@@ -35,58 +33,23 @@ import { Values, GroupReceiveButtons, StyledReceiveButton } from './style'
 import { initialState, selectReceive, generateAddress, copyAddressIntoClipboard } from './module'
 // endregion
 
-const endnewaddress = resources.endpoints.get.newaddress
-const endaddresses = resources.endpoints.get.addresses
-const endcoins = resources.endpoints.get.coins
-const endwallets = resources.endpoints.get.wallets
-
 function Receive() {
+	const session = useSessionStore()
+	const api = useApiStore()
 	const addressRef = useRef<HTMLSpanElement>(null)
 	const stage = useStage(initialState)
-	const backend = useContext(Backend)
 	const currency = useContext(Currency)
-	const captcha = useContext(Captcha)
 
-	const address = backend.response({
-		method: 'get',
-		endpoint: endaddresses.replace(
-			resources.endpoints.aliases.coinId,
-			stage.state.optionSelected?.id ?? ''
-		),
-	})?.data[0]
-	const wallets: Array<BackendWallet> | undefined = backend.response({
-		method: 'get',
-		endpoint: endwallets,
-	})?.data
-	const coins: Array<BackendCoin> | undefined = backend.response({
-		method: 'get',
-		endpoint: endcoins,
-	})?.data
+	const address = session.addresses[stage.state.optionSelected?.id ?? '']?.data?.[0] ?? ''
 
-	const wallet = wallets?.filter(
+	const wallet = session.wallets.data.filter(
 		value => value.coin_id.toString() === stage.state.optionSelected?.id
 	)[0]
-	const coin = coins?.filter(value => value.id.toString() === stage.state.optionSelected?.id)[0]
+	const coin = api.coins.data.filter(value => value.id.toString() === stage.state.optionSelected?.id)[0]
 
-	const loadingNewAddress =
-		backend.loading?.id ===
-		requestId(
-			'get',
-			endnewaddress.replace(
-				resources.endpoints.aliases.coinId,
-				stage.state.optionSelected?.id ?? ''
-			),
-			{
-				captcha_hash: captcha.state.hash ?? '',
-			}
-		)
+	const loadingNewAddress = session.newAddress[stage.state.optionSelected?.id ?? '']?.status === 'loading'
 
-	const loadingAddresses =
-		backend.loading?.id ===
-		requestId(
-			'get',
-			endaddresses.replace(resources.endpoints.aliases.coinId, stage.state.optionSelected?.id ?? '')
-		)
+	const loadingAddresses = session.addresses[stage.state.optionSelected?.id ?? '']?.status === 'loading'
 
 	const price = coin?.market_data.prices[currency.state.id ?? ''] ?? 0
 	const currencyPriceSplit = resources.utils.splitFloat(
@@ -95,14 +58,12 @@ function Receive() {
 	)
 
 	useEffect(() => {
-		if (stage.state.optionSelected) {
-			backend.request({
-				method: 'get',
-				endpoint: endaddresses.replace(
-					resources.endpoints.aliases.coinId,
-					stage.state.optionSelected.id
-				),
-			})
+		const { optionSelected } = stage.state
+		if (optionSelected) {
+			const { id: coinId } = optionSelected
+			if (!session.addresses[coinId]) {
+				fetchAddresses(coinId)
+			}
 		}
 	}, [stage.state.optionSelected])
 
@@ -110,11 +71,11 @@ function Receive() {
 		<div className={styles.mainGroup}>
 			<Panel title="Receive">
 				<Values>
-					{coins && (
+					{api.coins.status === 'loaded' && (
 						<Select
 							onSelect={selectReceive(stage)}
 							design="outlined"
-							options={coins.map((value, index) => ({
+							options={api.coins.data.map((value, index) => ({
 								id: value.id.toString(),
 								value: value.name,
 								secondaryValue: value.asset,
@@ -171,7 +132,7 @@ function Receive() {
 							<Form
 								captcha
 								formHTMLAttributes={{
-									onSubmit: generateAddress(stage, backend, captcha),
+									onSubmit: generateAddress(stage),
 								}}
 							>
 								<Button

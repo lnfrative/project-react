@@ -118,7 +118,7 @@ function Overview() {
 								)}
 								{session.wallets.status === 'loaded' 
 								&& session.wallets.data.length !== 0 
-								&& api.coins
+								&& api.coins.status === 'loaded'
 								&& (
 									<div className={styles.assetsTableRow}>
 										<div />
@@ -135,10 +135,9 @@ function Overview() {
 									</div>
 								)}
 								{session.wallets.status === 'loaded' &&
-									api.coins &&
+									api.coins.status === 'loaded' &&
 									session.wallets.data.map(wallet => {
-										if (!api.coins) return null
-										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)
+										const [coin] = api.coins.data.filter(value => wallet.coin_id === value.id)
 										const price = coin.market_data.prices[session.currency ?? 'usd']
 										return (
 											<div key={wallet.coin_id} className={styles.assetsTableRow}>
@@ -168,10 +167,9 @@ function Overview() {
 									</div>
 								)}
 								{session.wallets.status === 'loaded' &&
-									api.coins &&
+									api.coins.status === 'loaded' &&
 									session.wallets.data.map(wallet => {
-										if (!api.coins) return null
-										const [coin] = api.coins.filter(value => wallet.coin_id === value.id)			
+										const [coin] = api.coins.data.filter(value => wallet.coin_id === value.id)			
 										return (
 											<StyledCoinAsset  key={wallet.coin_id}>
 												<CoinAsset coin={coin} wallet={wallet} />

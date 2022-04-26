@@ -8,11 +8,14 @@ import { CaptchaProps } from 'interfaces'
 // hooks
 import { useApiStore, useCaptchaStore } from 'hooks'
 
+// utilities
+import { fetchCaptchaValidate } from 'utilities/fetcher'
+
 // components
 import { BackdropLoader } from 'components'
 
 // modules
-import { onChange, fetchCaptchaValidate } from './module'
+import { onChange } from './module'
 // endregion
 
 function Captcha(props: CaptchaProps) {

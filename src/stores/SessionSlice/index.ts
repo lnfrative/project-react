@@ -13,6 +13,7 @@ import {
 	BackendIncomeOrigin,
 	BackendCollateralAssetsAndROI,
 	BackendReturningAsset,
+  BackendAddress,
 
   AsyncResource,
 } from 'interfaces'
@@ -33,6 +34,9 @@ interface State {
 	incomeOrigin: BackendIncomeOrigin | undefined
 	assetsAndRoi: BackendCollateralAssetsAndROI | undefined
 	returningAssets: BackendReturningAsset[] | undefined
+
+  addresses: Record<string, AsyncResource<string[]> | null>
+  newAddress: Record<string, AsyncResource<BackendAddress | null> | null>
 }
 
 const initialState: State = {
@@ -53,6 +57,9 @@ const initialState: State = {
   incomeOrigin: undefined,
   assetsAndRoi: undefined,
   returningAssets: undefined,
+
+  addresses: {},
+  newAddress: {},
 }
 
 const sessionSlice = createSlice({
@@ -111,6 +118,21 @@ const sessionSlice = createSlice({
       ...state,
       returningAssets: action.payload,
     }),
+
+    setSessionAddresses: (state, action: PayloadAction<Record<string, AsyncResource<string[]>>>) => ({
+      ...state,
+      addresses: {
+        ...state.addresses,
+        ...action.payload,
+      }
+    }),
+    setSessionNewAddress: (state, action: PayloadAction<Record<string, AsyncResource<BackendAddress | null>>>) => ({
+      ...state,
+      newAddress: {
+        ...state.newAddress,
+        ...action.payload,
+      }
+    }),
   },
   initialState,
 })
@@ -130,6 +152,9 @@ export const {
   setSessionReturningAssets,
   setSessionRevenueChart,
   setSessionRevenueSummary,
+
+  setSessionAddresses,
+  setSessionNewAddress,
 } = sessionSlice.actions
 
 export default sessionSlice.reducer

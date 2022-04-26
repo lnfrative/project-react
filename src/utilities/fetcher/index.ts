@@ -1,5 +1,8 @@
-// interfaces
+// types
 import { BackendRequestMethodsAllowed } from 'types'
+
+// interfaces
+import { BackendAddress } from 'interfaces'
 
 // utilities
 import { readCookie, resources } from 'utilities'
@@ -14,11 +17,14 @@ import {
 	setSessionTransactions,
   setSessionUser,
   setSessionStatus,
-  setSessionBalance
+  setSessionBalance,
+  setSessionAddresses,
+  setSessionNewAddress,
 } from 'stores/SessionSlice'
 import {
   setApiCoins,
-  setApiCaptchaKey
+  setApiCaptchaKey,
+  setApiCaptchaValidate,
 } from 'stores/ApiSlice'
 
 async function fetcher(props: {
@@ -113,13 +119,59 @@ export async function fetchBalanace() {
 }
 
 export async function fetchCoins() {
-  const { data } = await fetcher({
-    url: resources.ep.api.get.coins,
-    method: 'get',
-  })
+  store.dispatch(setApiCoins({
+    status: 'loading',
+    data: [],
+  }))
 
-  if (data) {
-    store.dispatch(setApiCoins(data))
+  try {
+    const { data } = await fetcher({
+      url: resources.ep.api.get.coins,
+      method: 'get',
+    })
+  
+    store.dispatch(setApiCoins({
+      status: 'loaded',
+      data
+    }))
+  } catch (e) {
+    store.dispatch(setApiCoins({
+      status: 'error',
+      data: [],
+    }))
+  }
+}
+
+export async function fetchAddresses(coinId: string) {
+  store.dispatch(setSessionAddresses({
+    [coinId]: {
+      status: 'loading',
+      data: [],
+    }
+  }))
+
+  try {
+    const { data } = await fetcher({
+      method: 'get',
+      url: resources.ep.api.get.addresses.replace(
+        resources.ep.api.aliases.coinId,
+        coinId,
+      ),
+    })
+
+    store.dispatch(setSessionAddresses({
+      [coinId]: {
+        status: 'loaded',
+        data,
+      }
+    }))
+  } catch (e) {
+    store.dispatch(setSessionAddresses({
+      [coinId]: {
+        status: 'error',
+        data: [],
+      }
+    }))
   }
 }
 
@@ -148,6 +200,75 @@ export async function fetchSession() {
   } else {
     store.dispatch(setSessionStatus('unauthenticated'))
   }
+}
+
+export async function fetchNewAddress(coinId: string) {
+  store.dispatch(setSessionNewAddress({
+    [coinId]: {
+      status: 'loading',
+      data: null,
+    }
+  }))
+  
+  const state = store.getState()
+  try {
+    const { data }: { data: BackendAddress } = await fetcher({
+      method: 'get',
+      url: resources.ep.api.get.newaddress.replace(
+        resources.ep.api.aliases.coinId,
+        coinId,
+      ),
+      params: {
+        captcha_hash: state.api.captchaValidate.data
+      }
+    })
+
+    store.dispatch(setSessionNewAddress({
+      [coinId]: {
+        status: 'loaded',
+        data,
+      }
+    }))
+  
+    if (data.already_generated) {
+      fetchAddresses(coinId)
+      fetchWallets()
+    }
+  } catch {
+    store.dispatch(setSessionNewAddress({
+      [coinId]: {
+        status: 'loaded',
+        data: null,
+      }
+    }))
+  }
+}
+
+export async function fetchCaptchaValidate() {
+  const state = store.getState()
+	store.dispatch(setApiCaptchaValidate({
+		status: 'loading',
+		data: state.api.captchaValidate.data,
+	}))
+	try {
+		const { data } = await fetcher({
+			url: resources.ep.api.post.captchaValidate,
+			method: 'post',
+			params: {
+				'g-recaptcha-response': state.captcha.token,
+			}
+		})
+
+		store.dispatch(setApiCaptchaValidate({
+			status: 'loaded',
+			data,
+		}))
+	} catch (e) {
+		store.dispatch(setApiCaptchaValidate({
+			status: 'loaded',
+			data: state.api.captchaValidate.data
+		}))
+	}
 }
 
 export default fetcher

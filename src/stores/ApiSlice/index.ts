@@ -6,17 +6,20 @@ import { BackendCoin, AsyncResource } from 'interfaces'
 // endregion
 
 interface State {
-  coins: BackendCoin[] | undefined
+  coins: AsyncResource<BackendCoin[]>
   captchaKey: string
 
   resendEmailConfirmation: AsyncResource<any>
-  captchaValidate: AsyncResource<string | undefined>
+  captchaValidate: AsyncResource<string>
 }
 
 const initialState: State = {
-  coins: undefined,
   captchaKey: '',
-
+  coins: {
+    status: 'nonload',
+    data: []
+  },
+  
   resendEmailConfirmation: {
     status: 'nonload',
     data: undefined,
@@ -24,14 +27,14 @@ const initialState: State = {
 
   captchaValidate: {
     status: 'nonload',
-    data: undefined
+    data: '',
   }
 }
 
 const apiSlice = createSlice({
   name: 'api',
   reducers: {
-    setApiCoins: (state, action: PayloadAction<BackendCoin[]>) => ({
+    setApiCoins: (state, action: PayloadAction<AsyncResource<BackendCoin[]>>) => ({
       ...state,
       coins: action.payload,
     }),
@@ -45,7 +48,7 @@ const apiSlice = createSlice({
       resendEmailConfirmation: action.payload,
     }),
 
-    setApiCaptchaValidate: (state, action: PayloadAction<AsyncResource<string | undefined>>) => ({
+    setApiCaptchaValidate: (state, action: PayloadAction<AsyncResource<string>>) => ({
       ...state,
       captchaValidate: action.payload,
     }),
