@@ -108,17 +108,6 @@ export async function fetchTransactions(params: Record<string, any>) {
 	}
 }
 
-export async function fetchBalanace() {
-  const { data } = await fetcher({
-    url: resources.ep.api.get.userBalance,
-    method: 'get',
-  })
-
-  if (data) {
-    store.dispatch(setSessionBalance(data))
-  }
-}
-
 export async function fetchCoins() {
   store.dispatch(setApiCoins({
     status: 'loading',
@@ -317,6 +306,32 @@ export async function postLogin(params: Record<string, string>) {
     data,
     error,
   }))
+}
+
+export async function fetchBalance(params?: Record<string, string>) {
+	const id = Math.random()
+  const preState = store.getState()
+	store.dispatch(setSessionBalance({
+    id,
+    status: 'loading',
+    data: preState.session.balance.data
+  }))
+
+	const { data, error, success } = await fetcher({
+		url: resources.ep.api.get.userBalance,
+		method: 'get',
+		params
+	})
+
+  const posState = store.getState()
+	const signed = id === posState.session.balance.id
+	if (signed) {
+		store.dispatch(setSessionBalance({
+      status: success ? 'loaded' : 'error',
+      data,
+      error,
+    }))
+	}
 }
 
 export default fetcher

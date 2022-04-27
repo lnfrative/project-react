@@ -8,7 +8,7 @@ import { useSessionStore } from 'hooks'
 import { PreloadPage } from 'components'
 
 // utilities
-import { fetchSession, fetchCoins, fetchCaptchaKey } from 'utilities/fetcher'
+import { fetchSession, fetchCoins, fetchCaptchaKey, fetchBalance } from 'utilities/fetcher'
 // endregion
 
 function ApplicationStart(props: PropsWithChildren<{}>) {
@@ -22,6 +22,7 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
 	useEffect(() => {
 		if (session.user.status === 'loaded') {
 			fetchCoins()
+			fetchBalance()
 		}
 	}, [session.user])
 

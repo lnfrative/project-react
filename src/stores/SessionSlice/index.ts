@@ -28,7 +28,7 @@ interface State {
   balanceId: number
   status: 'loading' | 'authenticated' | 'unauthenticated'
   user: AsyncResource<BackendUser | undefined>
-  balance: BackendBalance | undefined
+  balance: AsyncResource<BackendBalance | undefined>
   summary: BackendSummary | undefined
   wallets: AsyncResource<BackendWallet[]>
   transactions: BackendTransaction[] | undefined
@@ -54,7 +54,10 @@ const initialState: State = {
     data: undefined,
   },
   status: 'loading',
-  balance: undefined,
+  balance: {
+    status: 'nonload',
+    data: undefined
+  },
   summary: undefined,
   wallets: {
     status: 'nonload',
@@ -90,7 +93,7 @@ const sessionSlice = createSlice({
       ...state,
       status: action.payload,
     }),
-    setSessionBalance: (state, action: PayloadAction<BackendBalance>) => ({
+    setSessionBalance: (state, action: PayloadAction<AsyncResource<BackendBalance | undefined>>) => ({
       ...state,
       balance: action.payload,
     }),

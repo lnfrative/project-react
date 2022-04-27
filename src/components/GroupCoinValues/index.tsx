@@ -6,6 +6,7 @@ import { useStage, useSessionStore } from 'hooks'
 
 // utilities
 import { message, resources } from 'utilities'
+import { fetchBalance } from 'utilities/fetcher'
 
 // components
 import {
@@ -16,7 +17,7 @@ import {
 } from 'components'
 
 // modules
-import { selectCoin, selectTime, initialState, fetchBalanceWithParams } from './module'
+import { selectCoin, selectTime, initialState } from './module'
 
 // styles
 import styles from './index.module.css'
@@ -48,15 +49,15 @@ function GroupCoinValues() {
 	})
 
 	useEffect(() => {
-		if (session.balance) {
-			stage.commitState({ backendBalance: session.balance })
+		if (session.balance.data) {
+			stage.commitState({ backendBalance: session.balance.data })
 		}
 	}, [session.balance])
 
 	useEffect(() => {
 		const { variation, coin, currency } = stage.state
 		if (variation?.id || coin?.id || currency?.id) {
-			fetchBalanceWithParams(stage, params)
+			fetchBalance(params)
 		}
 	}, [stage.state.variation, stage.state.coin, stage.state.currency])
 
@@ -66,31 +67,31 @@ function GroupCoinValues() {
 				<GroupValueDecimal
 					design="top"
 					title={message({ id: 'BALANCE' })}
-					value={session.balance?.balance_main_currency ?? 0}
+					value={session.balance.data?.balance_main_currency ?? 0}
 					sign="$"
 					decimals={2}
-					loading={!session.balance}
+					loading={session.balance.status !== 'loaded'}
 				/>
 			</StyledGroupValueDecimal>
 			<SelectValues>
 				<SelectSpacing>
 					<GroupSelectValueDecimal
-						valueDecimal={session.balance?.balance_secondary_currency ?? 0}
+						valueDecimal={session.balance.data?.balance_secondary_currency ?? 0}
 						titleSelect="Worth in"
 						optionsSelect={coinOptions}
 						onSelect={selectCoin(stage)}
-						loading={!session.balance}
+						loading={session.balance.status !== 'loaded'}
 					/>
 				</SelectSpacing>
 				<GroupSelectValueVariation
-					valueVariation={session.balance?.change ?? 0}
+					valueVariation={session.balance.data?.change ?? 0}
 					titleSelect="Last"
 					optionsSelect={timeOptions}
 					onSelect={selectTime(stage)}
-					loading={!session.balance}
+					loading={session.balance.status !== 'loaded'}
 				/>
 			</SelectValues>
-			<BackdropLoader open={!!stage.state.updatingBalanceWithParams} />
+			<BackdropLoader open={session.balance.status === 'loading' && !!session.balance.data} />
 		</div>
 	)
 }
