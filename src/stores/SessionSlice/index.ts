@@ -31,7 +31,7 @@ interface State {
   balance: AsyncResource<BackendBalance | undefined>
   summary: BackendSummary | undefined
   wallets: AsyncResource<BackendWallet[]>
-  transactions: BackendTransaction[] | undefined
+  transactions: Record<'last' | 'history', AsyncResource<BackendTransaction[] | undefined>>
   second_factor: SecondFactor,
   currency: string
 
@@ -45,6 +45,7 @@ interface State {
   newAddress: Record<string, AsyncResource<BackendAddress | null> | null>
 
   transactionPosted: Record<string, AsyncResource<null> | undefined>
+  excludeRewardTransactions: boolean,
 }
 
 const initialState: State = {
@@ -63,7 +64,10 @@ const initialState: State = {
     status: 'nonload',
     data: [],
   },
-  transactions: undefined,
+  transactions: {
+    last: { status: 'nonload', data: undefined },
+    history: { status: 'nonload', data: undefined },
+  },
   currency: 'usd',
   second_factor: {
     id: 0,
@@ -80,6 +84,7 @@ const initialState: State = {
   newAddress: {},
 
   transactionPosted: {},
+  excludeRewardTransactions: true,
 }
 
 const sessionSlice = createSlice({
@@ -109,9 +114,12 @@ const sessionSlice = createSlice({
       ...state,
       wallets: action.payload,
     }),
-    setSessionTransactions: (state, action: PayloadAction<BackendTransaction[]>) => ({
+    setSessionTransactions: (state, action: PayloadAction<Record<'last', AsyncResource<BackendTransaction[] | undefined>> | Record<'history', AsyncResource<BackendTransaction[] | undefined>>>) => ({
       ...state,
-      transactions: action.payload,
+      transactions: {
+        ...state.transactions,
+        ...action.payload,
+      },
     }),
     setSessionCurrency: (state, action: PayloadAction<string>) => ({
       ...state,
@@ -164,6 +172,10 @@ const sessionSlice = createSlice({
         ...action.payload,
       }
     }),
+    setSessionExcludeRewardTransactions: (state, action: PayloadAction<boolean>) => ({
+      ...state,
+      excludeRewardTransactions: action.payload,
+    }),
   },
   initialState,
 })
@@ -189,6 +201,7 @@ export const {
   setSessionNewAddress,
 
   setSessionTransactionPosted,
+  setSessionExcludeRewardTransactions,
 } = sessionSlice.actions
 
 export default sessionSlice.reducer

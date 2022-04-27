@@ -4,8 +4,11 @@ import { SelectOption, Stage } from 'interfaces'
 // types
 import { OnSelect } from 'types'
 
+// stores
+import { store } from 'stores'
+
 // fetcher
-import { postTransaction, fetchBalance } from 'utilities/fetcher'
+import { postTransaction, fetchBalance, fetchLastTransactions, fetchWallets } from 'utilities/fetcher'
 
 interface State {
 	optionSelected?: SelectOption
@@ -34,9 +37,15 @@ function onSubmit(stage: Stage<State>, params: Record<string, any>) {
 
 function success(stage: Stage<State>, successCallback: Function) {
 	return () => {
+		const state = store.getState()
 		successCallback()
 		stage.commitState({ status: 'completed' })
 		fetchBalance()
+		fetchWallets()
+		fetchLastTransactions({
+			types: state.session.excludeRewardTransactions ? '1,3,4' : '1,2,3,4,5',
+			perPage: 5,
+		})
 	}
 }
 

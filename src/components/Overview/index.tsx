@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { CircularProgress, Skeleton } from '@mui/material'
 
 // hooks
-import { useStage, useSessionStore, useApiStore } from 'hooks'
+import { useSessionStore, useApiStore, useStrictEffect } from 'hooks'
 
 // components
 import {
@@ -20,10 +20,10 @@ import {
 
 // utilities
 import { resources, message } from 'utilities'
-import { fetchSummary, fetchTransactions, fetchWallets } from 'utilities/fetcher'
+import { fetchSummary, fetchLastTransactions, fetchWallets } from 'utilities/fetcher'
 
 // modules
-import { initialState, switchExcludeRewardMovements } from './module'
+import { switchExcludeRewardMovements } from './module'
 
 // styles
 import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values, TableAssets, CoinAssets, StyledCoinAsset } from './style'
@@ -33,7 +33,6 @@ import styles from './index.module.css'
 function Overview() {
 	const session = useSessionStore()
 	const api = useApiStore()
-	const stage = useStage(initialState)
 
 	useEffect(() => {
 		if (session.user.status === 'loaded') {
@@ -46,13 +45,20 @@ function Overview() {
 	}, [session.user])
 
 	useEffect(() => {
-		if (session.user.status === 'loaded') {
-			fetchTransactions({
-				types: stage.state.excludeRewardMovements ? '1,3,4' : '1,2,3,4,5',
+		if (session.user.status === 'loaded' && !session.transactions.last.data) {
+			fetchLastTransactions({
+				types: session.excludeRewardTransactions ? '1,3,4' : '1,2,3,4,5',
 				perPage: 5,
 			})
 		}
-	}, [session.user, stage.state.excludeRewardMovements])
+	}, [session.user])
+
+	useStrictEffect(() => {
+		fetchLastTransactions({
+			types: session.excludeRewardTransactions ? '1,3,4' : '1,2,3,4,5',
+			perPage: 5,
+		})
+	}, [session.excludeRewardTransactions])
 
 	return (
 		<div className={styles.container}>
@@ -187,15 +193,15 @@ function Overview() {
 						<ContainerCheckbox>
 							<StyledCheckbox>
 								<Checkbox
-									checked={stage.state.excludeRewardMovements}
-									checkCallback={switchExcludeRewardMovements(stage)}
+									checked={session.excludeRewardTransactions}
+									checkCallback={switchExcludeRewardMovements}
 									design="standard"
 								/>
 							</StyledCheckbox>
 							<div>{message({ id: 'EXCLUDE_REWARDS' })}</div>
 						</ContainerCheckbox>
 						<div className={styles.movements}>
-							{session.transactions && session.transactions.map((tx, index, txs) => (
+							{session.transactions.last.data && session.transactions.last.data.map((tx, index, txs) => (
 								<div
 									key={tx.id}
 									className={styles.movement}
@@ -207,8 +213,8 @@ function Overview() {
 								</div>
 							))}
 							<div className={styles.containerFeedback}>
-								{!session.transactions && <CircularProgress color="inherit" />}
-								{session.transactions?.length === 0 && message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
+								{!session.transactions.last.data && <CircularProgress color="inherit" />}
+								{session.transactions.last.data?.length === 0 && message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
 							</div>
 						</div>
 						<Link to="/transactions" className={styles.allMovements}>

@@ -1,18 +1,9 @@
-// interfaces
-import { Stage } from 'interfaces'
+// stores
+import { store } from 'stores'
 
-interface State {
-	excludeRewardMovements: boolean
-}
+// actions
+import { setSessionExcludeRewardTransactions } from 'stores/SessionSlice'
 
-export const initialState: State = {
-	excludeRewardMovements: true,
-}
-
-export function switchExcludeRewardMovements(stage: Stage<State>) {
-	return (value: boolean) => {
-		stage.commitState({
-			excludeRewardMovements: value,
-		})
-	}
+export function switchExcludeRewardMovements(value: boolean) {
+	store.dispatch(setSessionExcludeRewardTransactions(value))
 }

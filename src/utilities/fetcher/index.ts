@@ -96,16 +96,26 @@ export async function fetchWallets() {
   }
 }
 
-export async function fetchTransactions(params: Record<string, any>) {
-	const { data } = await fetcher({
+export async function fetchLastTransactions(params: Record<string, any>) {  
+  store.dispatch(setSessionTransactions({
+    last: {
+      status: 'loading',
+      data: undefined,
+    }
+  }))
+
+	const { data, success } = await fetcher({
 		url: resources.ep.api.get.transactions,
 		method: 'get',
     params,
 	})
 
-	if (data) {
-		store.dispatch(setSessionTransactions(data))
-	}
+  store.dispatch(setSessionTransactions({
+    last: {
+      status: success ? 'loaded' : 'error',
+      data,
+    }
+  }))
 }
 
 export async function fetchCoins() {
