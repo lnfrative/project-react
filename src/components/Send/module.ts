@@ -5,7 +5,7 @@ import { SelectOption, Stage } from 'interfaces'
 import { OnSelect } from 'types'
 
 // fetcher
-import { postTransaction } from 'utilities/fetcher'
+import { postTransaction, fetchBalance } from 'utilities/fetcher'
 
 interface State {
 	optionSelected?: SelectOption
@@ -36,6 +36,7 @@ function success(stage: Stage<State>, successCallback: Function) {
 	return () => {
 		successCallback()
 		stage.commitState({ status: 'completed' })
+		fetchBalance()
 	}
 }
 

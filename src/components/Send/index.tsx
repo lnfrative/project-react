@@ -170,6 +170,7 @@ function Send() {
 									title="Send"
 									buttonHTMLAttributes={{
 										disabled:
+											session.transactionPosted[coinId]?.status === 'loading' ||
 											insufficientFunds ||
 											invalidAmount ||
 											emptyAddress ||
