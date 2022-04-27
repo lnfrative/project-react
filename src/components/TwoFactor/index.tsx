@@ -26,16 +26,13 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 	useEffect(() => {
 		if (session.second_factor.id === stage.state.id && session.second_factor.code) {
 			props.callback()
+			dispatch(setSessionSecondFactor({ id: 0, code: undefined }))
 		}
 	}, [session.second_factor])
 
 	useEffect(() => {
 		if (props.asyncResource?.error?.second_factor) {
 			stage.commitState({ dialog: 'open' })
-		}
-		if (props.asyncResource?.status === 'loaded') {
-			props.onSuccess()
-			dispatch(setSessionSecondFactor({ id: 0, code: undefined }))
 		}
 	}, [props.asyncResource])
 
