@@ -26,6 +26,7 @@ import {
   setApiCoins,
   setApiCaptchaKey,
   setApiCaptchaValidate,
+  setApiLoginAttempt,
 } from 'stores/ApiSlice'
 
 async function fetcher(props: {
@@ -277,32 +278,43 @@ export async function postTransaction(coinId: string, params: Record<string, str
     [coinId]: {
       status: 'loading',
       data: null,
+      error: null,
     }
   }))
 
-  try {
-    await fetcher({
-      method: 'post',
-      url: resources.ep.api.post.transactions,
-      params,
-    })
+  const { error, data, success } = await fetcher({
+    method: 'post',
+    url: resources.ep.api.post.transactions,
+    params,
+  })
 
-    store.dispatch(setSessionTransactionPosted({
-      [coinId]: {
-        status: 'loaded',
-        data: null,
-      }
-    }))
-  } catch {
-    store.dispatch(setSessionTransactionPosted({
-      [coinId]: {
-        status: 'error',
-        data: null,
-      }
-    }))
-  }
+  store.dispatch(setSessionTransactionPosted({
+    [coinId]: {
+      status: success ? 'loaded' : 'error',
+      data,
+      error,
+    }
+  }))
+}
 
+export async function postLogin(params: Record<string, string>) {
+  store.dispatch(setApiLoginAttempt({
+    status: 'loading',
+    data: undefined,
+    error: undefined,
+  }))
 
+  const { error, data, success } = await fetcher({
+    method: 'post',
+    url: resources.ep.api.post.userCreateAccessToken,
+    params,
+  })
+
+  store.dispatch(setApiLoginAttempt({
+    status: success ? 'loaded' : 'error',
+    data,
+    error,
+  }))
 }
 
 export default fetcher

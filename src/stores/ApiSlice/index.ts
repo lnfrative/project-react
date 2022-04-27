@@ -11,6 +11,7 @@ interface State {
 
   resendEmailConfirmation: AsyncResource<any>
   captchaValidate: AsyncResource<string>
+  loginAttempt: AsyncResource<undefined>,
 }
 
 const initialState: State = {
@@ -28,6 +29,11 @@ const initialState: State = {
   captchaValidate: {
     status: 'nonload',
     data: '',
+  },
+
+  loginAttempt: {
+    status: 'nonload',
+    data: undefined,
   }
 }
 
@@ -52,6 +58,11 @@ const apiSlice = createSlice({
       ...state,
       captchaValidate: action.payload,
     }),
+
+    setApiLoginAttempt: (state, action: PayloadAction<AsyncResource<undefined>>) => ({
+      ...state,
+      loginAttempt: action.payload,
+    }),
   },
   initialState,
 })
@@ -61,6 +72,7 @@ export const {
   setApiCaptchaKey,
   setApiResendEmailConfirmation,
   setApiCaptchaValidate,
+  setApiLoginAttempt,
 } = apiSlice.actions
 
 export default apiSlice.reducer

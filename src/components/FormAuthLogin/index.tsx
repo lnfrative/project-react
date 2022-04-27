@@ -3,10 +3,10 @@ import React, { useContext, useEffect } from 'react'
 import { Typography, Box } from '@mui/material'
 
 // hooks
-import { useForm } from 'hooks'
+import { useForm, useApiStore, useSessionStore } from 'hooks'
 
 // contexts
-import { Backend, Captcha, Modal } from 'contexts'
+import { Modal } from 'contexts'
 
 // components
 import {
@@ -21,47 +21,43 @@ import {
 } from 'components'
 
 // utilties
-import { message, resources, requestId } from 'utilities'
+import { message, resources } from 'utilities'
 
 // modules
 import { onSubmit, reload, reactivateInput } from './module'
 
 // styles
 import styles from './index.module.css'
-// endregion
-
-const endlogin = resources.endpoints.post.userCreateAccessToken
 
 function FormAuthLogin() {
-	const backend = useContext(Backend)
-	const captcha = useContext(Captcha)
+	const session = useSessionStore()
+	const api = useApiStore()
 	const modal = useContext(Modal)
 	const { handleSubmit, watch, bind } = useForm()
 	const { email, password } = watch
 	const params = {
 		email: email?.value,
 		password: password?.value,
-		captcha_hash: captcha.state.hash ?? '',
+		captcha_hash: api.captchaValidate.data,
+		second_factor: session.second_factor.code,
 	}
-	const response = backend.response({
-		endpoint: endlogin,
-		params,
-		method: 'post',
-	})
-	const loading = backend.loading?.id === requestId('post', endlogin, params)
 
 	useEffect(() => {
-		if (response?.success) {
+		if (api.loginAttempt.status === 'loaded') {
 			reload()
 		}
-	}, [response])
+	}, [api.loginAttempt])
 
 	return (
-		<TwoFactor onSuccess={reload} endpoint={endlogin} params={params} method="post">
+		<TwoFactor
+			onSuccess={reload}
+			callback={onSubmit(modal, params)}
+			asyncResource={api.loginAttempt}
+		>
 			<Form
 				captcha
 				formHTMLAttributes={{
-					onSubmit: handleSubmit({ onSubmit: onSubmit(backend, modal, params) }),
+					onSubmit: handleSubmit({ onSubmit: onSubmit(modal, params) }),
 				}}
 			>
 				<FormAuth title={message({ id: 'LOG_IN' })}>
@@ -78,7 +74,7 @@ function FormAuthLogin() {
 						<Input
 							bind={bind({ name: 'email' })}
 							attributes={{
-								disabled: loading || modal.state.status === 'open',
+								disabled: api.loginAttempt.status === 'loading' || modal.state.status === 'open',
 								type: 'email',
 								name: 'email',
 								autoComplete: 'email',
@@ -100,7 +96,7 @@ function FormAuthLogin() {
 						<Input
 							bind={bind({ name: 'password' })}
 							attributes={{
-								disabled: loading || modal.state.status === 'open',
+								disabled: api.loginAttempt.status === 'loading' || modal.state.status === 'open',
 								type: 'password',
 								name: 'password',
 								autoComplete: 'password',
@@ -131,7 +127,7 @@ function FormAuthLogin() {
 						linkName={message({ id: 'SIGN_UP' })}
 					/>
 				</FormAuth>
-				<BackdropLoader open={loading} />
+				<BackdropLoader open={api.loginAttempt.status === 'loading'} />
 			</Form>
 		</TwoFactor>
 	)

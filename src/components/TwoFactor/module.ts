@@ -1,24 +1,29 @@
+import { store } from 'stores'
+import { setSessionSecondFactor } from 'stores/SessionSlice'
 import { Stage } from 'interfaces'
 
 interface State {
 	dialog?: 'open' | 'close'
-	code?: string
+	id?: number,
 }
 
 export const initialState: State = {
-	dialog: 'close'
+	dialog: 'close',
+	id: 0,
 }
 
 export function onCode(stage: Stage<State>) {
 	return (code: string) => {
 		if (code.length === 6) {
-			stage.commitState({ code, dialog: 'close' })
+			const id = Math.random()
+			stage.commitState({ dialog: 'close', id })
+			store.dispatch(setSessionSecondFactor({ id, code }))
 		}
 	}
 }
 
 export function handleClose(stage: Stage<State>) {
 	return () => {
-		stage.commitState({ dialog: 'close' })
+		stage.commitState({ dialog: 'close', id: 0 })
 	}
 }

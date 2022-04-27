@@ -19,6 +19,11 @@ import {
 } from 'interfaces'
 // endregion
 
+interface SecondFactor {
+  id: number,
+  code: string,
+}
+
 interface State {
   balanceId: number
   status: 'loading' | 'authenticated' | 'unauthenticated'
@@ -27,6 +32,7 @@ interface State {
   summary: BackendSummary | undefined
   wallets: AsyncResource<BackendWallet[]>
   transactions: BackendTransaction[] | undefined
+  second_factor: SecondFactor,
   currency: string
 
   revenueSummary: BackendRevenueSummary | undefined
@@ -53,6 +59,10 @@ const initialState: State = {
   },
   transactions: undefined,
   currency: 'usd',
+  second_factor: {
+    id: 0,
+    code: '',
+  },
 
   revenueSummary: undefined,
   revenueChart: undefined,
@@ -63,7 +73,7 @@ const initialState: State = {
   addresses: {},
   newAddress: {},
 
-  transactionPosted: {}
+  transactionPosted: {},
 }
 
 const sessionSlice = createSlice({
@@ -100,6 +110,10 @@ const sessionSlice = createSlice({
     setSessionCurrency: (state, action: PayloadAction<string>) => ({
       ...state,
       currency: action.payload,
+    }),
+    setSessionSecondFactor: (state, action: PayloadAction<SecondFactor>) => ({
+      ...state,
+      second_factor: action.payload,
     }),
 
     setSessionRevenueSummary: (state, action: PayloadAction<BackendRevenueSummary>) => ({
@@ -156,6 +170,7 @@ export const {
   setSessionSummary,
   setSessionWallets,
   setSessionTransactions,
+  setSessionSecondFactor,
   
   setSessionAssetsAndRoi,
   setSessionCurrency,

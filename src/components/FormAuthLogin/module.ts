@@ -1,15 +1,10 @@
-import { ContextBackend, ContextModalState, Stage, FormRecordBinded } from 'interfaces'
-import { resources } from 'utilities'
+import { ContextModalState, Stage, FormRecordBinded } from 'interfaces'
+import { postLogin } from 'utilities/fetcher'
 
-export function onSubmit(backend: ContextBackend, modal: Stage<ContextModalState>, params: Record<string, any>) {
+export function onSubmit(modal: Stage<ContextModalState>, params: Record<string, any>) {
 	return () => {
 		modal.commitState({ status: 'open', id: Math.random() })
-		backend.request({
-			endpoint: resources.endpoints.post.userCreateAccessToken,
-			params,
-			updateCache: true,
-			method: 'post',
-		})
+		postLogin(params)
 	}
 }
 

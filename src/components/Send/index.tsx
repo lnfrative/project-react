@@ -39,8 +39,6 @@ import {
 } from './style'
 // endregion
 
-const endtransaction = resources.endpoints.post.transactions
-
 function Send() {
 	const session = useSessionStore()
 	const api = useApiStore()
@@ -76,6 +74,7 @@ function Send() {
 		type: '4',
 		concept: 'Transaction',
 		captcha_hash: api.captchaValidate.data,
+		second_factor: session.second_factor.code,
 	}
 
 	const loadingSendTransaction = session.transactionPosted[coinId]?.status === 'loading'
@@ -104,10 +103,9 @@ function Send() {
 						/>
 					)}
 					<TwoFactor
+						asyncResource={session.transactionPosted[coinId]}
 						onSuccess={success(stage, clearInputs)}
-						method="post"
-						endpoint={endtransaction}
-						params={params}
+						callback={onSubmit(stage, params)}
 					>
 						<Form
 							captcha

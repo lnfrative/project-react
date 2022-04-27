@@ -1,10 +1,9 @@
-import { BackendRequestMethodsAllowed } from 'types'
+import { AsyncResource } from 'interfaces'
 
 interface TwoFactorProps {
-	endpoint: string
-	method: BackendRequestMethodsAllowed
-	params?: Record<string, any>
-	onSuccess: (requestId: string) => void
+	asyncResource?: AsyncResource<any>,
+	callback: () => void,
+	onSuccess: () => void
 }
 
 export default TwoFactorProps

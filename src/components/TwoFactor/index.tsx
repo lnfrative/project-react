@@ -1,11 +1,9 @@
 // region import
-import React, { PropsWithChildren, useContext, useEffect } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 // hooks
-import { useStage } from 'hooks'
-
-// contexts
-import { Backend } from 'contexts'
+import { useStage, useSessionStore } from 'hooks'
 
 // interfaces
 import { TwoFactorProps } from 'interfaces'
@@ -13,62 +11,33 @@ import { TwoFactorProps } from 'interfaces'
 // components
 import { DialogNotification2FA, BackdropLoader } from 'components'
 
-// utilities
-import { requestId } from 'utilities'
+// actions
+import { setSessionSecondFactor } from 'stores/SessionSlice' 
 
 // modules
 import { initialState, onCode, handleClose } from './module'
 // endregion
 
 function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
-	const backend = useContext(Backend)
+	const session = useSessionStore()
 	const stage = useStage(initialState)
-	const response = backend.response({
-		method: props.method,
-		endpoint: props.endpoint,
-		params: props.params,
-	})
-
-	const params = {
-		...props.params,
-		second_factor: stage.state.code ?? '',
-	}
-
-	const loading = backend.loading?.id === requestId(props.method, props.endpoint, params)
-
-	const responseWithSecondFactor = backend.response({
-		endpoint: props.endpoint,
-		params,
-		method: props.method,
-	})
+	const dispatch = useDispatch()
 
 	useEffect(() => {
-		const { endpoint, method } = props
-		if (stage.state.code) {
-			backend.request({
-				endpoint,
-				params,
-				method,
-			})
+		if (session.second_factor.id === stage.state.id && session.second_factor.code) {
+			props.callback()
 		}
-	}, [stage.state.code])
+	}, [session.second_factor])
 
 	useEffect(() => {
-		if (typeof response?.error === 'object' && response.error) {
-			if (response.error.second_factor) {
-				stage.commitState({ dialog: 'open' })
-			}
+		if (props.asyncResource?.error?.second_factor) {
+			stage.commitState({ dialog: 'open' })
 		}
-	}, [response?.error])
-
-	useEffect(() => {
-		if (responseWithSecondFactor?.success) {
-			stage.commitState({
-				code: undefined,
-			})
-			props.onSuccess(requestId(props.method, props.endpoint, params))
+		if (props.asyncResource?.status === 'loaded') {
+			props.onSuccess()
+			dispatch(setSessionSecondFactor({ id: 0, code: '' }))
 		}
-	}, [responseWithSecondFactor?.success])
+	}, [props.asyncResource])
 
 	return (
 		<>
@@ -77,7 +46,7 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 				onCode={onCode(stage)}
 				onClose={handleClose(stage)}
 			/>
-			<BackdropLoader open={loading} />
+			<BackdropLoader open={props.asyncResource?.status === 'loading'} />
 			{props.children}
 		</>
 	)
