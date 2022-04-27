@@ -1,17 +1,11 @@
 // region import
-import React, { useContext } from 'react'
-
-// interfaces
-import { BackendCoin, BackendWallet } from 'interfaces'
-
-// contexts
-import { Backend, Captcha, Currency } from 'contexts'
+import React from 'react'
 
 // hooks
-import { useStage, useForm } from 'hooks'
+import { useStage, useForm, useSessionStore, useApiStore } from 'hooks'
 
 // utilities
-import { requestId, resources } from 'utilities'
+import { resources } from 'utilities'
 
 // components
 import {
@@ -46,38 +40,27 @@ import {
 // endregion
 
 const endtransaction = resources.endpoints.post.transactions
-const endcoins = resources.endpoints.get.coins
-const endwallets = resources.endpoints.get.wallets
 
 function Send() {
+	const session = useSessionStore()
+	const api = useApiStore()
+
 	const { bind, watch, handleSubmit, clearInputs } = useForm()
 	const stage = useStage(initialState)
-	const currency = useContext(Currency)
-	const backend = useContext(Backend)
-	const captcha = useContext(Captcha)
 
 	const amount = parseFloat(watch.amount?.value || '0')
 	const address = watch.address?.value
 
-	const wallets: Array<BackendWallet> | undefined = backend.response({
-		method: 'get',
-		endpoint: endwallets,
-	})?.data
+	const coinId = stage.state.optionSelected?.id ?? ''
+	const [coin] = api.coins.data.filter(c => c.id.toString() === coinId)
 
-	const coins: Array<BackendCoin> | undefined = backend.response({
-		method: 'get',
-		endpoint: endcoins,
-	})?.data
+	const [wallet] = session.wallets.data.filter(
+		w => w.coin_id.toString() === coinId
+	)
 
-	const wallet = wallets?.filter(
-		value => value.coin_id.toString() === stage.state.optionSelected?.id
-	)[0]
-
-	const coin = coins?.filter(value => value.id.toString() === stage.state.optionSelected?.id)[0]
-
-	const price = coin?.market_data.prices[currency.state.id ?? ''] ?? 0
-	const balancePrice = price * resources.utils.satsToBTC(wallet?.balance ?? 0)
-	const amountPrice = price * (amount ?? 0)
+	const price = coin?.market_data.prices[session.currency]
+	const balancePrice = price * resources.utils.satsToBTC(wallet?.balance)
+	const amountPrice = price * amount
 	const amountPriceSplit = resources.utils.splitFloat(amountPrice, 2)
 	const remainingBalance = resources.utils.splitFloat(balancePrice - amountPrice, 2)
 
@@ -88,25 +71,25 @@ function Send() {
 
 	const params = {
 		address: `${address}`,
-		coin_id: stage.state.optionSelected?.id ?? '',
+		coin_id: coinId,
 		value: Math.floor(amount * 10 ** 8),
 		type: '4',
 		concept: 'Transaction',
-		captcha_hash: captcha.state.hash ?? '',
+		captcha_hash: api.captchaValidate.data,
 	}
 
-	const loadingSendTransaction = backend.loading?.id === requestId('post', endtransaction, params)
+	const loadingSendTransaction = session.transactionPosted[coinId]?.status === 'loading'
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.group}>
 			<Panel title="Send">
 				<Values>
-					{coins && (
+					{api.coins.status === 'loaded' && (
 						<Select
 							onSelect={selectSend(stage)}
 							design="outlined"
-							options={coins.map((value, index) => ({
+							options={api.coins.data.map((value, index) => ({
 								id: value.id.toString(),
 								value: value.name,
 								secondaryValue: value.asset,
@@ -129,10 +112,10 @@ function Send() {
 						<Form
 							captcha
 							onSuccess={success(stage, clearInputs)}
-							requestId={requestId('post', endtransaction, params)}
+							asyncResource={session.transactionPosted[coinId]}
 							formHTMLAttributes={{
 								className: styles.form,
-								onSubmit: handleSubmit({ onSubmit: onSubmit(backend, params) }),
+								onSubmit: handleSubmit({ onSubmit: onSubmit(stage, params) }),
 							}}
 						>
 							<GroupInput>
@@ -158,7 +141,7 @@ function Send() {
 							<div className={styles.conversionAmount}>
 								{amount || 0} {stage.state.optionSelected?.secondaryValue}
 								{' ≈ '}
-								{amountPriceSplit.value} {currency.state.id?.toUpperCase()}
+								{amountPriceSplit.value} {session.currency.toUpperCase()}
 							</div>
 
 							<GroupInput>
@@ -181,7 +164,7 @@ function Send() {
 								)}{' '}
 								{stage.state.optionSelected?.secondaryValue}
 								{' ≈ '}
-								{remainingBalance.value} {currency.state.id?.toUpperCase()}
+								{remainingBalance.value} {session.currency.toUpperCase()}
 							</div>
 
 							<div className={styles.buttonSend}>

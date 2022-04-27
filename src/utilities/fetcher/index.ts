@@ -20,6 +20,7 @@ import {
   setSessionBalance,
   setSessionAddresses,
   setSessionNewAddress,
+  setSessionTransactionPosted,
 } from 'stores/SessionSlice'
 import {
   setApiCoins,
@@ -269,6 +270,39 @@ export async function fetchCaptchaValidate() {
 			data: state.api.captchaValidate.data
 		}))
 	}
+}
+
+export async function postTransaction(coinId: string, params: Record<string, string>) {
+  store.dispatch(setSessionTransactionPosted({
+    [coinId]: {
+      status: 'loading',
+      data: null,
+    }
+  }))
+
+  try {
+    await fetcher({
+      method: 'post',
+      url: resources.ep.api.post.transactions,
+      params,
+    })
+
+    store.dispatch(setSessionTransactionPosted({
+      [coinId]: {
+        status: 'loaded',
+        data: null,
+      }
+    }))
+  } catch {
+    store.dispatch(setSessionTransactionPosted({
+      [coinId]: {
+        status: 'error',
+        data: null,
+      }
+    }))
+  }
+
+
 }
 
 export default fetcher

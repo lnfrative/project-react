@@ -37,6 +37,8 @@ interface State {
 
   addresses: Record<string, AsyncResource<string[]> | null>
   newAddress: Record<string, AsyncResource<BackendAddress | null> | null>
+
+  transactionPosted: Record<string, AsyncResource<null> | undefined>
 }
 
 const initialState: State = {
@@ -60,6 +62,8 @@ const initialState: State = {
 
   addresses: {},
   newAddress: {},
+
+  transactionPosted: {}
 }
 
 const sessionSlice = createSlice({
@@ -133,6 +137,13 @@ const sessionSlice = createSlice({
         ...action.payload,
       }
     }),
+    setSessionTransactionPosted: (state, action: PayloadAction<Record<string, AsyncResource<null>>>) => ({
+      ...state,
+      transactionPosted: {
+        ...state.transactionPosted,
+        ...action.payload,
+      }
+    }),
   },
   initialState,
 })
@@ -155,6 +166,8 @@ export const {
 
   setSessionAddresses,
   setSessionNewAddress,
+
+  setSessionTransactionPosted,
 } = sessionSlice.actions
 
 export default sessionSlice.reducer

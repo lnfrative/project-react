@@ -17,7 +17,6 @@ import styles from './index.module.css'
 function SendAndReceive() {
 	const session = useSessionStore()
 
-
 	useEffect(() => {
 		if (session.user && session.wallets.status !== 'loaded') {
 			fetchWallets()

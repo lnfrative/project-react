@@ -1,6 +1,11 @@
-import { ContextBackend, SelectOption, Stage } from 'interfaces'
+// interfaces
+import { SelectOption, Stage } from 'interfaces'
+
+// types
 import { OnSelect } from 'types'
-import { resources } from 'utilities'
+
+// fetcher
+import { postTransaction } from 'utilities/fetcher'
 
 interface State {
 	optionSelected?: SelectOption
@@ -18,14 +23,12 @@ function selectSend(stage: Stage<State>): OnSelect {
 	}
 }
 
-function onSubmit(backend: ContextBackend, params: Record<string, any>) {
+function onSubmit(stage: Stage<State>, params: Record<string, any>) {
 	return () => {
-		backend.request({
-			method: 'post',
-			endpoint: resources.endpoints.post.transactions,
-			params,
-			updateCache: true,
-		})
+		const { optionSelected } = stage.state
+		if (optionSelected) {
+			postTransaction(optionSelected.id, params)
+		}
 	}
 }
 

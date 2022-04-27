@@ -1,11 +1,8 @@
 // region import
-import React, { PropsWithChildren, useContext, useEffect } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 
 // hooks
 import { useStage, useForm } from 'hooks'
-
-// contexts
-import { Backend } from 'contexts'
 
 // interfaces
 import { FormProps } from 'interfaces'
@@ -19,10 +16,7 @@ import { openCaptcha, initialState, successCaptcha, submit, handleClose } from '
 
 function Form(props: PropsWithChildren<FormProps>) {
 	const stage = useStage(initialState)
-	const backend = useContext(Backend)
 	const { handleSubmit } = useForm()
-
-	const response = backend.response({ id: props.requestId })
 
 	useEffect(() => {
 		const { onSubmit } = props.formHTMLAttributes
@@ -33,10 +27,10 @@ function Form(props: PropsWithChildren<FormProps>) {
 	}, [stage.state.captchaSolved])
 
 	useEffect(() => {
-		if (response?.success && props.onSuccess) {
+		if (props.asyncResource?.status === 'loaded' && props.onSuccess) {
 			props.onSuccess()
 		}
-	}, [response?.success])
+	}, [props.asyncResource])
 
 	return (
 		<form
