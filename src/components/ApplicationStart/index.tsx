@@ -20,14 +20,14 @@ function ApplicationStart(props: PropsWithChildren<{}>) {
 	}, [])
 
 	useEffect(() => {
-		if (session.user) {
+		if (session.user.status === 'loaded') {
 			fetchCoins()
 		}
 	}, [session.user])
 
 	return (
 		<>
-			{session.status === 'loading' && (
+			{session.user.status === 'loading' && (
 				<PreloadPage />
 			)}
 			{props.children}

@@ -1,35 +1,28 @@
 // region import
-import React, { useContext } from 'react'
+import React from 'react'
 import { Tooltip } from '@mui/material'
 
 // components
 import { SettingPagination, Button, FormUpdatePassword } from 'components'
 
-// interfaces
-import { BackendUser } from 'interfaces'
-
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useSessionStore } from 'hooks'
 
 // utilities
-import { message, resources } from 'utilities'
+import { message } from 'utilities'
 
 // styles
 import styles from './index.module.css'
 // endregion
 
 function SettingPaginationAccount() {
-	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response({
-		endpoint: resources.endpoints.get.user,
-		method: 'get',
-	})?.data
+	const session = useSessionStore()
 	return (
 		<SettingPagination title="Account">
 			<div className={styles.container}>
 				<div className={styles.label}>{message({ id: 'CHANGE_EMAIL' })}</div>
 				<div className={styles.groupEmail}>
-					<div className={styles.email}>{user?.email}</div>
+					<div className={styles.email}>{session.user.data?.email}</div>
 					<Tooltip title={message({ id: 'DISABE_EMAIL_CHANGE' })}>
 						<div>
 							<Button

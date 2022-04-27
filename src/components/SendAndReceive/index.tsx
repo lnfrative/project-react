@@ -18,7 +18,7 @@ function SendAndReceive() {
 	const session = useSessionStore()
 
 	useEffect(() => {
-		if (session.user && session.wallets.status !== 'loaded') {
+		if (session.user.status === 'loaded' && session.wallets.status !== 'loaded') {
 			fetchWallets()
 		}
 	}, [session.user])

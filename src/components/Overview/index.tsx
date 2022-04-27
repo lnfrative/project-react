@@ -36,7 +36,7 @@ function Overview() {
 	const stage = useStage(initialState)
 
 	useEffect(() => {
-		if (session.user) {
+		if (session.user.status === 'loaded') {
 			fetchSummary()
 
 			if (session.wallets.status !== 'loaded') {
@@ -46,7 +46,7 @@ function Overview() {
 	}, [session.user])
 
 	useEffect(() => {
-		if (session.user) {
+		if (session.user.status === 'loaded') {
 			fetchTransactions({
 				types: stage.state.excludeRewardMovements ? '1,3,4' : '1,2,3,4,5',
 				perPage: 5,

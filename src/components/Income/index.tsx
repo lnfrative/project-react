@@ -54,7 +54,7 @@ function Income() {
 	const stage = useStage(initialState)
 
 	useEffect(() => {
-		if (session.user) {
+		if (session.user.data) {
 			const params = {
 				currency: session.currency,
 				period: 'year',
@@ -66,7 +66,7 @@ function Income() {
 
 	useEffect(() => {
 		const { optionSelectedRevenueChart } = stage.state
-		if (session.user && optionSelectedRevenueChart?.id) {
+		if (session.user.data && optionSelectedRevenueChart?.id) {
 			const params = {
 				currency: session.currency,
 				period: optionSelectedRevenueChart.id,
@@ -78,7 +78,7 @@ function Income() {
 
 	useEffect(() => {
 		const { optionSelectedIncomOrigin } = stage.state
-		if (session.user && optionSelectedIncomOrigin?.id) {
+		if (session.user.data && optionSelectedIncomOrigin?.id) {
 			const params = {
 				currency: session.currency,
 				period: optionSelectedIncomOrigin.id,

@@ -35,7 +35,7 @@ function TwoFactor(props: PropsWithChildren<TwoFactorProps>) {
 		}
 		if (props.asyncResource?.status === 'loaded') {
 			props.onSuccess()
-			dispatch(setSessionSecondFactor({ id: 0, code: '' }))
+			dispatch(setSessionSecondFactor({ id: 0, code: undefined }))
 		}
 	}, [props.asyncResource])
 

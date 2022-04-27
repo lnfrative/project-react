@@ -1,31 +1,21 @@
 // region import
-import React, { useContext } from 'react'
+import React from 'react'
 
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useSessionStore } from 'hooks'
 
 // components
 import { BannerConfirmEmail } from 'components'
-
-// utilities
-import { resources } from 'utilities'
-
-// interfaces
-import { BackendUser } from 'interfaces'
 
 // styles
 import styles from './index.module.css'
 // endregion
 
-const enduser = resources.endpoints.get.user
-
 function Banners() {
-	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response({ endpoint: enduser, method: 'get' })?.data
-
+	const session = useSessionStore()
 	return (
 		<div className={styles.container}>
-			{user && !user.email_verified_at && <BannerConfirmEmail />}
+			{session.user.data && !session.user.data.email_verified_at && <BannerConfirmEmail />}
 		</div>
 	)
 }

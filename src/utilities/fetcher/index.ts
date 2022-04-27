@@ -16,7 +16,6 @@ import {
 	setSessionWallets,
 	setSessionTransactions,
   setSessionUser,
-  setSessionStatus,
   setSessionBalance,
   setSessionAddresses,
   setSessionNewAddress,
@@ -189,19 +188,22 @@ export async function fetchCaptchaKey() {
 }
 
 export async function fetchSession() {
-  const { data } = await fetcher({
+  const state = store.getState()
+  store.dispatch(setSessionUser({
+    status: 'loading',
+    data: state.session.user.data,
+  }))
+
+  const { data, error, success } = await fetcher({
     url: resources.ep.api.get.user,
     method: 'get',
   })
-  
-  if (data) {
-    store.dispatch(setSessionUser(data))
-    store.dispatch(setSessionStatus('authenticated'))
 
-    fetchBalanace()
-  } else {
-    store.dispatch(setSessionStatus('unauthenticated'))
-  }
+  store.dispatch(setSessionUser({
+    status: success ? 'loaded' : 'error',
+    data,
+    error,
+  }))
 }
 
 export async function fetchNewAddress(coinId: string) {

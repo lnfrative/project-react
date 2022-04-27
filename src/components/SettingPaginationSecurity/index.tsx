@@ -1,21 +1,15 @@
 // region import
-import React, { useContext } from 'react'
+import React from 'react'
 import { Tooltip } from '@mui/material'
 
 // hooks
-import { useStage } from 'hooks'
-
-// contexts
-import { Backend } from 'contexts'
-
-// interfaces
-import { BackendUser } from 'interfaces'
+import { useStage, useSessionStore } from 'hooks'
 
 // components
 import { SettingPagination, Button, BackdropLoader, DialogNotificationEnable2FA } from 'components'
 
 // utilities
-import { message, resources, requestId } from 'utilities'
+import { message } from 'utilities'
 
 // modules
 import { initialState, enableTwoFactor, closeEnable2FA } from './module'
@@ -24,24 +18,15 @@ import { initialState, enableTwoFactor, closeEnable2FA } from './module'
 import styles from './index.module.css'
 // endregion
 
-const enduser = resources.endpoints.get.user
-
 function SettingPaginationSecurity() {
+	const session = useSessionStore()
 	const stage = useStage(initialState)
-	const backend = useContext(Backend)
-
-	const updatingUser = backend.loading?.id === requestId('get', enduser)
-
-	const user: BackendUser = backend.response({
-		endpoint: enduser,
-		method: 'get',
-	})?.data
 
 	return (
 		<SettingPagination title="Security">
 			<div className={styles.container}>
 				<div className={styles.label}>{message({ id: 'TWO_FACTOR_AUTH' })}</div>
-				{!user.two_factor_verified && (
+				{!session.user.data?.two_factor_verified && (
 					<Button
 						buttonHTMLAttributes={{
 							onClick: enableTwoFactor(stage),
@@ -51,7 +36,7 @@ function SettingPaginationSecurity() {
 						title={message({ id: 'ENABLE' })}
 					/>
 				)}
-				{!!user.two_factor_verified && (
+				{!!session.user.data?.two_factor_verified && (
 					<div className={styles.containerButton}>
 						<Tooltip title={message({ id: 'DEACTIVATE_TWO_FACTOR' })}>
 							<div>
@@ -73,7 +58,7 @@ function SettingPaginationSecurity() {
 					/>
 				)}
 			</div>
-			<BackdropLoader open={updatingUser} />
+			<BackdropLoader open={session.user.status === 'loading'} />
 		</SettingPagination>
 	)
 }

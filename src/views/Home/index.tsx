@@ -64,7 +64,7 @@ const Login = () => (
 
 function Home() {
 	const session = useSessionStore()
-	if (session.status === 'unauthenticated') return <Login />
+	if (session.user.status !== 'loaded') return <Login />
 	return <Dashboard />
 }
 

@@ -21,13 +21,11 @@ function BannerConfirmEmail() {
 	const session = useSessionStore()
 	const api = useApiStore()
 
-	if (!session.user) return null
-
 	return (
 		<Banner>
 			<Container>
 				<ConfirmEmail>
-					A verification email has been sent to <b>{session.user.email}</b>.
+					A verification email has been sent to <b>{session.user.data?.email}</b>.
 				</ConfirmEmail>
 				<Button
 					buttonHTMLAttributes={{

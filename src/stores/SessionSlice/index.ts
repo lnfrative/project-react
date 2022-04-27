@@ -21,13 +21,13 @@ import {
 
 interface SecondFactor {
   id: number,
-  code: string,
+  code: string | undefined,
 }
 
 interface State {
   balanceId: number
   status: 'loading' | 'authenticated' | 'unauthenticated'
-  user: BackendUser | undefined
+  user: AsyncResource<BackendUser | undefined>
   balance: BackendBalance | undefined
   summary: BackendSummary | undefined
   wallets: AsyncResource<BackendWallet[]>
@@ -49,7 +49,10 @@ interface State {
 
 const initialState: State = {
   balanceId: 0,
-  user: undefined,
+  user: {
+    status: 'nonload',
+    data: undefined,
+  },
   status: 'loading',
   balance: undefined,
   summary: undefined,
@@ -61,7 +64,7 @@ const initialState: State = {
   currency: 'usd',
   second_factor: {
     id: 0,
-    code: '',
+    code: undefined,
   },
 
   revenueSummary: undefined,
@@ -79,7 +82,7 @@ const initialState: State = {
 const sessionSlice = createSlice({
   name: 'Session',
   reducers: {
-    setSessionUser: (state, action: PayloadAction<BackendUser>) => ({
+    setSessionUser: (state, action: PayloadAction<AsyncResource<BackendUser | undefined>>) => ({
       ...state,
       user: action.payload,
     }),

@@ -21,7 +21,7 @@ function GroupUserMenu() {
 	const session = useSessionStore()
 	const stage = useStage(initialState)
 	const notificationsOpen = Boolean(stage.state.notificationsAnchor);
-	const letter = session.user?.email.slice(0, 1).toUpperCase() ?? ''
+	const letter = session.user.data?.email.slice(0, 1).toUpperCase() ?? ''
 	return (
 		<div className={styles.container}>
 			<IconButton onClick={openNotifications(stage)} id="notifications" aria-controls="basic-menu" className={styles.notifications}>

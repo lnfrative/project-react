@@ -1,28 +1,25 @@
 // region import
-import React, { useContext } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useSessionStore } from 'hooks'
 
 // utilities
 import { resources } from 'utilities'
 
 // interfaces
-import { MiddlewareProps, BackendUser } from 'interfaces'
+import { MiddlewareProps } from 'interfaces'
 // endregion
 
-const enduser = resources.endpoints.get.user
-
 function Middleware(props: MiddlewareProps) {
-	const { response } = useContext(Backend)
-	const user: BackendUser | undefined = response({ endpoint: enduser, method: 'get' })?.data
+	const session = useSessionStore()
 
 	const [requirement] = props.requirements.filter(
 		middleware =>
-			(middleware === 'auth' && !user?.id) ||
-			(middleware === 'guess' && user?.id) ||
-			(middleware === 'verified.email' && !user?.email_verified_at)
+			(middleware === 'auth' && !session.user.data?.id) ||
+			(middleware === 'guess' && session.user.data?.id) ||
+			(middleware === 'verified.email' && !session.user.data?.email_verified_at)
 	)
 
 	if (requirement === 'auth') {
