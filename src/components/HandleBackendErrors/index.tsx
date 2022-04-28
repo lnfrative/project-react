@@ -20,10 +20,15 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
 		if (api.error.code === 401 && session.user.status === 'loaded') {
 			window.location.reload()
 		}
-		if (api.error.code === 400 && session.user.status === 'error' && api.loginAttempt.status === 'nonload') {
+		if (
+				api.error.code === 400
+				&& session.user.status === 'error'
+				&& api.error.message
+				&& api.error.message !== 'Captcha is invalid!'
+			) {
 			stage.commitState({
 				status: 'open',
-				reloadRequired: true,
+				reloadRequired: api.error.message === 'CSRF is missing or invalid',
 			})
 		}
 	}, [api.error])

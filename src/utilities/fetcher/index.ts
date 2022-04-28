@@ -68,7 +68,7 @@ async function fetcher(props: {
     store.dispatch(setApiError({
       code: request.status,
       ...(typeof firstError === 'string' ? { message: firstError } : {
-        message: 'An undiagnosed error has occurred, please report it.'
+        message: ''
       }),
       ...(typeof error === 'string' ? { message: error } : {}),
       data: error,
