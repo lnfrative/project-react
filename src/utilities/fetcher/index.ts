@@ -26,6 +26,7 @@ import {
   setApiCaptchaKey,
   setApiCaptchaValidate,
   setApiLoginAttempt,
+  setApiError,
 } from 'stores/ApiSlice'
 
 async function fetcher(props: {
@@ -57,8 +58,24 @@ async function fetcher(props: {
       )
   }
 
-  const response = await fetch(url.toString(), options)
-  return response.json()
+  const request = await fetch(url.toString(), options)
+  const response = await request.json()
+
+  if (request.status >= 400) {
+    const error = response?.error
+    const firstError = response?.error?.[0]
+    
+    store.dispatch(setApiError({
+      code: request.status,
+      ...(typeof firstError === 'string' ? { message: firstError } : {
+        message: 'An undiagnosed error has occurred, please report it.'
+      }),
+      ...(typeof error === 'string' ? { message: error } : {}),
+      data: error,
+    }))
+  }
+
+  return response
 }
 
 export async function fetchSummary() {

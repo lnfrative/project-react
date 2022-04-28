@@ -1,21 +1,21 @@
 import { Stage } from 'interfaces'
-import { BackendRequestMethodsAllowed } from 'types'
 
 interface State {
-	requestId?: string
-	method?: BackendRequestMethodsAllowed
-	snackbar?: 'open' | 'close'
-	error?: string
+	message?: string
+	status: 'open' | 'close'
+	reloadRequired?: boolean,
 }
 
-const initialState: State = {
-	snackbar: 'close',
+export const initialState: State = {
+	status: 'close',
 }
 
-function closeSnackbar(stage: Stage<State>) {
+export function closeSnackbar(stage: Stage<State>) {
 	return () => {
-		stage.commitState({ snackbar: 'close', error: undefined })
+		stage.commitState({ status: 'close', message: '', reloadRequired: false })
 	}
 }
 
-export { initialState, closeSnackbar }
+export function reload() {
+	window.location.reload()
+}

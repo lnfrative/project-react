@@ -1,59 +1,52 @@
 // region import
-import React, { PropsWithChildren, useContext, useEffect } from 'react'
-import { Snackbar, Alert, Grow } from '@mui/material'
+import React, { PropsWithChildren, useEffect } from 'react'
 
 // hooks
-import { useStage } from 'hooks'
+import { useStage, useApiStore, useSessionStore } from 'hooks'
 
-// utilities
-import { resources } from 'utilities'
-
-// contexts
-import { Backend } from 'contexts'
+// components
+import { DialogNotification, SVGIconError, Button } from 'components'
 
 // modules
-import { initialState, closeSnackbar } from './module'
+import { initialState, closeSnackbar, reload } from './module'
 // endregion
 
-const { colors } = resources
-
 function HandleBackendErrors(props: PropsWithChildren<{}>) {
+	const api = useApiStore()
+	const session = useSessionStore()
 	const stage = useStage(initialState)
-	const { loading, response } = useContext(Backend)
 
 	useEffect(() => {
-		if (loading) {
-			stage.commitState({ requestId: loading.id, method: loading.method })
-		} else {
-			const { state, commitState } = stage
-			if (state.method && state.requestId) {
-				const backendResponse = response({ id: state.requestId })
-				if (backendResponse?.error && typeof backendResponse.error !== 'object') {
-					commitState({ error: backendResponse.error, snackbar: 'open' })
-				}
-				if (backendResponse?.status === 401) {
-					window.location.reload()
-				}
-			}
+		if (api.error.code === 401 && session.user.status === 'loaded') {
+			window.location.reload()
 		}
-	}, [loading])
+		if (api.error.code === 400 && session.user.status === 'error' && api.loginAttempt.status === 'nonload') {
+			stage.commitState({
+				status: 'open',
+				reloadRequired: true,
+			})
+		}
+	}, [api.error])
 
 	return (
 		<>
-			<Snackbar
-				open={stage.state.snackbar === 'open'}
-				autoHideDuration={4000}
+			<DialogNotification
+				open={stage.state.status === 'open'}
+				Icon={<SVGIconError />}
+				title="Failure!"
+				message={api.error.message}
 				onClose={closeSnackbar(stage)}
-				anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-				TransitionComponent={Grow}
-			>
-				<Alert
-					style={{ background: colors.passive_pager, color: colors.variety_main }}
-					severity="error"
-				>
-					{stage.state.error}
-				</Alert>
-			</Snackbar>
+				ContentAfterMessage={stage.state.reloadRequired && (
+					<Button
+						title="Reaload"
+						design="normal"
+						buttonHTMLAttributes={{
+							type: 'button',
+							onClick: reload,
+						}}
+					/>
+				)}
+			/>
 			{props.children}
 		</>
 	)

@@ -5,6 +5,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { BackendCoin, AsyncResource } from 'interfaces'
 // endregion
 
+interface BackendError {
+  code: number
+  message: string
+  data: any
+}
+
 interface State {
   coins: AsyncResource<BackendCoin[]>
   captchaKey: string
@@ -12,6 +18,8 @@ interface State {
   resendEmailConfirmation: AsyncResource<any>
   captchaValidate: AsyncResource<string>
   loginAttempt: AsyncResource<undefined>,
+
+  error: BackendError
 }
 
 const initialState: State = {
@@ -34,6 +42,12 @@ const initialState: State = {
   loginAttempt: {
     status: 'nonload',
     data: undefined,
+  },
+
+  error: {
+    code: 0,
+    message: 'An undiagnosed error has occurred, please report it.',
+    data: undefined
   }
 }
 
@@ -63,6 +77,11 @@ const apiSlice = createSlice({
       ...state,
       loginAttempt: action.payload,
     }),
+
+    setApiError: (state, action: PayloadAction<BackendError>) => ({
+      ...state,
+      error: action.payload,
+    }),
   },
   initialState,
 })
@@ -73,6 +92,7 @@ export const {
   setApiResendEmailConfirmation,
   setApiCaptchaValidate,
   setApiLoginAttempt,
+  setApiError,
 } = apiSlice.actions
 
 export default apiSlice.reducer
