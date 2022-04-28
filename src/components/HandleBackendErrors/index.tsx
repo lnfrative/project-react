@@ -43,7 +43,7 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
 				onClose={closeSnackbar(stage)}
 				ContentAfterMessage={stage.state.reloadRequired && (
 					<Button
-						title="Reaload"
+						title="Reload"
 						design="normal"
 						buttonHTMLAttributes={{
 							type: 'button',
