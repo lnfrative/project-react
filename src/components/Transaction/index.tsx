@@ -55,21 +55,30 @@ function Transaction(props: TransactionProps) {
 						<div className={styles.price}>
 							{props.data.concept}
 							{' ('}
-							{(!!props.data.accountable &&  props.data.status === 5) && (
-								<Tooltip arrow title={statusMessage(message, props.data.status)}>
-									<div>{message({ id: 'COMPLETED' })}</div>
-								</Tooltip>
-							)}
-							{(!!props.data.accountable && props.data.status !== 5) && (
-								<Tooltip arrow title={statusMessage(message, props.data.status)}>
-									<div>{message({ id: 'PENDING' })}</div>
-								</Tooltip>
-							)}
-							{!props.data.accountable && (
-								<Tooltip arrow title={statusMessage(message, props.data.status)}>
-									<div>{message({ id: 'CANCELED' })}</div>
-								</Tooltip>
-							)}
+							<Tooltip arrow title={statusMessage(message, props.data.status)}>
+								<span>
+									{(props.data.status === 0
+										|| props.data.status === 1
+										|| props.data.status === 2) && (
+										<div>{message({ id: 'PENDING' })}</div>
+									)}
+									{props.data.status === 3 && (
+										<div>{message({ id: 'WAITING' })}</div>
+									)}
+									{props.data.status === 4 && (
+										<div>{message({ id: 'PROCESSING' })}</div>
+									)}
+									{props.data.status === 5 && (
+										<div>{message({ id: 'COMPLETED' })}</div>
+									)}
+									{(props.data.status === 110
+										|| props.data.status === 111
+										|| props.data.status === 112
+										|| props.data.status === 113) && (
+										<div>{message({ id: 'CANCELED' })}</div>
+									)}
+								</span>
+							</Tooltip>
 							)
 						</div>
 					</Data>

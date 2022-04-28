@@ -1,5 +1,7 @@
 export function statusMessage(msn: (arg: { id: string }) => string, code: number) {
   switch (code) {
+    case 0:
+      return msn({ id: 'TX_CREATED' })
     case 1:
       return msn({ id: 'TX_WAIT_USER_VERIFICATION' })
     case 2:

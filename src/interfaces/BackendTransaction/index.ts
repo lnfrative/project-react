@@ -3,7 +3,7 @@ interface BackendTransaction {
 	coin_id: number
 	account_id: number
 	accountable: boolean
-	status: 1 | 2 | 3 | 4 | 5
+	status: number
 	value: number
 	type: 1 | 2 | 3 | 4 | 5
 	account_from?: string

@@ -301,6 +301,9 @@ const messages: Record<string, Record<string, any>> = {
 	CANCELED: {
 		en: 'Canceled'
 	},
+	TX_CREATED: {
+		en: 'Transaction was successfully created and is waiting to be processed.',
+	},
 	TX_WAIT_USER_VERIFICATION: {
 		en: 'The transaction was created correctly and is waiting to be validated by the user.'
 	},
@@ -308,7 +311,7 @@ const messages: Record<string, Record<string, any>> = {
 		en: 'The transaction was successfully validated.',
 	},
 	TX_WAITING_POOL_APPROVAL: {
-		en: 'For security, this transaction is waiting to be approved by a pool agent.',
+		en: 'For security, this transaction is waiting to be approved by a pool agent. This can take up to 24 hours.',
 	},
 	TX_WAITING_PROCESSED: {
 		en: 'The transaction was validated by both the pool and the user and is waiting to be processed.',
@@ -317,23 +320,29 @@ const messages: Record<string, Record<string, any>> = {
 		en: 'The transaction was successfully processed.',
 	},
 	TX_CANCELED_BY_EMAIL_EXPIRED: {
-		en: 'The transaction was not processed due to lack of email confirmation and expiration.',
+		en: 'The transaction was not confirmed by email in the required time frame. Please try to withdraw again.',
 	},
 	TX_CANCELED_BY_2FA: {
 		en: 'Transaction canceled due to a problem with the authenticity of the 2FA code.',
 	},
 	TX_CANCELED_BY_BALANCES: {
-		en: 'Transaction canceled due to the set of user balances do not match.',
+		en: 'Please try again or contact support.',
 	},
 	TX_CANCELED_BY_UNKNOWN_REASONS: {
-		en: 'Transaction canceled for unknown reasons.',
+		en: 'Please try again or contact support.',
 	},
 	SUCCESS_CONFIRMATION: {
 		en: 'Successful confirmation'
 	},
 	SUCCESS_CONFIRMATION_TX: {
 		en: 'Your transaction has been successfully verified and will soon be processed by the pool.'
-	}
+	},
+	WAITING: {
+		en: 'Waiting',
+	},
+	PROCESSING: {
+		en: 'Processing',
+	},
 }
 
 export default messages
