@@ -32,6 +32,8 @@ function Transaction(props: TransactionProps) {
 	
 	const [coin] = api.coins.data.filter(el => props.data.coin_id === el.id)
 
+	if (!coin) return null
+
 	const currencyPrice = resources.utils.splitFloat(
 		resources.utils.satsToBTC(
 			coin.market_data.prices[currency.state.id ?? 'usd'] * props.data.value
