@@ -1,6 +1,6 @@
 // region import
 import React, { useContext } from 'react'
-import { Tooltip } from '@mui/material'
+import { Tooltip, Box } from '@mui/material'
 
 // contexts
 import { Currency } from 'contexts'
@@ -22,7 +22,7 @@ import { statusMessage } from './module'
 
 // styles
 import styles from './index.module.css'
-import { MovementGroupData, MovementGroupDataBelow, Data } from './style'
+import { MovementGroupData, MovementGroupDataBelow } from './style'
 // endregion
 
 function Transaction(props: TransactionProps) {
@@ -43,17 +43,22 @@ function Transaction(props: TransactionProps) {
 
 	return (
 		<div className={styles.movement}>
-			<div className={styles.movementImg}>
-				{props.data.type === 1 && <SVGIconIncoming />}
-				{props.data.type === 4 && <SVGIconOutgoing />}
-				{props.data.type === 2 && <SVGIconReward />}
-				{props.data.type === 5 && <SVGIconReward />}
-			</div>
+			<Box
+				sx={{
+					marginRight: 2,
+				}}
+			>
+				<div className={styles.movementImg}>
+					{props.data.type === 1 && <SVGIconIncoming />}
+					{props.data.type === 4 && <SVGIconOutgoing />}
+					{props.data.type === 2 && <SVGIconReward />}
+					{props.data.type === 5 && <SVGIconReward />}
+				</div>
+			</Box>
 
 			<div className={styles.movementData}>
 				<div className={styles.movementGroupData}>
-				<MovementGroupData>	
-					<Data>
+					<MovementGroupData>
 						<div className={styles.price}>
 							{props.data.concept}
 							{' ('}
@@ -83,32 +88,29 @@ function Transaction(props: TransactionProps) {
 							</Tooltip>
 							)
 						</div>
-					</Data>
-					{props.data.value >= 0 && (
-						<div className={styles.movementPriceUp}>
-							{currencyPrice.value} {currency.state.id?.toUpperCase()}
-						</div>
-					)}
-					{props.data.value < 0 && (
-						<div className={styles.movementPriceDown}>
-							{currencyPrice.value} {currency.state.id?.toUpperCase()}
-						</div>
-					)}
-				</MovementGroupData>
+						{props.data.value >= 0 && (
+							<div className={styles.movementPriceUp}>
+								{currencyPrice.value} {currency.state.id?.toUpperCase()}
+							</div>
+						)}
+						{props.data.value < 0 && (
+							<div className={styles.movementPriceDown}>
+								{currencyPrice.value} {currency.state.id?.toUpperCase()}
+							</div>
+						)}
+					</MovementGroupData>
 				</div>
 				<MovementGroupDataBelow>
-					<Data>
-						<div className={styles.secondRow}>{date}</div>
-					</Data>
-					<Data>
-						<div className={styles.secondRow}>
-							{resources.utils.satsToBTC(props.data.value)} {coin.asset}
-						</div>
-					</Data>
+					<div className={styles.secondRow}>{date}</div>
+					<div className={styles.secondRow}>
+						{resources.utils.satsToBTC(props.data.value)} {coin.asset}
+					</div>
 				</MovementGroupDataBelow>
 			</div>
 		</div>
 	)
 }
+
+export { TransactionSkeleton } from './style'
 
 export default Transaction

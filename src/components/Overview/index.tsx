@@ -18,6 +18,9 @@ import {
 	CoinAsset
 } from 'components'
 
+// skeletons
+import { TransactionSkeleton } from 'components/Transaction'
+
 // utilities
 import { resources, message } from 'utilities'
 import { fetchSummary, fetchLastTransactions, fetchWallets } from 'utilities/fetcher'
@@ -28,6 +31,9 @@ import { switchExcludeRewardMovements } from './module'
 // styles
 import { StyledPanel, ContainerCheckbox, StyledCheckbox, Values, TableAssets, CoinAssets, StyledCoinAsset } from './style'
 import styles from './index.module.css'
+
+// constants
+const skeletonValues = [1,2,3,4,5]
 // endregion
 
 function Overview() {
@@ -212,10 +218,22 @@ function Overview() {
 									<Transaction data={tx} />
 								</div>
 							))}
-							<div className={styles.containerFeedback}>
-								{!session.transactions.last.data && <CircularProgress color="inherit" />}
-								{session.transactions.last.data?.length === 0 && message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
-							</div>
+							{session.transactions.last.status === 'loading' && skeletonValues.map((num, index) => (
+								<div
+									key={num}
+									className={styles.movement}
+									style={{
+										margin: index === skeletonValues.length - 1 ? 0 : '',
+									}}
+								>
+									<TransactionSkeleton />
+								</div>
+							))}
+							{session.transactions.last.data?.length === 0 && (
+								<div className={styles.containerFeedback}>
+									{message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
+								</div>
+							)}
 						</div>
 						<Link to="/transactions" className={styles.allMovements}>
 							{message({ id: 'ALL_MOVEMENTS' })}
