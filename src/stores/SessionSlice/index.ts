@@ -37,7 +37,7 @@ interface State {
 
   revenueSummary: BackendRevenueSummary | undefined
 	revenueChart: BackendRevenueChart | undefined
-	incomeOrigin: BackendIncomeOrigin | undefined
+	incomeOrigin: AsyncResource<BackendIncomeOrigin | undefined>
 	assetsAndRoi: BackendCollateralAssetsAndROI | undefined
 	returningAssets: BackendReturningAsset[] | undefined
 
@@ -76,7 +76,10 @@ const initialState: State = {
 
   revenueSummary: undefined,
   revenueChart: undefined,
-  incomeOrigin: undefined,
+  incomeOrigin: {
+    data: undefined,
+    status: 'nonload'
+  },
   assetsAndRoi: undefined,
   returningAssets: undefined,
 
@@ -138,7 +141,7 @@ const sessionSlice = createSlice({
       ...state,
       revenueChart: action.payload,
     }),
-    setSessionIncomeOrigin: (state, action: PayloadAction<BackendIncomeOrigin | undefined>) => ({
+    setSessionIncomeOrigin: (state, action: PayloadAction<AsyncResource<BackendIncomeOrigin | undefined>>) => ({
       ...state,
       incomeOrigin: action.payload,
     }),

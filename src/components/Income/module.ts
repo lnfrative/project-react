@@ -96,15 +96,28 @@ export async function fetchRevenueChart(params: Record<string, string>) {
 }
 
 export async function fetchIncomeOrigin(params: Record<string, string>) {
-	store.dispatch(setSessionIncomeOrigin(undefined))
-	const { data } = await fetcher({
+	const id = JSON.stringify(params)
+
+	store.dispatch(setSessionIncomeOrigin({
+		status: 'loading',
+		data: undefined,
+		id,
+	}))
+
+	const { data, error } = await fetcher({
 		url: resources.ep.api.get.incomeOrigin,
 		method: 'get',
 		params,
 	})
 
-	if (data) {
-		store.dispatch(setSessionIncomeOrigin(data))
+	const state = store.getState()
+	if (state.session.incomeOrigin.id === id) {
+		store.dispatch(setSessionIncomeOrigin({
+			id,
+			data,
+			error,
+			status: 'loaded',
+		}))
 	}
 }
 

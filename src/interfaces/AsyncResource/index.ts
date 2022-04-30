@@ -4,7 +4,7 @@ interface AsyncResource<Data> {
   status: Status,
   data: Data
   error?: any
-  id?: number
+  id?: number | string
 }
 
 export default AsyncResource

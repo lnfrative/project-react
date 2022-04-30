@@ -77,16 +77,19 @@ function Income() {
 	}, [session.user, stage.state.optionSelectedRevenueChart])
 
 	useEffect(() => {
-		const { optionSelectedIncomOrigin } = stage.state
-		if (session.user.data && optionSelectedIncomOrigin?.id) {
+		const period = stage.state.optionSelectedIncomOrigin?.id
+		if (period) {
 			const params = {
 				currency: session.currency,
-				period: optionSelectedIncomOrigin.id,
+				period,
 			}
 
-			fetchAssetsAndRoi(params)
-			fetchIncomeOrigin(params)
-			fetchReturningAssets(params)
+			const requestId = JSON.stringify(params)
+			if (session.user.data && requestId !== session.incomeOrigin.id) {
+				fetchAssetsAndRoi(params)
+				fetchIncomeOrigin(params)
+				fetchReturningAssets(params)
+			}
 		}
 	}, [session.user, stage.state.optionSelectedIncomOrigin])
 
@@ -167,13 +170,13 @@ function Income() {
 							/>
 						</ContainerSwitch>
 						<StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
-						{session.incomeOrigin &&
-							Object.keys(session.incomeOrigin).map((io) => (
+						{session.incomeOrigin.data &&
+							Object.keys(session.incomeOrigin.data).map((io) => (
 								<StyledLoadLineLabel key={io}>
-									<LoadLineLabel title={io} value={session.incomeOrigin?.[io] ?? 0} />
+									<LoadLineLabel title={io} value={session.incomeOrigin.data?.[io] ?? 0} />
 								</StyledLoadLineLabel>
 							))}
-						{!session.incomeOrigin && (
+						{session.incomeOrigin.status === 'loading' && (
 							<LoaderContainer>
 								<CircularProgress color="info" />
 							</LoaderContainer>
