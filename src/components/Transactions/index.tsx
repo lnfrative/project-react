@@ -1,7 +1,6 @@
 // region import
 import React, { useContext, useEffect } from 'react'
 import { DateRange } from 'react-date-range'
-import { CircularProgress } from '@mui/material'
 
 // hooks
 import { useStage, useEndScroll, useStrictEffect, useApiStore } from 'hooks'
@@ -14,6 +13,9 @@ import { Backend } from 'contexts'
 
 // components
 import { Panel, Transaction, Checkbox, Select, ImgCoin } from 'components'
+
+// skeletons
+import { TransactionSkeleton } from 'components/Transaction'
 
 // utilities
 import { resources, message } from 'utilities'
@@ -33,6 +35,9 @@ import {
   StyledCheckbox,
   StatsHead,
 } from './style'
+
+// constants
+const skeletonValues = [1,2,3,4,5,6,7,8,9,10]
 // endregion
 
 function Transactions() {
@@ -137,11 +142,11 @@ function Transactions() {
                 )
               })
             })}
-            {!transactions && (
-              <ContainerFeedback>
-                <CircularProgress color="inherit" />
-              </ContainerFeedback>
-            )}
+            {!transactions && skeletonValues.map(page => (
+              <ContainerTransaction>
+                <TransactionSkeleton />
+              </ContainerTransaction>
+            ))}
             {transactions?.length === 0 && stage.state.pages.length === 1 && (
               <ContainerFeedback>
                 {message({ id: 'EMPTY_TRANSACTIONS_HISTORY' })}
