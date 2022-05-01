@@ -1,7 +1,7 @@
 // region import
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CircularProgress, Skeleton } from '@mui/material'
+import { CircularProgress, Skeleton, Box } from '@mui/material'
 
 // hooks
 import { useSessionStore, useApiStore, useStrictEffect } from 'hooks'
@@ -208,26 +208,28 @@ function Overview() {
 						</ContainerCheckbox>
 						<div className={styles.movements}>
 							{session.transactions.last.data && session.transactions.last.data.map((tx, index, txs) => (
-								<div
+								<Box
 									key={tx.id}
-									className={styles.movement}
-									style={{
-										margin: index === txs.length - 1 ? 0 : '',
+									sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									paddingBottom: index === txs.length - 1 ? 0 : 4,
 									}}
 								>
 									<Transaction data={tx} />
-								</div>
+								</Box>
 							))}
 							{session.transactions.last.status === 'loading' && skeletonValues.map((num, index) => (
-								<div
+								<Box
 									key={num}
-									className={styles.movement}
-									style={{
-										margin: index === skeletonValues.length - 1 ? 0 : '',
+									sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									paddingBottom: index === skeletonValues.length - 1 ? 0 : 4,
 									}}
 								>
 									<TransactionSkeleton />
-								</div>
+								</Box>
 							))}
 							{session.transactions.last.data?.length === 0 && (
 								<div className={styles.containerFeedback}>

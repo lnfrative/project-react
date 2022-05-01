@@ -26,23 +26,6 @@ export const StyledPanel = styled('div')`
 	margin-bottom: ${props => props.theme.space.lg};
 `
 
-export const ContainerTransaction = styled.a`
-		text-decoration: none;
-		display: flex;
-		align-items: center;
-
-		width: 100%;
-		margin-bottom: ${props => props.theme.space.lg};
-
-		&:hover {
-			opacity: ${props => props.theme.opacity.hover};
-		}
-
-		&:active {
-			opacity: ${props => props.theme.opacity.selecting};
-		}
-`
-
 export const ContainerFeedback = styled('div')`
 	display: flex;
 	justify-content: center;

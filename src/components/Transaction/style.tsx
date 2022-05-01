@@ -40,6 +40,21 @@ export const Data = styled.div`
   }
 `
 
+export const TransactionLink = styled.a`
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		width: 100%;
+
+		&:hover {
+			opacity: ${props => props.theme.opacity.hover};
+		}
+
+		&:active {
+			opacity: ${props => props.theme.opacity.selecting};
+		}
+`
+
 function SkeletonIcon() {
 	return (
 		<Skeleton

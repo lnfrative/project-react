@@ -1,6 +1,7 @@
 // region import
 import React, { useContext, useEffect } from 'react'
 import { DateRange } from 'react-date-range'
+import { Box } from '@mui/material'
 
 // hooks
 import { useStage, useEndScroll, useStrictEffect, useApiStore } from 'hooks'
@@ -29,7 +30,6 @@ import {
   PrimaryContent,
   SecondaryContent,
   StyledPanel,
-  ContainerTransaction,
   ContainerFeedback,
   ContainerCheckbox,
   StyledCheckbox,
@@ -132,20 +132,26 @@ function Transactions() {
               })?.data
 
               if (!transactionsPage) return null
-              return transactionsPage.map(t => {
-                const [coin] = api.coins.data.filter(value => value.id === t.coin_id)
-                const txURL = resources.coin[resources.utils.normaliceCoinName(coin.name)].tx
-                return (
-                  <ContainerTransaction href={txURL + t.txid} target="_blank" key={t.id}>
-                    <Transaction data={t} />
-                  </ContainerTransaction>
-                )
-              })
+              return transactionsPage.map(t =>  (
+                <Box
+                  key={t.id}
+                  sx={{
+                    marginBottom: 4,
+                  }}
+                >
+                  <Transaction data={t} />
+                </Box>
+              ))
             })}
-            {!transactions && skeletonValues.map(page => (
-              <ContainerTransaction>
+            {!transactions && skeletonValues.map(id => (
+              <Box
+                key={id}
+                sx={{
+                  marginBottom: 4,
+                }}
+              >
                 <TransactionSkeleton />
-              </ContainerTransaction>
+              </Box>
             ))}
             {transactions?.length === 0 && stage.state.pages.length === 1 && (
               <ContainerFeedback>
