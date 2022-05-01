@@ -136,7 +136,7 @@ function Income() {
 				</StyledPanel>
 
 				<StyledPanel>
-					<Panel title={message({ id: 'REVENUE_PER_MONTH' })}>
+					<Panel title={message({ id: 'REVENUE' })}>
 						<ContainerSwitch>
 							<Select
 								design="simple"

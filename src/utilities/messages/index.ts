@@ -256,6 +256,9 @@ const messages: Record<string, Record<string, any>> = {
 	RESENDING_EMAIL: {
 		en: 'Resending the verification email, do not reload the page.',
 	},
+	REVENUE: {
+		en: 'Revenue',
+	},
 	REVENUE_SUMMARY: {
 		en: 'Revenue summary',
 	},
