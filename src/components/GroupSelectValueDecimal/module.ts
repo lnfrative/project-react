@@ -12,8 +12,8 @@ const initialState: State = {
 function genOnSelect(props: GroupSelectValueDecimalProps, stage: Stage<State>): OnSelect {
 	return ({ option, assemble }) => {
 		stage.commitState({ optionSelected: option })
-		if (props.onSelect && !assemble) {
-			props.onSelect({ option })
+		if (props.onSelect) {
+			props.onSelect({ option, assemble })
 		}
 	}
 }

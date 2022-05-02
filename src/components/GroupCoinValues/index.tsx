@@ -17,26 +17,12 @@ import {
 } from 'components'
 
 // modules
-import { selectCoin, selectTime, initialState } from './module'
+import { selectCoin, selectTime, initialState, coinOptions, timeOptions, } from './module'
 
 // styles
 import styles from './index.module.css'
 import { SelectValues, SelectSpacing, StyledGroupValueDecimal } from './style'
 // endregion
-
-const coinOptions = [
-	{ id: 'btc', value: 'BTC', main: true },
-	{ id: 'ltc', value: 'LTC' },
-	{ id: 'eth', value: 'ETH' },
-]
-
-const timeOptions = [
-	{ id: '24h', value: '24 hours', main: true },
-	{ id: '7d', value: '7 days' },
-	{ id: '14d', value: '14 days' },
-	{ id: '30d', value: '30 days' },
-	{ id: '1y', value: '1 year' },
-]
 
 function GroupCoinValues() {
 	const session = useSessionStore()
@@ -50,7 +36,10 @@ function GroupCoinValues() {
 
 	useEffect(() => {
 		if (session.balance.data) {
-			stage.commitState({ backendBalance: session.balance.data })
+			stage.commitState({
+				...stage.state,
+				backendBalance: session.balance.data
+			})
 		}
 	}, [session.balance])
 
@@ -78,7 +67,7 @@ function GroupCoinValues() {
 					<GroupSelectValueDecimal
 						valueDecimal={session.balance.data?.balance_secondary_currency ?? 0}
 						titleSelect="Worth in"
-						optionsSelect={coinOptions}
+						optionsSelect={coinOptions.map(c => ({ ...c, main: c.id === stage.state.coin.id }))}
 						onSelect={selectCoin(stage)}
 						loading={session.balance.status !== 'loaded'}
 					/>
@@ -86,7 +75,7 @@ function GroupCoinValues() {
 				<GroupSelectValueVariation
 					valueVariation={session.balance.data?.change ?? 0}
 					titleSelect="Last"
-					optionsSelect={timeOptions}
+					optionsSelect={timeOptions.map(t => ({ ...t, main: t.id === stage.state.variation.id }))}
 					onSelect={selectTime(stage)}
 					loading={session.balance.status !== 'loaded'}
 				/>

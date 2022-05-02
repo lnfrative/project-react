@@ -25,7 +25,6 @@ function GroupSelectValueDecimal(props: GroupSelectValueDecimalProps) {
 			{!!props.loading && (
 				<Skeleton>
 					<Select
-						onSelect={genOnSelect(props, stage)}
 						design="simple"
 						title={props.titleSelect}
 						options={props.optionsSelect}
