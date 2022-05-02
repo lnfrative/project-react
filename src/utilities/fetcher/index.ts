@@ -266,29 +266,24 @@ export async function fetchNewAddress(coinId: string) {
 
 export async function fetchCaptchaValidate() {
   const state = store.getState()
+  const hash = state.api.captchaValidate.data
 	store.dispatch(setApiCaptchaValidate({
 		status: 'loading',
-		data: state.api.captchaValidate.data,
+		data: hash,
 	}))
-	try {
-		const { data } = await fetcher({
-			url: resources.ep.api.post.captchaValidate,
-			method: 'post',
-			params: {
-				'g-recaptcha-response': state.captcha.token,
-			}
-		})
 
-		store.dispatch(setApiCaptchaValidate({
-			status: 'loaded',
-			data,
-		}))
-	} catch (e) {
-		store.dispatch(setApiCaptchaValidate({
-			status: 'loaded',
-			data: state.api.captchaValidate.data
-		}))
-	}
+  const { data } = await fetcher({
+    url: resources.ep.api.post.captchaValidate,
+    method: 'post',
+    params: {
+      'g-recaptcha-response': state.captcha.token,
+    }
+  })
+
+  store.dispatch(setApiCaptchaValidate({
+    status: 'loaded',
+    data: data || hash,
+  }))
 }
 
 export async function postTransaction(coinId: string, params: Record<string, string>) {

@@ -33,14 +33,11 @@ function Captcha(props: CaptchaProps) {
 		if (api.captchaValidate.data) {
 			props.onSuccess(api.captchaValidate.data)
 		}
-		if (api.captchaValidate.error && ref.current) {
-			ref.current.reset()
-		}
 	}, [api.captchaValidate.status])
 
 	return (
 		<>
-			<ReCAPTCHA ref={ref} sitekey={api.captchaKey} onChange={onChange} />
+			<ReCAPTCHA theme="dark" ref={ref} sitekey={api.captchaKey} onChange={onChange} />
 			<BackdropLoader open={api.captchaValidate.status === 'loading'} />
 		</>
 	)
