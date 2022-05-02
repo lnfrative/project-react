@@ -20,7 +20,7 @@ import {
 
 // utilities
 import { resources, message } from 'utilities'
-import { fetchAddresses } from 'utilities/fetcher'
+import { fetchAddresses, fetchNewAddress } from 'utilities/fetcher'
 
 // styles
 import styles from './index.module.css'
@@ -62,6 +62,16 @@ function Receive() {
 			}
 		}
 	}, [stage.state.optionSelected])
+
+	useEffect(() => {
+		const coinId = stage.state.optionSelected?.id ?? ''
+		const addressesResource = session.addresses[coinId]
+		if (addressesResource && addressesResource.status === 'loaded') {
+			if (addressesResource.data.length === 0) {
+				fetchNewAddress(coinId)
+			}
+		}
+	}, [session.addresses])
 
 	return (
 		<div className={styles.mainGroup}>

@@ -1,9 +1,6 @@
 // types
 import { BackendRequestMethodsAllowed } from 'types'
 
-// interfaces
-import { BackendAddress } from 'interfaces'
-
 // utilities
 import { readCookie, resources } from 'utilities'
 
@@ -231,36 +228,28 @@ export async function fetchNewAddress(coinId: string) {
   }))
   
   const state = store.getState()
-  try {
-    const { data }: { data: BackendAddress } = await fetcher({
-      method: 'get',
-      url: resources.ep.api.get.newaddress.replace(
-        resources.ep.api.aliases.coinId,
-        coinId,
-      ),
-      params: {
-        captcha_hash: state.api.captchaValidate.data
-      }
-    })
-
-    store.dispatch(setSessionNewAddress({
-      [coinId]: {
-        status: 'loaded',
-        data,
-      }
-    }))
-  
-    if (data.already_generated) {
-      fetchAddresses(coinId)
-      fetchWallets()
+  const { data, success, error } = await fetcher({
+    method: 'get',
+    url: resources.ep.api.get.newaddress.replace(
+      resources.ep.api.aliases.coinId,
+      coinId,
+    ),
+    params: {
+      captcha_hash: state.api.captchaValidate.data
     }
-  } catch {
-    store.dispatch(setSessionNewAddress({
-      [coinId]: {
-        status: 'loaded',
-        data: null,
-      }
-    }))
+  })
+
+  store.dispatch(setSessionNewAddress({
+    [coinId]: {
+      status: success ? 'loaded' : 'error',
+      data,
+      error,
+    }
+  }))
+
+  if (data?.already_generated) {
+    fetchAddresses(coinId)
+    fetchWallets()
   }
 }
 
