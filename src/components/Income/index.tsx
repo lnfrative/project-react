@@ -1,6 +1,6 @@
 // region import
 import React, { useEffect } from 'react'
-import { CircularProgress } from '@mui/material'
+import { Skeleton } from '@mui/material'
 
 // hooks
 import { useStage, useSessionStore } from 'hooks'
@@ -31,6 +31,7 @@ import {
 	ContainerValue,
 	LoaderContainer,
 	ContainerSwitch,
+	IncomeSecondaryContentSkeleton,
 } from './style'
 
 // modules
@@ -71,7 +72,6 @@ function Income() {
 				currency: session.currency,
 				period: optionSelectedRevenueChart.id,
 			}
-
 			fetchRevenueChart(params)
 		}
 	}, [session.user, stage.state.optionSelectedRevenueChart])
@@ -138,52 +138,61 @@ function Income() {
 				<StyledPanel>
 					<Panel title={message({ id: 'REVENUE' })}>
 						<ContainerSwitch>
-							<Select
-								design="simple"
-								onSelect={onSelectTimeChart(stage)}
-								options={options.map(option => ({
-									...option,
-									main: option.id === stage.state.optionSelectedRevenueChart?.id,
-								}))}
-							/>
+							{session.revenueChart && (
+								<Select
+									design="simple"
+									onSelect={onSelectTimeChart(stage)}
+									options={options.map(option => ({
+										...option,
+										main: option.id === stage.state.optionSelectedRevenueChart?.id,
+									}))}
+								/>
+							)}
+							{!session.revenueChart && (
+								<Skeleton>
+									<Select
+										design="simple"
+										options={[{ id: 'id', value: 'value', main: true }]}
+									/>
+								</Skeleton>
+							)}
 						</ContainerSwitch>
 						{session.revenueChart && <ChartCurve data={session.revenueChart.data} labels={session.revenueChart.labels} />}
 						{!session.revenueChart && (
-							<LoaderContainer>
-								<CircularProgress color="info" />
-							</LoaderContainer>
+							<Skeleton
+								sx={{
+									maxWidth: 'inherit'
+								}}
+							>
+								<ChartCurve data={[0]} labels={['skleton']} />
+							</Skeleton>
 						)}
 					</Panel>
 				</StyledPanel>
 			</PrimaryContent>
-			<SecondaryContent>
-				<StyledPanel>
-					<Panel title="Income stats">
-						<ContainerSwitch>
-							<Select
-								design="simple"
-								onSelect={onSelectTimeOrigin(stage)}
-								options={options.map(option => ({
-									...option,
-									main: option.id === stage.state.optionSelectedIncomOrigin?.id,
-								}))}
-							/>
-						</ContainerSwitch>
-						<StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
-						{session.incomeOrigin.data &&
-							Object.keys(session.incomeOrigin.data).map((io) => (
+			{session.incomeOrigin.data && session.assetsAndRoi && session.returningAssets && (
+				<SecondaryContent>
+					<StyledPanel>
+						<Panel title="Income stats">
+							<ContainerSwitch>
+								<Select
+									design="simple"
+									onSelect={onSelectTimeOrigin(stage)}
+									options={options.map(option => ({
+										...option,
+										main: option.id === stage.state.optionSelectedIncomOrigin?.id,
+									}))}
+								/>
+							</ContainerSwitch>
+							<StatsHead style={{ marginTop: 0 }}>Origin</StatsHead>
+							{Object.keys(session.incomeOrigin.data).map((io) => (
 								<StyledLoadLineLabel key={io}>
 									<LoadLineLabel title={io} value={session.incomeOrigin.data?.[io] ?? 0} />
 								</StyledLoadLineLabel>
 							))}
-						{session.incomeOrigin.status === 'loading' && (
-							<LoaderContainer>
-								<CircularProgress color="info" />
-							</LoaderContainer>
-						)}
 
-						<StatsHead>Collateral assets</StatsHead>
-						{session.assetsAndRoi && (
+							<StatsHead>Collateral assets</StatsHead>
+					
 							<ContainerValue>
 								<ValueDecimal
 									sameSize
@@ -193,15 +202,8 @@ function Income() {
 									value={session.assetsAndRoi.collateral}
 								/>
 							</ContainerValue>
-						)}
-						{!session.assetsAndRoi && (
-							<LoaderContainer>
-								<CircularProgress color="info" />
-							</LoaderContainer>
-						)}
-
-						<StatsHead>ROI</StatsHead>
-						{session.assetsAndRoi && (
+				
+							<StatsHead>ROI</StatsHead>
 							<ContainerValue>
 								<ValueDecimal
 									sameSize
@@ -212,31 +214,27 @@ function Income() {
 									value={session.assetsAndRoi.ROI}
 								/>
 							</ContainerValue>
-						)}
-						{!session.assetsAndRoi && (
-							<LoaderContainer>
-								<CircularProgress color="info" />
-							</LoaderContainer>
-						)}
 
-						<StatsHead>Top returning assets</StatsHead>
-						{session.returningAssets &&
-							session.returningAssets.map(returningAsset => (
+							<StatsHead>Top returning assets</StatsHead>
+							{session.returningAssets.map(returningAsset => (
 								<ReturningAsset key={returningAsset.coin_id} {...returningAsset} />
 							))}
-						{session.returningAssets?.length === 0 && (
-							<LoaderContainer>
-								<span>Nothing to show.</span>
-							</LoaderContainer>
-						)}
-						{!session.returningAssets && (
-							<LoaderContainer>
-								<CircularProgress color="info" />
-							</LoaderContainer>
-						)}
-					</Panel>
-				</StyledPanel>
-			</SecondaryContent>
+							{session.returningAssets?.length === 0 && (
+								<LoaderContainer>
+									<span>Nothing to show.</span>
+								</LoaderContainer>
+							)}
+						</Panel>
+					</StyledPanel>
+				</SecondaryContent>
+			)}
+			{(
+				session.incomeOrigin.status === 'loading'
+				|| !session.assetsAndRoi
+				|| !session.returningAssets
+			) && (
+				<IncomeSecondaryContentSkeleton />
+			)}
 		</Container>
 	)
 }

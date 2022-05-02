@@ -8,7 +8,7 @@ import { LoadLineLabelProps } from 'interfaces'
 import { LoadLine } from 'components'
 
 // styles
-import { Container, Labels } from './style'
+import { Container, Labels, LoadLineLabelSkeleton } from './style'
 // endregion
 
 function LoadLineLabel(props: LoadLineLabelProps) {
@@ -22,5 +22,7 @@ function LoadLineLabel(props: LoadLineLabelProps) {
 		</Container>
 	)
 }
+
+export { LoadLineLabelSkeleton }
 
 export default LoadLineLabel

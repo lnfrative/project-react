@@ -1,11 +1,11 @@
 // region import
-import React, { useContext } from 'react'
+import React from 'react'
 
-// contexts
-import { Backend } from 'contexts'
+// hooks
+import { useApiStore } from 'hooks'
 
 // interfaces
-import { BackendReturningAsset, BackendCoin } from 'interfaces'
+import { BackendReturningAsset } from 'interfaces'
 
 // components
 import { ImgCoin, ValueDecimal } from 'components'
@@ -14,28 +14,25 @@ import { ImgCoin, ValueDecimal } from 'components'
 import { resources, message } from 'utilities'
 
 // styles
-import { Container, Group, PrimaryTitle, SecondaryTitle } from './style'
+import { Container, Group, PrimaryTitle, SecondaryTitle, ReturningAssetSkeleton } from './style'
 // endregion
 
 function ReturningAsset(props: BackendReturningAsset) {
-	const backend = useContext(Backend)
+	const api = useApiStore()
 
-	const coins: Array<BackendCoin> = backend.response({
-		endpoint: resources.endpoints.get.coins,
-		method: 'get',
-	})?.data
-
-	const [coin] = coins.filter(({ id }) => id === props.coin_id)
+	const [coin] = api.coins.data.filter(({ id }) => id === props.coin_id)
 
 	return (
 		<Container>
-			<ImgCoin
-				size="medium"
-				src={resources.coin[resources.utils.normaliceCoinName(coin.name)].logo}
-			/>
+			{coin && (
+				<ImgCoin
+					size="medium"
+					src={resources.coin[resources.utils.normaliceCoinName(coin.name)].logo}
+				/>
+			)}
 			<Group>
-				<PrimaryTitle>{coin.asset}</PrimaryTitle>
-				<SecondaryTitle>{message({ id: coin.staking ? 'STAKING' : 'MINING' })}</SecondaryTitle>
+				<PrimaryTitle>{coin?.asset}</PrimaryTitle>
+				<SecondaryTitle>{message({ id: coin?.staking ? 'STAKING' : 'MINING' })}</SecondaryTitle>
 			</Group>
 			<Group>
 				<PrimaryTitle>
@@ -59,5 +56,7 @@ function ReturningAsset(props: BackendReturningAsset) {
 		</Container>
 	)
 }
+
+export { ReturningAssetSkeleton }
 
 export default ReturningAsset
