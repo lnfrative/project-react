@@ -12,12 +12,16 @@ import { Container, Integer, Decimal, SignRight } from './style'
 // endregion
 
 function ValueDecimal(props: ValueDecimalProps) {
-	const value = resources.utils.splitFloat(props.value, props.decimals)
+	const signLeftPosition = props.signPosition === 'left' || !props.signPosition
+
+	const value = resources.utils.splitFloat(
+		signLeftPosition ? Math.abs(props.value) : props.value, props.decimals
+	)
 	return (
 		<Container>
 			<Integer size={props.sise}>
-				{!props.signPosition && props.sign}
-				{props.signPosition === 'left' && props.sign}
+				{signLeftPosition && props.value < 0 && '-'}
+				{signLeftPosition && props.sign}
 				{value.integer}
 			</Integer>
 			<Decimal sameSize={!!props.sameSize} size={props.sise}>
