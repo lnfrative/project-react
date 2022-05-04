@@ -7,6 +7,9 @@ import { OnSelect } from 'types'
 // stores
 import { store } from 'stores'
 
+// actions
+import { setSessionTransactionPosted } from 'stores/SessionSlice'
+
 // fetcher
 import { postTransaction, fetchBalance, fetchLastTransactions, fetchWallets } from 'utilities/fetcher'
 
@@ -15,18 +18,18 @@ interface State {
 	status?: 'clear' | 'completed'
 }
 
-const initialState: State = {
+export const initialState: State = {
 	optionSelected: undefined,
 	status: 'clear',
 }
 
-function selectSend(stage: Stage<State>): OnSelect {
+export function selectSend(stage: Stage<State>): OnSelect {
 	return value => {
 		stage.commitState({ optionSelected: value.option })
 	}
 }
 
-function onSubmit(stage: Stage<State>, params: Record<string, any>) {
+export function onSubmit(stage: Stage<State>, params: Record<string, any>) {
 	return () => {
 		const { optionSelected } = stage.state
 		if (optionSelected) {
@@ -35,7 +38,7 @@ function onSubmit(stage: Stage<State>, params: Record<string, any>) {
 	}
 }
 
-function success(stage: Stage<State>, successCallback: Function) {
+export function success(stage: Stage<State>, successCallback: Function) {
 	return () => {
 		const state = store.getState()
 		successCallback()
@@ -49,10 +52,20 @@ function success(stage: Stage<State>, successCallback: Function) {
 	}
 }
 
-function resetStatus(stage: Stage<State>) {
+export function resetStatus(stage: Stage<State>) {
 	return () => {
+		const { optionSelected } = stage.state
+		if (optionSelected) {
+			const coinId = optionSelected.id
+			store.dispatch(setSessionTransactionPosted({
+				[coinId]: {
+					status: 'nonload',
+					data: null,
+					id: undefined,
+				}
+			}))
+		}
 		stage.commitState({ status: 'clear' })
 	}
 }
 
-export { initialState, selectSend, onSubmit, success, resetStatus }
