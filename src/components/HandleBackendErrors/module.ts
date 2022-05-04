@@ -2,7 +2,7 @@ import { Stage } from 'interfaces'
 
 interface State {
 	message?: string
-	status: 'open' | 'close'
+	status: 'open' | 'close' | 'snackbar'
 	reloadRequired?: boolean,
 }
 
