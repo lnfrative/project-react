@@ -17,9 +17,9 @@ function Middleware(props: MiddlewareProps) {
 
 	const [requirement] = props.requirements.filter(
 		middleware =>
-			(middleware === 'auth' && !session.user.data?.id) ||
-			(middleware === 'guess' && session.user.data?.id) ||
-			(middleware === 'verified.email' && !session.user.data?.email_verified_at)
+			(middleware === 'auth' && (session.user.status === 'error')) ||
+			(middleware === 'guess' && session.user.status === 'loaded') ||
+			(middleware === 'verified.email' && session.user.data && !session.user.data.email_verified_at)
 	)
 
 	if (requirement === 'auth') {

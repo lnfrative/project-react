@@ -5,10 +5,10 @@ import React from 'react'
 import { useStage } from 'hooks'
 
 // components
-import { DialogNotificationConfirmTransaction, DialogNotification, SVGIconSuccess, Button } from 'components'
+import { DialogNotificationConfirmTransaction, DialogNotification, SVGIconSuccess, Button, Middleware } from 'components'
 
 // utilities
-import { message } from 'utilities'
+import { message, resources } from 'utilities'
 
 // modules
 import { initialState, handleVerificationSuccess, toHome } from './module'
@@ -17,7 +17,7 @@ import { initialState, handleVerificationSuccess, toHome } from './module'
 function ConfirmTransaction() {
 	const stage = useStage(initialState)
 	return (
-		<>
+		<Middleware requirements={resources.routes.confirmTransaction.middlewares}>
 			<DialogNotification
 				open={stage.state.status === 'verified'}
 				Icon={<SVGIconSuccess />}
@@ -38,7 +38,7 @@ function ConfirmTransaction() {
 				onSuccess={handleVerificationSuccess(stage)}
 				open={stage.state.status === 'unverified'}
 			/>
-		</>
+		</Middleware>
 	) 
 	
 }
