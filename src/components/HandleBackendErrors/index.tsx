@@ -23,10 +23,11 @@ function HandleBackendErrors(props: PropsWithChildren<{}>) {
 	const stage = useStage(initialState)
 
 	useEffect(() => {
+		const { message } = api.error
 		if (api.error.code === 401 && session.user.status === 'loaded') {
 			window.location.reload()
 		}
-		if (api.error.message && api.error.message !== 'Captcha is invalid!') {
+		if (message && message !== 'Captcha is invalid!' && message !== 'Unauthenticated.') {
 			stage.commitState({
 				status: api.error.message === 'CSRF is missing or invalid' ? 'open' : 'snackbar',
 				reloadRequired: api.error.message === 'CSRF is missing or invalid',

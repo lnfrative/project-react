@@ -46,7 +46,7 @@ const initialState: State = {
 
   error: {
     code: 0,
-    message: 'An undiagnosed error has occurred, please report it.',
+    message: '',
     data: undefined
   }
 }
