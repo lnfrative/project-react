@@ -3,10 +3,10 @@ import React, { useContext, useEffect } from 'react'
 import { Typography } from '@mui/material'
 
 // contexts
-import { Backend, Captcha } from 'contexts'
+import { Backend } from 'contexts'
 
 // hooks
-import { useStage, useForm } from 'hooks'
+import { useStage, useForm, useApiStore } from 'hooks'
 
 // utilities
 import { message, resources, requestId } from 'utilities'
@@ -35,13 +35,15 @@ const endregister = resources.endpoints.post.user
 function FormAuthRegister() {
 	const stage = useStage(initialState)
 	const backend = useContext(Backend)
-	const captcha = useContext(Captcha)
+	const api = useApiStore()
+
+
 	const { watch, handleSubmit, bind } = useForm()
 	const { password, email, repeatedPassword } = watch
 	const params = {
 		email: email?.value,
 		password: password?.value,
-		captcha_hash: captcha.state.hash ?? '',
+		captcha_hash: api.captchaValidate.data,
 	}
 	const userResponse = backend.response({ endpoint: enduser, method: 'get' })
 	const createUserResponse = backend.response({
