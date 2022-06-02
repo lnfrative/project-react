@@ -3,10 +3,10 @@ import React, { useContext } from 'react'
 import { Typography, Box } from '@mui/material'
 
 // contexts
-import { Backend, Captcha } from 'contexts'
+import { Backend } from 'contexts'
 
 // hooks
-import { useForm } from 'hooks'
+import { useForm, useApiStore } from 'hooks'
 
 // components
 import { FormAuth, Button, BackdropLoader, Form, Input } from 'components'
@@ -24,13 +24,13 @@ import styles from './index.module.css'
 const endrecoverpassword = resources.endpoints.post.recoverPassword
 
 function FormAuthRecoverPassword() {
+	const api = useApiStore()
 	const backend = useContext(Backend)
-	const captcha = useContext(Captcha)
 	const { handleSubmit, watch, bind } = useForm()
 	const { email } = watch
 	const params = {
 		email: email?.value,
-		captcha_hash: captcha.state.hash ?? '',
+		captcha_hash: api.captchaValidate.data,
 	}
 
 	const response = backend.response({ endpoint: endrecoverpassword, params, method: 'post' })

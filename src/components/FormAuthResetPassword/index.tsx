@@ -4,10 +4,10 @@ import { useLocation, Redirect } from 'react-router-dom'
 import { Typography, Box } from '@mui/material'
 
 // hooks
-import { useForm } from 'hooks'
+import { useForm, useApiStore } from 'hooks'
 
 // contexts
-import { Backend, Captcha } from 'contexts'
+import { Backend } from 'contexts'
 
 // components
 import {
@@ -28,8 +28,8 @@ import { onSubmit } from './module'
 const endresetpassword = resources.endpoints.post.resetPassword
 
 function FormAuthResetPassword() {
+	const api = useApiStore()
 	const backend = useContext(Backend)
-	const captcha = useContext(Captcha)
 	const { handleSubmit, watch, bind } = useForm()
 
 	const { search } = useLocation()
@@ -44,7 +44,7 @@ function FormAuthResetPassword() {
 		email,
 		password,
 		password_confirmation: passwordRepeat,
-		captcha_hash: captcha.state.hash ?? '',
+		captcha_hash: api.captchaValidate.data,
 	}
 
 	const loading = backend.loading?.id === requestId('post', endresetpassword, params)
