@@ -22,7 +22,7 @@ function Middleware(props: MiddlewareProps) {
 		document.location.href = resources.routes.login.route.path
 	}
 	if (requirement === 'guess') {
-		document.location.href = resources.routes.home.route.path
+		document.location.href = resources.routes.home.base
 	}
 	if (requirement === 'verified.email') {
 		document.location.href = resources.routes.home.route.path
