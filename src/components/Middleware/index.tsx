@@ -1,3 +1,7 @@
+// region import
+import React from 'react'
+import { Redirect } from 'react-router-dom'
+
 // hooks
 import { useSessionStore } from 'hooks'
 
@@ -18,14 +22,12 @@ function Middleware(props: MiddlewareProps) {
 			(middleware === 'verified.email' && session.user.data && !session.user.data.email_verified_at)
 	)
 
+	console.log(requirement)
 	if (requirement === 'auth') {
-		document.location.href = resources.routes.login.route.path
+		return <Redirect to={resources.routes.login.route.path} />
 	}
-	if (requirement === 'guess') {
-		document.location.href = resources.routes.home.base
-	}
-	if (requirement === 'verified.email') {
-		document.location.href = resources.routes.home.route.path
+	if (requirement === 'guess' || requirement === 'verified.email') {
+		return <Redirect to={resources.routes.home.base} />
 	}
 	return props.children
 }

@@ -1,5 +1,6 @@
 // region import
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Redirect, useRouteMatch } from 'react-router-dom'
 
 // interfaces
 import { PaginationObject } from 'interfaces'
@@ -21,7 +22,7 @@ import {
 	Overview,
 	Income,
 	Transactions,
-	Subscriptions
+	Subscriptions,
 } from 'components'
 
 // styles
@@ -40,6 +41,14 @@ const paginationObjects: Array<PaginationObject> = [
 	{ id: 'transactions', title: 'Transactions', content: <Transactions /> },
 	{ id: 'subscriptions', title: 'Subscriptions', content: <Subscriptions /> },
 ]
+
+function RedirectInvalidRouteParams() {
+	const { params } = useRouteMatch()
+	if (params.section === 'login') {
+		return <Redirect to={resources.routes.login.route.path} />
+	}
+	return null
+}
 
 function Dashboard() {
 	return (
@@ -64,8 +73,17 @@ const Login = () => (
 
 function Home() {
 	const session = useSessionStore()
-	if (session.user.status !== 'loaded') return <Login />
-	return <Dashboard />
+	return (
+		<>
+			<RedirectInvalidRouteParams />
+			{session.user.status !== 'loaded' && (
+				<Login />
+			)}
+			{session.user.status === 'loaded' && (
+				<Dashboard />
+			)}
+		</>
+	)
 }
 
 export default Home
