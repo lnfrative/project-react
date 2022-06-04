@@ -22,7 +22,6 @@ function Middleware(props: MiddlewareProps) {
 			(middleware === 'verified.email' && session.user.data && !session.user.data.email_verified_at)
 	)
 
-	console.log(requirement)
 	if (requirement === 'auth') {
 		return <Redirect to={resources.routes.login.route.path} />
 	}
