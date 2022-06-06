@@ -57,3 +57,4 @@ Then use `yarn start` to start the local server.
 
 - [Development guidelines](docs/dev_guidelines.md)
 - [Source structure](docs/source_structure.md)
+- [FAQ](docs/faq.md)

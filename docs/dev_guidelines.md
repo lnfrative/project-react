@@ -15,7 +15,7 @@ Categorical directories must always be named in lowercase and plural.
 
 ## Component structure
 
-css files should be avoided as much as possible. To style components we use a styling template, like `styled()` from MUI.
+CSS files for components should be avoided as much as possible. To style components we use a styling template, like `styled()` from MUI.
 Components that use styled() must be defined in a styles.tsx file.
 
 Only the component that constitutes its body, that is, the highest level component, must be found in index.tsx.
@@ -35,3 +35,4 @@ Thus, a component's directory looks like this:
 `components/ComponentName/styles.tsx`
 
 **A component must never have subcomponents in its directory. If a component is too big, it should be split into other components which will be placed in /components.**
+
