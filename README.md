@@ -1,8 +1,4 @@
-# DogeCash Clients Application
-
-![](https://media.discordapp.net/attachments/942616146086068285/978685372299096114/api.jpg)
-
-This repository hosts the codebase for the web application for DogeCash clients (https://app.dogecash.net).
+This repository hosts the codebase for the web application cryptocurrency clients.
 
 It consists of a Single Page Application powered by React.
 
@@ -18,21 +14,21 @@ It is recommended that the developers who work on this repository have notions a
 
 ## Setup local environment
 
-The local environment must connect to the development environment API (https://dev-api-app.dogecash.net). Therefore, it is important to make these specifications in your local .env file:
+The local environment must connect to the development environment API. Therefore, it is important to make these specifications in your local .env file:
 
-`REACT_APP_API=https://dev-api-account.dogecash.net`
+`REACT_APP_API=`
 
 ### Local serve
 
-Browsers only respond to the Set-Cookie header for responses that are within the scope of the application's domain, in our case `dogecash.net`. Local environments must therefore be served on a subdomain of `dogecash.net`. This can be achieved by modifying the hosts file of the operating system. For this example, the `local-app.dogecash.net` domain will be used, so in the hosts file the following must be added:
+Browsers only respond to the Set-Cookie header for responses that are within the scope of the application's domain. Local environments must therefore be served on a subdomain. This can be achieved by modifying the hosts file of the operating system. For this example, the domain will be used, so in the hosts file the following must be added:
 
-`127.0.0.1 local-app.dogecash.net`
+`127.0.0.1 yada yada`
 
 Then, the following lines must be added to the .env file:
 
-`REACT_APP_PUBLIC_URL=http://local-app.dogecash.net`
+`REACT_APP_PUBLIC_URL=`
 
-`HOST=local-app.dogecash.net`
+`HOST=`
 
 `PORT=80`
 
@@ -47,7 +43,7 @@ This should be done with nginx or apache or any other http server. Otherwise por
 
 Once the proxy is done, these lines must be omitted from the .env file:
 
-`HOST=local-app.dogecash.net`
+`HOST=`
 
 `PORT=80`
 
